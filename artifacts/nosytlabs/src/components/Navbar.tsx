@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 
 const LINKS = [
   { label: "Lab", href: "#about" },
   { label: "Projects", href: "#projects" },
-  { label: "Sound", href: "#sound" },
   { label: "Manifesto", href: "#manifesto" },
+  { label: "Music", href: "#sound" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -17,47 +20,96 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (open) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <nav className="relative z-30 px-4 sm:px-6 pt-5 sm:pt-6">
       <div
         className={`liquid-glass mx-auto max-w-5xl rounded-full flex items-center justify-between transition-all duration-500 ${
-          scrolled ? "px-4 py-2 sm:px-5 sm:py-2.5" : "px-5 py-3 sm:px-6 sm:py-3.5"
+          scrolled
+            ? "px-4 py-2 sm:px-5 sm:py-2.5"
+            : "px-5 py-3 sm:px-6 sm:py-3.5"
         }`}
       >
         <a href="#" className="flex items-center gap-2.5 group">
           <Logo className="w-7 h-7" />
           <span className="text-white font-medium text-[15px] tracking-tight">
-            NosytLabs<sup className="text-[9px] text-white/40 ml-0.5">®</sup>
+            NosytLabs
+            <sup className="text-[9px] text-white/45 ml-0.5">®</sup>
           </span>
         </a>
+
         <div className="hidden md:flex items-center gap-7 ml-6">
           {LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-white/65 hover:text-white text-sm font-medium transition-colors"
+              className="text-white/75 hover:text-white text-sm font-medium transition-colors"
             >
               {l.label}
             </a>
           ))}
         </div>
-        <div className="flex items-center gap-2.5">
+
+        <div className="flex items-center gap-2">
           <a
             href="https://github.com/NosytLabs"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:inline text-white/70 hover:text-white text-sm font-medium px-2 transition-colors"
+            className="hidden sm:inline-flex liquid-glass-strong rounded-full px-5 py-2 text-white text-sm font-medium hover:scale-[1.03] active:scale-95 transition-transform"
           >
-            GitHub
+            GitHub →
           </a>
-          <a
-            href="#contact"
-            className="liquid-glass-strong rounded-full px-5 py-2 text-white text-sm font-medium hover:scale-[1.03] active:scale-95 transition-transform"
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Open menu"
+            aria-expanded={open}
+            className="md:hidden liquid-glass-strong rounded-full p-2.5 text-white"
           >
-            Begin
-          </a>
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden fixed inset-0 z-40 bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center gap-7 animate-fade-rise">
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            className="absolute top-6 right-6 liquid-glass-strong rounded-full p-2.5 text-white"
+          >
+            <X size={18} />
+          </button>
+          {LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="text-serif text-3xl text-white"
+            >
+              {l.label}
+            </a>
+          ))}
+          <a
+            href="https://github.com/NosytLabs"
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setOpen(false)}
+            className="liquid-glass-strong rounded-full px-6 py-3 text-white text-sm font-medium mt-4"
+          >
+            GitHub →
+          </a>
+        </div>
+      )}
     </nav>
   );
 }

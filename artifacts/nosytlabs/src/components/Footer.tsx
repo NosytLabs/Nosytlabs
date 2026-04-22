@@ -1,15 +1,7 @@
-import { Github, Youtube, Twitter, Globe } from "lucide-react";
+import { Github, Youtube, Twitter } from "lucide-react";
 import { SiSpotify } from "react-icons/si";
 import Logo from "./Logo";
 import Reveal from "./Reveal";
-
-const BACKRONYM = [
-  ["N", "Notable"],
-  ["O", "Opportunities"],
-  ["S", "Shape"],
-  ["Y", "Your"],
-  ["T", "Tomorrow"],
-];
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -18,78 +10,121 @@ export default function Footer() {
       id="contact"
       className="relative bg-black border-t border-white/5 px-6 pt-24 md:pt-32 pb-10 overflow-hidden"
     >
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,_rgba(216,184,122,0.07)_0%,_transparent_60%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.05)_0%,_transparent_60%)]" />
       <div className="max-w-6xl mx-auto relative">
         <Reveal>
-          <div className="text-center mb-16 md:mb-24">
-            <div className="text-white/40 text-xs tracking-[0.3em] uppercase mb-6">
-              The contract, in five letters
+          <div className="text-center mb-16 md:mb-20">
+            <div className="text-white/55 text-xs tracking-[0.3em] uppercase mb-6">
+              The thesis
             </div>
-            <div className="flex items-baseline justify-center flex-wrap gap-x-5 md:gap-x-8 gap-y-3">
-              {BACKRONYM.map(([l, w], i) => (
-                <span
-                  key={l}
-                  className="text-serif text-5xl md:text-7xl lg:text-8xl text-white/90 tracking-tight"
-                >
-                  {l}
-                  <span className="text-italic-serif text-white/40 text-2xl md:text-4xl mx-1">
-                    {i < BACKRONYM.length - 1 ? "·" : ""}
-                  </span>
-                  <span className="sr-only">{w}</span>
-                </span>
-              ))}
-            </div>
-            <div className="mt-5 text-italic-serif text-white/55 text-xl md:text-2xl">
-              Notable Opportunities Shape Your Tomorrow.
-            </div>
+            <p className="text-serif text-3xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.1] max-w-3xl mx-auto">
+              Notable opportunities{" "}
+              <span className="text-italic-serif text-white/70">
+                shape your tomorrow.
+              </span>
+            </p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 pt-12 border-t border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 pt-12 border-t border-white/10">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <Logo className="w-7 h-7" />
               <span className="text-white font-medium text-[15px] tracking-tight">
-                NosytLabs<sup className="text-[9px] text-white/40 ml-0.5">®</sup>
+                NosytLabs
+                <sup className="text-[9px] text-white/45 ml-0.5">®</sup>
               </span>
             </div>
-            <p className="text-white/45 text-sm max-w-xs leading-relaxed">
-              A quiet research studio building AI agents, prompt systems, and
-              tools for the curious-by-default.
+            <p className="text-white/55 text-sm max-w-xs leading-relaxed">
+              An independent lab for AI agents, MCP servers, and quietly
+              useful developer tools.
             </p>
           </div>
 
           <div>
-            <div className="text-white/40 text-[11px] tracking-[0.28em] uppercase mb-4">
+            <div className="text-white/55 text-[11px] tracking-[0.28em] uppercase mb-4">
               The Lab
             </div>
-            <ul className="space-y-2.5 text-white/70 text-sm">
-              <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="#projects" className="hover:text-white transition-colors">Projects</a></li>
-              <li><a href="#sound" className="hover:text-white transition-colors">Sound</a></li>
-              <li><a href="#manifesto" className="hover:text-white transition-colors">Manifesto</a></li>
+            <ul className="space-y-2.5 text-white/80 text-sm">
+              <li>
+                <a href="#about" className="hover:text-white transition-colors">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#projects" className="hover:text-white transition-colors">
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a href="#sound" className="hover:text-white transition-colors">
+                  Music side project
+                </a>
+              </li>
+              <li>
+                <a href="#manifesto" className="hover:text-white transition-colors">
+                  Manifesto
+                </a>
+              </li>
             </ul>
           </div>
 
           <div>
-            <div className="text-white/40 text-[11px] tracking-[0.28em] uppercase mb-4">
+            <div className="text-white/55 text-[11px] tracking-[0.28em] uppercase mb-4">
               Channels
             </div>
             <div className="flex flex-wrap gap-2.5">
-              <a aria-label="GitHub" href="https://github.com/NosytLabs" target="_blank" rel="noreferrer" className="liquid-glass rounded-full p-3 text-white/80 hover:text-white"><Github size={16} /></a>
-              <a aria-label="YouTube" href="https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ" target="_blank" rel="noreferrer" className="liquid-glass rounded-full p-3 text-white/80 hover:text-white"><Youtube size={16} /></a>
-              <a aria-label="X" href="https://x.com/NosytLabs" target="_blank" rel="noreferrer" className="liquid-glass rounded-full p-3 text-white/80 hover:text-white"><Twitter size={16} /></a>
-              <a aria-label="Spotify" href="https://open.spotify.com/artist/0Au3MjZ2Yll5St15Nt2RDq" target="_blank" rel="noreferrer" className="liquid-glass rounded-full p-3 text-white/80 hover:text-white"><SiSpotify size={16} /></a>
-              <a aria-label="Web" href="https://nosytlabs.com" target="_blank" rel="noreferrer" className="liquid-glass rounded-full p-3 text-white/80 hover:text-white"><Globe size={16} /></a>
+              <FootIcon href="https://github.com/NosytLabs" label="GitHub">
+                <Github size={16} />
+              </FootIcon>
+              <FootIcon
+                href="https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ"
+                label="YouTube"
+              >
+                <Youtube size={16} />
+              </FootIcon>
+              <FootIcon href="https://x.com/NosytLabs" label="X">
+                <Twitter size={16} />
+              </FootIcon>
+              <FootIcon
+                href="https://open.spotify.com/artist/0Au3MjZ2Yll5St15Nt2RDq"
+                label="Spotify"
+              >
+                <SiSpotify size={16} />
+              </FootIcon>
             </div>
           </div>
         </div>
 
-        <div className="mt-14 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-3 text-white/35 text-xs tracking-wider">
-          <div>© {year} NosytLabs. All quietly reserved.</div>
-          <div className="text-italic-serif text-white/45">Built in the lab.</div>
+        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-white/45 text-xs tracking-wider">
+          <div>© {year} NosytLabs. Independent &amp; open by default.</div>
+          <div className="text-italic-serif text-white/55">
+            Built in the lab.
+          </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FootIcon({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      aria-label={label}
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="liquid-glass rounded-full p-3 text-white/85 hover:text-white hover:bg-white/[0.06] transition-all hover:scale-105"
+    >
+      {children}
+    </a>
   );
 }
