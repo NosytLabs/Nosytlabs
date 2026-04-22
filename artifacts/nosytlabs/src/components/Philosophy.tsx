@@ -39,7 +39,7 @@ export default function Philosophy() {
             <div className="rounded-[28px] overflow-hidden aspect-[4/5] liquid-glass relative">
               <img
                 src="/img/cosmos-hero.png"
-                alt="A small figure faces an expanse of stars, reading the cosmos like a screen."
+                alt="A small figure stands before an expanse of stars, reading the cosmos like a screen."
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="lazy"
               />

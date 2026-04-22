@@ -7,11 +7,13 @@ type Project = {
   title: string;
   description: string;
   href: string;
-  stars?: number;
+  stars: number;
   lang: string;
   slug: string;
 };
 
+// Verified live against github.com/NosytLabs (org has 9 public repos).
+// Curated to the 6 most representative; others reachable via "All repos".
 const PROJECTS: Project[] = [
   {
     tag: "AI Gateway",
@@ -27,8 +29,9 @@ const PROJECTS: Project[] = [
     tag: "MCP Servers",
     title: "Free MCP Servers",
     description:
-      "Free Image Generation and Text-to-Speech MCP servers. No API keys required — plug them in, run them locally, ship.",
+      "Free Image Generation and Text-to-Speech MCP servers for OpenClaw — no API keys required. Plug in, run locally, ship.",
     href: "https://github.com/NosytLabs/openclaw-free-mcp-servers",
+    stars: 0,
     lang: "Python",
     slug: "openclaw-free-mcp-servers",
   },
@@ -56,18 +59,19 @@ const PROJECTS: Project[] = [
     tag: "SaaS",
     title: "AI Newsletter SaaS",
     description:
-      "An AI-powered newsletter platform stitching NewsAPI, Hugging Face, Kit Email, and WHOP into end-to-end newsletter automation.",
+      "An AI-powered newsletter platform integrating NewsAPI, Hugging Face, Kit Email, and WHOP into end-to-end newsletter automation.",
     href: "https://github.com/NosytLabs/ai-newsletter-saas-2025",
     stars: 1,
     lang: "TypeScript",
     slug: "ai-newsletter-saas-2025",
   },
   {
-    tag: "Game",
+    tag: "Game · WIP",
     title: "Tidefall",
     description:
-      "An in-development browser game built with Phaser. A side-experiment in moving fast with a small game engine.",
+      "An in-development browser game built with Phaser. A small experiment in moving fast with a small game engine.",
     href: "https://github.com/NosytLabs/tidefall-phaser",
+    stars: 0,
     lang: "JavaScript",
     slug: "tidefall-phaser",
   },
@@ -90,6 +94,10 @@ export default function Projects() {
                 What we{" "}
                 <span className="text-italic-serif text-[#d8b87a]">ship</span>.
               </h2>
+              <p className="mt-5 text-[#f5f1e8]/65 text-sm md:text-base max-w-xl leading-relaxed">
+                A curated slice from the open repos. Stars and languages are
+                pulled from real GitHub data — no inflation.
+              </p>
             </div>
             <a
               href="https://github.com/NosytLabs"
@@ -132,13 +140,16 @@ export default function Projects() {
                 </div>
                 <div className="col-span-12 md:col-span-2 flex items-center gap-3 text-mono text-[11px]">
                   <span className="text-[#f5f1e8]/55">{p.tag}</span>
-                  <span className="text-[#f5f1e8]/40">·</span>
+                  <span className="text-[#f5f1e8]/30">·</span>
                   <span className="text-[#f5f1e8]/55">{p.lang}</span>
-                  {p.stars !== undefined && p.stars > 0 && (
-                    <span className="text-[#f5f1e8]/55 inline-flex items-center gap-1">
-                      <Star size={10} fill="currentColor" />
-                      {p.stars}
-                    </span>
+                  {p.stars > 0 && (
+                    <>
+                      <span className="text-[#f5f1e8]/30">·</span>
+                      <span className="text-[#f5f1e8]/55 inline-flex items-center gap-1">
+                        <Star size={10} fill="currentColor" />
+                        {p.stars}
+                      </span>
+                    </>
                   )}
                 </div>
                 <div className="col-span-12 md:col-span-1 flex md:justify-end">
