@@ -1,27 +1,42 @@
 # Workspace
 
-## Overview
+pnpm workspace monorepo. The active product is **Nosytlabs** — a static single-page landing site.
 
-pnpm workspace monorepo using TypeScript. Each package manages its own dependencies.
+## Artifacts
+
+- `artifacts/nosytlabs/` — **production site** (React + Vite, static SPA). This is what gets published.
+- `artifacts/api-server/` — Express API scaffold, not used by the site (kept for future use).
+- `artifacts/mockup-sandbox/` — design exploration sandbox, not deployed.
+
+Only `nosytlabs` is built and served by the static deployment.
+
+## Nosytlabs site
+
+- **Framework**: React 19 + Vite 7 + Tailwind v4
+- **Hosting**: Replit Static (no server, no database)
+- **Domain**: nosytlabs.com (configure via Replit Publishing → Domains)
+- **Source**: `artifacts/nosytlabs/src/`
+- **Static assets**: `artifacts/nosytlabs/public/` → copied to `dist/public/` at build
+- **Build output**: `artifacts/nosytlabs/dist/public/` (~640 KB total)
+- **Email**: All forms (hero subscribe, contact) open the user's mail client via `mailto:hi@nosytlabs.com`. No backend.
+
+### Key files
+- `src/App.tsx` — section composition
+- `src/components/` — Hero, About, FeaturedVideo, Philosophy, Projects, Manifesto, Sound, Contact, Footer, Navbar, Logo, Reveal
+- `src/lib/links.ts` — single source for all external URLs and the email address
+- `public/favicon.svg`, `public/img/*.webp`, `public/sitemap.xml`, `public/robots.txt`
+
+### Commands
+- `pnpm --filter @workspace/nosytlabs run dev` — local dev
+- `pnpm --filter @workspace/nosytlabs run build` — production build
+- `pnpm run typecheck` — full typecheck
+
+### Deploy config
+Lives in `artifacts/nosytlabs/.replit-artifact/artifact.toml`:
+- `serve = "static"`
+- `publicDir = "artifacts/nosytlabs/dist/public"`
+- SPA rewrite `/* → /index.html`
 
 ## Stack
 
-- **Monorepo tool**: pnpm workspaces
-- **Node.js version**: 24
-- **Package manager**: pnpm
-- **TypeScript version**: 5.9
-- **API framework**: Express 5
-- **Database**: PostgreSQL + Drizzle ORM
-- **Validation**: Zod (`zod/v4`), `drizzle-zod`
-- **API codegen**: Orval (from OpenAPI spec)
-- **Build**: esbuild (CJS bundle)
-
-## Key Commands
-
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- `pnpm --filter @workspace/api-server run dev` — run API server locally
-
-See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+- Node.js 24, pnpm, TypeScript 5.9, Tailwind v4, Framer Motion, Wouter (unused on this site), Lucide icons, react-icons.
