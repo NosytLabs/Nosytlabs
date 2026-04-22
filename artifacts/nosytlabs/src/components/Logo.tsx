@@ -1,27 +1,26 @@
 type Props = { className?: string };
 
-// Minimal geometric mark: a tilted square with an inner dot.
-// No "character", no orbital theatrics — just a quiet maker's mark.
+// Wordmark sigil — a stylised serif "N" inside a soft circle.
+// Quiet, geometric, and reads at any size.
 export default function Logo({ className }: Props) {
   return (
     <svg
-      viewBox="0 0 24 24"
+      viewBox="0 0 32 32"
       className={className}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <rect
-        x="4"
-        y="4"
-        width="16"
-        height="16"
-        rx="2"
-        transform="rotate(45 12 12)"
+      <circle cx="16" cy="16" r="15" stroke="currentColor" strokeOpacity="0.45" strokeWidth="1" />
+      <path
+        d="M11 22.5 V 9.5 L 21 22.5 V 9.5"
         stroke="currentColor"
-        strokeWidth="1.4"
+        strokeWidth="1.6"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
       />
-      <circle cx="12" cy="12" r="2.2" fill="currentColor" />
+      {/* small serif anchors */}
+      <path d="M9 9.5 H 13 M19 9.5 H 23 M9 22.5 H 13 M19 22.5 H 23" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square"/>
     </svg>
   );
 }

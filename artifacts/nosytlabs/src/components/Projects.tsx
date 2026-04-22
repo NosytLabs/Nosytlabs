@@ -17,7 +17,7 @@ const PROJECTS: Project[] = [
     tag: "AI Gateway",
     title: "OpenClaw Droid",
     description:
-      "An optimized OpenClaw AI Gateway designed to run inside Termux on Android — bring agentic workflows to a phone in your pocket.",
+      "An optimized OpenClaw AI Gateway designed to run inside Termux on Android — agentic workflows on a phone in your pocket.",
     href: "https://github.com/NosytLabs/openclaw-droid",
     stars: 29,
     lang: "Shell",
@@ -43,6 +43,16 @@ const PROJECTS: Project[] = [
     slug: "presearch-search-skill",
   },
   {
+    tag: "Prompt Library",
+    title: "AI Empire 2025",
+    description:
+      "A premium prompt collection — 100+ multi-modal prompts for business automation and scale, organized for actual reuse.",
+    href: "https://github.com/NosytLabs/ai-empire-2025-prompts",
+    stars: 4,
+    lang: "Markdown",
+    slug: "ai-empire-2025-prompts",
+  },
+  {
     tag: "SaaS",
     title: "AI Newsletter SaaS",
     description:
@@ -52,31 +62,40 @@ const PROJECTS: Project[] = [
     lang: "TypeScript",
     slug: "ai-newsletter-saas-2025",
   },
+  {
+    tag: "Game",
+    title: "Tidefall",
+    description:
+      "An in-development browser game built with Phaser. A side-experiment in moving fast with a small game engine.",
+    href: "https://github.com/NosytLabs/tidefall-phaser",
+    lang: "JavaScript",
+    slug: "tidefall-phaser",
+  },
 ];
 
 export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative bg-black py-28 md:py-36 px-6 overflow-hidden"
+      className="relative bg-[#0a0a0b] py-24 md:py-32 px-6 overflow-hidden border-t border-[#f5f1e8]/5"
     >
       <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="flex items-end justify-between flex-wrap gap-4 mb-14 md:mb-16">
             <div>
-              <div className="text-white/65 text-xs tracking-[0.3em] uppercase mb-4">
-                Selected work
+              <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-4">
+                04 — Selected work
               </div>
-              <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-white tracking-tight">
+              <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight">
                 What we{" "}
-                <span className="text-italic-serif text-white/70">ship</span>.
+                <span className="text-italic-serif text-[#d8b87a]">ship</span>.
               </h2>
             </div>
             <a
               href="https://github.com/NosytLabs"
               target="_blank"
               rel="noreferrer"
-              className="liquid-glass rounded-full px-5 py-2.5 text-white text-sm font-medium inline-flex items-center gap-2 hover:bg-white/[0.05] transition-colors"
+              className="liquid-glass rounded-full px-5 py-2.5 text-[#f5f1e8] text-sm font-medium inline-flex items-center gap-2 hover:bg-white/[0.05] transition-colors"
             >
               <Github size={15} />
               All repos on GitHub
@@ -84,59 +103,48 @@ export default function Projects() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+        <div className="border-t border-[#f5f1e8]/10">
           {PROJECTS.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.08} y={50}>
+            <Reveal key={p.slug} delay={i * 0.04} y={20}>
               <motion.a
                 href={p.href}
                 target="_blank"
                 rel="noreferrer"
-                whileHover={{ y: -4 }}
+                whileHover={{ x: 6 }}
                 transition={{ type: "spring", stiffness: 220, damping: 22 }}
-                className="liquid-glass rounded-[28px] block group h-full p-7 md:p-9 relative overflow-hidden"
+                className="group grid grid-cols-12 items-center gap-4 md:gap-6 py-7 md:py-9 border-b border-[#f5f1e8]/10 hover:bg-[#f5f1e8]/[0.015] transition-colors px-1 md:px-3"
               >
-                {/* Subtle code-like backdrop, no AI video */}
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 opacity-[0.06] pointer-events-none select-none"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(transparent 0 23px, rgba(255,255,255,0.6) 23px 24px)",
-                    backgroundSize: "100% 24px",
-                  }}
-                />
-
-                <div className="relative flex items-center justify-between mb-7">
-                  <div className="liquid-glass rounded-full px-3 py-1 text-[10px] tracking-[0.22em] uppercase text-white/95">
-                    {p.tag}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {p.stars !== undefined && p.stars > 0 && (
-                      <div className="text-white/70 text-xs inline-flex items-center gap-1">
-                        <Star size={11} fill="currentColor" />
-                        {p.stars}
-                      </div>
-                    )}
-                    <div className="text-white/55 text-xs">{p.lang}</div>
+                <div className="col-span-12 md:col-span-1 text-mono text-[#f5f1e8]/40 text-xs tracking-wider">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <div className="col-span-12 md:col-span-3">
+                  <h3 className="text-serif text-2xl md:text-[1.85rem] text-[#f5f1e8] tracking-tight leading-tight group-hover:text-[#d8b87a] transition-colors">
+                    {p.title}
+                  </h3>
+                  <div className="text-mono text-[#f5f1e8]/40 text-[11px] mt-1.5">
+                    NosytLabs/{p.slug}
                   </div>
                 </div>
-
-                <div className="relative">
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <h3 className="text-serif text-2xl md:text-[1.85rem] text-white tracking-tight leading-tight">
-                      {p.title}
-                    </h3>
-                    <span className="liquid-glass rounded-full p-2.5 text-white shrink-0 group-hover:rotate-45 transition-transform duration-500">
-                      <ArrowUpRight size={16} />
-                    </span>
-                  </div>
-                  <p className="text-white/75 text-[15px] leading-relaxed max-w-[42ch]">
+                <div className="col-span-12 md:col-span-5">
+                  <p className="text-[#f5f1e8]/75 text-[15px] leading-relaxed">
                     {p.description}
                   </p>
-                  <div className="mt-7 flex items-center gap-2 text-white/55 text-xs font-mono tracking-tight">
-                    <Github size={13} />
-                    <span>github.com/NosytLabs/{p.slug}</span>
-                  </div>
+                </div>
+                <div className="col-span-12 md:col-span-2 flex items-center gap-3 text-mono text-[11px]">
+                  <span className="text-[#f5f1e8]/55">{p.tag}</span>
+                  <span className="text-[#f5f1e8]/40">·</span>
+                  <span className="text-[#f5f1e8]/55">{p.lang}</span>
+                  {p.stars !== undefined && p.stars > 0 && (
+                    <span className="text-[#f5f1e8]/55 inline-flex items-center gap-1">
+                      <Star size={10} fill="currentColor" />
+                      {p.stars}
+                    </span>
+                  )}
+                </div>
+                <div className="col-span-12 md:col-span-1 flex md:justify-end">
+                  <span className="text-[#f5f1e8]/55 group-hover:text-[#d8b87a] group-hover:translate-x-1 transition-all inline-flex items-center">
+                    <ArrowUpRight size={20} />
+                  </span>
                 </div>
               </motion.a>
             </Reveal>

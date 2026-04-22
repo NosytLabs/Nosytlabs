@@ -1,45 +1,46 @@
 import Reveal from "./Reveal";
+import { LINKS } from "@/lib/links";
 
 export default function Sound() {
   return (
     <section
       id="sound"
-      className="relative bg-black py-28 md:py-36 px-6 overflow-hidden"
+      className="relative bg-[#0a0a0b] py-24 md:py-32 px-6 overflow-hidden border-t border-[#f5f1e8]/5"
     >
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.05)_0%,_transparent_60%)]" />
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <Reveal x={-30}>
+          <Reveal x={-20}>
             <div>
-              <div className="text-white/55 text-xs tracking-[0.3em] uppercase mb-5">
-                Side quest · Music
+              <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-6">
+                06 — Side quest · Music
               </div>
-              <h2 className="text-serif text-5xl md:text-6xl lg:text-7xl text-white tracking-tight leading-[1.05]">
+              <h2 className="text-serif text-5xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight leading-[1.05]">
                 There&rsquo;s also a{" "}
-                <span className="text-italic-serif text-white/70">
+                <span className="text-italic-serif text-[#d8b87a]">
                   music project.
                 </span>
               </h2>
-              <p className="mt-7 text-white/80 text-base md:text-lg leading-relaxed max-w-md">
+              <p className="mt-7 text-[#f5f1e8]/85 text-base md:text-lg leading-relaxed max-w-md">
                 When the agents stop running for the night, the same person
-                sometimes makes music as <em className="text-italic-serif text-white">Nosyt</em>.
+                sometimes makes music as{" "}
+                <em className="text-italic-serif text-[#d8b87a]">Nosyt</em>.
                 It&rsquo;s a side project, not a pivot — quiet textures and
                 slow loops, on Spotify and YouTube.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href="https://open.spotify.com/artist/0Au3MjZ2Yll5St15Nt2RDq"
+                  href={LINKS.spotify}
                   target="_blank"
                   rel="noreferrer"
-                  className="liquid-glass-strong rounded-full px-6 py-3 text-white text-sm font-medium hover:scale-[1.03] active:scale-95 transition"
+                  className="bg-[#f5f1e8] text-[#0a0a0b] rounded-full px-6 py-3 text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-95 transition"
                 >
-                  Spotify →
+                  Listen on Spotify →
                 </a>
                 <a
-                  href="https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ"
+                  href={LINKS.youtube}
                   target="_blank"
                   rel="noreferrer"
-                  className="liquid-glass rounded-full px-6 py-3 text-white text-sm font-medium hover:bg-white/[0.05] transition"
+                  className="liquid-glass rounded-full px-6 py-3 text-[#f5f1e8] text-sm font-medium hover:bg-white/[0.05] transition"
                 >
                   YouTube channel →
                 </a>
@@ -47,11 +48,11 @@ export default function Sound() {
             </div>
           </Reveal>
 
-          <Reveal x={30}>
+          <Reveal x={20}>
             <div className="liquid-glass-strong rounded-[28px] p-3 md:p-4">
               <iframe
                 title="Nosyt on Spotify"
-                src="https://open.spotify.com/embed/artist/0Au3MjZ2Yll5St15Nt2RDq?utm_source=generator&theme=0"
+                src={LINKS.spotifyEmbed}
                 width="100%"
                 height="380"
                 frameBorder={0}

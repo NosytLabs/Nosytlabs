@@ -12,23 +12,23 @@ export default function Manifesto() {
   return (
     <section
       id="manifesto"
-      className="relative bg-black py-28 md:py-40 px-6 overflow-hidden"
+      className="relative bg-[#0a0a0b] py-28 md:py-40 px-6 overflow-hidden border-t border-[#f5f1e8]/5"
     >
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.05)_0%,_transparent_70%)]" />
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(216,184,122,0.06)_0%,_transparent_70%)]" />
+      <div className="max-w-4xl mx-auto text-center relative">
         <Reveal>
-          <div className="text-white/55 text-xs tracking-[0.3em] uppercase mb-8">
-            Manifesto
+          <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-10">
+            05 — Manifesto
           </div>
         </Reveal>
         <div className="space-y-7 md:space-y-9">
           {LINES.map((line, i) => (
-            <Reveal key={i} delay={i * 0.1} y={36}>
+            <Reveal key={i} delay={i * 0.1} y={30}>
               <p
                 className={`text-serif text-[1.75rem] sm:text-3xl md:text-5xl lg:text-6xl leading-[1.15] tracking-tight ${
                   i === LINES.length - 1
-                    ? "text-italic-serif text-white"
-                    : "text-white/90"
+                    ? "text-italic-serif text-[#f5f1e8]"
+                    : "text-[#f5f1e8]/90"
                 }`}
               >
                 {line}

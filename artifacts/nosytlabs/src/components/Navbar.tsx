@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
+import { LINKS } from "@/lib/links";
 
-const LINKS = [
+const NAV = [
   { label: "Studio", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Manifesto", href: "#manifesto" },
   { label: "Music", href: "#sound" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -32,17 +34,17 @@ export default function Navbar() {
           scrolled ? "px-4 py-2 sm:px-5 sm:py-2.5" : "px-5 py-3 sm:px-6 sm:py-3.5"
         }`}
       >
-        <a href="#" className="flex items-center gap-2.5 text-white">
-          <Logo className="w-5 h-5" />
-          <span className="font-medium text-[15px] tracking-tight">Nosyt&nbsp;LLC</span>
+        <a href="#" className="flex items-center gap-2.5 text-[#f5f1e8]">
+          <Logo className="w-6 h-6" />
+          <span className="font-medium text-[15px] tracking-tight">Nosyt</span>
         </a>
 
         <div className="hidden md:flex items-center gap-7 ml-6">
-          {LINKS.map((l) => (
+          {NAV.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-white/80 hover:text-white text-sm font-medium transition-colors"
+              className="text-[#f5f1e8]/80 hover:text-[#f5f1e8] text-sm font-medium transition-colors"
             >
               {l.label}
             </a>
@@ -51,19 +53,19 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <a
-            href="https://github.com/NosytLabs"
+            href={LINKS.github}
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:inline-flex liquid-glass-strong rounded-full px-5 py-2 text-white text-sm font-medium hover:scale-[1.03] active:scale-95 transition-transform"
+            className="hidden sm:inline-flex liquid-glass-strong rounded-full px-5 py-2 text-[#f5f1e8] text-sm font-medium hover:scale-[1.03] active:scale-95 transition-transform"
           >
             GitHub →
           </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            aria-label="Open menu"
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="md:hidden liquid-glass-strong rounded-full p-2.5 text-white"
+            className="md:hidden liquid-glass-strong rounded-full p-2.5 text-[#f5f1e8]"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -71,31 +73,31 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="md:hidden fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-7 animate-fade-rise">
+        <div className="md:hidden fixed inset-0 z-40 bg-[#0a0a0b]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-7 animate-fade-rise">
           <button
             type="button"
             onClick={() => setOpen(false)}
             aria-label="Close menu"
-            className="absolute top-6 right-6 liquid-glass-strong rounded-full p-2.5 text-white"
+            className="absolute top-6 right-6 liquid-glass-strong rounded-full p-2.5 text-[#f5f1e8]"
           >
             <X size={18} />
           </button>
-          {LINKS.map((l) => (
+          {NAV.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="text-serif text-3xl text-white"
+              className="text-serif text-3xl text-[#f5f1e8]"
             >
               {l.label}
             </a>
           ))}
           <a
-            href="https://github.com/NosytLabs"
+            href={LINKS.github}
             target="_blank"
             rel="noreferrer"
             onClick={() => setOpen(false)}
-            className="liquid-glass-strong rounded-full px-6 py-3 text-white text-sm font-medium mt-4"
+            className="liquid-glass-strong rounded-full px-6 py-3 text-[#f5f1e8] text-sm font-medium mt-4"
           >
             GitHub →
           </a>
