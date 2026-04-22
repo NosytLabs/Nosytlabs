@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 
 const LINKS = [
-  { label: "Lab", href: "#about" },
+  { label: "Studio", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Manifesto", href: "#manifesto" },
   { label: "Music", href: "#sound" },
@@ -21,28 +21,20 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (open) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
   return (
     <nav className="relative z-30 px-4 sm:px-6 pt-5 sm:pt-6">
       <div
         className={`liquid-glass mx-auto max-w-5xl rounded-full flex items-center justify-between transition-all duration-500 ${
-          scrolled
-            ? "px-4 py-2 sm:px-5 sm:py-2.5"
-            : "px-5 py-3 sm:px-6 sm:py-3.5"
+          scrolled ? "px-4 py-2 sm:px-5 sm:py-2.5" : "px-5 py-3 sm:px-6 sm:py-3.5"
         }`}
       >
-        <a href="#" className="flex items-center gap-2.5 group">
-          <Logo className="w-7 h-7" />
-          <span className="text-white font-medium text-[15px] tracking-tight">
-            NosytLabs
-            <sup className="text-[9px] text-white/45 ml-0.5">®</sup>
-          </span>
+        <a href="#" className="flex items-center gap-2.5 text-white">
+          <Logo className="w-5 h-5" />
+          <span className="font-medium text-[15px] tracking-tight">Nosyt&nbsp;LLC</span>
         </a>
 
         <div className="hidden md:flex items-center gap-7 ml-6">
@@ -50,7 +42,7 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-white/75 hover:text-white text-sm font-medium transition-colors"
+              className="text-white/80 hover:text-white text-sm font-medium transition-colors"
             >
               {l.label}
             </a>
@@ -78,9 +70,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {open && (
-        <div className="md:hidden fixed inset-0 z-40 bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center gap-7 animate-fade-rise">
+        <div className="md:hidden fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-7 animate-fade-rise">
           <button
             type="button"
             onClick={() => setOpen(false)}
