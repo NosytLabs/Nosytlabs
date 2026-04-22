@@ -1,26 +1,49 @@
 type Props = { className?: string };
 
-// Wordmark sigil — a stylised serif "N" inside a soft circle.
-// Quiet, geometric, and reads at any size.
+// NOSYT LABS stacked wordmark in a rounded square. Matches the brand mark.
 export default function Logo({ className }: Props) {
   return (
     <svg
-      viewBox="0 0 32 32"
+      viewBox="0 0 64 64"
       className={className}
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <circle cx="16" cy="16" r="15" stroke="currentColor" strokeOpacity="0.45" strokeWidth="1" />
-      <path
-        d="M11 22.5 V 9.5 L 21 22.5 V 9.5"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
+      <rect width="64" height="64" rx="14" fill="#0a0a0b" />
+      <rect
+        x="0.5"
+        y="0.5"
+        width="63"
+        height="63"
+        rx="13.5"
+        fill="none"
+        stroke="#f5f1e8"
+        strokeOpacity="0.18"
       />
-      {/* small serif anchors */}
-      <path d="M9 9.5 H 13 M19 9.5 H 23 M9 22.5 H 13 M19 22.5 H 23" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square"/>
+      <text
+        x="32"
+        y="29"
+        fontFamily="Geist, -apple-system, system-ui, sans-serif"
+        fontSize="17"
+        fontWeight="800"
+        fill="#f5f1e8"
+        textAnchor="middle"
+        letterSpacing="-0.5"
+      >
+        NOSYT
+      </text>
+      <text
+        x="32"
+        y="49"
+        fontFamily="Geist, -apple-system, system-ui, sans-serif"
+        fontSize="17"
+        fontWeight="800"
+        fill="#f5f1e8"
+        textAnchor="middle"
+        letterSpacing="-0.5"
+      >
+        LABS
+      </text>
     </svg>
   );
 }

@@ -4,17 +4,17 @@ const PRINCIPLES = [
   {
     n: "I",
     title: "Build openly",
-    body: "Every line of code lives on GitHub. Every decision is fair game for issues, PRs, and forks. Small enough that openness is the only honest mode.",
+    body: "Every line of code lives on GitHub. Issues, PRs, and forks are fair game — that's the whole point of putting it there.",
   },
   {
     n: "II",
     title: "Ship for builders",
-    body: "We make tools for the people sitting in the same chair we are — devs gluing agents to the real world, prompt engineers tuning at 1am, indie hackers shipping on weekends.",
+    body: "Tools for the people doing the work — developers wiring agents into real systems, prompt engineers tuning late at night, indie hackers shipping on weekends.",
   },
   {
     n: "III",
     title: "Stay independent",
-    body: "No investors, no roadmap theater. Just a steady cadence of commits, releases, and the occasional song.",
+    body: "No investors, no growth team, no roadmap deck. A steady cadence of commits and releases instead.",
   },
 ];
 
@@ -27,9 +27,9 @@ export default function Philosophy() {
             03 — How we work
           </div>
           <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight mb-16 max-w-4xl leading-[1.05]">
-            Curious by default.{" "}
+            Three things we{" "}
             <span className="text-italic-serif text-[#d8b87a]">
-              Useful by design.
+              believe in.
             </span>
           </h2>
         </Reveal>
@@ -38,10 +38,13 @@ export default function Philosophy() {
           <Reveal x={-20}>
             <div className="rounded-[28px] overflow-hidden aspect-[4/5] liquid-glass relative">
               <img
-                src="/img/cosmos-hero.png"
+                src="/img/cosmos-hero.webp"
                 alt="A small figure stands before an expanse of stars, reading the cosmos like a screen."
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="lazy"
+                width="1280"
+                height="1600"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b]/85 via-[#0a0a0b]/20 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-mono text-[#f5f1e8]/75 text-[11px] tracking-[0.28em] uppercase">

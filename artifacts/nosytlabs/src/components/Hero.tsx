@@ -6,8 +6,6 @@ import { LINKS } from "@/lib/links";
 
 const HERO_VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260330_145725_08886141-ed95-4a8e-8d6d-b75eaadce638.mp4";
-// Hero uses cosmos-mirror (the figure on the mirrored plain) — sharper composition.
-const POSTER = "/img/cosmos-mirror.png";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -38,35 +36,22 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden flex flex-col bg-[#0a0a0b]">
-      {/* Persistent cosmic backdrop — never disappears, anchors the scene */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${POSTER})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-
-      {/* Video drifts in over the backdrop using screen blend so motion
-          adds to the scene instead of replacing it — no jarring swap */}
+      {/* Pure black until the video is ready, then the video fades in. No backdrop image. */}
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[2200ms] ease-out mix-blend-screen"
-        style={{ opacity: videoReady ? 0.85 : 0 }}
+        className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[1400ms] ease-out"
+        style={{ opacity: videoReady ? 1 : 0 }}
         src={HERO_VIDEO}
         muted
         autoPlay
         loop
         playsInline
         preload="auto"
-        poster={POSTER}
       />
 
-      {/* Layered overlays — strong vignette + bottom fade so type pops */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(10,10,11,0.05)_0%,_rgba(10,10,11,0.55)_55%,_rgba(10,10,11,0.92)_100%)]" />
-      <div className="absolute inset-0 pointer-events-none bg-[#0a0a0b]/35" />
+      {/* Layered overlays — vignette + bottom fade so type stays legible */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(10,10,11,0.10)_0%,_rgba(10,10,11,0.55)_55%,_rgba(10,10,11,0.92)_100%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[#0a0a0b]/30" />
       <div className="absolute inset-x-0 bottom-0 h-72 pointer-events-none bg-gradient-to-b from-transparent via-[#0a0a0b]/85 to-[#0a0a0b]" />
       <div className="absolute inset-x-0 top-0 h-32 pointer-events-none bg-gradient-to-b from-[#0a0a0b]/85 to-transparent" />
 
@@ -84,8 +69,8 @@ export default function Hero() {
         </h1>
 
         <p className="mt-8 max-w-xl text-[#f5f1e8]/85 text-base sm:text-lg leading-relaxed animate-fade-rise-d2">
-          A small independent studio shipping AI agents, MCP servers, and
-          quietly useful tools — built openly, run by people, not pipelines.
+          A small independent studio building AI agents, MCP servers, and
+          tools for developers. Open source where it counts.
         </p>
 
         <form
@@ -93,6 +78,7 @@ export default function Hero() {
           onSubmit={(e) => {
             e.preventDefault();
             if (/^\S+@\S+\.\S+$/.test(email)) {
+              window.location.href = LINKS.subscribe(email);
               setSubmitted(true);
               setEmail("");
             }
@@ -106,7 +92,7 @@ export default function Hero() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder={
                 submitted
-                  ? "Thanks — see you in the next note."
+                  ? "Thanks — added to the list."
                   : "your@email.com"
               }
               className="flex-1 bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/55 text-sm py-2.5"
@@ -122,7 +108,7 @@ export default function Hero() {
             </button>
           </div>
           <p className="mt-3 text-[#f5f1e8]/45 text-xs">
-            Occasional build notes. No spam, no funnel.
+            Opens your email client. Occasional updates when something ships.
           </p>
         </form>
 
@@ -137,7 +123,7 @@ export default function Hero() {
       <div className="relative z-10 pb-10 px-6 animate-fade-rise-d4">
         <div className="mx-auto max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-3">
           <span className="text-mono text-[#f5f1e8]/55 text-[10px] tracking-[0.22em] uppercase">
-            Independent · Open Source · Run by humans
+            Independent · Open source · Built in public
           </span>
           <a
             href="#about"

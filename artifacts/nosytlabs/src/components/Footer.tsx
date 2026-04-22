@@ -24,12 +24,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 pt-12 border-t border-[#f5f1e8]/10">
           <div>
             <div className="flex items-center gap-2.5 mb-4 text-[#f5f1e8]">
-              <Logo className="w-6 h-6" />
-              <span className="font-medium text-[15px] tracking-tight">Nosyt</span>
+              <Logo className="w-8 h-8 rounded-md" />
+              <span className="font-semibold text-[15px] tracking-tight">Nosytlabs</span>
             </div>
             <p className="text-[#f5f1e8]/65 text-sm max-w-xs leading-relaxed">
-              An independent studio for AI agents, MCP servers, and quietly
-              useful developer tools. Established 2025.
+              Independent studio building AI agents, MCP servers, and
+              developer tools. Founded 2025.
             </p>
           </div>
 
@@ -63,8 +63,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 pt-6 border-t border-[#f5f1e8]/10 flex flex-col md:flex-row items-center justify-between gap-3 text-mono text-[#f5f1e8]/50 text-[11px] tracking-wider">
-          <div>© {year} Nosyt&nbsp;LLC · All rights quietly reserved</div>
-          <div className="text-italic-serif text-[#f5f1e8]/65 text-xs">Made by humans, in the lab.</div>
+          <div>© {year} Nosyt&nbsp;LLC · All rights reserved</div>
+          <div className="text-italic-serif text-[#f5f1e8]/65 text-xs">Built independently · {year}</div>
         </div>
       </div>
     </footer>

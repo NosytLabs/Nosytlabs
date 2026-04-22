@@ -14,10 +14,13 @@ export default function FeaturedVideo() {
             {/* Left: Cosmic plate with overlaid statement */}
             <div className="relative rounded-[28px] overflow-hidden aspect-[4/3] md:aspect-auto md:min-h-[480px] liquid-glass">
               <img
-                src="/img/cosmos-mirror.png"
+                src="/img/cosmos-mirror.webp"
                 alt="A figure at the edge of a still mirrored plain under a vast starry sky."
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="lazy"
+                width="1280"
+                height="960"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b]/55 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0b]/55 via-transparent to-transparent" />
@@ -26,11 +29,11 @@ export default function FeaturedVideo() {
                   The view from one desk
                 </div>
                 <p className="text-serif text-2xl sm:text-3xl md:text-4xl text-[#f5f1e8] leading-[1.15] tracking-tight max-w-md">
-                  Small enough that{" "}
+                  Code, commits, and{" "}
                   <span className="text-italic-serif text-[#d8b87a]">
-                    openness
+                    decisions
                   </span>{" "}
-                  is the only honest mode.
+                  — all out in the open.
                 </p>
               </div>
             </div>
@@ -59,8 +62,8 @@ export default function FeaturedVideo() {
                 , and shipped without a marketing department.
               </p>
               <p className="mt-7 text-[#f5f1e8]/75 text-[15px] leading-relaxed max-w-md">
-                Read the source. File an issue. Fork it. The studio is small
-                enough that openness is the only honest mode of operation.
+                Read the source. File an issue. Fork what&rsquo;s useful.
+                Everything is on GitHub for a reason.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a

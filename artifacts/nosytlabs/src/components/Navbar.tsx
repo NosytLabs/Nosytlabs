@@ -34,9 +34,9 @@ export default function Navbar() {
           scrolled ? "px-4 py-2 sm:px-5 sm:py-2.5" : "px-5 py-3 sm:px-6 sm:py-3.5"
         }`}
       >
-        <a href="#" className="flex items-center gap-2.5 text-[#f5f1e8]">
-          <Logo className="w-6 h-6" />
-          <span className="font-medium text-[15px] tracking-tight">Nosyt</span>
+        <a href="#" aria-label="Nosytlabs — home" className="flex items-center gap-2.5 text-[#f5f1e8]">
+          <Logo className="w-7 h-7 rounded-md" />
+          <span className="font-semibold text-[15px] tracking-tight hidden sm:inline">Nosytlabs</span>
         </a>
 
         <div className="hidden md:flex items-center gap-7 ml-6">

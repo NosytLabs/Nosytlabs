@@ -7,4 +7,10 @@ export const LINKS = {
     "https://open.spotify.com/embed/artist/6PgkavAN36A3ngqiqOollE?utm_source=generator&theme=0",
   email: "mailto:hi@nosytlabs.com",
   emailRaw: "hi@nosytlabs.com",
+  subscribe: (email: string) =>
+    `mailto:hi@nosytlabs.com?subject=${encodeURIComponent(
+      "[Nosytlabs] Subscribe to build notes",
+    )}&body=${encodeURIComponent(
+      `Hi,\n\nPlease add me to the Nosytlabs build notes list.\n\nEmail: ${email}\n\nThanks!`,
+    )}`,
 } as const;

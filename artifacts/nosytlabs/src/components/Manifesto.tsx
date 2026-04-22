@@ -1,11 +1,11 @@
 import Reveal from "./Reveal";
 
 const LINES = [
-  "We build for the curious-by-default.",
-  "We choose the question over the easy answer.",
-  "We ship small, sharp, and on purpose.",
-  "We treat every repo as a quiet promise.",
-  "And we believe notable opportunities — the ones that matter — shape your tomorrow.",
+  "Build for people who actually use the thing.",
+  "Ship small. Ship often. Ship on purpose.",
+  "Default to open source. Document the rough edges.",
+  "Stay independent — no roadmap theater, no growth team.",
+  "Notable opportunities shape your tomorrow.",
 ];
 
 export default function Manifesto() {

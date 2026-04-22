@@ -21,11 +21,10 @@ export default function Sound() {
                 </span>
               </h2>
               <p className="mt-7 text-[#f5f1e8]/85 text-base md:text-lg leading-relaxed max-w-md">
-                When the agents stop running for the night, the same person
-                sometimes makes music as{" "}
-                <em className="text-italic-serif text-[#d8b87a]">Nosyt</em>.
-                It&rsquo;s a side project, not a pivot — quiet textures and
-                slow loops, on Spotify and YouTube.
+                Same person, different output. Music released as{" "}
+                <em className="text-italic-serif text-[#d8b87a]">Nosyt</em> —
+                ambient textures, slow loops. On Spotify and YouTube whenever
+                a track is ready.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a

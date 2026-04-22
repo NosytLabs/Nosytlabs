@@ -48,12 +48,12 @@ export default function About() {
         <Reveal delay={0.2}>
           <div className="mt-12 grid md:grid-cols-[2fr_1fr] gap-10 md:gap-16 items-end">
             <p className="max-w-2xl text-[#f5f1e8]/85 text-base md:text-lg leading-relaxed">
-              Nosytlabs was registered as Nosyt&nbsp;LLC in early 2025.
-              It&rsquo;s a one-desk operation — no funding round, no roadmap
-              deck, no growth team. Just an open GitHub, a YouTube channel,
-              and a steady output of agents, MCP servers, and prompt systems
-              that quietly try to be useful. The music project on Spotify
-              is a side quest from the same desk.
+              Nosytlabs was registered as Nosyt&nbsp;LLC in early 2025 —
+              a one-person studio working out of a single desk. No funding
+              round, no investor deck, no growth team. The output is what
+              you&rsquo;ll find on GitHub: agents, MCP servers, prompt
+              systems, and the occasional experiment. Music gets released
+              under the same name when a track is ready.
             </p>
             <dl className="grid grid-cols-2 gap-x-6 gap-y-5 md:border-l md:border-[#f5f1e8]/10 md:pl-10">
               <Fact k="Founded" v="2025" />
