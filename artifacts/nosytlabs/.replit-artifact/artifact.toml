@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "NosytLabs"
+version = "1.0.0"
+id = "artifacts/nosytlabs"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18403
+
+[services.development]
+run = "pnpm --filter @workspace/nosytlabs run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nosytlabs", "run", "build" ]
+publicDir = "artifacts/nosytlabs/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18403"
+BASE_PATH = "/"
