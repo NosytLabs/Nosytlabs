@@ -15,6 +15,10 @@ export default function Hero() {
   const [videoReady, setVideoReady] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<SubStatus>("idle");
+  // Honeypot — invisible to humans. Bots that auto-fill every field will
+  // populate this and get silently dropped. formsubmit also drops any
+  // submission with `_honey` set on its end (defense in depth).
+  const [hp, setHp] = useState("");
 
   useEffect(() => {
     const v = videoRef.current;
@@ -46,6 +50,15 @@ export default function Hero() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!/^\S+@\S+\.\S+$/.test(email) || status === "sending") return;
+    // Honeypot trip — pretend it succeeded so the bot doesn't retry, but
+    // never POST and never count it as a real subscriber.
+    if (hp) {
+      track("subscribe_honeypot", { location: "hero" });
+      setStatus("sent");
+      setEmail("");
+      setTimeout(() => setStatus("idle"), 5000);
+      return;
+    }
     setStatus("sending");
     track("subscribe_attempt", { location: "hero" });
     try {
@@ -57,6 +70,7 @@ export default function Hero() {
           _subject: "[Nosytlabs] New subscriber to build notes",
           _template: "table",
           _captcha: "false",
+          _honey: "",
           source: "hero-subscribe",
         }),
       });
@@ -120,6 +134,22 @@ export default function Hero() {
           onSubmit={onSubmit}
           aria-label="Subscribe to build notes"
         >
+          {/* Honeypot — visually hidden, off the tab order, and ignored by AT.
+              Real visitors never touch it; spam bots almost always do. */}
+          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+            <label>
+              Leave this field empty
+              <input
+                type="text"
+                name="_honey"
+                tabIndex={-1}
+                autoComplete="off"
+                value={hp}
+                onChange={(e) => setHp(e.target.value)}
+              />
+            </label>
+          </div>
+
           <label htmlFor="hero-email" className="sr-only">
             Email address
           </label>

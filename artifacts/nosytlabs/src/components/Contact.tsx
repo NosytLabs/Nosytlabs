@@ -20,6 +20,10 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  // Honeypot — invisible to humans. Bots that auto-fill every field will
+  // populate this and get silently dropped. formsubmit also drops any
+  // submission with `_honey` set on its end (defense in depth).
+  const [hp, setHp] = useState("");
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -33,6 +37,14 @@ export default function Contact() {
       setError("A short message helps us know what to reply to.");
       return;
     }
+    // Honeypot trip — silently fake success so the bot moves on, never POST.
+    if (hp) {
+      track("contact_honeypot", { topic });
+      setStatus("sent");
+      setName(""); setEmail(""); setMessage(""); setTopic("collab");
+      setTimeout(() => setStatus("idle"), 5000);
+      return;
+    }
     setStatus("sending");
     track("contact_attempt", { topic });
 
@@ -44,7 +56,10 @@ export default function Contact() {
       message,
       _subject: `[Nosytlabs · ${topicLabel}] ${name || "Hello"}`,
       _template: "table",
-      _captcha: "false",
+      // Built-in formsubmit captcha layered on top of the honeypot — the
+      // contact form is lower-volume so a one-time captcha is fine here.
+      _captcha: "true",
+      _honey: "",
     };
 
     try {
@@ -118,6 +133,21 @@ export default function Contact() {
               aria-describedby={error ? "contact-error" : undefined}
               noValidate
             >
+              {/* Honeypot — visually hidden, off the tab order, and ignored by AT.
+                  Real visitors never touch it; spam bots almost always do. */}
+              <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+                <label>
+                  Leave this field empty
+                  <input
+                    type="text"
+                    name="_honey"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={hp}
+                    onChange={(e) => setHp(e.target.value)}
+                  />
+                </label>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Field id="contact-name" label="Name">
                   <input
