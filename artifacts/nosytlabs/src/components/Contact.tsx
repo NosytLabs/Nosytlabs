@@ -59,13 +59,10 @@ export default function Contact() {
       track("contact_success", { topic });
       setTimeout(() => setStatus("idle"), 5000);
     } catch {
-      // Fallback to mailto so the visitor can still send the message
-      track("contact_fallback_mailto", { topic });
-      const subject = encodeURIComponent(`[Nosytlabs · ${topicLabel}] ${name || "Hello"}`);
-      const body = encodeURIComponent(`${message}\n\n— ${name || "Anonymous"}\n${email}`);
-      window.location.href = `${LINKS.email}?subject=${subject}&body=${body}`;
+      // Stay in-page on failure — never hijack the visitor to their mail client.
+      track("contact_error", { topic });
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
+      setTimeout(() => setStatus("idle"), 6000);
     }
   }
 
@@ -194,7 +191,7 @@ export default function Contact() {
                   {error
                     ? error
                     : status === "error"
-                    ? "Couldn't reach server — opening your mail client."
+                    ? "Couldn't reach the server. Please try again, or email hi@nosytlabs.com."
                     : status === "sent"
                     ? "Got it — we'll reply personally."
                     : "Sent straight to hi@nosytlabs.com."}

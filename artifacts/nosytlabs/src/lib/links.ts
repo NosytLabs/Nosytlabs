@@ -11,10 +11,4 @@ export const LINKS = {
   // to hi@nosytlabs.com (Spacemail). First submission triggers a one-time
   // confirmation email that the owner must click before forwarding starts.
   formEndpoint: "https://formsubmit.co/ajax/hi@nosytlabs.com",
-  subscribe: (email: string) =>
-    `mailto:hi@nosytlabs.com?subject=${encodeURIComponent(
-      "[Nosytlabs] Subscribe to build notes",
-    )}&body=${encodeURIComponent(
-      `Hi,\n\nPlease add me to the Nosytlabs build notes list.\n\nEmail: ${email}\n\nThanks!`,
-    )}`,
 } as const;

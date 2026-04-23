@@ -66,11 +66,10 @@ export default function Hero() {
       track("subscribe_success", { location: "hero" });
       setTimeout(() => setStatus("idle"), 5000);
     } catch {
-      // Fallback: open the user's mail client so the message still gets through
-      track("subscribe_fallback_mailto", { location: "hero" });
-      window.location.href = LINKS.subscribe(email);
+      // Stay in-page on failure — never hijack the visitor to their mail client.
+      track("subscribe_error", { location: "hero" });
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
+      setTimeout(() => setStatus("idle"), 6000);
     }
   }
 
@@ -156,9 +155,9 @@ export default function Hero() {
             aria-live="polite"
           >
             {status === "sent"
-              ? "Thanks — your email client just opened with a draft. Send it and you’re on the list."
+              ? "You're on the list. Reply to any future note if you ever want off."
               : status === "error"
-                ? "Couldn't reach the server — opening your mail client instead."
+                ? "Couldn't reach the server. Please try again, or email hi@nosytlabs.com."
                 : "Occasional updates when something ships. No spam, ever."}
           </p>
         </form>
