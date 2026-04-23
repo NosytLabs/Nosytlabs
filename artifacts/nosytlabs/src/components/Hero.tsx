@@ -74,10 +74,9 @@ export default function Hero() {
           _honey: "",
           source: "hero-subscribe",
           _autoresponse:
-            "Thanks for subscribing to Nosytlabs build notes.\n\n" +
-            "You'll hear from us when there's something worth your attention — new tools, field notes, the occasional experiment. Nothing more.\n\n" +
-            "Reply to this email any time; it lands in our inbox.\n\n" +
-            "— Nosytlabs\nhi@nosytlabs.com",
+            "You're on the list for Nosytlabs build notes.\n" +
+            "We only send when there's something worth your attention. Reply to this email any time — it lands in our inbox.\n" +
+            "— Nosytlabs · hi@nosytlabs.com",
         }),
       });
       if (!res.ok) throw new Error("submit failed");

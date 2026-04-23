@@ -62,10 +62,9 @@ export default function Contact() {
       _captcha: "true",
       _honey: "",
       _autoresponse:
-        `Thanks${name ? `, ${name}` : ""} — your note about ${topicLabel.toLowerCase()} reached Nosytlabs.\n\n` +
-        "A real person will read it and reply personally, usually within a couple of business days.\n\n" +
-        "Reply to this email any time; it threads straight back to us.\n\n" +
-        "— Nosytlabs\nhi@nosytlabs.com",
+        `Thanks${name ? `, ${name}` : ""} — your note about ${topicLabel.toLowerCase()} reached Nosytlabs.\n` +
+        "A real person will reply personally within a couple of business days. Reply to this email any time; it threads straight back.\n" +
+        "— Nosytlabs · hi@nosytlabs.com",
     };
 
     try {
