@@ -78,7 +78,8 @@ export default function Hero() {
           _autoresponse:
             "You're on the list for Nosytlabs build notes.\n" +
             "We only send when there's something worth your attention. Reply to this email any time — it lands in our inbox.\n" +
-            "— Nosytlabs · hi@nosytlabs.com",
+            "— Nosytlabs · hi@nosytlabs.com\n" +
+            "To stop receiving build notes, reply with 'unsubscribe' and we'll remove you within 48h.",
         }),
       });
       // formsubmit returns 200 with { success: "true" | "false", message }
