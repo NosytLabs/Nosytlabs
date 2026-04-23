@@ -2,50 +2,119 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Nosytlabs — Independent studio building AI agents, MCP servers & developer tools</title>
-    <meta name="description" content="Nosytlabs is an independent studio building open-source AI agents, MCP servers, and developer tools. Founded 2025." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#0a0a0b" />
-    <meta property="og:title" content="Nosytlabs — Independent studio for AI agents & developer tools" />
-    <meta property="og:description" content="Open-source AI agents, MCP servers, and developer tools from a small independent studio." />
-    <meta property="og:site_name" content="Nosytlabs" />
+    <meta name="color-scheme" content="dark" />
+
+    <title>Nosytlabs — Independent studio building AI agents, MCP servers & developer tools</title>
+    <meta name="description" content="Nosytlabs is an independent AI & developer-tools studio founded in 2025. We build open-source AI agents, Model Context Protocol (MCP) servers, and quietly useful tools for engineers. Notable opportunities shape your tomorrow." />
+    <meta name="keywords" content="Nosyt, Nosytlabs, NosytLabs, Nosyt LLC, AI agents, MCP servers, Model Context Protocol, OpenClaw, Termux, prompt engineering, indie studio, open source, developer tools, AI Empire, Presearch" />
+    <meta name="author" content="Nosyt LLC" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- Geo / publisher signals (helps local + AI Overviews context) -->
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="United States" />
+
+    <!-- Canonical + Open Graph + Twitter -->
+    <link rel="canonical" href="https://nosytlabs.com/" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nosytlabs" />
+    <meta property="og:title" content="Nosytlabs — Independent studio for AI agents & developer tools" />
+    <meta property="og:description" content="Open-source AI agents, MCP servers, and developer tools from a small independent studio. Built in public since 2025." />
+    <meta property="og:url" content="https://nosytlabs.com/" />
+    <meta property="og:image" content="https://nosytlabs.com/opengraph.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nosytlabs — Notable opportunities shape your tomorrow." />
+    <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@NosytLabs" />
+    <meta name="twitter:creator" content="@NosytLabs" />
+    <meta name="twitter:title" content="Nosytlabs — Independent studio for AI agents & developer tools" />
+    <meta name="twitter:description" content="Open-source AI agents, MCP servers, and developer tools from a small independent studio." />
+    <meta name="twitter:image" content="https://nosytlabs.com/opengraph.jpg" />
+
+    <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
-    <link rel="canonical" href="https://nosytlabs.com/">
-    <meta property="og:url" content="https://nosytlabs.com/">
-    <meta property="og:image" content="https://nosytlabs.com/opengraph.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:image" content="https://nosytlabs.com/opengraph.jpg">
-    <meta name="twitter:creator" content="@NosytLabs">
-    <link rel="apple-touch-icon" href="/favicon.svg">
-    <link rel="mask-icon" href="/favicon.svg" color="#0a0a0b">
-    <meta name="twitter:site" content="@NosytLabs">
-    <meta name="author" content="Nosyt LLC">
-    <meta name="keywords" content="Nosyt, Nosytlabs, NosytLabs, AI agents, MCP servers, OpenClaw, Termux, prompt engineering, indie studio, open source">
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="mask-icon" href="/favicon.svg" color="#d8b87a" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+    <!-- Preconnect to critical origins (font + video CDN) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin />
+
+    <!-- Fonts loaded as <link> (not @import) so they don't block render-chain CSS -->
+    <link rel="preload" as="style" crossorigin href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" /></noscript>
+
+    <!-- Structured data: Organization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "https://nosytlabs.com/#org",
       "name": "Nosyt LLC",
       "alternateName": ["Nosyt", "Nosytlabs", "NosytLabs"],
       "url": "https://nosytlabs.com",
       "logo": "https://nosytlabs.com/favicon.svg",
+      "image": "https://nosytlabs.com/opengraph.jpg",
       "foundingDate": "2025",
-      "description": "An independent studio for AI agents, MCP servers, and quietly useful developer tools.",
+      "description": "An independent studio building open-source AI agents, MCP (Model Context Protocol) servers, and developer tools.",
       "email": "hi@nosytlabs.com",
+      "slogan": "Notable opportunities shape your tomorrow.",
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "AI Agents",
+        "Model Context Protocol",
+        "Developer Tools",
+        "Open Source Software",
+        "Prompt Engineering",
+        "Termux"
+      ],
       "sameAs": [
         "https://github.com/NosytLabs",
         "https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ",
         "https://x.com/NosytLabs",
         "https://open.spotify.com/artist/6PgkavAN36A3ngqiqOollE"
-      ]
+      ],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "contactType": "general",
+        "email": "hi@nosytlabs.com",
+        "availableLanguage": ["English"]
+      }]
     }
+    </script>
+
+    <!-- Structured data: WebSite + SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://nosytlabs.com/#website",
+      "url": "https://nosytlabs.com/",
+      "name": "Nosytlabs",
+      "publisher": { "@id": "https://nosytlabs.com/#org" },
+      "inLanguage": "en-US"
+    }
+    </script>
+
+    <!-- Note: FAQPage JSON-LD intentionally omitted because Google's rich-results
+         spec requires the same Q&As to appear as visible page content. Studio
+         facts for LLM/AI-search context live in /llms.txt instead. -->
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4FS0H823MX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4FS0H823MX', { anonymize_ip: true });
     </script>
   </head>
   <body>

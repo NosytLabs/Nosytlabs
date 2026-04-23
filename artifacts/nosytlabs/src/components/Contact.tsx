@@ -2,28 +2,71 @@ import { useState } from "react";
 import { ArrowRight, Github, Mail } from "lucide-react";
 import Reveal from "./Reveal";
 import { LINKS } from "@/lib/links";
+import { track } from "@/lib/analytics";
 
 type Status = "idle" | "sending" | "sent" | "error";
+
+const TOPICS = [
+  { v: "collab", l: "Collaboration" },
+  { v: "consult", l: "Consulting" },
+  { v: "press", l: "Press / interview" },
+  { v: "hello", l: "Just saying hi" },
+] as const;
 
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [topic, setTopic] = useState("collab");
+  const [topic, setTopic] = useState<(typeof TOPICS)[number]["v"]>("collab");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email || !message || status === "sending") return;
+    if (status === "sending") return;
+    setError(null);
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+    if (!message.trim()) {
+      setError("A short message helps us know what to reply to.");
+      return;
+    }
     setStatus("sending");
-    const subject = encodeURIComponent(`[Nosytlabs · ${topic}] ${name || "Hello"}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name || "Anonymous"}\n${email}`);
-    window.location.href = `${LINKS.email}?subject=${subject}&body=${body}`;
-    setTimeout(() => {
+    track("contact_attempt", { topic });
+
+    const topicLabel = TOPICS.find((t) => t.v === topic)?.l ?? topic;
+    const payload = {
+      name: name || "Anonymous",
+      email,
+      topic: topicLabel,
+      message,
+      _subject: `[Nosytlabs · ${topicLabel}] ${name || "Hello"}`,
+      _template: "table",
+      _captcha: "false",
+    };
+
+    try {
+      const res = await fetch(LINKS.formEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("submit failed");
       setStatus("sent");
       setName(""); setEmail(""); setMessage(""); setTopic("collab");
+      track("contact_success", { topic });
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch {
+      // Fallback to mailto so the visitor can still send the message
+      track("contact_fallback_mailto", { topic });
+      const subject = encodeURIComponent(`[Nosytlabs · ${topicLabel}] ${name || "Hello"}`);
+      const body = encodeURIComponent(`${message}\n\n— ${name || "Anonymous"}\n${email}`);
+      window.location.href = `${LINKS.email}?subject=${subject}&body=${body}`;
+      setStatus("error");
       setTimeout(() => setStatus("idle"), 4000);
-    }, 400);
+    }
   }
 
   return (
@@ -52,7 +95,7 @@ export default function Contact() {
               <div className="mt-8 space-y-3">
                 <a
                   href={LINKS.email}
-                  className="inline-flex items-center gap-2.5 text-[#f5f1e8]/85 hover:text-[#d8b87a] transition-colors text-sm text-mono"
+                  className="inline-flex items-center gap-2.5 text-[#f5f1e8]/85 hover:text-[#d8b87a] transition-colors text-sm text-mono focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0a0a0b] rounded"
                 >
                   <Mail size={15} />
                   {LINKS.emailRaw}
@@ -61,7 +104,7 @@ export default function Contact() {
                   href={LINKS.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2.5 text-[#f5f1e8]/85 hover:text-[#d8b87a] transition-colors text-sm text-mono"
+                  className="flex items-center gap-2.5 text-[#f5f1e8]/85 hover:text-[#d8b87a] transition-colors text-sm text-mono focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-4 focus-visible:ring-offset-[#0a0a0b] rounded"
                 >
                   <Github size={15} />
                   github.com/NosytLabs
@@ -71,7 +114,7 @@ export default function Contact() {
           </Reveal>
 
           <Reveal x={20}>
-            <form onSubmit={onSubmit} className="liquid-glass rounded-3xl p-7 md:p-9 space-y-5">
+            <form onSubmit={onSubmit} className="liquid-glass rounded-3xl p-7 md:p-9 space-y-5" aria-describedby={error ? "contact-error" : undefined} noValidate>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Field label="Name">
                   <input
@@ -79,6 +122,7 @@ export default function Contact() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Ada Lovelace"
+                    autoComplete="name"
                     className="w-full bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/40 text-sm border-b border-[#f5f1e8]/15 py-2 focus:border-[#d8b87a]/60 transition-colors"
                   />
                 </Field>
@@ -89,31 +133,32 @@ export default function Contact() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ada@example.com"
+                    autoComplete="email"
                     className="w-full bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/40 text-sm border-b border-[#f5f1e8]/15 py-2 focus:border-[#d8b87a]/60 transition-colors"
                   />
                 </Field>
               </div>
               <Field label="Topic">
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { v: "collab", l: "Collaboration" },
-                    { v: "consult", l: "Consulting" },
-                    { v: "press", l: "Press / interview" },
-                    { v: "hello", l: "Just saying hi" },
-                  ].map((opt) => (
-                    <button
-                      key={opt.v}
-                      type="button"
-                      onClick={() => setTopic(opt.v)}
-                      className={`text-xs px-3.5 py-1.5 rounded-full border transition ${
-                        topic === opt.v
-                          ? "border-[#d8b87a] text-[#d8b87a] bg-[#d8b87a]/[0.06]"
-                          : "border-[#f5f1e8]/15 text-[#f5f1e8]/70 hover:border-[#f5f1e8]/30 hover:text-[#f5f1e8]"
-                      }`}
-                    >
-                      {opt.l}
-                    </button>
-                  ))}
+                <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Topic">
+                  {TOPICS.map((opt) => {
+                    const active = topic === opt.v;
+                    return (
+                      <button
+                        key={opt.v}
+                        type="button"
+                        role="radio"
+                        aria-checked={active}
+                        onClick={() => setTopic(opt.v)}
+                        className={`text-xs px-3.5 py-1.5 rounded-full border transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b] ${
+                          active
+                            ? "border-[#d8b87a] text-[#d8b87a] bg-[#d8b87a]/[0.08]"
+                            : "border-[#f5f1e8]/15 text-[#f5f1e8]/70 hover:border-[#f5f1e8]/30 hover:text-[#f5f1e8]"
+                        }`}
+                      >
+                        {opt.l}
+                      </button>
+                    );
+                  })}
                 </div>
               </Field>
               <Field label="Message">
@@ -127,15 +172,25 @@ export default function Contact() {
                 />
               </Field>
               <div className="flex items-center justify-between flex-wrap gap-3 pt-2">
-                <p className="text-[#f5f1e8]/45 text-xs">
-                  Opens your email client with a pre-filled draft.
+                <p
+                  id="contact-error"
+                  role={error ? "alert" : undefined}
+                  className={`text-xs ${error ? "text-[#ff8a8a]" : "text-[#f5f1e8]/45"}`}
+                >
+                  {error
+                    ? error
+                    : status === "error"
+                    ? "Couldn't reach server — opening your mail client."
+                    : status === "sent"
+                    ? "Got it — we'll reply personally."
+                    : "Sent straight to hi@nosytlabs.com."}
                 </p>
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="bg-[#f5f1e8] text-[#0a0a0b] rounded-full px-6 py-3 text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-95 transition flex items-center gap-2 disabled:opacity-60"
+                  className="bg-[#f5f1e8] text-[#0a0a0b] rounded-full px-6 py-3 text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-95 transition flex items-center gap-2 disabled:opacity-60 motion-reduce:active:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
                 >
-                  {status === "sent" ? "Drafted ✓" : status === "sending" ? "Opening…" : "Send a note"}
+                  {status === "sent" ? "Sent ✓" : status === "sending" ? "Sending…" : "Send a note"}
                   {status === "idle" && <ArrowRight size={14} strokeWidth={2.4} />}
                 </button>
               </div>

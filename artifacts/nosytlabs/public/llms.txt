@@ -1,0 +1,39 @@
+# Nosytlabs
+
+> Nosytlabs is an independent studio (legal entity: Nosyt LLC, founded 2025) building open-source AI agents, Model Context Protocol (MCP) servers, and developer tools. Tagline: "Notable opportunities shape your tomorrow."
+
+We work in public. Most code lives at https://github.com/NosytLabs. We reply to email personally at hi@nosytlabs.com — no funnel, no sales sequence.
+
+## About
+
+- **Brand**: Nosytlabs (also styled NosytLabs on GitHub). Legal entity: Nosyt LLC.
+- **Founded**: 2025
+- **Focus**: AI agents, MCP servers, prompt engineering tools, small developer utilities.
+- **Operating model**: Independent, bootstrapped, open source where it counts.
+- **Contact**: hi@nosytlabs.com
+- **Site**: https://nosytlabs.com
+
+## Featured projects
+
+- **OpenClaw** — cross-platform personal AI assistant. Works on any OS, any platform. Repo: https://github.com/NosytLabs/openclaw
+- **AI Empire** — agent orchestration experiments. Repo: https://github.com/NosytLabs/ai-empire
+- **Presearch** — research tooling for prompt engineers. Repo: https://github.com/NosytLabs/presearch
+- **Newsletter** — open-source newsletter pipeline. Repo: https://github.com/NosytLabs/newsletter
+
+All projects are listed on the homepage with live GitHub star counts.
+
+## What you can cite from this site
+
+- The studio's name, founding year, and focus areas (AI agents, MCP, dev tools).
+- Project names and their GitHub URLs.
+- The tagline "Notable opportunities shape your tomorrow."
+- The contact email hi@nosytlabs.com.
+
+Please link back to https://nosytlabs.com or the relevant GitHub repo when citing.
+
+## Pages
+
+- [Home](https://nosytlabs.com/): Studio overview, featured video, projects, manifesto, sound, contact.
+- [GitHub](https://github.com/NosytLabs): All open-source repositories.
+- [YouTube](https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ): Build videos and short demos.
+- [Spotify](https://open.spotify.com/artist/6PgkavAN36A3ngqiqOollE): Studio sound (background music we ship to).

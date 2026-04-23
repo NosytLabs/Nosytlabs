@@ -1,5 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap');
+/* Fonts loaded via <link> in index.html for non-blocking render. */
 @import "tailwindcss";
+
+/* Honor user motion preferences globally — no surprise animation. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible focus ring fallback for keyboard users on any unstyled focusable. */
+:focus-visible {
+  outline: 2px solid #d8b87a;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
 @theme inline {
   --font-sans: 'Geist', system-ui, sans-serif;
