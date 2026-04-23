@@ -73,14 +73,22 @@ export default function Contact() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error("submit failed");
+      // formsubmit returns 200 with { success: "true" | "false", message }
+      // even when the submission was rejected (rate-limited, captcha required,
+      // etc.), so we have to inspect the body — not just res.ok.
+      const data = await res.json().catch(() => ({} as { success?: string; message?: string }));
+      const ok = res.ok && String(data.success).toLowerCase() === "true";
+      if (!ok) {
+        throw new Error(data.message || "Couldn't reach the server. Please try again, or email hi@nosytlabs.com.");
+      }
       setStatus("sent");
       setName(""); setEmail(""); setMessage(""); setTopic("collab");
       track("contact_success", { topic });
       setTimeout(() => setStatus("idle"), 5000);
-    } catch {
+    } catch (err) {
       // Stay in-page on failure — never hijack the visitor to their mail client.
       track("contact_error", { topic });
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setStatus("error");
       setTimeout(() => setStatus("idle"), 6000);
     }

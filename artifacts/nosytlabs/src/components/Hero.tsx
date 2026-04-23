@@ -15,6 +15,7 @@ export default function Hero() {
   const [videoReady, setVideoReady] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<SubStatus>("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   // Honeypot — invisible to humans. Bots that auto-fill every field will
   // populate this and get silently dropped. formsubmit also drops any
   // submission with `_honey` set on its end (defense in depth).
@@ -61,6 +62,7 @@ export default function Hero() {
       return;
     }
     setStatus("sending");
+    setErrorMsg(null);
     track("subscribe_attempt", { location: "hero" });
     try {
       const res = await fetch(LINKS.formEndpoint, {
@@ -79,14 +81,22 @@ export default function Hero() {
             "— Nosytlabs · hi@nosytlabs.com",
         }),
       });
-      if (!res.ok) throw new Error("submit failed");
+      // formsubmit returns 200 with { success: "true" | "false", message }
+      // even when the request was rejected (rate-limited, captcha required,
+      // etc.), so we have to inspect the body — not just res.ok.
+      const data = await res.json().catch(() => ({} as { success?: string; message?: string }));
+      const ok = res.ok && String(data.success).toLowerCase() === "true";
+      if (!ok) {
+        throw new Error(data.message || "Couldn't reach the server. Please try again, or email hi@nosytlabs.com.");
+      }
       setStatus("sent");
       setEmail("");
       track("subscribe_success", { location: "hero" });
       setTimeout(() => setStatus("idle"), 5000);
-    } catch {
+    } catch (err) {
       // Stay in-page on failure — never hijack the visitor to their mail client.
       track("subscribe_error", { location: "hero" });
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setStatus("error");
       setTimeout(() => setStatus("idle"), 6000);
     }
@@ -191,7 +201,7 @@ export default function Hero() {
             {status === "sent"
               ? "You're on the list. Reply to any future note if you ever want off."
               : status === "error"
-                ? "Couldn't reach the server. Please try again, or email hi@nosytlabs.com."
+                ? errorMsg ?? "Couldn't reach the server. Please try again, or email hi@nosytlabs.com."
                 : "Occasional updates when something ships. No spam, ever."}
           </p>
         </form>
