@@ -56,6 +56,7 @@ export default function Hero() {
       track("subscribe_honeypot", { location: "hero" });
       setStatus("sent");
       setEmail("");
+      setHp(""); // reset so an autofill mishap can't permanently lock the form
       setTimeout(() => setStatus("idle"), 5000);
       return;
     }

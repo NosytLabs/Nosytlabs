@@ -42,6 +42,7 @@ export default function Contact() {
       track("contact_honeypot", { topic });
       setStatus("sent");
       setName(""); setEmail(""); setMessage(""); setTopic("collab");
+      setHp(""); // reset so an autofill mishap can't permanently lock the form
       setTimeout(() => setStatus("idle"), 5000);
       return;
     }
