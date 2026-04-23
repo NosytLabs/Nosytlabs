@@ -47,8 +47,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin />
 
-    <!-- Fonts loaded as <link> (not @import) so they don't block render-chain CSS -->
-    <link rel="preload" as="style" crossorigin href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" />
+    <!-- Preload the hero poster (also doubles as LCP candidate before video plays) -->
+    <link rel="preload" as="image" href="/img/cosmos-hero.webp" fetchpriority="high" />
+
+    <!-- Fonts loaded as <link> (not @import) so they don't block render-chain CSS.
+         font-display=swap is set in the Google Fonts URL so text never blocks paint. -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" /></noscript>
 
@@ -88,6 +92,32 @@
         "email": "hi@nosytlabs.com",
         "availableLanguage": ["English"]
       }]
+    }
+    </script>
+
+    <!-- Structured data: Person (founder identity behind the studio) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://nosytlabs.com/#founder",
+      "name": "Nosyt",
+      "url": "https://nosytlabs.com",
+      "jobTitle": "Founder & Studio Operator",
+      "worksFor": { "@id": "https://nosytlabs.com/#org" },
+      "knowsAbout": [
+        "AI Agents",
+        "Model Context Protocol",
+        "Prompt Engineering",
+        "Open Source Software",
+        "Developer Tooling"
+      ],
+      "sameAs": [
+        "https://github.com/NosytLabs",
+        "https://x.com/NosytLabs",
+        "https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ",
+        "https://open.spotify.com/artist/6PgkavAN36A3ngqiqOollE"
+      ]
     }
     </script>
 

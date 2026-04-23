@@ -82,12 +82,14 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[1400ms] ease-out motion-reduce:transition-none"
         style={{ opacity: videoReady ? 1 : 0 }}
         src={HERO_VIDEO}
+        poster="/img/cosmos-hero.webp"
         muted
         autoPlay
         loop
         playsInline
         preload="metadata"
         aria-hidden="true"
+        tabIndex={-1}
       />
 
       {/* Layered overlays — vignette + bottom fade so type stays legible */}
@@ -119,8 +121,12 @@ export default function Hero() {
           onSubmit={onSubmit}
           aria-label="Subscribe to build notes"
         >
+          <label htmlFor="hero-email" className="sr-only">
+            Email address
+          </label>
           <div className="liquid-glass-strong rounded-full pl-6 pr-2 py-2 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#d8b87a]/50 transition">
             <input
+              id="hero-email"
               type="email"
               required
               value={email}
@@ -132,23 +138,28 @@ export default function Hero() {
                   : "your@email.com"
               }
               className="flex-1 bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/55 text-sm py-2.5 disabled:opacity-60"
-              aria-label="Email address"
               autoComplete="email"
+              inputMode="email"
             />
             <button
               type="submit"
               disabled={status === "sending"}
               aria-label="Subscribe to build notes"
-              className="bg-[#f5f1e8] rounded-full px-5 py-2.5 text-[#0a0a0b] text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-95 transition flex items-center gap-1.5 disabled:opacity-60 motion-reduce:active:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
+              className="bg-[#f5f1e8] rounded-full px-5 py-2.5 text-[#0a0a0b] text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-[0.97] transition flex items-center gap-1.5 disabled:opacity-60 motion-reduce:active:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
             >
               {status === "sending" ? "Sending…" : status === "sent" ? "On the list ✓" : "Get notes"}
-              {status === "idle" && <ArrowRight size={14} strokeWidth={2.4} />}
+              {status === "idle" && <ArrowRight size={14} strokeWidth={2.4} aria-hidden="true" />}
             </button>
           </div>
-          <p className="mt-3 text-[#f5f1e8]/45 text-xs">
-            {status === "error"
-              ? "Couldn't reach the server — opening your mail client instead."
-              : "Occasional updates when something ships. No spam, ever."}
+          <p
+            className="mt-3 text-[#f5f1e8]/45 text-xs min-h-[1.25rem]"
+            aria-live="polite"
+          >
+            {status === "sent"
+              ? "Thanks — your email client just opened with a draft. Send it and you’re on the list."
+              : status === "error"
+                ? "Couldn't reach the server — opening your mail client instead."
+                : "Occasional updates when something ships. No spam, ever."}
           </p>
         </form>
 

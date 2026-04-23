@@ -10,16 +10,22 @@ import Footer from "@/components/Footer";
 
 export default function App() {
   return (
-    <main className="bg-[#0a0a0b] text-[#f5f1e8] min-h-screen overflow-x-hidden font-sans">
-      <Hero />
-      <About />
-      <FeaturedVideo />
-      <Philosophy />
-      <Projects />
-      <Manifesto />
-      <Sound />
-      <Contact />
-      <Footer />
-    </main>
+    <>
+      <a href="#main" className="skip-link">Skip to main content</a>
+      <main
+        id="main"
+        className="bg-[#0a0a0b] text-[#f5f1e8] min-h-screen overflow-x-hidden font-sans"
+      >
+        <Hero />
+        <About />
+        <FeaturedVideo />
+        <Philosophy />
+        <Projects />
+        <Manifesto />
+        <Sound />
+        <Contact />
+        <Footer />
+      </main>
+    </>
   );
 }

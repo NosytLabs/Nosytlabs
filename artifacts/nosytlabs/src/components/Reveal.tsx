@@ -1,4 +1,4 @@
-import { motion, useInView, type Variants } from "framer-motion";
+import { motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 
 type Props = {
@@ -14,29 +14,38 @@ type Props = {
 export default function Reveal({
   children,
   delay = 0,
-  y = 30,
+  y = 24,
   x = 0,
-  duration = 0.9,
+  duration = 0.7,
   className,
   once = true,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once, margin: "-80px" });
+  const prefersReducedMotion = useReducedMotion();
 
-  const variants: Variants = {
-    hidden: { opacity: 0, y, x, filter: "blur(8px)" },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      filter: "blur(0px)",
-      transition: {
-        duration,
-        delay,
-        ease: [0.2, 0.7, 0.2, 1],
-      },
-    },
-  };
+  // For reduced-motion users: skip transforms + blur, use a soft opacity fade.
+  const variants: Variants = prefersReducedMotion
+    ? {
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: { duration: 0.2, delay: 0 },
+        },
+      }
+    : {
+        hidden: { opacity: 0, y, x },
+        visible: {
+          opacity: 1,
+          y: 0,
+          x: 0,
+          transition: {
+            duration,
+            delay,
+            ease: [0.16, 1, 0.3, 1],
+          },
+        },
+      };
 
   return (
     <motion.div

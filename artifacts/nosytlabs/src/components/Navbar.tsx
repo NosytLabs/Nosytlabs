@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import { LINKS } from "@/lib/links";
@@ -14,6 +14,8 @@ const NAV = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -22,9 +24,54 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Body scroll lock + focus trap + Escape close + focus return
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (!open) {
+      document.body.style.overflow = "";
+      return;
+    }
+    document.body.style.overflow = "hidden";
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+
+    // Focus the dialog's first focusable element on open
+    const focusables = () =>
+      dialogRef.current
+        ? Array.from(
+            dialogRef.current.querySelectorAll<HTMLElement>(
+              'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+            ),
+          )
+        : [];
+    const items = focusables();
+    items[0]?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const list = focusables();
+      if (list.length === 0) return;
+      const first = list[0];
+      const last = list[list.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+      // Return focus to whatever opened the dialog (usually the trigger)
+      (previouslyFocused ?? triggerRef.current)?.focus?.();
+    };
   }, [open]);
 
   return (
@@ -61,10 +108,13 @@ export default function Navbar() {
             GitHub →
           </a>
           <button
+            ref={triggerRef}
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls="mobile-nav-dialog"
+            aria-haspopup="dialog"
             className="md:hidden liquid-glass-strong rounded-full p-2.5 text-[#f5f1e8]"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
@@ -73,7 +123,14 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="md:hidden fixed inset-0 z-40 bg-[#0a0a0b]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-7 animate-fade-rise">
+        <div
+          ref={dialogRef}
+          id="mobile-nav-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          className="md:hidden fixed inset-0 z-40 bg-[#0a0a0b]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-7 animate-fade-rise"
+        >
           <button
             type="button"
             onClick={() => setOpen(false)}

@@ -114,10 +114,17 @@ export default function Contact() {
           </Reveal>
 
           <Reveal x={20}>
-            <form onSubmit={onSubmit} className="liquid-glass rounded-3xl p-7 md:p-9 space-y-5" aria-describedby={error ? "contact-error" : undefined} noValidate>
+            <form
+              onSubmit={onSubmit}
+              aria-label="Contact Nosytlabs"
+              className="liquid-glass rounded-3xl p-7 md:p-9 space-y-5"
+              aria-describedby={error ? "contact-error" : undefined}
+              noValidate
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field label="Name">
+                <Field id="contact-name" label="Name">
                   <input
+                    id="contact-name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -126,20 +133,25 @@ export default function Contact() {
                     className="w-full bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/40 text-sm border-b border-[#f5f1e8]/15 py-2 focus:border-[#d8b87a]/60 transition-colors"
                   />
                 </Field>
-                <Field label="Email">
+                <Field id="contact-email" label="Email" required>
                   <input
+                    id="contact-email"
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ada@example.com"
                     autoComplete="email"
+                    inputMode="email"
                     className="w-full bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/40 text-sm border-b border-[#f5f1e8]/15 py-2 focus:border-[#d8b87a]/60 transition-colors"
                   />
                 </Field>
               </div>
-              <Field label="Topic">
-                <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Topic">
+              <fieldset>
+                <legend className="text-mono text-[#f5f1e8]/65 text-[10px] tracking-[0.22em] uppercase mb-1.5 block">
+                  Topic
+                </legend>
+                <div role="radiogroup" aria-label="Topic" className="flex flex-wrap gap-2">
                   {TOPICS.map((opt) => {
                     const active = topic === opt.v;
                     return (
@@ -160,9 +172,10 @@ export default function Contact() {
                     );
                   })}
                 </div>
-              </Field>
-              <Field label="Message">
+              </fieldset>
+              <Field id="contact-message" label="Message" required>
                 <textarea
+                  id="contact-message"
                   required
                   rows={5}
                   value={message}
@@ -174,7 +187,8 @@ export default function Contact() {
               <div className="flex items-center justify-between flex-wrap gap-3 pt-2">
                 <p
                   id="contact-error"
-                  role={error ? "alert" : undefined}
+                  aria-live="polite"
+                  role={error ? "alert" : "status"}
                   className={`text-xs ${error ? "text-[#ff8a8a]" : "text-[#f5f1e8]/45"}`}
                 >
                   {error
@@ -188,10 +202,11 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="bg-[#f5f1e8] text-[#0a0a0b] rounded-full px-6 py-3 text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-95 transition flex items-center gap-2 disabled:opacity-60 motion-reduce:active:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
+                  aria-busy={status === "sending"}
+                  className="bg-[#f5f1e8] text-[#0a0a0b] rounded-full px-6 py-3 text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-95 transition flex items-center gap-2 disabled:opacity-60 motion-reduce:active:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b] disabled:cursor-wait"
                 >
                   {status === "sent" ? "Sent ✓" : status === "sending" ? "Sending…" : "Send a note"}
-                  {status === "idle" && <ArrowRight size={14} strokeWidth={2.4} />}
+                  {status === "idle" && <ArrowRight size={14} strokeWidth={2.4} aria-hidden="true" />}
                 </button>
               </div>
             </form>
@@ -202,13 +217,27 @@ export default function Contact() {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({
+  id,
+  label,
+  required,
+  children,
+}: {
+  id: string;
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
   return (
-    <label className="block">
-      <span className="text-mono text-[#f5f1e8]/55 text-[10px] tracking-[0.22em] uppercase mb-1.5 block">
+    <div className="block">
+      <label
+        htmlFor={id}
+        className="text-mono text-[#f5f1e8]/65 text-[10px] tracking-[0.22em] uppercase mb-1.5 block"
+      >
         {label}
-      </span>
+        {required && <span aria-hidden="true" className="text-[#d8b87a] ml-1">*</span>}
+      </label>
       {children}
-    </label>
+    </div>
   );
 }
