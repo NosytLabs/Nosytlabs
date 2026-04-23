@@ -11,14 +11,16 @@ const HERO_VIDEO =
 type SubStatus = "idle" | "sending" | "sent" | "error";
 
 // Decide if this device/network can afford the ~13 MB hero MP4.
-// Defaults to "no" during SSR so the poster is shown first; we upgrade to
-// video on the client unless the user has actively asked to save data, is
-// on a measured 2G/slow-2G connection, or has prefers-reduced-motion on.
-// Everyone else (mobile on Wi-Fi, 3G/4G/5G, desktop, the canvas preview)
-// gets the cinematic video as intended.
+// Defaults to "no" during SSR so the poster is shown first. Returns false
+// for: small phones (<=640px), Save-Data users, 2G/slow-2G connections,
+// and prefers-reduced-motion. Lighthouse mobile reports effectiveType
+// "4g" even on Slow-4G throttling, so we use the viewport as the real
+// mobile signal — that drops the MP4 entirely on phones, which is what
+// the audit flagged.
 function shouldLoadHeroVideo(): boolean {
   if (typeof window === "undefined") return false;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+  if (window.matchMedia("(max-width: 640px)").matches) return false;
   type NetInfo = { saveData?: boolean; effectiveType?: string };
   const conn = (navigator as Navigator & { connection?: NetInfo }).connection;
   if (conn?.saveData) return false;
@@ -30,6 +32,10 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoReady, setVideoReady] = useState(false);
   const [loadVideo, setLoadVideo] = useState(false);
+  // Held back until IntersectionObserver confirms the hero is on-screen.
+  // Setting `src` is what triggers the actual MP4 fetch, so deferring this
+  // assignment keeps initial-paint resources (HTML/CSS/JS/poster) un-contended.
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<SubStatus>("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -54,8 +60,18 @@ export default function Hero() {
     v.addEventListener("playing", onPlaying);
     v.addEventListener("loadeddata", tryPlay);
     v.addEventListener("canplay", tryPlay);
+    // Lazy-load: only assign src once the hero is actually in view (always
+    // true on first paint for this section, but the IO gate ensures the
+    // browser prioritises the LCP elements before the MP4 begins streaming).
     const io = new IntersectionObserver(
-      ([entry]) => (entry.isIntersecting ? tryPlay() : v.pause()),
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!videoSrc) setVideoSrc(HERO_VIDEO);
+          tryPlay();
+        } else {
+          v.pause();
+        }
+      },
       { threshold: 0.05 },
     );
     io.observe(v);
@@ -65,7 +81,7 @@ export default function Hero() {
       v.removeEventListener("canplay", tryPlay);
       io.disconnect();
     };
-  }, [loadVideo]);
+  }, [loadVideo, videoSrc]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -135,13 +151,13 @@ export default function Hero() {
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[1400ms] ease-out motion-reduce:transition-none"
           style={{ opacity: videoReady ? 1 : 0 }}
-          src={HERO_VIDEO}
+          src={videoSrc ?? undefined}
           poster="/img/cosmos-hero.webp"
           muted
           autoPlay
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           aria-hidden="true"
           tabIndex={-1}
         />
