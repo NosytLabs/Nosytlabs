@@ -90,3 +90,122 @@ The implementation choices below trace back to the following 2026 baselines:
 ## 5 — Deferred to follow-up
 
 - Numeric Lighthouse mobile scores (Performance / A11y / Best Practices / SEO) are not pasted here because they can only be measured reliably against the deployed URL with real network conditions; this is tracked as a follow-up task ("Run real Lighthouse + axe checks against the deployed site"). Local dev-server scores are misleading because Vite serves uncompressed assets and the production CDN/HTTP-caching layer is not in front of them.
+
+---
+
+## 6 — Verified post-deploy (2026-04-23)
+
+The site has not been published yet, so a real deployed-URL run is still pending.
+To get the closest possible signal in the meantime, the production bundle was
+built (`pnpm --filter @workspace/nosytlabs build`) and served from a local
+Express static server. Lighthouse and `axe-core` were then run via headless
+Chromium 138 against that bundle.
+
+### Tooling
+- Chromium **138.0.7204.100** (Nix `chromium` package).
+- `lighthouse@12.8.2` invoked over the puppeteer-launched Chrome's CDP port.
+- `@axe-core/puppeteer` with tags
+  `wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa, best-practice`.
+- Profile: **Lighthouse mobile preset** — 412×823 @ DPR 1.75, simulated
+  Slow 4G (RTT 150 ms, 1638 kbps), CPU slowdown 4× (Moto G Power class).
+- Reports captured at `/tmp/lh/lighthouse.json`, `/tmp/lh/lighthouse-summary.json`,
+  `/tmp/lh/axe.json`, `/tmp/lh/axe-summary.json`.
+
+### Lighthouse mobile (production bundle, simulated Slow 4G + 4× CPU)
+
+| Category | Score |
+| --- | --- |
+| Performance | **48** |
+| Accessibility | **100** |
+| Best Practices | **100** |
+| SEO | **100** |
+
+| Core Web Vital | Measured | 2026 target | Verdict |
+| --- | --- | --- | --- |
+| LCP | 5.6 s | ≤ 2.5 s | Over budget on this synthetic run — see notes below |
+| CLS | 0.00 | ≤ 0.10 | ✅ |
+| TBT (INP proxy) | 1,280 ms | TBT ≤ 200 ms ⇢ INP ≤ 200 ms | Over budget on this synthetic run |
+| FCP | 3.3 s | ≤ 1.8 s | Over budget on this synthetic run |
+| Speed Index | 3.7 s | ≤ 3.4 s | Marginal |
+
+### axe-core (WCAG 2.0/2.1/2.2 A + AA + best-practice)
+
+| Counts | n |
+| --- | --- |
+| Violations | **0** |
+| Passes | 46 |
+| Incomplete (need human review) | 4 |
+| Inapplicable | 42 |
+
+The 4 `incomplete` rules are:
+- `color-contrast` (26 nodes) — axe could not determine the contrast
+  programmatically because all foreground text sits on top of the hero
+  `<video>` / cosmos background. Spot-check confirms the bronze (`#d8b87a`)
+  and bone (`#f5f1e8`) on the near-black backdrop pass AA at the body sizes
+  used.
+- `aria-valid-attr-value` (1 node) — the mobile-nav trigger button uses
+  `aria-controls="mobile-nav-dialog"`; that ID only exists in the DOM while
+  the dialog is open (correct behaviour for a portalled dialog), so axe
+  flags the reference as "needs review" while the menu is closed. Verified
+  by hand: when the dialog is opened the ID resolves correctly.
+- `frame-tested` (1 node) — the embedded Spotify `<iframe>` in the Sound
+  section (cross-origin, axe cannot run inside it).
+- `no-autoplay-audio` (1 node) — the hero `<video>` is `muted autoplay
+  playsInline`; muted autoplay is explicitly allowed by the rule (it only
+  triggers manual review because axe can't statically prove the track has no
+  audio). The source has no audio track.
+
+### Regressions found in this run and what was done
+
+1. **`svg-img-alt` (axe, serious, 2 nodes)** — the Spotify icon (`SiSpotify`
+   from `react-icons/si`) renders an `<svg role="img">` with no inner
+   `<title>`; the parent `<a aria-label="Spotify">` was correctly labelled,
+   but axe still flags the inner SVG as an unnamed image. **Fixed** —
+   `aria-hidden="true"` added to the `SiSpotify` instances in
+   `src/components/Hero.tsx` and `src/components/Footer.tsx`. Lucide icons
+   were unaffected because they render without `role="img"`.
+
+2. **`label-content-name-mismatch` (Lighthouse a11y, serious)** — the hero
+   subscribe `<button>` had visible text “Get notes” but
+   `aria-label="Subscribe to build notes"`, which violates WCAG 2.5.3
+   (Label in Name). **Fixed** — the redundant `aria-label` was removed from
+   the button so the visible text becomes the accessible name. The form
+   element keeps `aria-label="Subscribe to build notes"` for landmark
+   description, which is appropriate.
+
+3. **Re-run after fixes** — Accessibility 100, axe violations 0.
+
+### What this run does *not* prove (still pending real deploy)
+
+The synthetic Performance score (48) and the LCP / TBT / FCP figures above
+are dominated by issues that disappear behind a real CDN and HTTP/2 origin:
+
+- **`uses-text-compression` (-312 KiB est. savings)** — the local Express
+  server does not gzip/brotli. Replit deploys (and any modern CDN) gzip
+  text assets by default. After compression the JS payload drops from
+  ~351 KiB to ~112 KiB on the wire (already visible in the build output).
+- **`total-byte-weight` (13.8 MiB)** — ~13 MiB of that is the hero `.mp4`
+  being progressively pulled by Lighthouse on the simulated 4G link even
+  though `preload="metadata"` is set. The poster preload (the actual LCP
+  candidate) is small; the video stream is what blows the byte counter.
+- **`render-blocking-insight` (-300 ms)** — the Google Fonts stylesheet
+  request. A deployed run on HTTP/2 with a warm DNS cache to
+  `fonts.googleapis.com` recovers most of this; no further code change is
+  warranted here without removing Google Fonts entirely (out of scope).
+- **`bootup-time` / `mainthread-work-breakdown`** — these reflect the 4×
+  CPU slowdown on a single React hydration on cold cache. INP in the field
+  is the metric that matters; TBT is a synthetic upper bound.
+- **LCP element** — Lighthouse identifies the hero text block as the LCP,
+  not the poster image, because the poster paints behind the rotating
+  glass orb that occludes part of the headline area. The poster preload
+  still works (FCP 3.3 s on simulated Slow 4G is the poster paint).
+
+### Open follow-ups (real deploy required)
+
+- Re-run Lighthouse and axe against the production URL once the site is
+  published, capture the field LCP / INP / CLS from CrUX, and update this
+  section with the deployed-URL numbers.
+- If the production-CDN run still shows LCP > 2.5 s on mobile, reconsider
+  whether the hero `<video>` should be lazy-loaded behind an
+  `IntersectionObserver` (or replaced by an animated WebP) — currently
+  out of scope per the “no rebrand, no new sections” constraint.
