@@ -90,7 +90,10 @@ export default function Contact() {
       track("contact_error", { topic });
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 6000);
+      setTimeout(() => {
+        setStatus("idle");
+        setError(null);
+      }, 6000);
     }
   }
 

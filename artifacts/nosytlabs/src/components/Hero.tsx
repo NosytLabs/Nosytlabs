@@ -98,7 +98,10 @@ export default function Hero() {
       track("subscribe_error", { location: "hero" });
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 6000);
+      setTimeout(() => {
+        setStatus("idle");
+        setErrorMsg(null);
+      }, 6000);
     }
   }
 
