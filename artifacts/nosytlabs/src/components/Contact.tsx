@@ -61,6 +61,11 @@ export default function Contact() {
       // contact form is lower-volume so a one-time captcha is fine here.
       _captcha: "true",
       _honey: "",
+      _autoresponse:
+        `Thanks${name ? `, ${name}` : ""} — your note about ${topicLabel.toLowerCase()} reached Nosytlabs.\n\n` +
+        "A real person will read it and reply personally, usually within a couple of business days.\n\n" +
+        "Reply to this email any time; it threads straight back to us.\n\n" +
+        "— Nosytlabs\nhi@nosytlabs.com",
     };
 
     try {

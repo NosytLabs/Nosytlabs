@@ -73,6 +73,11 @@ export default function Hero() {
           _captcha: "false",
           _honey: "",
           source: "hero-subscribe",
+          _autoresponse:
+            "Thanks for subscribing to Nosytlabs build notes.\n\n" +
+            "You'll hear from us when there's something worth your attention — new tools, field notes, the occasional experiment. Nothing more.\n\n" +
+            "Reply to this email any time; it lands in our inbox.\n\n" +
+            "— Nosytlabs\nhi@nosytlabs.com",
         }),
       });
       if (!res.ok) throw new Error("submit failed");
