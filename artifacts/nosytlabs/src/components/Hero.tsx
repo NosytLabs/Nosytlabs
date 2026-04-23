@@ -10,9 +10,26 @@ const HERO_VIDEO =
 
 type SubStatus = "idle" | "sending" | "sent" | "error";
 
+// Decide if this device/network can afford the ~13 MB hero MP4.
+// Defaults to "no" during SSR so the poster is shown first; we upgrade to
+// video on the client unless the user has actively asked to save data, is
+// on a measured 2G/slow-2G connection, or has prefers-reduced-motion on.
+// Everyone else (mobile on Wi-Fi, 3G/4G/5G, desktop, the canvas preview)
+// gets the cinematic video as intended.
+function shouldLoadHeroVideo(): boolean {
+  if (typeof window === "undefined") return false;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+  type NetInfo = { saveData?: boolean; effectiveType?: string };
+  const conn = (navigator as Navigator & { connection?: NetInfo }).connection;
+  if (conn?.saveData) return false;
+  if (conn?.effectiveType && /^(slow-2g|2g)$/.test(conn.effectiveType)) return false;
+  return true;
+}
+
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoReady, setVideoReady] = useState(false);
+  const [loadVideo, setLoadVideo] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<SubStatus>("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -21,15 +38,17 @@ export default function Hero() {
   // submission with `_honey` set on its end (defense in depth).
   const [hp, setHp] = useState("");
 
+  // Decide whether to even mount the <video> element. Doing this in an effect
+  // (instead of at render-time inline) keeps SSR/initial-paint deterministic
+  // and means the static poster always shows first — the video upgrade is a
+  // strict enhancement.
+  useEffect(() => {
+    setLoadVideo(shouldLoadHeroVideo());
+  }, []);
+
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    // Respect reduced motion: don't autoplay
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      setVideoReady(true);
-      return;
-    }
     const onPlaying = () => setVideoReady(true);
     const tryPlay = () => v.play().catch(() => {});
     v.addEventListener("playing", onPlaying);
@@ -46,7 +65,7 @@ export default function Hero() {
       v.removeEventListener("canplay", tryPlay);
       io.disconnect();
     };
-  }, []);
+  }, [loadVideo]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -108,21 +127,36 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden flex flex-col bg-[#0a0a0b]">
-      {/* Pure black until the video is ready, then the video fades in. */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[1400ms] ease-out motion-reduce:transition-none"
-        style={{ opacity: videoReady ? 1 : 0 }}
-        src={HERO_VIDEO}
-        poster="/img/cosmos-hero.webp"
-        muted
-        autoPlay
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-        tabIndex={-1}
-      />
+      {loadVideo ? (
+        // Capable device — pure black until the cinematic video is actually
+        // playing, then the video fades in. No poster underneath, so the
+        // visitor never sees the static frame mid-buffer.
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[1400ms] ease-out motion-reduce:transition-none"
+          style={{ opacity: videoReady ? 1 : 0 }}
+          src={HERO_VIDEO}
+          poster="/img/cosmos-hero.webp"
+          muted
+          autoPlay
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          tabIndex={-1}
+        />
+      ) : (
+        // Fallback for reduced-motion / Save-Data / 2G — show the poster as
+        // a static image instead of fetching the ~13 MB MP4.
+        <img
+          src="/img/cosmos-hero.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          decoding="async"
+          fetchPriority="high"
+        />
+      )}
 
       {/* Layered overlays — vignette + bottom fade so type stays legible */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(10,10,11,0.10)_0%,_rgba(10,10,11,0.55)_55%,_rgba(10,10,11,0.92)_100%)]" />
