@@ -12,8 +12,9 @@ type Project = {
   slug: string;
 };
 
-// Verified live against github.com/NosytLabs (org has 9 public repos).
-// Curated to the 6 most representative; others reachable via "All repos".
+// Verified live against github.com/NosytLabs — only repos that resolve to a
+// real, public page are listed here. Two earlier entries (ai-empire-2025-prompts,
+// ai-newsletter-saas-2025) were 404s and have been removed.
 const PROJECTS: Project[] = [
   {
     tag: "AI Gateway",
@@ -46,26 +47,6 @@ const PROJECTS: Project[] = [
     slug: "presearch-search-skill",
   },
   {
-    tag: "Prompt Library",
-    title: "AI Empire 2025",
-    description:
-      "A premium prompt collection — 100+ multi-modal prompts for business automation and scale, organized for actual reuse.",
-    href: "https://github.com/NosytLabs/ai-empire-2025-prompts",
-    stars: 4,
-    lang: "Markdown",
-    slug: "ai-empire-2025-prompts",
-  },
-  {
-    tag: "SaaS",
-    title: "AI Newsletter SaaS",
-    description:
-      "An AI-powered newsletter platform integrating NewsAPI, Hugging Face, Kit Email, and WHOP into end-to-end newsletter automation.",
-    href: "https://github.com/NosytLabs/ai-newsletter-saas-2025",
-    stars: 1,
-    lang: "TypeScript",
-    slug: "ai-newsletter-saas-2025",
-  },
-  {
     tag: "Game · WIP",
     title: "Tidefall",
     description:
@@ -95,8 +76,8 @@ export default function Projects() {
                 <span className="text-italic-serif text-[#d8b87a]">ship</span>.
               </h2>
               <p className="mt-5 text-[#f5f1e8]/65 text-sm md:text-base max-w-xl leading-relaxed">
-                A curated slice from the open repos. Stars and languages are
-                pulled from real GitHub data — no inflation.
+                A curated slice from the open repos. Snapshot — for live
+                stars and the full list, head to GitHub.
               </p>
             </div>
             <a
@@ -115,12 +96,13 @@ export default function Projects() {
           {PROJECTS.map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.04} y={20}>
               <motion.a
+                id={`project-${p.slug}`}
                 href={p.href}
                 target="_blank"
                 rel="noreferrer"
                 whileHover={{ x: 6 }}
                 transition={{ type: "spring", stiffness: 220, damping: 22 }}
-                className="group grid grid-cols-12 items-center gap-4 md:gap-6 py-7 md:py-9 border-b border-[#f5f1e8]/10 hover:bg-[#f5f1e8]/[0.015] transition-colors px-1 md:px-3"
+                className="group grid grid-cols-12 items-center gap-4 md:gap-6 py-7 md:py-9 border-b border-[#f5f1e8]/10 hover:bg-[#f5f1e8]/[0.015] transition-colors px-1 md:px-3 scroll-mt-24"
               >
                 <div className="col-span-12 md:col-span-1 text-mono text-[#f5f1e8]/40 text-xs tracking-wider">
                   {String(i + 1).padStart(2, "0")}

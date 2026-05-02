@@ -15,12 +15,12 @@ We work in public. Most code lives at https://github.com/NosytLabs. We reply to 
 
 ## Featured projects
 
-- **OpenClaw** — cross-platform personal AI assistant. Works on any OS, any platform. Repo: https://github.com/NosytLabs/openclaw
-- **AI Empire** — agent orchestration experiments. Repo: https://github.com/NosytLabs/ai-empire
-- **Presearch** — research tooling for prompt engineers. Repo: https://github.com/NosytLabs/presearch
-- **Newsletter** — open-source newsletter pipeline. Repo: https://github.com/NosytLabs/newsletter
+- **OpenClaw Droid** — optimized OpenClaw AI Gateway for Android via Termux. Agentic workflows on a phone. Repo: https://github.com/NosytLabs/openclaw-droid
+- **OpenClaw Free MCP Servers** — free Image Generation and Text-to-Speech MCP servers, no API keys required. Repo: https://github.com/NosytLabs/openclaw-free-mcp-servers
+- **Presearch Search Skill** — clean SKILL.md for the Presearch Search API; privacy-first, decentralized search for AI agents. Repo: https://github.com/NosytLabs/presearch-search-skill
+- **Tidefall** — in-development browser game built with Phaser. Repo: https://github.com/NosytLabs/tidefall-phaser
 
-All projects are listed on the homepage with live GitHub star counts.
+All projects are listed on the homepage. Stars and primary languages mirror the live GitHub state.
 
 ## What you can cite from this site
 

@@ -209,3 +209,42 @@ are dominated by issues that disappear behind a real CDN and HTTP/2 origin:
   whether the hero `<video>` should be lazy-loaded behind an
   `IntersectionObserver` (or replaced by an animated WebP) — currently
   out of scope per the “no rebrand, no new sections” constraint.
+
+---
+
+## 2026-05-02 — Content/SEO truth pass
+
+A focused audit of every link, claim, and project entry on the live site
+turned up the following — all fixed in this commit:
+
+### Critical (now resolved)
+
+| # | Area | Finding | Fix |
+| --- | --- | --- | --- |
+| C1 | Projects | `ai-empire-2025-prompts` and `ai-newsletter-saas-2025` returned **404** on github.com — clicking them dropped visitors on a GitHub not-found page. | Removed both entries from `Projects.tsx`. The list now shows only verified-live repos (4 total): OpenClaw Droid, Free MCP Servers, Presearch Search Skill, Tidefall. |
+| C2 | LLM/AI-search | `public/llms.txt` listed four fictional repos (`openclaw`, `ai-empire`, `presearch`, `newsletter`) — none exist. AI crawlers were being fed broken citations. | Rewrote `llms.txt` from scratch with the 4 real repo URLs, accurate descriptions, contact, and the studio facts AI search engines actually need. |
+| C3 | About copy | Pillar 03 ("Prompts & SaaS") referenced the same two non-existent repos in body text. | Replaced with "Experiments — side projects, in public" pointing at Tidefall + the open prompt work that actually exists. |
+
+### High
+
+| # | Area | Finding | Fix |
+| --- | --- | --- | --- |
+| H1 | Brand voice | Tagline "Notable opportunities shape your tomorrow." appeared **twice** verbatim — Hero + Footer — diluting the line. | Footer now reads "Built quietly, shipped openly, on GitHub." Hero remains the single home of the tagline. (Manifesto's 5th line keeps the phrase as the closing manifesto beat — that's intentional, not a duplicate.) |
+| H2 | SEO structured data | No per-project schema for crawlers. | Added a `SoftwareSourceCode` JSON-LD `@graph` to `index.html` with one entry per real repo, each linking back to the `#org` `Organization` node. |
+| H3 | Sitemap | `lastmod` was 2026-04-23 — stale after content changes. | Bumped to 2026-05-02. |
+
+### Medium
+
+| # | Area | Finding | Fix |
+| --- | --- | --- | --- |
+| M1 | Motion consistency | `active:scale-95` on Sound, FeaturedVideo, Contact and Navbar buttons — Hero already used the gentler `active:scale-[0.97]` and `motion-reduce:active:scale-100`. | Standardised all primary CTAs on `active:scale-[0.97]` plus `motion-reduce:active:scale-100`. Also added `focus-visible` rings to the FeaturedVideo / Sound CTAs and Navbar GitHub button (parity with Hero/Contact). |
+| M2 | Footer redundancy | Bottom strip duplicated "Built independently · 2026" alongside the copyright — visually noisy, no information value. | Replaced with a real `Sitemap` link to `/sitemap.xml` (small SEO win, removes duplication). |
+| M3 | Project anchors | `/sitemap.xml` and `llms.txt` referenced project rows but the rows had no `id`. | Added `id="project-<slug>"` and `scroll-mt-24` to each project row in `Projects.tsx`, so deep links from external citations land on the right row instead of the section top. |
+
+### Verified (no change needed)
+
+- All four social URLs return 200 (`github.com/NosytLabs`, the YouTube channel, the Spotify artist). `x.com/NosytLabs` returns 403 to anonymous HEAD requests but the page renders fine in browsers — this is X's standard scraping defence, not a broken link.
+- Hero MP4 still gated correctly — Mobile screenshot at 390×844 shows the static cosmos poster, never fetches the 13 MB MP4 (the small-viewport gate from Task #11 is still in effect).
+- Section numbering is sequential and complete (01 → 07).
+- Build passes. Typecheck clean. No new browser console errors after restart.
+

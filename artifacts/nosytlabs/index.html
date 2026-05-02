@@ -8,7 +8,7 @@
 
     <title>Nosytlabs — Independent studio building AI agents, MCP servers & developer tools</title>
     <meta name="description" content="Nosytlabs is an independent AI & developer-tools studio founded in 2025. We build open-source AI agents, Model Context Protocol (MCP) servers, and quietly useful tools for engineers. Notable opportunities shape your tomorrow." />
-    <meta name="keywords" content="Nosyt, Nosytlabs, NosytLabs, Nosyt LLC, AI agents, MCP servers, Model Context Protocol, OpenClaw, Termux, prompt engineering, indie studio, open source, developer tools, AI Empire, Presearch" />
+    <meta name="keywords" content="Nosyt, Nosytlabs, NosytLabs, Nosyt LLC, AI agents, MCP servers, Model Context Protocol, OpenClaw, OpenClaw Droid, Termux, prompt engineering, indie studio, open source, developer tools, Presearch search skill, Tidefall" />
     <meta name="author" content="Nosyt LLC" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -137,6 +137,48 @@
     <!-- Note: FAQPage JSON-LD intentionally omitted because Google's rich-results
          spec requires the same Q&As to appear as visible page content. Studio
          facts for LLM/AI-search context live in /llms.txt instead. -->
+
+    <!-- Structured data: SoftwareSourceCode per featured project. Each entry
+         mirrors a verified live repo at github.com/NosytLabs (404s removed). -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "OpenClaw Droid",
+          "description": "Optimized OpenClaw AI Gateway for Android via Termux — agentic workflows on a phone.",
+          "codeRepository": "https://github.com/NosytLabs/openclaw-droid",
+          "programmingLanguage": "Shell",
+          "author": { "@id": "https://nosytlabs.com/#org" }
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "OpenClaw Free MCP Servers",
+          "description": "Free Image Generation and Text-to-Speech MCP servers for OpenClaw — no API keys required.",
+          "codeRepository": "https://github.com/NosytLabs/openclaw-free-mcp-servers",
+          "programmingLanguage": "Python",
+          "author": { "@id": "https://nosytlabs.com/#org" }
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "Presearch Search Skill",
+          "description": "Clean SKILL.md for the Presearch Search API — privacy-first, decentralized search for AI agents.",
+          "codeRepository": "https://github.com/NosytLabs/presearch-search-skill",
+          "programmingLanguage": "Python",
+          "author": { "@id": "https://nosytlabs.com/#org" }
+        },
+        {
+          "@type": "SoftwareSourceCode",
+          "name": "Tidefall",
+          "description": "An in-development browser game built with Phaser.",
+          "codeRepository": "https://github.com/NosytLabs/tidefall-phaser",
+          "programmingLanguage": "JavaScript",
+          "author": { "@id": "https://nosytlabs.com/#org" }
+        }
+      ]
+    }
+    </script>
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4FS0H823MX"></script>

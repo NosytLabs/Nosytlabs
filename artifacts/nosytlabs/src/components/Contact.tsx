@@ -246,7 +246,7 @@ export default function Contact() {
                   type="submit"
                   disabled={status === "sending"}
                   aria-busy={status === "sending"}
-                  className="bg-[#f5f1e8] text-[#0a0a0b] rounded-full px-6 py-3 text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-95 transition flex items-center gap-2 disabled:opacity-60 motion-reduce:active:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b] disabled:cursor-wait"
+                  className="bg-[#f5f1e8] text-[#0a0a0b] rounded-full px-6 py-3 text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-[0.97] transition flex items-center gap-2 disabled:opacity-60 motion-reduce:active:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b] disabled:cursor-wait"
                 >
                   {status === "sent" ? "Sent ✓" : status === "sending" ? "Sending…" : "Send a note"}
                   {status === "idle" && <ArrowRight size={14} strokeWidth={2.4} aria-hidden="true" />}

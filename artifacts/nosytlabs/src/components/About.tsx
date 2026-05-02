@@ -15,9 +15,9 @@ const PILLARS = [
   },
   {
     n: "03",
-    label: "Prompts & SaaS",
-    title: "Prompt systems & products.",
-    body: "From the AI Empire prompt library to the AI Newsletter SaaS — practical systems that turn prompting into a craft.",
+    label: "Experiments",
+    title: "Side projects, in public.",
+    body: "Browser games like Tidefall (Phaser), prompt libraries, and the occasional one-off — all open, all logged in commits anyone can read.",
   },
 ];
 

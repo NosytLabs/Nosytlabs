@@ -103,7 +103,7 @@ export default function Navbar() {
             href={LINKS.github}
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:inline-flex liquid-glass-strong rounded-full px-5 py-2 text-[#f5f1e8] text-sm font-medium hover:scale-[1.03] active:scale-95 transition-transform"
+            className="hidden sm:inline-flex liquid-glass-strong rounded-full px-5 py-2 text-[#f5f1e8] text-sm font-medium hover:scale-[1.03] active:scale-[0.97] motion-reduce:hover:scale-100 motion-reduce:active:scale-100 transition-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
           >
             GitHub →
           </a>

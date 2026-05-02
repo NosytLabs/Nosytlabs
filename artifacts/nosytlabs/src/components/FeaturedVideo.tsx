@@ -70,7 +70,7 @@ export default function FeaturedVideo() {
                   href={LINKS.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-[#f5f1e8] text-[#0a0a0b] rounded-full px-6 py-3 text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-95 transition"
+                  className="bg-[#f5f1e8] text-[#0a0a0b] rounded-full px-6 py-3 text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-[0.97] motion-reduce:active:scale-100 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
                 >
                   Browse the code →
                 </a>

@@ -25,6 +25,8 @@ Only `nosytlabs` is built and served by the static deployment.
 - "Nosytlabs" is the studio name in body copy and headlines.
 - "Nosyt LLC" is reserved for the footer copyright (legal entity only).
 - Hero is **video-only** — no static fallback image. Cosmic decor images are WebP only (PNG variants were deleted).
+- Tagline "Notable opportunities shape your tomorrow." appears **once** as the Hero H1, and once as the closing manifesto line. Do not echo it again in the Footer.
+- Every project surfaced on the site (Projects.tsx, llms.txt, JSON-LD) must be a verified-live repo at github.com/NosytLabs. `curl -sI` before adding.
 
 ## SEO / GEO / analytics
 
@@ -32,8 +34,10 @@ Only `nosytlabs` is built and served by the static deployment.
 - **Event tracking**: `src/lib/analytics.ts` exposes `track(event, params)` wrapping `window.gtag`. Used for `subscribe_attempt/success`, `contact_attempt/success`, and `social_click`.
 - **Structured data**: `Organization`, `WebSite`, and `FAQPage` JSON-LD inlined in `index.html` for AI Overviews + ChatGPT/Gemini/Perplexity context.
 - **AI crawlers**: `public/robots.txt` explicitly allows GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, anthropic-ai, Claude-Web, PerplexityBot, Perplexity-User, Google-Extended, Bytespider, CCBot, Applebot-Extended, Meta-ExternalAgent.
-- **llms.txt**: `public/llms.txt` — markdown summary of the studio for LLM crawlers (emerging standard at llmstxt.org).
+- **llms.txt**: `public/llms.txt` — markdown summary of the studio for LLM crawlers (emerging standard at llmstxt.org). Source of truth for project list; **must mirror `Projects.tsx`** — every URL listed here has to resolve to a real repo (verify with `curl -sI` before adding).
 - **Sitemap**: `public/sitemap.xml` — single canonical URL with `<image:image>`. Update `lastmod` after notable content changes.
+- **SoftwareSourceCode JSON-LD**: per-project schema in `index.html` `<head>`, one node per real repo. When projects change in `Projects.tsx`, mirror the change here too.
+- **Project deep-links**: each row in `Projects.tsx` carries `id="project-<slug>"` so external citations can link to a specific project row, not just `#projects`.
 - **Fonts**: loaded as `<link>` in `<head>` (NOT CSS `@import`) to avoid render-chain blocking. Slimmed to Instrument Serif + Geist 400/500 + Geist Mono 400.
 
 ## Forms (no backend)

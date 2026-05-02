@@ -13,10 +13,19 @@ export default function Footer() {
         <Reveal>
           <div className="text-center mb-16 md:mb-24">
             <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-8">
-              Until next commit
+              Thanks for stopping by
             </div>
-            <p className="text-serif text-[#d8b87a] text-3xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] max-w-3xl mx-auto">
-              Notable opportunities shape your tomorrow.
+            <p className="text-serif text-[#f5f1e8] text-3xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] max-w-3xl mx-auto">
+              Built quietly, shipped openly, on{" "}
+              <a
+                href={LINKS.github}
+                target="_blank"
+                rel="noreferrer"
+                className="text-italic-serif text-[#d8b87a] hover:underline underline-offset-8 decoration-[#d8b87a]/40"
+              >
+                GitHub
+              </a>
+              .
             </p>
           </div>
         </Reveal>
@@ -64,7 +73,12 @@ export default function Footer() {
 
         <div className="mt-14 pt-6 border-t border-[#f5f1e8]/10 flex flex-col md:flex-row items-center justify-between gap-3 text-mono text-[#f5f1e8]/50 text-[11px] tracking-wider">
           <div>© {year} Nosyt&nbsp;LLC · All rights reserved</div>
-          <div className="text-italic-serif text-[#f5f1e8]/65 text-xs">Built independently · {year}</div>
+          <a
+            href="/sitemap.xml"
+            className="hover:text-[#d8b87a] transition-colors"
+          >
+            Sitemap
+          </a>
         </div>
       </div>
     </footer>
