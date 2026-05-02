@@ -1,12 +1,17 @@
 {
+  "id": "/",
   "name": "Nosytlabs",
   "short_name": "Nosyt",
   "description": "Independent studio building open-source AI agents, MCP servers, and developer tools.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#0a0a0b",
   "theme_color": "#0a0a0b",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["developer", "productivity", "utilities"],
   "icons": [
     {
       "src": "/favicon.svg",

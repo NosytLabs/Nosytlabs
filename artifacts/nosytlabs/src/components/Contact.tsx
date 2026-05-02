@@ -64,9 +64,12 @@ export default function Contact() {
       message,
       _subject: `[Nosytlabs · ${topicLabel}] ${name || "Hello"}`,
       _template: "table",
-      // Built-in formsubmit captcha layered on top of the honeypot — the
-      // contact form is lower-volume so a one-time captcha is fine here.
-      _captcha: "true",
+      // formsubmit's captcha challenge would redirect the visitor away to
+      // a formsubmit-hosted page after submit — we never want that. The
+      // visible-honeypot-only approach has worked cleanly on the hero form
+      // since activation; mirror it here so contact submissions don't
+      // bounce to a third-party challenge page.
+      _captcha: "false",
       _honey: "",
       _autoresponse:
         `Thanks${name ? `, ${name}` : ""} — your note about ${topicLabel.toLowerCase()} reached Nosytlabs.\n` +
@@ -247,8 +250,6 @@ export default function Contact() {
                 >
                   {error
                     ? error
-                    : status === "error"
-                    ? "Couldn't reach the server. Please try again, or email hi@nosytlabs.com."
                     : status === "sent"
                     ? "Got it — we'll reply personally."
                     : "Sent straight to hi@nosytlabs.com."}

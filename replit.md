@@ -45,6 +45,7 @@ Only `nosytlabs` is built and served by the static deployment.
 
 - **Provider**: [formsubmit.co](https://formsubmit.co) AJAX endpoint `https://formsubmit.co/ajax/hi@nosytlabs.com` — free, no signup. **Activated May 2026** by the owner clicking the confirmation email; submissions now forward to hi@nosytlabs.com.
 - Both the hero subscribe form and the contact form POST JSON to that endpoint. On failure, both forms render a single neutral fallback message (via `friendlyFormError` / `friendlyContactError`) plus a clickable `mailto:hi@nosytlabs.com` link — third-party error mechanics (activation, captcha, rate-limit) are NEVER surfaced to visitors. The May 2026 conversion incident (208 visitors / 0 subscribers) was caused by the activation never being clicked AND the raw "needs Activation" string being shown verbatim.
+- **Both forms set `_captcha: "false"`** and rely on the visually-hidden `_honey` honeypot for spam defense. Setting `_captcha: "true"` causes formsubmit to redirect the visitor to a third-party challenge page after submit — never acceptable for this site. Honeypot + email-format validation + low-volume target audience is the agreed defense stack.
 - Endpoint lives in `src/lib/links.ts` as `LINKS.formEndpoint`.
 
 ## Accessibility / motion
