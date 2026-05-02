@@ -20,6 +20,34 @@ test.describe("NosytLabs site — core e2e scenarios", () => {
     expect(hasPoster).toBe(true);
   });
 
+  // 1b. Mobile users must NOT pull the 13 MB hero MP4 on first load.
+  // Hero.tsx gates the <video> on viewport ≥ 1024px, prefers-reduced-motion,
+  // Save-Data, and effectiveType. This test pins that contract: on a mobile
+  // viewport, no request to the CloudFront MP4 should ever fire.
+  test("mobile viewport never requests the hero MP4", async ({ browser }) => {
+    const context = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      userAgent:
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15",
+    });
+    const page = await context.newPage();
+    const mp4Requests: string[] = [];
+    page.on("request", (req) => {
+      const url = req.url();
+      if (url.endsWith(".mp4") || url.includes("cloudfront.net")) {
+        mp4Requests.push(url);
+      }
+    });
+    await page.goto(BASE, { waitUntil: "networkidle" });
+    // Scroll to give any IntersectionObserver-gated <video> a chance to fire.
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(500);
+    await context.close();
+    // Preconnect is fine (no body bytes); a real MP4 GET is not.
+    const realMp4Hits = mp4Requests.filter((u) => u.endsWith(".mp4"));
+    expect(realMp4Hits).toEqual([]);
+  });
+
   // 1a-pre. Stress test: even when React bundle is artificially slow to load,
   // the skeleton must be hidden during the pre-hydration window. This proves
   // the inline <head> script + html.js CSS rule applies before first paint —
