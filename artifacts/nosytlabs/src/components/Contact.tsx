@@ -185,10 +185,12 @@ export default function Contact() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    aria-invalid={Boolean(error) || undefined}
+                    aria-describedby="contact-error"
                     placeholder="ada@example.com"
                     autoComplete="email"
                     inputMode="email"
-                    className="w-full bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/40 text-sm border-b border-[#f5f1e8]/15 py-2 focus:border-[#d8b87a]/60 transition-colors"
+                    className="w-full bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/40 text-sm border-b border-[#f5f1e8]/15 py-2 focus:border-[#d8b87a]/60 transition-colors aria-[invalid=true]:border-[#ff8a8a]/60"
                   />
                 </Field>
               </div>
@@ -225,8 +227,10 @@ export default function Contact() {
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  aria-invalid={Boolean(error) || undefined}
+                  aria-describedby="contact-error"
                   placeholder="Tell us about your project — scope, timeline, what you're trying to build."
-                  className="w-full bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/40 text-sm border-b border-[#f5f1e8]/15 py-2 focus:border-[#d8b87a]/60 transition-colors resize-none"
+                  className="w-full bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/40 text-sm border-b border-[#f5f1e8]/15 py-2 focus:border-[#d8b87a]/60 transition-colors resize-none aria-[invalid=true]:border-[#ff8a8a]/60"
                 />
               </Field>
               <div className="flex items-center justify-between flex-wrap gap-3 pt-2">

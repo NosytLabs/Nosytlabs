@@ -34,7 +34,7 @@ function friendlyFormError(_raw: string | null | undefined): string {
 function shouldLoadHeroVideo(): boolean {
   if (typeof window === "undefined") return false;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
-  // Desktop-only: require at least 1024px wide viewport
+  if (window.matchMedia("(prefers-reduced-data: reduce)").matches) return false;
   if (window.matchMedia("(max-width: 1023px)").matches) return false;
   type NetInfo = { saveData?: boolean; effectiveType?: string };
   const conn = (navigator as Navigator & { connection?: NetInfo }).connection;
@@ -259,6 +259,8 @@ export default function Hero() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={status === "sending"}
+              aria-invalid={status === "error" || undefined}
+              aria-describedby="hero-email-status"
               placeholder={
                 status === "sent"
                   ? "Thanks — you're on the list."
@@ -278,6 +280,7 @@ export default function Hero() {
             </button>
           </div>
           <p
+            id="hero-email-status"
             className="mt-3 text-[#f5f1e8]/55 text-xs min-h-[1.25rem]"
             aria-live="polite"
           >
