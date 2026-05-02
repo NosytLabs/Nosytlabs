@@ -20,7 +20,7 @@ const WORK_TYPES = [
   {
     n: "04",
     label: "Custom Tooling",
-    body: "CLI tools, automation scripts, and developer utilities. Scope scoped, timeline honest, nothing gold-plated.",
+    body: "CLI tools, automation scripts, and developer utilities. Scope tight, timeline honest, nothing gold-plated.",
   },
 ];
 
@@ -46,9 +46,9 @@ export default function Opportunities() {
               for work.
             </h2>
             <p className="mt-7 text-[#f5f1e8]/80 text-base md:text-lg leading-relaxed max-w-md">
-              One-person studio. Selective about projects — focused on useful
-              things that ship. If you have a concrete problem, let&rsquo;s
-              talk.
+              One-person studio. Selective about projects — useful things
+              that ship, not platforms that sprawl. If you have a concrete
+              problem, let&rsquo;s see if it&rsquo;s a fit.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -62,6 +62,13 @@ export default function Opportunities() {
                 className="bg-[#f5f1e8] text-[#0a0a0b] rounded-full px-6 py-3 text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-[0.97] motion-reduce:active:scale-100 transition flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
               >
                 Start a project conversation
+                <ArrowRight size={14} strokeWidth={2.4} aria-hidden="true" />
+              </a>
+              <a
+                href="/services/"
+                className="liquid-glass rounded-full px-6 py-3 text-[#f5f1e8] text-sm font-medium hover:bg-white/[0.04] transition flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
+              >
+                Browse services
                 <ArrowRight size={14} strokeWidth={2.4} aria-hidden="true" />
               </a>
             </div>

@@ -216,9 +216,16 @@ export default function Hero() {
         </h1>
 
         <p className="mt-8 max-w-xl text-[#f5f1e8]/85 text-base sm:text-lg leading-relaxed animate-fade-rise-d2">
-          A one-person studio available for sites, web apps, AI agents, MCP
-          servers, and custom tooling. Most of it open source, all of it on
-          GitHub.
+          An independent studio building the small, sharp tools developers
+          reach for next — AI agents, MCP servers, web apps, custom code.
+          Open source by default.{" "}
+          <a
+            href="/services/"
+            className="underline underline-offset-4 decoration-[#d8b87a]/50 hover:decoration-[#d8b87a] text-[#f5f1e8] transition-colors"
+          >
+            Currently taking new work
+          </a>
+          .
         </p>
 
         <form

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta name="color-scheme" content="dark" />
+
+    <title>MCP server development &amp; consulting — Nosytlabs</title>
+    <meta name="description" content="Custom Model Context Protocol (MCP) servers for the tools your team already uses. Open source by default, private builds on request. Hire a US studio." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="canonical" href="https://nosytlabs.com/services/mcp-servers/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nosytlabs" />
+    <meta property="og:title" content="MCP server development &amp; consulting — Nosytlabs" />
+    <meta property="og:description" content="Custom Model Context Protocol (MCP) servers for the tools your team already uses. Open source by default, private builds on request." />
+    <meta property="og:url" content="https://nosytlabs.com/services/mcp-servers/" />
+    <meta property="og:image" content="https://nosytlabs.com/opengraph.jpg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@NosytLabs" />
+    <meta name="twitter:title" content="MCP server development &amp; consulting — Nosytlabs" />
+    <meta name="twitter:description" content="Custom Model Context Protocol (MCP) servers for the tools your team already uses. Open source by default." />
+    <meta name="twitter:image" content="https://nosytlabs.com/opengraph.jpg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" /></noscript>
+
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+      html, body { margin: 0; padding: 0; background: #0a0a0b; color: #f5f1e8; font-family: 'Geist', system-ui, sans-serif; line-height: 1.65; }
+      a { color: #d8b87a; text-underline-offset: 4px; transition: color 200ms ease; }
+      a:hover { color: #f5f1e8; }
+      :focus-visible { outline: 2px solid #d8b87a; outline-offset: 3px; border-radius: 4px; }
+      .skip-link { position: absolute; top: -40px; left: 12px; background: #d8b87a; color: #0a0a0b; padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 14px; text-decoration: none; }
+      .skip-link:focus { top: 12px; }
+      .topbar { max-width: 56rem; margin: 0 auto; padding: 1.75rem 1.5rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+      .topbar .brand { display: inline-flex; align-items: center; gap: 0.6rem; color: #f5f1e8; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+      .topbar .brand .dot { width: 8px; height: 8px; border-radius: 999px; background: #d8b87a; display: inline-block; }
+      .topbar .crumbs { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,241,232,0.55); }
+      .topbar .crumbs a { color: rgba(245,241,232,0.75); text-decoration: none; }
+      .topbar .crumbs a:hover { color: #d8b87a; }
+      main { max-width: 56rem; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+      .eyebrow { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,241,232,0.65); margin: 0 0 1.25rem; }
+      h1 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(2.5rem, 7vw, 4.75rem); line-height: 1.0; letter-spacing: -0.025em; margin: 0 0 1.5rem; max-width: 22ch; }
+      h1 em { font-style: italic; color: #d8b87a; }
+      h2 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(1.65rem, 3.5vw, 2.25rem); margin: 3rem 0 0.85rem; line-height: 1.15; letter-spacing: -0.015em; }
+      h2 em { font-style: italic; color: #d8b87a; }
+      h3 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 1.25rem; margin: 1.6rem 0 0.4rem; }
+      .lede { font-size: 1.1rem; max-width: 60ch; opacity: 0.9; }
+      p { max-width: 62ch; margin: 0 0 1.1rem; opacity: 0.88; }
+      ul, ol { padding-left: 1.4rem; max-width: 62ch; }
+      li { margin: 0.55rem 0; opacity: 0.88; }
+      li strong { color: #f5f1e8; opacity: 1; }
+      code { font-family: 'Geist Mono', ui-monospace, monospace; background: rgba(245,241,232,0.06); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.92em; }
+      .stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 2rem; }
+      .stack span { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.06em; padding: 0.3rem 0.7rem; border: 1px solid rgba(245,241,232,0.18); border-radius: 999px; color: rgba(245,241,232,0.8); }
+      .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem 2rem; margin: 1.5rem 0 0; padding: 1.5rem 0 0; border-top: 1px solid rgba(245,241,232,0.1); }
+      .facts dt { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,241,232,0.55); }
+      .facts dd { font-family: 'Instrument Serif', Georgia, serif; font-size: 1.6rem; margin: 0.3rem 0 0; letter-spacing: -0.01em; }
+      .cta-card { margin: 4rem 0 1.5rem; padding: 2rem 2rem 2.25rem; border: 1px solid rgba(245,241,232,0.1); border-radius: 24px; background: linear-gradient(140deg, rgba(216,184,122,0.05), rgba(245,241,232,0.02)); }
+      .cta-card .ctitle { font-family: 'Instrument Serif', Georgia, serif; font-size: 1.65rem; line-height: 1.15; margin: 0 0 0.75rem; }
+      .cta-card .ctitle em { font-style: italic; color: #d8b87a; }
+      .cta-card p { margin: 0 0 1.5rem; font-size: 0.98rem; opacity: 0.82; }
+      .cta-card a.cta { display: inline-flex; align-items: center; gap: 0.6rem; background: #f5f1e8; color: #0a0a0b; padding: 0.75rem 1.4rem; border-radius: 999px; font-weight: 500; font-size: 0.92rem; text-decoration: none; transition: opacity 200ms ease; }
+      .cta-card a.cta:hover { opacity: 0.9; }
+      .related { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(245,241,232,0.1); }
+      .related .label { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,241,232,0.55); margin-bottom: 1rem; }
+      .related ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; }
+      .related li { margin: 0; }
+      .related a { display: block; padding: 0.85rem 1rem; border: 1px solid rgba(245,241,232,0.12); border-radius: 12px; color: #f5f1e8; text-decoration: none; font-size: 0.92rem; transition: border-color 200ms ease, color 200ms ease; }
+      .related a:hover { border-color: #d8b87a; color: #d8b87a; }
+      .pagefoot { max-width: 56rem; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; border-top: 1px solid rgba(245,241,232,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.55); }
+      .pagefoot a { color: rgba(245,241,232,0.75); text-decoration: none; margin-left: 1.25rem; }
+      .pagefoot a:hover { color: #d8b87a; }
+      @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://nosytlabs.com/services/mcp-servers/#service",
+      "name": "MCP server development",
+      "url": "https://nosytlabs.com/services/mcp-servers/",
+      "serviceType": "Model Context Protocol server engineering",
+      "provider": { "@type": "Organization", "name": "Nosyt LLC", "url": "https://nosytlabs.com", "email": "hi@nosytlabs.com" },
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "description": "Custom MCP servers that expose your internal tools, APIs, and data to AI assistants safely. Open source by default, private builds on request, Claude Desktop / OpenClaw compatible."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nosytlabs.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://nosytlabs.com/services/" },
+        { "@type": "ListItem", "position": 3, "name": "MCP servers", "item": "https://nosytlabs.com/services/mcp-servers/" }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#svc-main">Skip to main content</a>
+    <div class="topbar">
+      <a class="brand" href="/" aria-label="Nosytlabs — home"><span class="dot" aria-hidden="true"></span> Nosytlabs</a>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="/services/">Services</a> &nbsp;/&nbsp; MCP servers</nav>
+    </div>
+    <main id="svc-main">
+      <p class="eyebrow">Service · 03 — MCP servers</p>
+      <h1>MCP servers for the <em>tools you already use</em>.</h1>
+      <p class="lede">The Model Context Protocol lets an AI assistant call your real tools — your database, your internal API, your CMS — through a typed, audited interface instead of a hand-rolled chat plugin. I build those servers, free and paid.</p>
+
+      <div class="stack">
+        <span>MCP spec</span><span>Python</span><span>TypeScript</span><span>Claude Desktop</span><span>OpenClaw</span><span>FastAPI</span><span>JSON-RPC</span>
+      </div>
+
+      <h2>What you get</h2>
+      <ul>
+        <li><strong>An MCP server tailored to your tools</strong> — not a generic shim. Real schemas, real auth, real error messages the assistant can actually act on.</li>
+        <li><strong>Compatibility with Claude Desktop, OpenClaw, and any spec-compliant client</strong> out of the box. One server, every assistant your team uses.</li>
+        <li><strong>Auth handled properly</strong> — OAuth, API keys, or per-user delegation. Your secrets stay your secrets; the assistant never sees them.</li>
+        <li><strong>Per-tool rate limiting and audit logs</strong> so a runaway prompt can&rsquo;t drain a paid API or delete production data.</li>
+        <li><strong>A <code>SKILL.md</code> next to the server</strong> describing every tool exposed, what it does, what it returns, and the gotchas — so the LLM uses it correctly without you babysitting the prompt.</li>
+        <li><strong>Open source by default.</strong> Private fork on request when the work is sensitive.</li>
+      </ul>
+
+      <h2>Recent work in this space</h2>
+      <ul>
+        <li><strong><a href="https://github.com/NosytLabs/openclaw-free-mcp-servers" target="_blank" rel="noreferrer">OpenClaw Free MCP Servers</a></strong> — open-source MCP servers for image generation and text-to-speech, designed to need no API keys for the basics. Reference architecture for how I structure provider-agnostic MCP servers.</li>
+        <li><strong><a href="https://github.com/NosytLabs/presearch-search-skill" target="_blank" rel="noreferrer">Presearch Search Skill</a></strong> — clean SKILL.md for the Presearch API; example of how to wrap a third-party data source so an agent uses it correctly on the first try.</li>
+        <li>Private client servers — covered by NDA, but I&rsquo;ll walk you through the design patterns on a call.</li>
+      </ul>
+
+      <h2>How <em>scoping an MCP server</em> goes</h2>
+      <ol>
+        <li><strong>Which tools do you want exposed?</strong> Read-only first is usually right — &ldquo;list tickets&rdquo;, &ldquo;search the wiki&rdquo;, &ldquo;get current usage&rdquo;.</li>
+        <li><strong>Who&rsquo;s calling it?</strong> A single user&rsquo;s desktop assistant, a team-shared server, or an automated agent in CI?</li>
+        <li><strong>What can the assistant safely do without confirmation?</strong> What requires &ldquo;are you sure?&rdquo; What is never allowed?</li>
+        <li><strong>How do you want to see what it did?</strong> Server logs, audit DB, Slack pings on writes — pick what fits your ops.</li>
+      </ol>
+
+      <h2>Honest answers</h2>
+      <h3>Should this be open source or private?</h3>
+      <p>If the server wraps a generic API everyone uses (a public datastore, a popular SaaS), open source helps everyone and earns you reputation. If it wraps your proprietary internal API, keep it private — that&rsquo;s a default, not a debate. We&rsquo;ll decide together on the kickoff call.</p>
+
+      <h3>Can it be self-hosted?</h3>
+      <p>Yes — most MCP servers I build run as a small process on the same machine as the assistant, or as a container behind your auth. No SaaS dependency unless you specifically want one.</p>
+
+      <h3>Will it work with future MCP versions?</h3>
+      <p>Built against the published spec, with a small adapter layer where the spec is still moving. When a breaking change lands, the upgrade is a small PR — usually within a week of the spec update.</p>
+
+      <h3>Cost?</h3>
+      <p>A read-only server wrapping a single API, with auth and audit logs, lands in the low four figures. A team-grade server with multiple tools, write paths, and per-user delegation is meaningfully more. Quote within two business days of a one-paragraph brief.</p>
+
+      <dl class="facts">
+        <div><dt>Stack</dt><dd>MCP + Py</dd></div>
+        <div><dt>Turnaround</dt><dd>2–6 wks</dd></div>
+        <div><dt>License</dt><dd>OSS or private</dd></div>
+        <div><dt>Location</dt><dd>Remote, US</dd></div>
+      </dl>
+
+      <div class="cta-card">
+        <p class="ctitle">Have a tool you want <em>your assistant to call safely?</em></p>
+        <p>Tell me what the tool does, who needs to call it, and what would scare you if it went wrong. I&rsquo;ll send a scope and an estimate.</p>
+        <a class="cta" href="/#contact">Start a project conversation →</a>
+      </div>
+
+      <div class="related">
+        <div class="label">Related services</div>
+        <ul>
+          <li><a href="/services/ai-agents/">AI agents →</a></li>
+          <li><a href="/services/custom-tools/">Custom tooling →</a></li>
+          <li><a href="/services/web-apps/">Web apps →</a></li>
+          <li><a href="/services/">All services →</a></li>
+        </ul>
+      </div>
+    </main>
+    <div class="pagefoot">
+      <span>© 2026 Nosyt LLC · Independent studio · Est. 2025</span>
+      <span>
+        <a href="/">Home</a>
+        <a href="/services/">Services</a>
+        <a href="/privacy.html">Privacy</a>
+      </span>
+    </div>
+  </body>
+</html>

@@ -7,10 +7,10 @@ export const AVAILABLE = true;
 
 const NAV = [
   { label: "Studio", href: "#about" },
+  { label: "Services", href: "/services/" },
   { label: "Work", href: "#opportunities" },
   { label: "Projects", href: "#projects" },
   { label: "Manifesto", href: "#manifesto" },
-  { label: "Music", href: "#sound" },
   { label: "Contact", href: "#contact" },
 ];
 

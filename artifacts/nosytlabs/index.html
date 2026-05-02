@@ -191,6 +191,35 @@
          spec requires the same Q&As to appear as visible page content. Studio
          facts for LLM/AI-search context live in /llms.txt instead. -->
 
+    <!-- Structured data: ProfessionalService — the hire-me side of the studio.
+         Mirrors the four offerings live at /services/* so each appears as a
+         distinct Service node in the OfferCatalog and links to its own page. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": "https://nosytlabs.com/#professional-service",
+      "name": "Nosytlabs Studio Services",
+      "url": "https://nosytlabs.com/services/",
+      "image": "https://nosytlabs.com/opengraph.jpg",
+      "provider": { "@id": "https://nosytlabs.com/#org" },
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "availableLanguage": ["English"],
+      "priceRange": "$$",
+      "description": "Independent one-person studio offering web app development, AI agent engineering, MCP server development, and custom developer tooling. Fixed-scope quotes, code transferred to client repo on completion.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Studio services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web app & site development", "url": "https://nosytlabs.com/services/web-apps/", "serviceType": "Web application development" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI agent development", "url": "https://nosytlabs.com/services/ai-agents/", "serviceType": "AI agent engineering" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MCP server development", "url": "https://nosytlabs.com/services/mcp-servers/", "serviceType": "Model Context Protocol server engineering" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom developer tooling", "url": "https://nosytlabs.com/services/custom-tools/", "serviceType": "Custom CLI and developer utility engineering" } }
+        ]
+      }
+    }
+    </script>
+
     <!-- Structured data: SoftwareSourceCode per featured project. Each entry
          mirrors a verified live repo at github.com/NosytLabs (404s removed). -->
     <script type="application/ld+json">
@@ -275,7 +304,18 @@
         </section>
         <section id="about">
           <h2>The studio</h2>
-          <p>Nosytlabs was registered as Nosyt LLC in early 2025. One person, one desk, no investors. The output spans AI agents, MCP servers, a browser game in progress, and the occasional experiment. Music gets released under the same name when a track is ready.</p>
+          <p>Nosytlabs was registered as Nosyt LLC in early 2025. One person, one desk, one bet — that small, sharp, open tools age better than sprawling platforms. The output spans AI agents, MCP servers, a browser game in progress, and the occasional experiment. Music gets released under the same name when a track is ready.</p>
+        </section>
+        <section id="services">
+          <h2>Services</h2>
+          <p>The studio is currently available for hire. Four focused offerings:</p>
+          <ul>
+            <li><a href="/services/web-apps/">Web app &amp; site development</a> — React, TypeScript, deployed cleanly. Two- to six-week turnaround.</li>
+            <li><a href="/services/ai-agents/">AI agent engineering</a> — custom agents for real workflows, not ChatGPT wrappers.</li>
+            <li><a href="/services/mcp-servers/">MCP server development</a> — Model Context Protocol servers, open source by default.</li>
+            <li><a href="/services/custom-tools/">Custom developer tooling</a> — CLI tools, automation scripts, scope-first quotes.</li>
+          </ul>
+          <p><a href="/services/">See all services →</a></p>
         </section>
         <section id="projects">
           <h2>Selected projects</h2>

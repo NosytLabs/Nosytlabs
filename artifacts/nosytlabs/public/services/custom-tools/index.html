@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta name="color-scheme" content="dark" />
+
+    <title>Custom developer tooling &amp; CLI scripts — Nosytlabs</title>
+    <meta name="description" content="Custom CLI tools, automation scripts, and developer utilities built scope-first. Honest timelines, no gold plating, real handoff. Hire a US studio." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="canonical" href="https://nosytlabs.com/services/custom-tools/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nosytlabs" />
+    <meta property="og:title" content="Custom developer tooling &amp; CLI scripts — Nosytlabs" />
+    <meta property="og:description" content="Custom CLI tools, automation scripts, and developer utilities built scope-first. Honest timelines, no gold plating, real handoff." />
+    <meta property="og:url" content="https://nosytlabs.com/services/custom-tools/" />
+    <meta property="og:image" content="https://nosytlabs.com/opengraph.jpg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@NosytLabs" />
+    <meta name="twitter:title" content="Custom developer tooling &amp; CLI scripts — Nosytlabs" />
+    <meta name="twitter:description" content="Custom CLI tools, automation scripts, and developer utilities built scope-first. Honest timelines." />
+    <meta name="twitter:image" content="https://nosytlabs.com/opengraph.jpg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" /></noscript>
+
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+      html, body { margin: 0; padding: 0; background: #0a0a0b; color: #f5f1e8; font-family: 'Geist', system-ui, sans-serif; line-height: 1.65; }
+      a { color: #d8b87a; text-underline-offset: 4px; transition: color 200ms ease; }
+      a:hover { color: #f5f1e8; }
+      :focus-visible { outline: 2px solid #d8b87a; outline-offset: 3px; border-radius: 4px; }
+      .skip-link { position: absolute; top: -40px; left: 12px; background: #d8b87a; color: #0a0a0b; padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 14px; text-decoration: none; }
+      .skip-link:focus { top: 12px; }
+      .topbar { max-width: 56rem; margin: 0 auto; padding: 1.75rem 1.5rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+      .topbar .brand { display: inline-flex; align-items: center; gap: 0.6rem; color: #f5f1e8; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+      .topbar .brand .dot { width: 8px; height: 8px; border-radius: 999px; background: #d8b87a; display: inline-block; }
+      .topbar .crumbs { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,241,232,0.55); }
+      .topbar .crumbs a { color: rgba(245,241,232,0.75); text-decoration: none; }
+      .topbar .crumbs a:hover { color: #d8b87a; }
+      main { max-width: 56rem; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+      .eyebrow { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(245,241,232,0.65); margin: 0 0 1.25rem; }
+      h1 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(2.5rem, 7vw, 4.75rem); line-height: 1.0; letter-spacing: -0.025em; margin: 0 0 1.5rem; max-width: 22ch; }
+      h1 em { font-style: italic; color: #d8b87a; }
+      h2 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(1.65rem, 3.5vw, 2.25rem); margin: 3rem 0 0.85rem; line-height: 1.15; letter-spacing: -0.015em; }
+      h2 em { font-style: italic; color: #d8b87a; }
+      h3 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: 1.25rem; margin: 1.6rem 0 0.4rem; }
+      .lede { font-size: 1.1rem; max-width: 60ch; opacity: 0.9; }
+      p { max-width: 62ch; margin: 0 0 1.1rem; opacity: 0.88; }
+      ul, ol { padding-left: 1.4rem; max-width: 62ch; }
+      li { margin: 0.55rem 0; opacity: 0.88; }
+      li strong { color: #f5f1e8; opacity: 1; }
+      .stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 2rem; }
+      .stack span { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.06em; padding: 0.3rem 0.7rem; border: 1px solid rgba(245,241,232,0.18); border-radius: 999px; color: rgba(245,241,232,0.8); }
+      .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.5rem 2rem; margin: 1.5rem 0 0; padding: 1.5rem 0 0; border-top: 1px solid rgba(245,241,232,0.1); }
+      .facts dt { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,241,232,0.55); }
+      .facts dd { font-family: 'Instrument Serif', Georgia, serif; font-size: 1.6rem; margin: 0.3rem 0 0; letter-spacing: -0.01em; }
+      .cta-card { margin: 4rem 0 1.5rem; padding: 2rem 2rem 2.25rem; border: 1px solid rgba(245,241,232,0.1); border-radius: 24px; background: linear-gradient(140deg, rgba(216,184,122,0.05), rgba(245,241,232,0.02)); }
+      .cta-card .ctitle { font-family: 'Instrument Serif', Georgia, serif; font-size: 1.65rem; line-height: 1.15; margin: 0 0 0.75rem; }
+      .cta-card .ctitle em { font-style: italic; color: #d8b87a; }
+      .cta-card p { margin: 0 0 1.5rem; font-size: 0.98rem; opacity: 0.82; }
+      .cta-card a.cta { display: inline-flex; align-items: center; gap: 0.6rem; background: #f5f1e8; color: #0a0a0b; padding: 0.75rem 1.4rem; border-radius: 999px; font-weight: 500; font-size: 0.92rem; text-decoration: none; transition: opacity 200ms ease; }
+      .cta-card a.cta:hover { opacity: 0.9; }
+      .related { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(245,241,232,0.1); }
+      .related .label { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(245,241,232,0.55); margin-bottom: 1rem; }
+      .related ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; }
+      .related li { margin: 0; }
+      .related a { display: block; padding: 0.85rem 1rem; border: 1px solid rgba(245,241,232,0.12); border-radius: 12px; color: #f5f1e8; text-decoration: none; font-size: 0.92rem; transition: border-color 200ms ease, color 200ms ease; }
+      .related a:hover { border-color: #d8b87a; color: #d8b87a; }
+      .pagefoot { max-width: 56rem; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; border-top: 1px solid rgba(245,241,232,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,241,232,0.55); }
+      .pagefoot a { color: rgba(245,241,232,0.75); text-decoration: none; margin-left: 1.25rem; }
+      .pagefoot a:hover { color: #d8b87a; }
+      @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://nosytlabs.com/services/custom-tools/#service",
+      "name": "Custom developer tooling",
+      "url": "https://nosytlabs.com/services/custom-tools/",
+      "serviceType": "Custom CLI and developer utility engineering",
+      "provider": { "@type": "Organization", "name": "Nosyt LLC", "url": "https://nosytlabs.com", "email": "hi@nosytlabs.com" },
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "description": "Custom CLI tools, automation scripts, and developer utilities. Scope-first quotes, honest timelines, real handoff with documentation."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nosytlabs.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://nosytlabs.com/services/" },
+        { "@type": "ListItem", "position": 3, "name": "Custom tooling", "item": "https://nosytlabs.com/services/custom-tools/" }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#svc-main">Skip to main content</a>
+    <div class="topbar">
+      <a class="brand" href="/" aria-label="Nosytlabs — home"><span class="dot" aria-hidden="true"></span> Nosytlabs</a>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="/services/">Services</a> &nbsp;/&nbsp; Custom tooling</nav>
+    </div>
+    <main id="svc-main">
+      <p class="eyebrow">Service · 04 — Custom developer tooling</p>
+      <h1>The <em>small sharp tool</em> your team has been hand-rolling.</h1>
+      <p class="lede">Every team has the script that lives in someone&rsquo;s home directory, the JIRA macro nobody else can read, the cron job that broke in 2023. I build the proper version — small, documented, in your repo, with tests where they matter.</p>
+
+      <div class="stack">
+        <span>Python</span><span>TypeScript / Node</span><span>Bash</span><span>Go (for binaries)</span><span>GitHub Actions</span><span>Docker</span>
+      </div>
+
+      <h2>What you get</h2>
+      <ul>
+        <li><strong>A real tool with a real interface</strong> — proper argparse / commander, helpful <code>--help</code>, sensible defaults, exit codes that mean something.</li>
+        <li><strong>Tested where it matters</strong> — input parsing, edge cases, the &ldquo;works on my machine&rdquo; surface. Not 100&nbsp;% coverage theatre.</li>
+        <li><strong>A README that&rsquo;s honest about the rough edges</strong> — what it does, what it doesn&rsquo;t, what surprised me building it.</li>
+        <li><strong>CI on day one</strong> — GitHub Actions wired so &ldquo;does this still work&rdquo; never has to be answered manually again.</li>
+        <li><strong>Distribution that fits your team</strong> — pip, npm, a homebrew tap, a single binary, or just &ldquo;clone and go&rdquo;. We&rsquo;ll pick what your team will actually use.</li>
+        <li><strong>Source in your repo, not on my laptop.</strong> Your code, your fork, your future.</li>
+      </ul>
+
+      <h2>Examples of <em>what fits</em></h2>
+      <ul>
+        <li>Internal CLIs that wrap a tedious workflow into a single command (deploy, rotate secrets, scaffold a new service).</li>
+        <li>Data pipelines that move a CSV / API / SaaS export into the place it actually needs to be, on a schedule.</li>
+        <li>Migration scripts you only run once but absolutely must run correctly the first time.</li>
+        <li>Custom GitHub Actions for your team&rsquo;s workflow patterns.</li>
+        <li>Code-mod scripts — find &amp; rename across a thousand files, with a dry-run mode and a real diff before you commit.</li>
+        <li>Linting / pre-commit rules specific to your codebase&rsquo;s conventions.</li>
+      </ul>
+
+      <h2>How <em>scope-first</em> works</h2>
+      <ol>
+        <li><strong>One paragraph: what does the tool do?</strong> What input, what output, what gets easier.</li>
+        <li><strong>I reply with the smallest version of that</strong> — what we cut, what we keep, what an honest week-or-two of work looks like.</li>
+        <li><strong>Fixed-scope quote.</strong> If we discover the &ldquo;real&rdquo; problem mid-build, we stop, re-scope, agree on a delta — never silent scope creep.</li>
+        <li><strong>Ship, hand off, leave a README.</strong> The next engineer (or your future self) doesn&rsquo;t need me to extend it.</li>
+      </ol>
+
+      <h2>Honest answers</h2>
+      <h3>Will it be over-engineered?</h3>
+      <p>No. Gold-plating is how small tools die. If you ask for a Bash script and a Bash script fits, you get a Bash script with a header comment and a <code>set -euo pipefail</code>, not a Kubernetes-deployed microservice.</p>
+
+      <h3>What about ongoing support?</h3>
+      <p>Optional retainer for security updates, dependency bumps, and small extensions. Most of these tools don&rsquo;t need it — that&rsquo;s the point of small &amp; sharp.</p>
+
+      <h3>Cost?</h3>
+      <p>Smallest scopes (a focused script, ~1 week) start in the high three figures. Multi-command CLIs with packaging, distribution, and tests scale from there. Quote within two business days.</p>
+
+      <h3>Open source?</h3>
+      <p>If the tool is generic and would help others, I&rsquo;ll suggest open-sourcing it (on your terms — your repo, your license, your name). If it&rsquo;s yours alone, it stays yours alone.</p>
+
+      <dl class="facts">
+        <div><dt>Stack</dt><dd>Py / TS / Bash</dd></div>
+        <div><dt>Turnaround</dt><dd>1–4 wks</dd></div>
+        <div><dt>Format</dt><dd>Fixed scope</dd></div>
+        <div><dt>Location</dt><dd>Remote, US</dd></div>
+      </dl>
+
+      <div class="cta-card">
+        <p class="ctitle">Got a workflow that needs <em>a real tool</em>?</p>
+        <p>Tell me what your team is hand-rolling today. I&rsquo;ll send back the smallest version that solves it properly.</p>
+        <a class="cta" href="/#contact">Start a project conversation →</a>
+      </div>
+
+      <div class="related">
+        <div class="label">Related services</div>
+        <ul>
+          <li><a href="/services/web-apps/">Web apps →</a></li>
+          <li><a href="/services/ai-agents/">AI agents →</a></li>
+          <li><a href="/services/mcp-servers/">MCP servers →</a></li>
+          <li><a href="/services/">All services →</a></li>
+        </ul>
+      </div>
+    </main>
+    <div class="pagefoot">
+      <span>© 2026 Nosyt LLC · Independent studio · Est. 2025</span>
+      <span>
+        <a href="/">Home</a>
+        <a href="/services/">Services</a>
+        <a href="/privacy.html">Privacy</a>
+      </span>
+    </div>
+  </body>
+</html>

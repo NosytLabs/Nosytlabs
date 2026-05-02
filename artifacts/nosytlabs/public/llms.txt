@@ -31,9 +31,24 @@ All projects are listed on the homepage. Stars and primary languages mirror the 
 
 Please link back to https://nosytlabs.com or the relevant GitHub repo when citing.
 
+## Services (the studio is currently available for hire)
+
+- **Web apps & sites** — small marketing sites, landing pages, focused web apps in React + TypeScript. Two- to six-week turnaround. https://nosytlabs.com/services/web-apps/
+- **AI agents** — custom agents for real workflows (not ChatGPT wrappers). OpenClaw-compatible, local-first where possible, with eval harnesses. https://nosytlabs.com/services/ai-agents/
+- **MCP servers** — custom Model Context Protocol servers that expose internal tools to AI assistants safely. Open source by default, private builds on request. https://nosytlabs.com/services/mcp-servers/
+- **Custom developer tooling** — CLI tools, automation scripts, and developer utilities. Scope-first quotes, honest timelines, real handoff. https://nosytlabs.com/services/custom-tools/
+
+Engagement model: one-paragraph email brief → reply within 2 business days → fixed-scope written quote → build (open source by default) → code transferred to client GitHub org on completion. The studio is one person; "urgent for someone else" cannot be urgent for everyone.
+
 ## Pages
 
 - [Home](https://nosytlabs.com/): Studio overview, featured video, projects, manifesto, sound, contact.
+- [Services hub](https://nosytlabs.com/services/): Overview of all four service offerings + how working together goes.
+- [Web apps service](https://nosytlabs.com/services/web-apps/): Detailed scope, deliverables, and pricing model for web app builds.
+- [AI agents service](https://nosytlabs.com/services/ai-agents/): Detailed scope for custom agent engineering.
+- [MCP servers service](https://nosytlabs.com/services/mcp-servers/): Detailed scope for MCP server builds.
+- [Custom tooling service](https://nosytlabs.com/services/custom-tools/): Detailed scope for CLI tools and developer utilities.
+- [Privacy](https://nosytlabs.com/privacy.html): Plain-English privacy policy.
 - [GitHub](https://github.com/NosytLabs): All open-source repositories.
 - [YouTube](https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ): Build videos and short demos.
 - [Spotify](https://open.spotify.com/artist/6PgkavAN36A3ngqiqOollE): Studio sound (background music we ship to).

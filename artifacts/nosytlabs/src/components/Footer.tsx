@@ -30,7 +30,7 @@ export default function Footer() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 pt-12 border-t border-[#f5f1e8]/10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 pt-12 border-t border-[#f5f1e8]/10">
           <div>
             <div className="flex items-center gap-2.5 mb-4 text-[#f5f1e8]">
               <Logo className="w-8 h-8 rounded-md" />
@@ -40,6 +40,19 @@ export default function Footer() {
               A one-person US studio available for sites, web apps, AI
               agents, and developer tooling. Founded 2025.
             </p>
+          </div>
+
+          <div>
+            <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.28em] uppercase mb-4">
+              Services
+            </div>
+            <ul className="space-y-2.5 text-[#f5f1e8]/85 text-sm">
+              <li><a href="/services/web-apps/" className="hover:text-[#d8b87a] transition-colors">Web apps &amp; sites</a></li>
+              <li><a href="/services/ai-agents/" className="hover:text-[#d8b87a] transition-colors">AI agents</a></li>
+              <li><a href="/services/mcp-servers/" className="hover:text-[#d8b87a] transition-colors">MCP servers</a></li>
+              <li><a href="/services/custom-tools/" className="hover:text-[#d8b87a] transition-colors">Custom tooling</a></li>
+              <li><a href="/services/" className="hover:text-[#d8b87a] transition-colors">All services</a></li>
+            </ul>
           </div>
 
           <div>

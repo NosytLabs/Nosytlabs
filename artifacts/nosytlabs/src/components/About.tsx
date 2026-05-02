@@ -50,9 +50,10 @@ export default function About() {
           <div className="mt-12 grid md:grid-cols-[2fr_1fr] gap-10 md:gap-16 items-end">
             <p className="max-w-2xl text-[#f5f1e8]/85 text-base md:text-lg leading-relaxed">
               Nosytlabs was registered as Nosyt&nbsp;LLC in early 2025.
-              One person, one desk, no investors. Available for focused
-              work — sites, web apps, AI agents, MCP servers, custom
-              tooling. The full output is on GitHub.
+              One person, one desk, one bet — that small, sharp, open
+              tools age better than sprawling platforms. Available for
+              focused work across sites, web apps, AI agents, MCP servers,
+              and custom tooling. The full output lives on GitHub.
             </p>
             <dl className="grid grid-cols-2 gap-x-6 gap-y-5 md:border-l md:border-[#f5f1e8]/10 md:pl-10">
               <Fact k="Founded" v="2025" />
