@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
     "sync:github": "node scripts/sync-github-data.mjs",
-    "prebuild": "node scripts/sync-github-data.mjs",
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
