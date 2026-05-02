@@ -1,6 +1,16 @@
 type Props = { className?: string };
 
-// NOSYT LABS stacked wordmark in a rounded square. Matches the brand mark.
+/**
+ * Brand mark — italic serif "n" with a gold period.
+ * - The italic "n" mirrors the Hero h1 / italic serif accents used across the
+ *   site (Instrument Serif aesthetic, with `Times New Roman` as a fallback so
+ *   the mark renders correctly even before the web font loads / on favicons).
+ * - The gold dot reads as the period from the tagline ("…shape your tomorrow.").
+ * - Cream-on-near-black matches the global palette tokens.
+ *
+ * Stays a single inline SVG so it scales crisply at any size and stays in sync
+ * with the static /favicon.svg in /public.
+ */
 export default function Logo({ className }: Props) {
   return (
     <svg
@@ -21,29 +31,17 @@ export default function Logo({ className }: Props) {
         strokeOpacity="0.18"
       />
       <text
-        x="32"
-        y="29"
-        fontFamily="Geist, -apple-system, system-ui, sans-serif"
-        fontSize="17"
-        fontWeight="800"
+        x="18"
+        y="48"
+        fontFamily="'Instrument Serif', 'Times New Roman', Georgia, serif"
+        fontSize="44"
+        fontStyle="italic"
+        fontWeight="400"
         fill="#f5f1e8"
-        textAnchor="middle"
-        letterSpacing="-0.5"
       >
-        NOSYT
+        n
       </text>
-      <text
-        x="32"
-        y="49"
-        fontFamily="Geist, -apple-system, system-ui, sans-serif"
-        fontSize="17"
-        fontWeight="800"
-        fill="#f5f1e8"
-        textAnchor="middle"
-        letterSpacing="-0.5"
-      >
-        LABS
-      </text>
+      <circle cx="48" cy="46" r="3.2" fill="#d8b87a" />
     </svg>
   );
 }

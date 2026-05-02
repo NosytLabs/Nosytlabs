@@ -92,7 +92,7 @@ function FootIcon({ href, label, children }: { href: string; label: string; chil
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="liquid-glass rounded-full p-3 text-[#f5f1e8]/85 hover:text-[#d8b87a] hover:bg-white/[0.06] transition-all hover:scale-105"
+      className="liquid-glass rounded-full p-3 text-[#f5f1e8]/85 hover:text-[#d8b87a] hover:bg-white/[0.06] transition-all hover:scale-[1.04] motion-reduce:hover:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
     >
       {children}
     </a>

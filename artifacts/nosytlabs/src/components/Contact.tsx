@@ -6,6 +6,13 @@ import { track } from "@/lib/analytics";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+/** See Hero.tsx friendlyFormError — single neutral fallback for the contact
+ *  form. We deliberately don't branch on backend reasons (captcha, rate
+ *  limit, activation, spam score) — exposing those reads as a broken site. */
+function friendlyContactError(_raw: string | null | undefined): string {
+  return "Couldn't deliver your note right now. Please email hi@nosytlabs.com directly — it lands in the same inbox.";
+}
+
 const TOPICS = [
   { v: "collab", l: "Collaboration" },
   { v: "consult", l: "Consulting" },
@@ -79,7 +86,11 @@ export default function Contact() {
       const data = await res.json().catch(() => ({} as { success?: string; message?: string }));
       const ok = res.ok && String(data.success).toLowerCase() === "true";
       if (!ok) {
-        throw new Error(data.message || "Couldn't reach the server. Please try again, or email hi@nosytlabs.com.");
+        // Don't surface raw third-party error strings ("This form needs
+        // Activation…", captcha reasons, etc.) to the visitor — they read
+        // as a broken site. Map to a friendly fallback that points at the
+        // direct mailto.
+        throw new Error(friendlyContactError(data.message));
       }
       setStatus("sent");
       setName(""); setEmail(""); setMessage(""); setTopic("collab");
@@ -88,7 +99,7 @@ export default function Contact() {
     } catch (err) {
       // Stay in-page on failure — never hijack the visitor to their mail client.
       track("contact_error", { topic });
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setError(err instanceof Error ? friendlyContactError(err.message) : "Something went wrong. Please email hi@nosytlabs.com directly.");
       setStatus("error");
       setTimeout(() => {
         setStatus("idle");

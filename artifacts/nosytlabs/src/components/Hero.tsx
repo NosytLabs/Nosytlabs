@@ -10,6 +10,21 @@ const HERO_VIDEO =
 
 type SubStatus = "idle" | "sending" | "sent" | "error";
 
+/**
+ * Map raw form-backend error strings to friendly visitor-facing copy.
+ * The form provider (formsubmit.co) returns implementation-detail messages
+ * like "This form needs Activation…" which are confusing to end users and
+ * make the site look broken. Anything we don't explicitly recognise falls
+ * back to a generic "couldn't reach server" + mailto pointer.
+ */
+function friendlyFormError(_raw: string | null | undefined): string {
+  // Always return the same neutral copy — never leak provider mechanics
+  // (activation, captcha, rate limits, spam scoring, etc.) to visitors.
+  // The mailto rendered next to this string is the visitor's real escape
+  // hatch when the subscribe service is having a bad day.
+  return "Couldn't reach the subscribe service. Please email us instead — a real person replies.";
+}
+
 // Decide if this device/network can afford the ~13 MB hero MP4.
 // Defaults to "no" during SSR so the poster is shown first. Returns false
 // for: small phones (<=640px), Save-Data users, 2G/slow-2G connections,
@@ -123,7 +138,11 @@ export default function Hero() {
       const data = await res.json().catch(() => ({} as { success?: string; message?: string }));
       const ok = res.ok && String(data.success).toLowerCase() === "true";
       if (!ok) {
-        throw new Error(data.message || "Couldn't reach the server. Please try again, or email hi@nosytlabs.com.");
+        // Never surface the raw third-party error string to the visitor —
+        // formsubmit's text ("This form needs Activation. We've sent you an
+        // email…") is incomprehensible and looks broken. Map to a friendly
+        // fallback that points at the direct mailto.
+        throw new Error(friendlyFormError(data.message));
       }
       setStatus("sent");
       setEmail("");
@@ -132,7 +151,7 @@ export default function Hero() {
     } catch (err) {
       // Stay in-page on failure — never hijack the visitor to their mail client.
       track("subscribe_error", { location: "hero" });
-      setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setErrorMsg(err instanceof Error ? friendlyFormError(err.message) : "Something went wrong. Please try again, or email hi@nosytlabs.com.");
       setStatus("error");
       setTimeout(() => {
         setStatus("idle");
@@ -249,14 +268,24 @@ export default function Hero() {
             </button>
           </div>
           <p
-            className="mt-3 text-[#f5f1e8]/45 text-xs min-h-[1.25rem]"
+            className="mt-3 text-[#f5f1e8]/55 text-xs min-h-[1.25rem]"
             aria-live="polite"
           >
-            {status === "sent"
-              ? "You're on the list. Reply to any future note if you ever want off."
-              : status === "error"
-                ? errorMsg ?? "Couldn't reach the server. Please try again, or email hi@nosytlabs.com."
-                : "Occasional updates when something ships. No spam, ever."}
+            {status === "sent" ? (
+              <span>You&rsquo;re on the list. Reply to any future note if you ever want off.</span>
+            ) : status === "error" ? (
+              <span>
+                {errorMsg ?? "Something went wrong."}{" "}
+                <a
+                  href={LINKS.email}
+                  className="underline underline-offset-4 decoration-[#d8b87a]/60 hover:decoration-[#d8b87a] text-[#f5f1e8]/80 hover:text-[#f5f1e8]"
+                >
+                  hi@nosytlabs.com
+                </a>
+              </span>
+            ) : (
+              <span>Occasional updates when something ships. No spam, ever.</span>
+            )}
           </p>
         </form>
 
@@ -293,7 +322,7 @@ function Pill({ href, label, children }: { href: string; label: string; children
       rel="noreferrer"
       aria-label={label}
       onClick={() => track("social_click", { network: label.toLowerCase() })}
-      className="liquid-glass rounded-full p-3 text-[#f5f1e8]/85 hover:text-[#f5f1e8] hover:bg-white/[0.06] transition-all hover:scale-105 motion-reduce:hover:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
+      className="liquid-glass rounded-full p-3 text-[#f5f1e8]/85 hover:text-[#f5f1e8] hover:bg-white/[0.06] transition-all hover:scale-[1.04] motion-reduce:hover:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
     >
       {children}
     </a>
