@@ -124,6 +124,24 @@ export default function Contact() {
                 tooling — if it fits what the studio does, a real person
                 replies with an honest take.
               </p>
+              <ul
+                className="mt-7 flex flex-wrap gap-2 max-w-md"
+                aria-label="What to expect when you reach out"
+              >
+                {[
+                  "Replies within 2 business days",
+                  "Code transferred to your repo",
+                  "NDAs welcome",
+                ].map((label) => (
+                  <li
+                    key={label}
+                    className="liquid-glass rounded-full px-3 py-1.5 text-mono text-[10.5px] tracking-[0.06em] text-[#f5f1e8]/80 inline-flex items-center gap-1.5"
+                  >
+                    <span aria-hidden="true" className="inline-block w-1 h-1 rounded-full bg-[#d8b87a]" />
+                    {label}
+                  </li>
+                ))}
+              </ul>
               <div className="mt-8 space-y-3">
                 <a
                   href={LINKS.email}
