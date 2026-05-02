@@ -1,0 +1,148 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "Geist",
+      "role": "body"
+    },
+    {
+      "family": "Instrument Serif",
+      "role": "heading"
+    }
+  ],
+  "colors": {
+    "primary": "#D8B87A",
+    "secondary": "#4C422F",
+    "accent": "#D8B87A",
+    "background": "#0A0A0B",
+    "textPrimary": "#F5F1E8",
+    "link": "#4C422F"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Geist",
+      "heading": "Instrument Serif"
+    },
+    "fontStacks": {
+      "heading": [
+        "Instrument Serif",
+        "Georgia",
+        "serif"
+      ],
+      "body": [
+        "Geist",
+        "system-ui",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Geist",
+        "system-ui",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "160px",
+      "h2": "72px",
+      "body": "18px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 10,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "input": {
+      "background": "transparent",
+      "textColor": "#F5F1E8",
+      "borderColor": null,
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    },
+    "buttonPrimary": {
+      "background": "#D8B87A",
+      "textColor": "#0A0A0B",
+      "borderRadius": "999px",
+      "borderRadiusCorners": {
+        "topLeft": "999px",
+        "topRight": "999px",
+        "bottomRight": "999px",
+        "bottomLeft": "999px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "transparent",
+      "textColor": "#AFACA6",
+      "borderColor": "#2D2D2C",
+      "borderRadius": "33554400px",
+      "borderRadiusCorners": {
+        "topLeft": "33554400px",
+        "topRight": "33554400px",
+        "bottomRight": "33554400px",
+        "bottomLeft": "33554400px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "favicon": "https://nosytlabs.com/favicon.svg",
+    "ogImage": "https://nosytlabs.com/opengraph.jpg",
+    "logoHref": "File saved at: attached_assets/logoHref.html",
+    "logoAlt": "NOSYTLABS"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Selected #0 because it is visible, located in the header, and links to the homepage, matching the brand name 'Nosytlabs'.",
+    "confidence": 0.9,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 7,
+      "text": "Skip to main content",
+      "reasoning": "Button #5 has a vibrant background color (#D8B87A) which matches the brand's primary color, making it stand out as the main call-to-action."
+    },
+    "secondary": {
+      "index": 15,
+      "text": "Press / interview",
+      "reasoning": "Button #0 has a transparent background, making it a suitable secondary option as it contrasts with the primary button's vibrant color."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "developers and tech enthusiasts"
+  },
+  "designSystem": {
+    "framework": "tailwind",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 0,
+        "selectedLogoReasoning": "Selected #0 because it is visible, located in the header, and links to the homepage, matching the brand name 'Nosytlabs'.",
+        "confidence": 0.9
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}

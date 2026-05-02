@@ -3,18 +3,18 @@ import Reveal from "./Reveal";
 const PRINCIPLES = [
   {
     n: "I",
-    title: "Build openly",
+    title: "Build in the open",
     body: "Every line of code lives on GitHub. Issues, PRs, and forks are fair game — that's the whole point of putting it there.",
   },
   {
     n: "II",
-    title: "Ship for builders",
-    body: "Tools for engineers wiring agents into real systems. The kind of thing you can clone, read, and run in a single sitting.",
+    title: "Clone, read, run",
+    body: "Every repo is small enough to read in one sitting and run in a few minutes. Honest README, rough edges named, nothing hidden behind a setup wizard.",
   },
   {
     n: "III",
     title: "Stay independent",
-    body: "No investors. No growth team. The roadmap is whatever the next commit happens to be.",
+    body: "The roadmap is whatever the next commit is. One person, one schedule, no investor calendar to chase.",
   },
 ];
 
@@ -27,9 +27,9 @@ export default function Philosophy() {
             03 — How we work
           </div>
           <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight mb-16 max-w-4xl leading-[1.05]">
-            Three things we{" "}
+            Three rules of{" "}
             <span className="text-italic-serif text-[#d8b87a]">
-              believe in.
+              the studio.
             </span>
           </h2>
         </Reveal>
