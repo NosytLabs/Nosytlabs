@@ -4,7 +4,7 @@ const LINES = [
   "Build for the people who actually use the thing.",
   "Ship small. Ship often. Ship on purpose.",
   "Default to open source. Document the rough edges.",
-  "Stay independent. Stay small.",
+  "Stay independent. Stay available. Stay small.",
   "Notable opportunities shape your tomorrow.",
 ];
 
@@ -18,7 +18,7 @@ export default function Manifesto() {
       <div className="max-w-4xl mx-auto text-center relative">
         <Reveal>
           <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-10">
-            05 — Manifesto
+            06 — Manifesto
           </div>
         </Reveal>
         <div className="space-y-7 md:space-y-9">

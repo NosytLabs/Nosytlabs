@@ -35,11 +35,14 @@ function friendlyFormError(_raw: string | null | undefined): string {
 function shouldLoadHeroVideo(): boolean {
   if (typeof window === "undefined") return false;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
-  if (window.matchMedia("(max-width: 640px)").matches) return false;
+  // Desktop-only: require at least 1024px wide viewport
+  if (window.matchMedia("(max-width: 1023px)").matches) return false;
   type NetInfo = { saveData?: boolean; effectiveType?: string };
   const conn = (navigator as Navigator & { connection?: NetInfo }).connection;
   if (conn?.saveData) return false;
-  if (conn?.effectiveType && /^(slow-2g|2g)$/.test(conn.effectiveType)) return false;
+  // Only serve the ~13 MB MP4 on 4g connections; unknown (desktop without
+  // Network Information API) falls through and loads the video.
+  if (conn?.effectiveType && conn.effectiveType !== "4g") return false;
   return true;
 }
 
@@ -213,8 +216,9 @@ export default function Hero() {
         </h1>
 
         <p className="mt-8 max-w-xl text-[#f5f1e8]/85 text-base sm:text-lg leading-relaxed animate-fade-rise-d2">
-          A one-person studio building AI agents, MCP servers, and small
-          tools for developers. Most of it open source, all of it on GitHub.
+          A one-person studio available for sites, web apps, AI agents, MCP
+          servers, and custom tooling. Most of it open source, all of it on
+          GitHub.
         </p>
 
         <form

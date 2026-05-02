@@ -3,8 +3,11 @@ import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import { LINKS } from "@/lib/links";
 
+export const AVAILABLE = true;
+
 const NAV = [
   { label: "Studio", href: "#about" },
+  { label: "Work", href: "#opportunities" },
   { label: "Projects", href: "#projects" },
   { label: "Manifesto", href: "#manifesto" },
   { label: "Music", href: "#sound" },
@@ -24,7 +27,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Body scroll lock + focus trap + Escape close + focus return
   useEffect(() => {
     if (!open) {
       document.body.style.overflow = "";
@@ -33,7 +35,6 @@ export default function Navbar() {
     document.body.style.overflow = "hidden";
     const previouslyFocused = document.activeElement as HTMLElement | null;
 
-    // Focus the dialog's first focusable element on open
     const focusables = () =>
       dialogRef.current
         ? Array.from(
@@ -69,7 +70,6 @@ export default function Navbar() {
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
-      // Return focus to whatever opened the dialog (usually the trigger)
       (previouslyFocused ?? triggerRef.current)?.focus?.();
     };
   }, [open]);
@@ -99,6 +99,19 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
+          {AVAILABLE && (
+            <a
+              href="#contact"
+              aria-label="Available for work — contact"
+              className="hidden sm:inline-flex items-center gap-1.5 liquid-glass rounded-full px-3 py-1.5 text-[#f5f1e8]/85 hover:text-[#f5f1e8] text-xs font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b] motion-reduce:transition-none"
+            >
+              <span
+                className="w-2 h-2 rounded-full bg-[#f5f1e8] ring-1 ring-[#d8b87a] ring-offset-1 ring-offset-transparent shrink-0"
+                aria-hidden="true"
+              />
+              Available
+            </a>
+          )}
           <a
             href={LINKS.github}
             target="_blank"
@@ -139,6 +152,19 @@ export default function Navbar() {
           >
             <X size={18} />
           </button>
+          {AVAILABLE && (
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 text-[#f5f1e8]/75 text-sm font-medium motion-reduce:transition-none"
+            >
+              <span
+                className="w-2 h-2 rounded-full bg-[#f5f1e8] ring-1 ring-[#d8b87a] ring-offset-1 ring-offset-transparent shrink-0"
+                aria-hidden="true"
+              />
+              Available for work
+            </a>
+          )}
           {NAV.map((l) => (
             <a
               key={l.href}

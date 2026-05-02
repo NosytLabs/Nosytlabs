@@ -3,15 +3,15 @@ import Reveal from "./Reveal";
 const PILLARS = [
   {
     n: "01",
-    label: "Agents",
-    title: "Agents that do work.",
-    body: "AI agents like OpenClaw Droid — an OpenClaw gateway tuned to run inside Termux on Android. Useful first, clever second.",
+    label: "Sites & Agents",
+    title: "Sites, apps, and agents.",
+    body: "The studio takes on small sites, focused web apps, and AI agents like OpenClaw Droid — an OpenClaw gateway built to run inside Termux on Android. Useful first, clever second.",
   },
   {
     n: "02",
-    label: "MCP & Skills",
-    title: "MCP servers, free.",
-    body: "Open-source MCP servers for image generation and text-to-speech, plus clean SKILL.md files like the Presearch search skill. No API keys needed for the basics.",
+    label: "MCP & Tooling",
+    title: "MCP servers and tools.",
+    body: "Open-source MCP servers for image generation and text-to-speech, plus clean SKILL.md files like the Presearch search skill. Custom tooling built to scope — no API keys needed for the basics.",
   },
   {
     n: "03",
@@ -38,10 +38,11 @@ export default function About() {
 
         <Reveal delay={0.1}>
           <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] leading-[1.05] tracking-tight max-w-5xl">
-            Nosyt is a{" "}
+            Nosytlabs is a{" "}
             <span className="text-italic-serif text-[#d8b87a]">one-person studio</span>{" "}
-            for AI agents, open tooling, and{" "}
-            <span className="text-italic-serif text-[#d8b87a]">side projects</span>.
+            you can{" "}
+            <span className="text-italic-serif text-[#d8b87a]">hire</span>{" "}
+            for sites, agents, and open tooling.
           </h2>
         </Reveal>
 
@@ -49,15 +50,14 @@ export default function About() {
           <div className="mt-12 grid md:grid-cols-[2fr_1fr] gap-10 md:gap-16 items-end">
             <p className="max-w-2xl text-[#f5f1e8]/85 text-base md:text-lg leading-relaxed">
               Nosytlabs was registered as Nosyt&nbsp;LLC in early 2025.
-              One person, one desk, no investors. The output is on GitHub:
-              AI agents, MCP servers, a browser game in progress, the odd
-              experiment. Music gets released under the same name when a
-              track is ready.
+              One person, one desk, no investors. Available for focused
+              work — sites, web apps, AI agents, MCP servers, custom
+              tooling. The full output is on GitHub.
             </p>
             <dl className="grid grid-cols-2 gap-x-6 gap-y-5 md:border-l md:border-[#f5f1e8]/10 md:pl-10">
               <Fact k="Founded" v="2025" />
               <Fact k="Studio" v="Nosytlabs" />
-              <Fact k="Mode" v="Independent" />
+              <Fact k="Status" v="Available" />
               <Fact k="License" v="Mostly OSS" />
             </dl>
           </div>

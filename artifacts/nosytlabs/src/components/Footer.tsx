@@ -37,8 +37,8 @@ export default function Footer() {
               <span className="font-semibold text-[15px] tracking-tight">Nosytlabs</span>
             </div>
             <p className="text-[#f5f1e8]/65 text-sm max-w-xs leading-relaxed">
-              Independent studio building AI agents, MCP servers, and
-              developer tools. Founded 2025.
+              A one-person US studio available for sites, web apps, AI
+              agents, and developer tooling. Founded 2025.
             </p>
           </div>
 
@@ -48,6 +48,7 @@ export default function Footer() {
             </div>
             <ul className="space-y-2.5 text-[#f5f1e8]/85 text-sm">
               <li><a href="#about" className="hover:text-[#d8b87a] transition-colors">About</a></li>
+              <li><a href="#opportunities" className="hover:text-[#d8b87a] transition-colors">Work with us</a></li>
               <li><a href="#projects" className="hover:text-[#d8b87a] transition-colors">Projects</a></li>
               <li><a href="#manifesto" className="hover:text-[#d8b87a] transition-colors">Manifesto</a></li>
               <li><a href="#sound" className="hover:text-[#d8b87a] transition-colors">Music side project</a></li>

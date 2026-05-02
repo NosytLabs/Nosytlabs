@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Github, Mail } from "lucide-react";
 import Reveal from "./Reveal";
 import { LINKS } from "@/lib/links";
@@ -6,14 +6,12 @@ import { track } from "@/lib/analytics";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-/** See Hero.tsx friendlyFormError — single neutral fallback for the contact
- *  form. We deliberately don't branch on backend reasons (captcha, rate
- *  limit, activation, spam score) — exposing those reads as a broken site. */
 function friendlyContactError(_raw: string | null | undefined): string {
   return "Couldn't deliver your note right now. Please email hi@nosytlabs.com directly — it lands in the same inbox.";
 }
 
 const TOPICS = [
+  { v: "hire", l: "Hire the studio" },
   { v: "collab", l: "Collaboration" },
   { v: "consult", l: "Consulting" },
   { v: "press", l: "Press / interview" },
@@ -23,14 +21,20 @@ const TOPICS = [
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [topic, setTopic] = useState<(typeof TOPICS)[number]["v"]>("collab");
+  const [topic, setTopic] = useState<(typeof TOPICS)[number]["v"]>("hire");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
-  // Honeypot — invisible to humans. Bots that auto-fill every field will
-  // populate this and get silently dropped. formsubmit also drops any
-  // submission with `_honey` set on its end (defense in depth).
   const [hp, setHp] = useState("");
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail === "hire") setTopic("hire");
+    };
+    window.addEventListener("set-contact-topic", handler);
+    return () => window.removeEventListener("set-contact-topic", handler);
+  }, []);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -44,12 +48,11 @@ export default function Contact() {
       setError("A short message helps us know what to reply to.");
       return;
     }
-    // Honeypot trip — silently fake success so the bot moves on, never POST.
     if (hp) {
       track("contact_honeypot", { topic });
       setStatus("sent");
-      setName(""); setEmail(""); setMessage(""); setTopic("collab");
-      setHp(""); // reset so an autofill mishap can't permanently lock the form
+      setName(""); setEmail(""); setMessage(""); setTopic("hire");
+      setHp("");
       setTimeout(() => setStatus("idle"), 5000);
       return;
     }
@@ -64,11 +67,6 @@ export default function Contact() {
       message,
       _subject: `[Nosytlabs · ${topicLabel}] ${name || "Hello"}`,
       _template: "table",
-      // formsubmit's captcha challenge would redirect the visitor away to
-      // a formsubmit-hosted page after submit — we never want that. The
-      // visible-honeypot-only approach has worked cleanly on the hero form
-      // since activation; mirror it here so contact submissions don't
-      // bounce to a third-party challenge page.
       _captcha: "false",
       _honey: "",
       _autoresponse:
@@ -83,24 +81,16 @@ export default function Contact() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload),
       });
-      // formsubmit returns 200 with { success: "true" | "false", message }
-      // even when the submission was rejected (rate-limited, captcha required,
-      // etc.), so we have to inspect the body — not just res.ok.
       const data = await res.json().catch(() => ({} as { success?: string; message?: string }));
       const ok = res.ok && String(data.success).toLowerCase() === "true";
       if (!ok) {
-        // Don't surface raw third-party error strings ("This form needs
-        // Activation…", captcha reasons, etc.) to the visitor — they read
-        // as a broken site. Map to a friendly fallback that points at the
-        // direct mailto.
         throw new Error(friendlyContactError(data.message));
       }
       setStatus("sent");
-      setName(""); setEmail(""); setMessage(""); setTopic("collab");
+      setName(""); setEmail(""); setMessage(""); setTopic("hire");
       track("contact_success", { topic });
       setTimeout(() => setStatus("idle"), 5000);
     } catch (err) {
-      // Stay in-page on failure — never hijack the visitor to their mail client.
       track("contact_error", { topic });
       setError(err instanceof Error ? friendlyContactError(err.message) : "Something went wrong. Please email hi@nosytlabs.com directly.");
       setStatus("error");
@@ -121,18 +111,18 @@ export default function Contact() {
           <Reveal x={-20}>
             <div>
               <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-6">
-                07 — Get in touch
+                08 — Get in touch
               </div>
               <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight leading-[1.05]">
-                Have an idea?{" "}
+                Have a project?{" "}
                 <span className="text-italic-serif text-[#d8b87a]">
-                  Drop a line.
+                  Let&rsquo;s talk.
                 </span>
               </h2>
               <p className="mt-7 text-[#f5f1e8]/80 text-base md:text-lg leading-relaxed max-w-md">
-                Working on something in agents, MCP, or developer tooling?
-                Open an issue on a repo, or send a note. A real person
-                replies.
+                Bring a real problem. Sites, agents, MCP servers, custom
+                tooling — if it fits what the studio does, a real person
+                replies with an honest take.
               </p>
               <div className="mt-8 space-y-3">
                 <a
@@ -163,8 +153,6 @@ export default function Contact() {
               aria-describedby={error ? "contact-error" : undefined}
               noValidate
             >
-              {/* Honeypot — visually hidden, off the tab order, and ignored by AT.
-                  Real visitors never touch it; spam bots almost always do. */}
               <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
                 <label>
                   Leave this field empty
@@ -237,7 +225,7 @@ export default function Contact() {
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="What's on your mind?"
+                  placeholder="Tell me about your project — scope, timeline, what you're trying to build."
                   className="w-full bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/40 text-sm border-b border-[#f5f1e8]/15 py-2 focus:border-[#d8b87a]/60 transition-colors resize-none"
                 />
               </Field>

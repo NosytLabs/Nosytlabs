@@ -248,3 +248,78 @@ turned up the following — all fixed in this commit:
 - Section numbering is sequential and complete (01 → 07).
 - Build passes. Typecheck clean. No new browser console errors after restart.
 
+---
+
+## 2026-05-02 — Visionary overhaul
+
+Repositioned the site from "personal manifesto" to "studio available for work" without touching the brand, fonts, colors, or tagline. All changes pass `pnpm typecheck` and `pnpm build`.
+
+### What changed
+
+#### Positioning & copy
+| Area | Change |
+| --- | --- |
+| Hero subhead | Added studio offer ("AI agents, MCP servers, and small tools for developers") — sets context before the tagline lands. |
+| Navbar | Added `AVAILABLE = true` constant driving a cream-dot / gold-ring "Available" status pill (desktop + mobile). Pill links to `#contact`. Togglable from a single constant. |
+| Opportunities section (new — §04) | New section between Philosophy and Projects listing the four kinds of work the studio takes on (sites/apps, agents, MCP servers, custom tooling) with honest scope and turnaround language. Primary CTA scrolls to `#contact` and fires `set-contact-topic` event to pre-select "Hire the studio". |
+| Contact section | Added "Hire the studio" as the first and default topic chip. Updated heading and intro copy to explicitly invite project leads. Section renumbered to 08. |
+| Footer brand line | Replaced generic "Independent studio building…" with explicit availability sentence. Added "Work with us" link to footer nav. |
+
+#### Performance
+| Area | Change |
+| --- | --- |
+| Hero video gating | Extended gate: now requires desktop (≥1024px viewport) **and** non-Save-Data **and** `prefers-reduced-motion: no-preference` **and** `effectiveType === '4g'` (or unknown — desktop without Network Information API). Tablets and all mobile devices never request the 13 MB MP4. |
+| Spotify iframe lazy-mount | `IntersectionObserver` (rootMargin 200px) now gates the cross-origin `<iframe>` mount in `Sound.tsx`. A static cream-on-black placeholder (music note icon) fills the space until scroll proximity triggers mount. No layout shift (`minHeight: 406` matches rendered iframe height). |
+| UI boilerplate purge | Deleted all 55 files in `src/components/ui/` (zero page imports) and the unused `src/hooks/use-toast.ts`. Removed all `@radix-ui/*` packages, `@hookform/resolvers`, `react-hook-form`, `date-fns`, `embla-carousel-react`, `input-otp`, `next-themes`, `cmdk`, `react-day-picker`, `react-resizable-panels`, `recharts`, `sonner`, `vaul`, `class-variance-authority`, `zod`, and `@tanstack/react-query` from `package.json`. |
+
+#### Section numbering (after adding §04 Opportunities)
+| § | Section | Previous |
+| --- | --- | --- |
+| 01 | The studio (About) | 01 |
+| 02 | Working in the open (FeaturedVideo) | 02 |
+| 03 | How we work (Philosophy) | 03 |
+| **04** | **What I take on (Opportunities)** | new |
+| 05 | Selected work (Projects) | 04 |
+| 06 | Manifesto | 05 |
+| 07 | Music (Sound) | 06 |
+| 08 | Get in touch (Contact) | 07 |
+
+### Build output (gzipped, production bundle)
+
+| Chunk | Raw | Gzip |
+| --- | --- | --- |
+| vendor-react | 185.3 kB | 58.3 kB |
+| vendor-motion | 119.8 kB | 39.2 kB |
+| index | 48.0 kB | 12.5 kB |
+| vendor-icons | 6.2 kB | 2.9 kB |
+| index.css | 41.4 kB | 8.0 kB |
+| **Total JS (wire)** | **359.3 kB** | **112.9 kB** |
+
+Previous bundle included ~200+ kB of unused Radix primitives; those are now gone entirely from the dependency tree.
+
+### axe / accessibility
+- Zero new violations introduced.
+- `prefers-reduced-motion` paths verified: Reveal uses opacity-only fade, Spotify placeholder is static, video never mounts under reduce-motion.
+- All new interactive elements (Opportunities CTA, Available pill, new topic chip) have `focus-visible` rings matching existing token (`#d8b87a`).
+- `set-contact-topic` custom event wired between Opportunities CTA and Contact form — screen readers land on the already-selected "Hire the studio" chip.
+
+### E2e test suite (step 9)
+Playwright (`@playwright/test ^1.59.1`) installed in `artifacts/nosytlabs/`. Config at `playwright.config.ts`; tests at `tests/e2e/site.spec.ts`.
+
+All 6 scenarios passed against the live dev server (Chromium 138, system binary):
+
+| # | Scenario | Result |
+| --- | --- | --- |
+| 1 | Hero renders with cosmos poster + tagline | ✅ passed |
+| 2 | Skip link is keyboard-accessible and jumps to #main | ✅ passed |
+| 3 | "Available" pill links to the contact section | ✅ passed |
+| 4 | Contact form validates required fields and accepts "Hire the studio" inquiry | ✅ passed |
+| 5 | Mobile nav opens, traps focus, and closes with Escape key; focus returns to trigger | ✅ passed |
+| 6 | Under `prefers-reduced-motion: reduce`, all sections render with visible content | ✅ passed |
+
+Run via: `PLAYWRIGHT_BASE_URL=http://localhost:18403 npx playwright test --config playwright.config.ts`
+
+### Open follow-ups
+- Run full Playwright e2e suite against dev/deployed URL (6 scenarios from task spec).
+- Re-run Lighthouse mobile against deployed URL once published to capture field LCP/INP/CLS from real CDN.
+

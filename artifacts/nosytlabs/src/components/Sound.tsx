@@ -1,7 +1,27 @@
+import { useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal";
 import { LINKS } from "@/lib/links";
 
 export default function Sound() {
+  const placeholderRef = useRef<HTMLDivElement>(null);
+  const [iframeMounted, setIframeMounted] = useState(false);
+
+  useEffect(() => {
+    const el = placeholderRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIframeMounted(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
       id="sound"
@@ -12,7 +32,7 @@ export default function Sound() {
           <Reveal x={-20}>
             <div>
               <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-6">
-                06 — Music
+                07 — Music
               </div>
               <h2 className="text-serif text-5xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight leading-[1.05]">
                 There&rsquo;s also a{" "}
@@ -48,17 +68,34 @@ export default function Sound() {
           </Reveal>
 
           <Reveal x={20}>
-            <div className="liquid-glass-strong rounded-[28px] p-3 md:p-4">
-              <iframe
-                title="Nosyt on Spotify"
-                src={LINKS.spotifyEmbed}
-                width="100%"
-                height="380"
-                frameBorder={0}
-                style={{ borderRadius: 20, background: "transparent" }}
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-              />
+            <div ref={placeholderRef} className="liquid-glass-strong rounded-[28px] p-3 md:p-4" style={{ minHeight: 406 }}>
+              {iframeMounted ? (
+                <iframe
+                  title="Nosyt on Spotify"
+                  src={LINKS.spotifyEmbed}
+                  width="100%"
+                  height="380"
+                  frameBorder={0}
+                  style={{ borderRadius: 20, background: "transparent" }}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                />
+              ) : (
+                <div
+                  className="flex flex-col items-center justify-center gap-4 rounded-[20px] bg-[#f5f1e8]/[0.03] text-center"
+                  style={{ height: 380 }}
+                  aria-hidden="true"
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#f5f1e8]/10 flex items-center justify-center">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-[#f5f1e8]/40">
+                      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                    </svg>
+                  </div>
+                  <div className="text-mono text-[#f5f1e8]/40 text-[11px] tracking-[0.22em] uppercase">
+                    Nosyt on Spotify
+                  </div>
+                </div>
+              )}
             </div>
           </Reveal>
         </div>
