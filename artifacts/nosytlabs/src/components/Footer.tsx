@@ -36,9 +36,9 @@ export default function Footer() {
               <span className="font-semibold text-[15px] tracking-tight">Nosytlabs</span>
             </div>
             <p className="text-[#f5f1e8]/65 text-sm max-w-xs leading-relaxed">
-              Independent US studio engineering AI agents, MCP servers,
-              web apps, and the developer tooling teams actually depend
-              on. Open source by default. Founded 2025.
+              Independent US studio building AI agents, MCP servers, and
+              small, fast web apps for founders and teams. Open source
+              by default. Founded 2025.
             </p>
           </div>
 

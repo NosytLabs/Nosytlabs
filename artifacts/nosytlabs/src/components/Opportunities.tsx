@@ -46,10 +46,10 @@ export default function Opportunities() {
               for work.
             </h2>
             <p className="mt-7 text-[#f5f1e8]/80 text-base md:text-lg leading-relaxed max-w-md">
-              Independent studio, deliberately selective. We take on
-              concrete problems that benefit from focused engineering —
-              not platforms that sprawl. If you have a real one, let&rsquo;s
-              see if it&rsquo;s a fit.
+              Independent US studio, deliberately selective. We take on
+              concrete problems for founders and teams — focused
+              engineering, fixed scope, code you own. If you have a real
+              project, let&rsquo;s see if it&rsquo;s a fit.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a

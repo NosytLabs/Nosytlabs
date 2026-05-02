@@ -1,6 +1,6 @@
 # Nosytlabs
 
-> Nosytlabs is an independent studio engineering open-source AI agents, Model Context Protocol (MCP) servers, web apps, and the developer tooling teams actually depend on. Built in the open since 2025. Tagline: "Notable opportunities shape your tomorrow."
+> Nosytlabs is a US-based independent studio building AI agents, Model Context Protocol (MCP) servers, and small, fast web apps for founders and teams. Open source by default. Available for hire — fixed scope, 2–6 week turnaround, code transferred to client repo on completion. Built in the open since 2025. Tagline: "Notable opportunities shape your tomorrow."
 
 Most of the work lives at https://github.com/NosytLabs. Email replies are personal — hi@nosytlabs.com.
 

@@ -215,15 +215,14 @@ export default function Hero() {
         </h1>
 
         <p className="mt-8 max-w-xl text-[#f5f1e8]/85 text-base sm:text-lg leading-relaxed animate-fade-rise-d2">
-          An independent studio engineering the next generation of
-          developer infrastructure — AI agents, MCP servers, web apps,
-          and the custom tooling teams actually depend on. Open source
-          by default.{" "}
+          An independent US studio building practical AI agents, MCP
+          servers, and small, fast web apps — for founders, teams, and
+          fellow builders. Fixed scope, honest timelines, code you own.{" "}
           <a
             href="/services/"
             className="underline underline-offset-4 decoration-[#d8b87a]/50 hover:decoration-[#d8b87a] text-[#f5f1e8] transition-colors"
           >
-            Currently taking new work
+            Available for new work
           </a>
           .
         </p>

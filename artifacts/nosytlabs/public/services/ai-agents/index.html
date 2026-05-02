@@ -110,6 +110,19 @@
       ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://nosytlabs.com/services/ai-agents/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Will it use OpenAI / Anthropic / Google?", "acceptedAnswer": { "@type": "Answer", "text": "Whatever fits the job. The studio has no allegiance — Claude for long context and careful reasoning, GPT-4 class for tool use, smaller open models for privacy-sensitive work. We recommend the cheapest model that holds the eval, not the flashiest." } },
+        { "@type": "Question", "name": "What about hallucinations?", "acceptedAnswer": { "@type": "Answer", "text": "Hallucinations are a scoping problem more often than a model problem. Agents constrained to call a verified tool (search, database, calculator) instead of generating a fact freehand hallucinate dramatically less. We design the constraints in." } },
+        { "@type": "Question", "name": "Cost to operate?", "acceptedAnswer": { "@type": "Answer", "text": "Estimated up-front based on your expected throughput. Most agents we build run for cents to dollars per task. If your workload would make the model bill bigger than the engineering bill, we say so on the first call." } },
+        { "@type": "Question", "name": "Code ownership?", "acceptedAnswer": { "@type": "Answer", "text": "You own it. Repository is transferred to your GitHub org. Generic, reusable pieces (a clean SKILL.md, a logging helper) often get extracted into open-source repos with your permission — that part is optional." } }
+      ]
+    }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#svc-main">Skip to main content</a>

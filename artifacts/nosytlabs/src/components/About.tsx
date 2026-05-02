@@ -40,21 +40,20 @@ export default function About() {
           <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] leading-[1.05] tracking-tight max-w-5xl">
             An{" "}
             <span className="text-italic-serif text-[#d8b87a]">independent studio</span>{" "}
-            engineering the{" "}
-            <span className="text-italic-serif text-[#d8b87a]">next generation</span>{" "}
-            of developer infrastructure.
+            building the small, sharp pieces of the{" "}
+            <span className="text-italic-serif text-[#d8b87a]">AI-native web</span>.
           </h2>
         </Reveal>
 
         <Reveal delay={0.2}>
           <div className="mt-12 grid md:grid-cols-[2fr_1fr] gap-10 md:gap-16 items-end">
             <p className="max-w-2xl text-[#f5f1e8]/85 text-base md:text-lg leading-relaxed">
-              Nosytlabs builds at the intersection of AI agents, Model
-              Context Protocol servers, and the focused web apps
-              developers actually reach for. Independent, shipping in the
-              open since 2025, and selective about the work we take on.
-              The catalog lives on GitHub — public commits, honest
-              READMEs, code that holds up six months later.
+              Nosytlabs is a US-based studio engineering AI agents, Model
+              Context Protocol servers, and focused web apps for founders
+              and teams who want code they own. Independent, shipping in
+              the open since 2025, and selective about the work we take
+              on. Every project lives on GitHub — public commits, honest
+              READMEs, code that still makes sense six months later.
             </p>
             <dl className="grid grid-cols-2 gap-x-6 gap-y-5 md:border-l md:border-[#f5f1e8]/10 md:pl-10">
               <Fact k="Founded" v="2025" />

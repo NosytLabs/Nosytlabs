@@ -111,6 +111,19 @@
       ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://nosytlabs.com/services/mcp-servers/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Should this be open source or private?", "acceptedAnswer": { "@type": "Answer", "text": "If the server wraps a generic API everyone uses (a public datastore, a popular SaaS), open source helps everyone and earns you reputation. If it wraps your proprietary internal API, keep it private — that is a default, not a debate. We decide together on the kickoff call." } },
+        { "@type": "Question", "name": "Can it be self-hosted?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — most MCP servers we build run as a small process on the same machine as the assistant, or as a container behind your auth. No SaaS dependency unless you specifically want one." } },
+        { "@type": "Question", "name": "Will it work with future MCP versions?", "acceptedAnswer": { "@type": "Answer", "text": "Built against the published spec, with a small adapter layer where the spec is still moving. When a breaking change lands, the upgrade is a small PR — usually within a week of the spec update." } },
+        { "@type": "Question", "name": "Cost?", "acceptedAnswer": { "@type": "Answer", "text": "A read-only server wrapping a single API, with auth and audit logs, lands in the low four figures. A team-grade server with multiple tools, write paths, and per-user delegation is meaningfully more. Quote within two business days of a one-paragraph brief." } }
+      ]
+    }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#svc-main">Skip to main content</a>
