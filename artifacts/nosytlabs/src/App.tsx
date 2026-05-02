@@ -5,7 +5,6 @@ import Philosophy from "@/components/Philosophy";
 import Opportunities from "@/components/Opportunities";
 import Projects from "@/components/Projects";
 import Manifesto from "@/components/Manifesto";
-import Sound from "@/components/Sound";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -24,7 +23,6 @@ export default function App() {
         <Opportunities />
         <Projects />
         <Manifesto />
-        <Sound />
         <Contact />
         <Footer />
       </main>

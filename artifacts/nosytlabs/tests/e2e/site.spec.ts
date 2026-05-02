@@ -112,7 +112,6 @@ test.describe("NosytLabs site — core e2e scenarios", () => {
       "#opportunities",
       "#projects",
       "#manifesto",
-      "#sound",
       "#contact",
     ];
     for (const id of sections) {

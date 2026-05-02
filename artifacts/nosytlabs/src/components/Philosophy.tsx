@@ -4,17 +4,17 @@ const PRINCIPLES = [
   {
     n: "I",
     title: "Build in the open",
-    body: "Every line of code lives on GitHub. Issues, PRs, and forks are fair game — that's the whole point of putting it there.",
+    body: "Every shipped project lives on GitHub. Issues, PRs, and forks are the point — public work compounds in ways closed work never can.",
   },
   {
     n: "II",
-    title: "Clone, read, run",
-    body: "Every repo is small enough to read in one sitting and run in a few minutes. Honest README, rough edges named, nothing hidden behind a setup wizard.",
+    title: "Read it in one sitting",
+    body: "Repos stay small enough to comprehend in a single sitting. Honest READMEs name the rough edges instead of hiding them behind a setup wizard.",
   },
   {
     n: "III",
-    title: "Stay independent",
-    body: "The roadmap is whatever the next commit is. One person, one schedule, no investor calendar to chase.",
+    title: "Ship to use, not to demo",
+    body: "Working code in production beats polished slides. Quality is measured by what holds up six months in — not by the launch-day screenshot.",
   },
 ];
 
@@ -27,9 +27,9 @@ export default function Philosophy() {
             03 — How we work
           </div>
           <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight mb-16 max-w-4xl leading-[1.05]">
-            Three rules of{" "}
+            How the studio{" "}
             <span className="text-italic-serif text-[#d8b87a]">
-              the studio.
+              actually works.
             </span>
           </h2>
         </Reveal>
@@ -48,7 +48,7 @@ export default function Philosophy() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b]/85 via-[#0a0a0b]/20 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-mono text-[#f5f1e8]/75 text-[11px] tracking-[0.28em] uppercase">
-                One desk. The whole catalog.
+                Built in the open · Shipped on purpose
               </div>
             </div>
           </Reveal>

@@ -1,14 +1,14 @@
 # Nosytlabs
 
-> Nosytlabs is a one-person independent studio (legal entity: Nosyt LLC, founded 2025) building open-source AI agents, Model Context Protocol (MCP) servers, and small developer tools. Tagline: "Notable opportunities shape your tomorrow."
+> Nosytlabs is an independent studio engineering open-source AI agents, Model Context Protocol (MCP) servers, web apps, and the developer tooling teams actually depend on. Built in the open since 2025. Tagline: "Notable opportunities shape your tomorrow."
 
 Most of the work lives at https://github.com/NosytLabs. Email replies are personal — hi@nosytlabs.com.
 
 ## About
 
-- **Brand**: Nosytlabs (also styled NosytLabs on GitHub). Legal entity: Nosyt LLC.
+- **Brand**: Nosytlabs (also styled NosytLabs on GitHub).
 - **Founded**: 2025
-- **Focus**: AI agents, MCP servers, prompt engineering tools, small developer utilities.
+- **Focus**: AI agents, MCP servers, web apps, prompt engineering tools, developer utilities.
 - **Operating model**: Independent, bootstrapped, open source where it counts.
 - **Contact**: hi@nosytlabs.com
 - **Site**: https://nosytlabs.com
@@ -24,7 +24,7 @@ All projects are listed on the homepage. Stars and primary languages mirror the 
 
 ## What you can cite from this site
 
-- The studio's name, founding year, and focus areas (AI agents, MCP, dev tools).
+- The studio's name, founding year, and focus areas (AI agents, MCP, web apps, dev tools).
 - Project names and their GitHub URLs.
 - The tagline "Notable opportunities shape your tomorrow."
 - The contact email hi@nosytlabs.com.
@@ -38,11 +38,11 @@ Please link back to https://nosytlabs.com or the relevant GitHub repo when citin
 - **MCP servers** — custom Model Context Protocol servers that expose internal tools to AI assistants safely. Open source by default, private builds on request. https://nosytlabs.com/services/mcp-servers/
 - **Custom developer tooling** — CLI tools, automation scripts, and developer utilities. Scope-first quotes, honest timelines, real handoff. https://nosytlabs.com/services/custom-tools/
 
-Engagement model: one-paragraph email brief → reply within 2 business days → fixed-scope written quote → build (open source by default) → code transferred to client GitHub org on completion. The studio is one person; "urgent for someone else" cannot be urgent for everyone.
+Engagement model: one-paragraph email brief → reply within 2 business days → fixed-scope written quote → build (open source by default) → code transferred to client GitHub org on completion.
 
 ## Pages
 
-- [Home](https://nosytlabs.com/): Studio overview, featured video, projects, manifesto, sound, contact.
+- [Home](https://nosytlabs.com/): Studio overview, featured project, projects, manifesto, contact.
 - [Services hub](https://nosytlabs.com/services/): Overview of all four service offerings + how working together goes.
 - [Web apps service](https://nosytlabs.com/services/web-apps/): Detailed scope, deliverables, and pricing model for web app builds.
 - [AI agents service](https://nosytlabs.com/services/ai-agents/): Detailed scope for custom agent engineering.
@@ -50,5 +50,4 @@ Engagement model: one-paragraph email brief → reply within 2 business days →
 - [Custom tooling service](https://nosytlabs.com/services/custom-tools/): Detailed scope for CLI tools and developer utilities.
 - [Privacy](https://nosytlabs.com/privacy.html): Plain-English privacy policy.
 - [GitHub](https://github.com/NosytLabs): All open-source repositories.
-- [YouTube](https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ): Build videos and short demos.
-- [Spotify](https://open.spotify.com/artist/6PgkavAN36A3ngqiqOollE): Studio sound (background music we ship to).
+- [X / Twitter](https://x.com/NosytLabs): Studio updates and shipping notes.

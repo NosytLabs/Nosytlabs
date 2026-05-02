@@ -1,5 +1,4 @@
-import { Github, Youtube, Twitter } from "lucide-react";
-import { SiSpotify } from "react-icons/si";
+import { Github, Twitter } from "lucide-react";
 import Logo from "./Logo";
 import Reveal from "./Reveal";
 import { LINKS } from "@/lib/links";
@@ -37,8 +36,9 @@ export default function Footer() {
               <span className="font-semibold text-[15px] tracking-tight">Nosytlabs</span>
             </div>
             <p className="text-[#f5f1e8]/65 text-sm max-w-xs leading-relaxed">
-              A one-person US studio available for sites, web apps, AI
-              agents, and developer tooling. Founded 2025.
+              Independent US studio engineering AI agents, MCP servers,
+              web apps, and the developer tooling teams actually depend
+              on. Open source by default. Founded 2025.
             </p>
           </div>
 
@@ -64,7 +64,6 @@ export default function Footer() {
               <li><a href="#opportunities" className="hover:text-[#d8b87a] transition-colors">Work with us</a></li>
               <li><a href="#projects" className="hover:text-[#d8b87a] transition-colors">Projects</a></li>
               <li><a href="#manifesto" className="hover:text-[#d8b87a] transition-colors">Manifesto</a></li>
-              <li><a href="#sound" className="hover:text-[#d8b87a] transition-colors">Music side project</a></li>
               <li><a href="#contact" className="hover:text-[#d8b87a] transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -75,9 +74,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-wrap gap-2.5">
               <FootIcon href={LINKS.github} label="GitHub"><Github size={16} /></FootIcon>
-              <FootIcon href={LINKS.youtube} label="YouTube"><Youtube size={16} /></FootIcon>
               <FootIcon href={LINKS.x} label="X"><Twitter size={16} /></FootIcon>
-              <FootIcon href={LINKS.spotify} label="Spotify"><SiSpotify size={16} aria-hidden="true" /></FootIcon>
             </div>
             <a href={LINKS.email} className="mt-4 inline-block text-mono text-[#f5f1e8]/65 hover:text-[#d8b87a] text-xs">
               {LINKS.emailRaw}
@@ -86,7 +83,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 pt-6 border-t border-[#f5f1e8]/10 flex flex-col md:flex-row items-center justify-between gap-3 text-mono text-[#f5f1e8]/55 text-[11px] tracking-wider">
-          <div>© {year} Nosyt&nbsp;LLC · All rights reserved</div>
+          <div>© {year} Nosytlabs · All rights reserved</div>
           <div className="flex items-center gap-5">
             <a href={LINKS.privacy} className="hover:text-[#d8b87a] transition-colors">
               Privacy

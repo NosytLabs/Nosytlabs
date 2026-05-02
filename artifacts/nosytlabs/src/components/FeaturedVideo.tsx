@@ -26,7 +26,7 @@ export default function FeaturedVideo() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0b]/55 via-transparent to-transparent" />
               <div className="absolute inset-0 flex flex-col justify-end p-7 md:p-10">
                 <div className="text-mono text-[#f5f1e8]/70 text-[11px] tracking-[0.3em] uppercase mb-3">
-                  From the desk
+                  Public by design
                 </div>
                 <p className="text-serif text-2xl sm:text-3xl md:text-4xl text-[#f5f1e8] leading-[1.15] tracking-tight max-w-md">
                   Code, commits, and{" "}
@@ -41,7 +41,7 @@ export default function FeaturedVideo() {
             {/* Right: text + CTAs */}
             <div className="flex flex-col justify-center md:pl-4">
               <p className="text-serif text-3xl sm:text-4xl md:text-5xl text-[#f5f1e8] leading-[1.12] tracking-tight">
-                Every project lives on{" "}
+                Every shipped project lives on{" "}
                 <a
                   href={LINKS.github}
                   target="_blank"
@@ -50,20 +50,12 @@ export default function FeaturedVideo() {
                 >
                   GitHub
                 </a>
-                . Most get a walkthrough on{" "}
-                <a
-                  href={LINKS.youtube}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-italic-serif text-[#d8b87a] hover:underline underline-offset-8 decoration-[#d8b87a]/40"
-                >
-                  YouTube
-                </a>
                 .
               </p>
               <p className="mt-7 text-[#f5f1e8]/75 text-[15px] leading-relaxed max-w-md">
-                Read the source. File issues. Fork anything useful.
-                That&rsquo;s why it&rsquo;s there.
+                Source, issues, and the architectural decisions behind
+                each project — all public. Read it. Fork it. File an
+                issue. Open work compounds in ways closed work cannot.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
@@ -75,12 +67,10 @@ export default function FeaturedVideo() {
                   Browse the code →
                 </a>
                 <a
-                  href={LINKS.youtube}
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#projects"
                   className="liquid-glass rounded-full px-6 py-3 text-[#f5f1e8] text-sm font-medium hover:bg-white/[0.05] transition"
                 >
-                  Watch on YouTube →
+                  See featured projects →
                 </a>
               </div>
             </div>

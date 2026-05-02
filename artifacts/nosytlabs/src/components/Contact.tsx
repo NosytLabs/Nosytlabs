@@ -225,7 +225,7 @@ export default function Contact() {
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Tell me about your project — scope, timeline, what you're trying to build."
+                  placeholder="Tell us about your project — scope, timeline, what you're trying to build."
                   className="w-full bg-transparent outline-none text-[#f5f1e8] placeholder:text-[#f5f1e8]/40 text-sm border-b border-[#f5f1e8]/15 py-2 focus:border-[#d8b87a]/60 transition-colors resize-none"
                 />
               </Field>

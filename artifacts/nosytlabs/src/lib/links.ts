@@ -1,10 +1,6 @@
 export const LINKS = {
   github: "https://github.com/NosytLabs",
-  youtube: "https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ",
   x: "https://x.com/NosytLabs",
-  spotify: "https://open.spotify.com/artist/6PgkavAN36A3ngqiqOollE",
-  spotifyEmbed:
-    "https://open.spotify.com/embed/artist/6PgkavAN36A3ngqiqOollE?utm_source=generator&theme=0",
   email: "mailto:hi@nosytlabs.com",
   emailRaw: "hi@nosytlabs.com",
   privacy: "/privacy.html",

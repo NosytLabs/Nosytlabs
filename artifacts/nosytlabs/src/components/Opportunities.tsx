@@ -34,7 +34,7 @@ export default function Opportunities() {
       <div className="max-w-6xl mx-auto relative">
         <Reveal>
           <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-6">
-            04 — What I take on
+            04 — What we take on
           </div>
         </Reveal>
 
@@ -46,9 +46,10 @@ export default function Opportunities() {
               for work.
             </h2>
             <p className="mt-7 text-[#f5f1e8]/80 text-base md:text-lg leading-relaxed max-w-md">
-              One-person studio. Selective about projects — useful things
-              that ship, not platforms that sprawl. If you have a concrete
-              problem, let&rsquo;s see if it&rsquo;s a fit.
+              Independent studio, deliberately selective. We take on
+              concrete problems that benefit from focused engineering —
+              not platforms that sprawl. If you have a real one, let&rsquo;s
+              see if it&rsquo;s a fit.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -74,7 +75,7 @@ export default function Opportunities() {
             </div>
             <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 md:border-t md:border-[#f5f1e8]/10 md:pt-8">
               <Fact k="Turnaround" v="2–6 weeks" />
-              <Fact k="Team size" v="One person" />
+              <Fact k="Engagement" v="Independent" />
               <Fact k="Format" v="Fixed scope" />
               <Fact k="Location" v="Remote, US" />
             </div>

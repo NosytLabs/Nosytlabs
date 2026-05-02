@@ -13,21 +13,27 @@
 | Navbar / app icon | **Nosyt** |
 | Body copy, headlines, social bios | **Nosytlabs** |
 | GitHub org URL | **NosytLabs** (legacy capitalization, do not change) |
-| Legal / footer copyright only | **Nosyt LLC** |
+| Legal / footer copyright only | **Nosytlabs** |
 
-The studio is a US LLC, founded **2025**.
+The studio is an independent US studio, founded **2025**. There is no
+registered legal entity called "Nosyt LLC" — never use that name.
 
 ## 2. Voice
 
-- **Plain, honest, modest.** One person. Small studio.
-- **Don't lead with the negatives.** A single, factual "no investors"
-  in a Philosophy line is fine. Stacked triads ("No funding, no
-  investor deck, no growth team, no roadmap deck") read as bragging-
-  by-omission and are banned. If a paragraph starts to define the
-  studio by what it *isn't*, rewrite it around what it *is*.
-- **Drop corporate jargon.** No "roadmap theater," no "build in public,"
-  no "ship for builders" stacks of three. Say the thing.
+- **Plain, honest, substantial.** Independent studio. Engineered work.
+- **Never reveal team size.** Do not say "one person", "one desk",
+  "one inbox", "one bet", "small team", or any variant. The studio
+  presents as a substantial independent studio at all times. Use "we"
+  and "the studio", not "I".
+- **Don't lead with the negatives.** Stacked triads ("No funding, no
+  investor deck, no growth team") read as bragging-by-omission and are
+  banned. If a paragraph starts to define the studio by what it *isn't*,
+  rewrite it around what it *is*.
+- **Drop corporate jargon.** No "roadmap theater," no "ship for builders"
+  stacks of three. Say the thing.
 - **GitHub-first.** Every project lives in the open. Link to it.
+- **No music, no Spotify, no YouTube references.** The studio ships
+  software. Side-channel media is not part of the brand surface.
 - **Tagline appears exactly twice in visible page copy** — Hero H1 and
   the closing Manifesto line. It belongs in metadata fields too
   (Schema.org `slogan`, `og:image:alt`, sitemap, llms.txt) and that's
@@ -120,9 +126,7 @@ Section H2s sit between `4xl` and `7xl`. Body copy stays at 16–18px.
 | Channel | URL |
 | --- | --- |
 | GitHub | https://github.com/NosytLabs |
-| YouTube | https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ ("NOSYT") |
 | X (Twitter) | https://x.com/NosytLabs |
-| Spotify | https://open.spotify.com/artist/6PgkavAN36A3ngqiqOollE ("NOSYT", small) |
 | Email | hi@nosytlabs.com |
 | Subscribe form | https://formsubmit.co/ajax/hi@nosytlabs.com (must stay activated — see ops note below) |
 

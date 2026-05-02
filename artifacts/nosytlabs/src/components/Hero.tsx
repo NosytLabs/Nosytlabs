@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Github, Youtube, Twitter } from "lucide-react";
-import { SiSpotify } from "react-icons/si";
+import { ArrowRight, Github, Twitter } from "lucide-react";
 import Navbar from "./Navbar";
 import { LINKS } from "@/lib/links";
 import { track } from "@/lib/analytics";
@@ -216,9 +215,10 @@ export default function Hero() {
         </h1>
 
         <p className="mt-8 max-w-xl text-[#f5f1e8]/85 text-base sm:text-lg leading-relaxed animate-fade-rise-d2">
-          An independent studio building the small, sharp tools developers
-          reach for next — AI agents, MCP servers, web apps, custom code.
-          Open source by default.{" "}
+          An independent studio engineering the next generation of
+          developer infrastructure — AI agents, MCP servers, web apps,
+          and the custom tooling teams actually depend on. Open source
+          by default.{" "}
           <a
             href="/services/"
             className="underline underline-offset-4 decoration-[#d8b87a]/50 hover:decoration-[#d8b87a] text-[#f5f1e8] transition-colors"
@@ -302,9 +302,7 @@ export default function Hero() {
 
         <div className="mt-10 flex items-center gap-2.5 animate-fade-rise-d4">
           <Pill href={LINKS.github} label="GitHub"><Github size={16} /></Pill>
-          <Pill href={LINKS.youtube} label="YouTube"><Youtube size={16} /></Pill>
           <Pill href={LINKS.x} label="X"><Twitter size={16} /></Pill>
-          <Pill href={LINKS.spotify} label="Spotify"><SiSpotify size={16} aria-hidden="true" /></Pill>
         </div>
       </div>
 

@@ -1,6 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0a0a0b"/>
-  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#f5f1e8" stroke-opacity="0.18"/>
-  <text x="18" y="48" font-family="'Instrument Serif', 'Times New Roman', Georgia, serif" font-size="44" font-style="italic" font-weight="400" fill="#f5f1e8">n</text>
-  <circle cx="48" cy="46" r="3.2" fill="#d8b87a"/>
+  <defs>
+    <radialGradient id="nl-tile" cx="35%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#1a1a22"/>
+      <stop offset="55%" stop-color="#0e0e12"/>
+      <stop offset="100%" stop-color="#06060a"/>
+    </radialGradient>
+    <linearGradient id="nl-n" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbf6e8"/>
+      <stop offset="100%" stop-color="#d8d2c2"/>
+    </linearGradient>
+    <radialGradient id="nl-dot-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0c878" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#nl-tile)"/>
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.25" fill="none" stroke="#f5f1e8" stroke-opacity="0.22"/>
+  <rect x="2.5" y="2.5" width="59" height="59" rx="11.5" fill="none" stroke="#f5f1e8" stroke-opacity="0.05"/>
+  <text x="17" y="49" font-family="'Instrument Serif', 'Times New Roman', Georgia, serif" font-size="46" font-style="italic" font-weight="400" fill="url(#nl-n)">n</text>
+  <circle cx="49" cy="47" r="8" fill="url(#nl-dot-glow)"/>
+  <circle cx="49" cy="47" r="3.4" fill="#d8b87a"/>
 </svg>
