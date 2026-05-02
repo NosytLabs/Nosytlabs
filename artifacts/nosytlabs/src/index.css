@@ -1,16 +1,6 @@
 /* Fonts loaded via <link> in index.html for non-blocking render. */
 @import "tailwindcss";
 
-/* Honor user motion preferences globally — no surprise animation. */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 /* Visible focus ring fallback for keyboard users on any unstyled focusable. */
 :focus-visible {
   outline: 2px solid #d8b87a;
@@ -25,7 +15,6 @@
 
   --color-ink: #0a0a0b;
   --color-paper: #f5f1e8;
-  --color-bronze: #b08c4a;
   --color-bronze-soft: #d8b87a;
 
   --color-background: #0a0a0b;
@@ -36,7 +25,6 @@
   color-scheme: dark;
   --bg: #0a0a0b;
   --fg: #f5f1e8;
-  --muted: rgba(245, 241, 232, 0.62);
   --line: rgba(245, 241, 232, 0.10);
   --accent: #d8b87a;
 

@@ -71,14 +71,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 pt-6 border-t border-[#f5f1e8]/10 flex flex-col md:flex-row items-center justify-between gap-3 text-mono text-[#f5f1e8]/50 text-[11px] tracking-wider">
+        <div className="mt-14 pt-6 border-t border-[#f5f1e8]/10 flex flex-col md:flex-row items-center justify-between gap-3 text-mono text-[#f5f1e8]/55 text-[11px] tracking-wider">
           <div>© {year} Nosyt&nbsp;LLC · All rights reserved</div>
-          <a
-            href="/sitemap.xml"
-            className="hover:text-[#d8b87a] transition-colors"
-          >
-            Sitemap
-          </a>
+          <div className="flex items-center gap-5">
+            <a href={LINKS.privacy} className="hover:text-[#d8b87a] transition-colors">
+              Privacy
+            </a>
+            <a href="/sitemap.xml" className="hover:text-[#d8b87a] transition-colors">
+              Sitemap
+            </a>
+            <a href="/llms.txt" className="hover:text-[#d8b87a] transition-colors">
+              llms.txt
+            </a>
+          </div>
         </div>
       </div>
     </footer>

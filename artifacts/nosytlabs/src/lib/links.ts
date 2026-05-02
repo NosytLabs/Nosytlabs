@@ -7,6 +7,7 @@ export const LINKS = {
     "https://open.spotify.com/embed/artist/6PgkavAN36A3ngqiqOollE?utm_source=generator&theme=0",
   email: "mailto:hi@nosytlabs.com",
   emailRaw: "hi@nosytlabs.com",
+  privacy: "/privacy.html",
   // formsubmit.co — free, no signup. POST captures the email and forwards
   // to hi@nosytlabs.com (Spacemail). First submission triggers a one-time
   // confirmation email that the owner must click before forwarding starts.

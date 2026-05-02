@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0a0a0b" />
     <meta name="color-scheme" content="dark" />
 
-    <title>Nosytlabs — Independent studio building AI agents, MCP servers & developer tools</title>
+    <title>Nosytlabs — AI agents, MCP servers &amp; developer tools</title>
     <meta name="description" content="Nosyt LLC — a one-person independent studio building open-source AI agents, MCP (Model Context Protocol) servers, and small tools for developers." />
     <meta name="keywords" content="Nosyt, Nosytlabs, NosytLabs, Nosyt LLC, AI agents, MCP servers, Model Context Protocol, OpenClaw, OpenClaw Droid, Termux, prompt engineering, indie studio, open source, developer tools, Presearch search skill, Tidefall" />
     <meta name="author" content="Nosyt LLC" />
@@ -17,11 +17,31 @@
     <meta name="geo.region" content="US" />
     <meta name="geo.placename" content="United States" />
 
+    <!-- Permissions-Policy: opt out of FLoC/Topics behavioral cohorts. -->
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=(), browsing-topics=()" />
+
+    <!--
+      Content-Security-Policy (meta variant). Server-level headers (CSP +
+      Strict-Transport-Security + frame-ancestors) are added by the static
+      hosting layer — this meta tag is a defence-in-depth fallback for
+      script/style/connect surfaces. We allow:
+        - inline scripts/styles (GA4 inline gtag bootstrap, framer-motion
+          style attrs, React inline style props)
+        - googletagmanager + google-analytics for GA4
+        - fonts.googleapis.com + fonts.gstatic.com for Instrument Serif / Geist
+        - the CloudFront origin that hosts the hero MP4
+        - formsubmit.co for the AJAX form submissions
+        - open.spotify.com for the artist embed iframe
+      `frame-ancestors` is intentionally omitted — meta CSP can't enforce it
+      per spec, that directive must come from a real HTTP header.
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; media-src 'self' https: blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://www.google.com https://formsubmit.co; frame-src https://open.spotify.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co" />
+
     <!-- Canonical + Open Graph + Twitter -->
     <link rel="canonical" href="https://nosytlabs.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nosytlabs" />
-    <meta property="og:title" content="Nosytlabs — Independent studio for AI agents & developer tools" />
+    <meta property="og:title" content="Nosytlabs — Independent studio for AI agents &amp; developer tools" />
     <meta property="og:description" content="Open-source AI agents, MCP servers, and small developer tools from a one-person studio. On GitHub since 2025." />
     <meta property="og:url" content="https://nosytlabs.com/" />
     <meta property="og:image" content="https://nosytlabs.com/opengraph.jpg" />
@@ -33,7 +53,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@NosytLabs" />
     <meta name="twitter:creator" content="@NosytLabs" />
-    <meta name="twitter:title" content="Nosytlabs — Independent studio for AI agents & developer tools" />
+    <meta name="twitter:title" content="Nosytlabs — Independent studio for AI agents &amp; developer tools" />
     <meta name="twitter:description" content="Open-source AI agents, MCP servers, and small developer tools from a one-person studio." />
     <meta name="twitter:image" content="https://nosytlabs.com/opengraph.jpg" />
     <meta name="twitter:image:alt" content="Nosytlabs — Notable opportunities shape your tomorrow." />
@@ -61,6 +81,29 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" /></noscript>
 
+    <!--
+      SEO skeleton styles. Scoped to the [data-seo-skeleton] attribute so they
+      only style the static fallback and never leak into the React app.
+      Inline so the skeleton renders correctly even before the bundled CSS
+      arrives (the skeleton is the LCP candidate for crawlers that don't run JS).
+    -->
+    <style>
+      [data-seo-skeleton] { background: #0a0a0b; color: #f5f1e8; font-family: 'Geist', system-ui, sans-serif; line-height: 1.6; max-width: 64rem; margin: 0 auto; padding: 2rem 1.5rem; min-height: 100vh; }
+      [data-seo-skeleton] header { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between; margin-bottom: 4rem; }
+      [data-seo-skeleton] header > a:first-child { font-weight: 600; font-size: 1rem; color: #f5f1e8; text-decoration: none; }
+      [data-seo-skeleton] nav { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.9rem; }
+      [data-seo-skeleton] nav a { color: rgba(245,241,232,0.8); text-decoration: none; }
+      [data-seo-skeleton] .eyebrow { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase; opacity: 0.65; margin: 0 0 1rem; }
+      [data-seo-skeleton] h1 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 1.0; letter-spacing: -0.025em; margin: 0 0 1.5rem; }
+      [data-seo-skeleton] h2 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(1.75rem, 3.5vw, 2.5rem); margin: 3rem 0 0.75rem; line-height: 1.1; }
+      [data-seo-skeleton] p { max-width: 62ch; margin: 0 0 1rem; opacity: 0.88; }
+      [data-seo-skeleton] a { color: #d8b87a; text-underline-offset: 4px; }
+      [data-seo-skeleton] ul { padding-left: 1.25rem; }
+      [data-seo-skeleton] li { margin: 0.5rem 0; }
+      [data-seo-skeleton] footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid rgba(245,241,232,0.1); font-size: 0.75rem; opacity: 0.55; }
+      [data-seo-skeleton] footer a { color: rgba(245,241,232,0.7); margin: 0 0.4rem; }
+    </style>
+
     <!-- Structured data: Organization -->
     <script type="application/ld+json">
     {
@@ -76,6 +119,10 @@
       "description": "An independent studio building open-source AI agents, MCP (Model Context Protocol) servers, and developer tools.",
       "email": "hi@nosytlabs.com",
       "slogan": "Notable opportunities shape your tomorrow.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      },
       "knowsAbout": [
         "Artificial Intelligence",
         "AI Agents",
@@ -196,7 +243,58 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <!--
+      The React app mounts into #root and replaces the entire static skeleton
+      below on first render. The skeleton exists because:
+        1. Static crawlers (Bing, DuckDuckBot, squirrelscan, AI training crawlers
+           that don't execute JS) get a real H1, <main> landmark, descriptive
+           copy, internal links, and a footer — instead of an empty <div>.
+        2. Real human visitors briefly see meaningful content during the
+           ~50–150 ms before the React bundle hydrates, instead of a black flash.
+        3. Lighthouse / CrUX measure LCP against this skeleton's H1 instead of
+           against a delayed JS render.
+      All skeleton styles are scoped via [data-seo-skeleton] so nothing leaks
+      into the React app once it takes over.
+    -->
+    <div id="root">
+      <main id="main" data-seo-skeleton>
+        <header>
+          <a href="/" aria-label="Nosytlabs — home">Nosytlabs</a>
+          <nav aria-label="Site sections">
+            <a href="#about">Studio</a>
+            <a href="#projects">Projects</a>
+            <a href="#manifesto">Manifesto</a>
+            <a href="#sound">Music</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </header>
+        <section>
+          <p class="eyebrow">Nosytlabs · Independent Studio · Est. 2025</p>
+          <h1>Notable opportunities shape your tomorrow.</h1>
+          <p>Nosyt LLC is a one-person independent studio (founded 2025) building open-source AI agents, MCP (Model Context Protocol) servers, and small tools for developers. Most projects live in the open at <a href="https://github.com/NosytLabs">github.com/NosytLabs</a>.</p>
+        </section>
+        <section id="about">
+          <h2>The studio</h2>
+          <p>Nosytlabs was registered as Nosyt LLC in early 2025. One person, one desk, no investors. The output spans AI agents, MCP servers, a browser game in progress, and the occasional experiment. Music gets released under the same name when a track is ready.</p>
+        </section>
+        <section id="projects">
+          <h2>Selected projects</h2>
+          <ul>
+            <li><strong>OpenClaw Droid</strong> — optimized OpenClaw AI Gateway for Android via Termux. <a href="https://github.com/NosytLabs/openclaw-droid">github.com/NosytLabs/openclaw-droid</a></li>
+            <li><strong>Free MCP Servers</strong> — image generation and text-to-speech MCP servers, no API keys required. <a href="https://github.com/NosytLabs/openclaw-free-mcp-servers">github.com/NosytLabs/openclaw-free-mcp-servers</a></li>
+            <li><strong>Presearch Search Skill</strong> — privacy-first, decentralized search for AI agents. <a href="https://github.com/NosytLabs/presearch-search-skill">github.com/NosytLabs/presearch-search-skill</a></li>
+            <li><strong>Tidefall</strong> — in-development browser game built with Phaser. <a href="https://github.com/NosytLabs/tidefall-phaser">github.com/NosytLabs/tidefall-phaser</a></li>
+          </ul>
+        </section>
+        <section id="contact">
+          <h2>Get in touch</h2>
+          <p>Working on something in agents, MCP, or developer tooling? Open an issue on a repo, or email <a href="mailto:hi@nosytlabs.com">hi@nosytlabs.com</a> — a real person replies.</p>
+        </section>
+        <footer>
+          <p>© 2025 Nosyt LLC · <a href="/privacy.html">Privacy</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/llms.txt">llms.txt</a> · <a href="https://github.com/NosytLabs">GitHub</a></p>
+        </footer>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

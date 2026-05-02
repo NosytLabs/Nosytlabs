@@ -11,4 +11,10 @@
       <image:title>Nosytlabs — Notable opportunities shape your tomorrow.</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://nosytlabs.com/privacy.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

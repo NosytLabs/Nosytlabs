@@ -57,6 +57,28 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    cssCodeSplit: true,
+    target: "es2020",
+    // Split bundles so no single chunk exceeds the 250 KB SEO/perf threshold
+    // (squirrelscan rule perf/js-file-size). The libraries below all change
+    // at very different cadences from app code, so splitting also gives
+    // returning visitors a much higher cache hit rate.
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (!id.includes("node_modules")) return undefined;
+          if (id.includes("framer-motion")) return "vendor-motion";
+          if (id.includes("react-icons") || id.includes("lucide-react")) return "vendor-icons";
+          if (id.includes("react-dom") || id.match(/[\\/]react[\\/]/)) return "vendor-react";
+          return undefined;
+        },
+      },
+    },
+  },
+  // Strip /*! ... */ legal-comment banners from the production JS so
+  // squirrelscan's perf/unminified-js heuristic doesn't trip on them.
+  esbuild: {
+    legalComments: "none",
   },
   server: {
     port,
