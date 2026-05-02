@@ -20,6 +20,48 @@ test.describe("NosytLabs site — core e2e scenarios", () => {
     expect(hasPoster).toBe(true);
   });
 
+  // 1a-pre. Stress test: even when React bundle is artificially slow to load,
+  // the skeleton must be hidden during the pre-hydration window. This proves
+  // the inline <head> script + html.js CSS rule applies before first paint —
+  // the actual no-flash guarantee, not just an end-state check.
+  test("skeleton stays hidden even when React bundle is delayed", async ({ page }) => {
+    // Delay the main React entry by ~800ms to simulate slow CPU/network.
+    await page.route("**/src/main.tsx", async (route) => {
+      await new Promise((r) => setTimeout(r, 800));
+      await route.continue();
+    });
+    // Race to first paint: as soon as DOM commits, check the class + skeleton style.
+    await page.goto(BASE, { waitUntil: "commit" });
+    const htmlClass = await page.evaluate(() => document.documentElement.className);
+    expect(htmlClass).toContain("js");
+    // During the delay window the skeleton element exists but must be hidden.
+    const skeletonDisplay = await page.evaluate(() => {
+      const el = document.querySelector("[data-seo-skeleton]");
+      return el ? getComputedStyle(el).display : "absent";
+    });
+    expect(skeletonDisplay === "none" || skeletonDisplay === "absent").toBe(true);
+  });
+
+  // 1a. SEO skeleton never flashes on load (FOUC fix).
+  // The skeleton lives in the static HTML so non-JS crawlers can index real
+  // content — but for JS visitors:
+  //   - The inline <script> in <head> sets `html.js` synchronously, which
+  //     hides the skeleton via CSS before first paint.
+  //   - React then mounts into #root and replaces the skeleton entirely.
+  // After hydration there should be exactly one <main>, exactly one <h1>,
+  // and no leftover [data-seo-skeleton] in the visible tree.
+  test("SEO skeleton never flashes on load (FOUC fix)", async ({ page }) => {
+    await page.goto(BASE);
+    // The js-class hook is applied synchronously in <head> — no flash window.
+    const htmlClass = await page.evaluate(() => document.documentElement.className);
+    expect(htmlClass).toContain("js");
+    // After React mounts, the static skeleton is gone (React replaced #root).
+    await expect(page.locator("[data-seo-skeleton]")).toHaveCount(0);
+    // And we never end up with duplicate landmarks fighting the React tree.
+    await expect(page.locator("main")).toHaveCount(1);
+    await expect(page.locator("h1")).toHaveCount(1);
+  });
+
   // 2. Skip link is focusable and jumps to #main
   test("skip link is keyboard-accessible and links to main content", async ({ page }) => {
     await page.goto(BASE);

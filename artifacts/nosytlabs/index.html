@@ -81,6 +81,18 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" /></noscript>
 
     <!--
+      Hide the SEO skeleton from JS-enabled browsers immediately so real
+      visitors never see a flash of the static fallback before React mounts.
+      Non-JS crawlers (Bing, DuckDuckBot, AI training crawlers) don't run
+      this script, so for them the skeleton stays visible and indexable.
+    -->
+    <script>document.documentElement.classList.add('js');</script>
+    <style>
+      html.js [data-seo-skeleton] { display: none !important; }
+      html:not(.js) body { background: #0a0a0b; color: #f5f1e8; margin: 0; }
+    </style>
+
+    <!--
       SEO skeleton styles. Scoped to the [data-seo-skeleton] attribute so they
       only style the static fallback and never leak into the React app.
       Inline so the skeleton renders correctly even before the bundled CSS
