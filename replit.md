@@ -25,7 +25,7 @@ Only `nosytlabs` is built and served by the static deployment.
 - "Nosytlabs" is the studio name in body copy and headlines.
 - "Nosyt LLC" is reserved for the footer copyright (legal entity only).
 - Hero is **video-only** — no static fallback image. Cosmic decor images are WebP only (PNG variants were deleted).
-- Tagline "Notable opportunities shape your tomorrow." appears **once** as the Hero H1, and once as the closing manifesto line. Do not echo it again in the Footer.
+- Tagline "Notable opportunities shape your tomorrow." appears in **visible page copy exactly twice** — Hero H1 and the closing Manifesto line. Do not echo it in any other visible component (Footer, Sound, Contact, etc.). Brand-metadata uses are separate and required: it must remain in `og:image:alt`, JSON-LD `slogan`, `sitemap.xml` `image:title`, and the `llms.txt` intro + cite list. Code reviewers should check src/components/ — not metadata files — when enforcing the "twice only" rule.
 - Every project surfaced on the site (Projects.tsx, llms.txt, JSON-LD) must be a verified-live repo at github.com/NosytLabs. `curl -sI` before adding.
 
 ## SEO / GEO / analytics

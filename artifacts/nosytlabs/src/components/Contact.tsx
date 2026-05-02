@@ -116,9 +116,9 @@ export default function Contact() {
                 </span>
               </h2>
               <p className="mt-7 text-[#f5f1e8]/80 text-base md:text-lg leading-relaxed max-w-md">
-                Working on something interesting in agents, MCP, or quiet
-                developer tooling? Open an issue on a repo, or send a note —
-                no funnel, just a real reply.
+                Working on something in agents, MCP, or developer tooling?
+                Open an issue on a repo, or send a note. A real person
+                replies.
               </p>
               <div className="mt-8 space-y-3">
                 <a

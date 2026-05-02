@@ -4,20 +4,20 @@ const PILLARS = [
   {
     n: "01",
     label: "Agents",
-    title: "Agents that do real work.",
-    body: "Specialized AI agents — including the OpenClaw Droid gateway running on Android via Termux — built to execute, not impress.",
+    title: "Agents that do work.",
+    body: "AI agents like OpenClaw Droid — an OpenClaw gateway tuned to run inside Termux on Android. Useful first, clever second.",
   },
   {
     n: "02",
     label: "MCP & Skills",
-    title: "Tooling for the agent era.",
-    body: "Open-source MCP servers (image, TTS) and clean SKILL.md files like the Presearch search skill — the building blocks others plug into.",
+    title: "MCP servers, free.",
+    body: "Open-source MCP servers for image generation and text-to-speech, plus clean SKILL.md files like the Presearch search skill. No API keys needed for the basics.",
   },
   {
     n: "03",
     label: "Experiments",
-    title: "Side projects, in public.",
-    body: "Browser games like Tidefall (Phaser), prompt libraries, and the occasional one-off — all open, all logged in commits anyone can read.",
+    title: "The side projects, too.",
+    body: "Browser games like Tidefall, prompt libraries, the occasional one-off. They live on GitHub next to everything else.",
   },
 ];
 
@@ -39,21 +39,20 @@ export default function About() {
         <Reveal delay={0.1}>
           <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] leading-[1.05] tracking-tight max-w-5xl">
             Nosyt is a{" "}
-            <span className="text-italic-serif text-[#d8b87a]">small studio</span>{" "}
-            for AI agents, open tooling, and the occasional{" "}
-            <span className="text-italic-serif text-[#d8b87a]">side project</span>.
+            <span className="text-italic-serif text-[#d8b87a]">one-person studio</span>{" "}
+            for AI agents, open tooling, and{" "}
+            <span className="text-italic-serif text-[#d8b87a]">side projects</span>.
           </h2>
         </Reveal>
 
         <Reveal delay={0.2}>
           <div className="mt-12 grid md:grid-cols-[2fr_1fr] gap-10 md:gap-16 items-end">
             <p className="max-w-2xl text-[#f5f1e8]/85 text-base md:text-lg leading-relaxed">
-              Nosytlabs was registered as Nosyt&nbsp;LLC in early 2025 —
-              a one-person studio working out of a single desk. No funding
-              round, no investor deck, no growth team. The output is what
-              you&rsquo;ll find on GitHub: agents, MCP servers, prompt
-              systems, and the occasional experiment. Music gets released
-              under the same name when a track is ready.
+              Nosytlabs was registered as Nosyt&nbsp;LLC in early 2025.
+              One person, one desk, no investors. The output is on GitHub:
+              AI agents, MCP servers, a browser game in progress, the odd
+              experiment. Music gets released under the same name when a
+              track is ready.
             </p>
             <dl className="grid grid-cols-2 gap-x-6 gap-y-5 md:border-l md:border-[#f5f1e8]/10 md:pl-10">
               <Fact k="Founded" v="2025" />

@@ -1,10 +1,10 @@
 import Reveal from "./Reveal";
 
 const LINES = [
-  "Build for people who actually use the thing.",
+  "Build for the people who actually use the thing.",
   "Ship small. Ship often. Ship on purpose.",
   "Default to open source. Document the rough edges.",
-  "Stay independent — no roadmap theater, no growth team.",
+  "Stay independent. Stay small.",
   "Notable opportunities shape your tomorrow.",
 ];
 

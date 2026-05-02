@@ -9,12 +9,12 @@ const PRINCIPLES = [
   {
     n: "II",
     title: "Ship for builders",
-    body: "Tools for the people doing the work — developers wiring agents into real systems, prompt engineers tuning late at night, indie hackers shipping on weekends.",
+    body: "Tools for engineers wiring agents into real systems. The kind of thing you can clone, read, and run in a single sitting.",
   },
   {
     n: "III",
     title: "Stay independent",
-    body: "No investors, no growth team, no roadmap deck. A steady cadence of commits and releases instead.",
+    body: "No investors. No growth team. The roadmap is whatever the next commit happens to be.",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function Philosophy() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b]/85 via-[#0a0a0b]/20 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-mono text-[#f5f1e8]/75 text-[11px] tracking-[0.28em] uppercase">
-                One desk · One operator · The whole catalog
+                One desk. The whole catalog.
               </div>
             </div>
           </Reveal>

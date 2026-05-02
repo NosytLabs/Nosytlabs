@@ -202,12 +202,15 @@ section[id] { scroll-margin-top: 88px; }
   100% { background-position: 200% 0; }
 }
 .shimmer-text {
-  background: linear-gradient(90deg, rgba(245,241,232,0.55) 0%, #f5f1e8 50%, rgba(245,241,232,0.55) 100%);
+  /* Subtler gradient (closer endpoints) + slower, eased loop. The 7s linear
+     loop felt try-hard; 12s with a long pause between sweeps reads as a
+     gentle highlight rather than a marquee effect. */
+  background: linear-gradient(90deg, rgba(245,241,232,0.78) 0%, #f5f1e8 50%, rgba(245,241,232,0.78) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
           background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 7s linear infinite;
+  animation: shimmer 12s ease-in-out infinite;
 }
 
 @keyframes float-slow {

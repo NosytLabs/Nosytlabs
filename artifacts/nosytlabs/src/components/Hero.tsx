@@ -194,8 +194,8 @@ export default function Hero() {
         </h1>
 
         <p className="mt-8 max-w-xl text-[#f5f1e8]/85 text-base sm:text-lg leading-relaxed animate-fade-rise-d2">
-          A small independent studio building AI agents, MCP servers, and
-          tools for developers. Open source where it counts.
+          A one-person studio building AI agents, MCP servers, and small
+          tools for developers. Most of it open source, all of it on GitHub.
         </p>
 
         <form
@@ -271,7 +271,7 @@ export default function Hero() {
       <div className="relative z-10 pb-10 px-6 animate-fade-rise-d4">
         <div className="mx-auto max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-3">
           <span className="text-mono text-[#f5f1e8]/55 text-[10px] tracking-[0.22em] uppercase">
-            Independent · Open source · Built in public
+            Independent · Open source · Est. 2025
           </span>
           <a
             href="#about"

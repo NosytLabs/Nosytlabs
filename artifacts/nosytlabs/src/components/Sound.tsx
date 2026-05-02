@@ -12,7 +12,7 @@ export default function Sound() {
           <Reveal x={-20}>
             <div>
               <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-6">
-                06 — Side quest · Music
+                06 — Music
               </div>
               <h2 className="text-serif text-5xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight leading-[1.05]">
                 There&rsquo;s also a{" "}
@@ -21,10 +21,10 @@ export default function Sound() {
                 </span>
               </h2>
               <p className="mt-7 text-[#f5f1e8]/85 text-base md:text-lg leading-relaxed max-w-md">
-                Same person, different output. Music released as{" "}
+                Same person, different output. Released as{" "}
                 <em className="text-italic-serif text-[#d8b87a]">Nosyt</em> —
-                ambient textures, slow loops. On Spotify and YouTube whenever
-                a track is ready.
+                ambient textures and slow loops, on Spotify when a track is
+                ready.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a

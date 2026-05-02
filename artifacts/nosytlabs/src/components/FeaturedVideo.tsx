@@ -26,14 +26,14 @@ export default function FeaturedVideo() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0b]/55 via-transparent to-transparent" />
               <div className="absolute inset-0 flex flex-col justify-end p-7 md:p-10">
                 <div className="text-mono text-[#f5f1e8]/70 text-[11px] tracking-[0.3em] uppercase mb-3">
-                  The view from one desk
+                  From the desk
                 </div>
                 <p className="text-serif text-2xl sm:text-3xl md:text-4xl text-[#f5f1e8] leading-[1.15] tracking-tight max-w-md">
                   Code, commits, and{" "}
                   <span className="text-italic-serif text-[#d8b87a]">
                     decisions
-                  </span>{" "}
-                  — all out in the open.
+                  </span>
+                  , all in the open.
                 </p>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function FeaturedVideo() {
                 >
                   GitHub
                 </a>
-                , walked through on{" "}
+                . Most get a walkthrough on{" "}
                 <a
                   href={LINKS.youtube}
                   target="_blank"
@@ -59,11 +59,11 @@ export default function FeaturedVideo() {
                 >
                   YouTube
                 </a>
-                , and shipped without a marketing department.
+                .
               </p>
               <p className="mt-7 text-[#f5f1e8]/75 text-[15px] leading-relaxed max-w-md">
-                Read the source. File an issue. Fork what&rsquo;s useful.
-                Everything is on GitHub for a reason.
+                Read the source. File issues. Fork anything useful.
+                That&rsquo;s why it&rsquo;s there.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a

@@ -16,7 +16,7 @@ export default function Footer() {
               Thanks for stopping by
             </div>
             <p className="text-serif text-[#f5f1e8] text-3xl md:text-5xl lg:text-6xl tracking-tight leading-[1.15] max-w-3xl mx-auto">
-              Built quietly, shipped openly, on{" "}
+              Read the source on{" "}
               <a
                 href={LINKS.github}
                 target="_blank"
