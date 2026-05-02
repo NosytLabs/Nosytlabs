@@ -1,16 +1,25 @@
 #!/usr/bin/env node
 /**
- * Sync live GitHub repo data into src/lib/github-data.json so the
- * Projects section renders accurate stars / language / pushed_at
- * without ever shipping a runtime fetch. Runs at prebuild.
+ * Sync live GitHub repo data into src/lib/github-data.json AND regenerate
+ * the SoftwareSourceCode JSON-LD block in index.html so the Projects
+ * section renders accurate stars / language / pushed_at and search
+ * engines see fresh dateModified — without ever shipping a runtime fetch.
+ *
+ * Run manually via `pnpm --filter @workspace/nosytlabs run sync:github`.
+ * Intentionally NOT wired into prebuild so production builds stay
+ * reproducible and offline-safe; the JSON snapshot and rewritten
+ * index.html are committed to the repo.
  *
  * Failure modes:
- *  - Network/rate-limit: keeps the existing JSON file unchanged so the
- *    build still succeeds with the last-known-good snapshot.
- *  - Repo 404: logs a warning and skips that entry.
+ *  - Network/rate-limit: keeps the existing JSON snapshot AND the
+ *    existing index.html JSON-LD untouched so the next build still
+ *    succeeds with last-known-good data.
+ *  - Repo 404: logs a warning, skips that entry, continues.
+ *  - Missing index.html markers: logs a warning, skips schema rewrite,
+ *    JSON snapshot still writes.
  *
  * Auth: optional GITHUB_TOKEN env var. Without it the unauthenticated
- * limit (60 req/h/IP) is plenty for 4 repos at build time.
+ * limit (60 req/h/IP) is plenty for 4 repos.
  */
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
