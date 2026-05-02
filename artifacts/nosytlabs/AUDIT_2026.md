@@ -323,3 +323,82 @@ Run via: `PLAYWRIGHT_BASE_URL=http://localhost:18403 npx playwright test --confi
 - Run full Playwright e2e suite against dev/deployed URL (6 scenarios from task spec).
 - Re-run Lighthouse mobile against deployed URL once published to capture field LCP/INP/CLS from real CDN.
 
+---
+
+## 2026-05-02 — Services routing fix (polish pass)
+
+A site audit caught a critical regression: every canonical service URL —
+`/services/`, `/services/web-apps/`, `/services/ai-agents/`,
+`/services/mcp-servers/`, `/services/custom-tools/` — silently served the
+SPA homepage instead of the real static service pages. Those URLs are the
+ones we publish in `sitemap.xml`, the navbar, the footer, and every
+`Service` JSON-LD `url` field. So every crawler that followed the sitemap
+landed on the homepage, getting the wrong title, the wrong H1, the wrong
+canonical, and the wrong Service breadcrumb. Same for any human visitor
+who clicked the navbar Services link.
+
+### Root cause
+
+Vite's dev and preview servers do not auto-resolve directory URLs to
+their `index.html`. Requests for `/services/web-apps/` fell through every
+internal middleware and were caught by the SPA fallback
+(`indexHtmlMiddleware`), which always returns the React app's
+`index.html`. Production was unaffected because Replit's static hosting
+layer correctly serves `dist/public/services/<slug>/index.html` for
+directory paths — but every Playwright check, every local audit, and
+every preview screenshot was lying.
+
+### Fix
+
+Added a small Vite plugin (`staticServicePages` in `vite.config.ts`) that
+registers middleware in both `configureServer` and
+`configurePreviewServer`. The middleware:
+
+1. Only intercepts paths starting with `/services` and without a file
+   extension (so `/services/foo.html`, `/sitemap.xml`, asset requests are
+   left alone).
+2. Resolves `/services/<...>/` to `public/services/<...>/index.html` on
+   disk.
+3. Validates the resolved path stays inside `public/` (path-traversal
+   guard).
+4. Streams the static HTML with `Content-Type: text/html; charset=utf-8`
+   if it exists; otherwise calls `next()` so Vite handles it normally.
+
+Registered as the **first** middleware (synchronous body of
+`configureServer`, not the post-hook callback) so it runs before
+`indexHtmlMiddleware` and the SPA fallback. Production builds copy
+`public/` verbatim into `dist/public/`, so the same URLs resolve
+naturally there — this plugin is dev/preview-only.
+
+### Test tightening
+
+The existing `services-nav.spec.ts › each /services/ page serves real
+HTML…` test was a false positive: it requested `/services/index.html`,
+`/services/web-apps/index.html`, etc. — the explicit `.html` suffix
+bypasses the SPA fallback because Vite's static-asset middleware handles
+it directly. So the test passed even when the canonical trailing-slash
+URLs were broken. Tightened to:
+
+- Request the canonical trailing-slash URLs (`/services/`,
+  `/services/web-apps/`, etc.) — the URLs we actually publish.
+- Assert the body does NOT contain the homepage tagline ("Notable
+  opportunities shape your tomorrow.") — guards against future SPA
+  fallthrough regressions.
+- New navigation-flow spec: click the navbar Services link in a real
+  Playwright browser and assert the landing page H1 is the static
+  services hub H1, not the homepage tagline.
+
+### Verification
+
+- `curl http://localhost:18403/services/` → `200`, title "Hire Nosytlabs
+  — services for AI agents & web apps", H1 "Small, sharp work…".
+- `curl http://localhost:18403/services/web-apps/` → `200`, title "Web
+  app & site development — Nosytlabs studio".
+- All 4 service slug URLs return their unique static page.
+- Homepage `/` and unknown routes (`/something-else`) still hit the SPA
+  fallback unchanged.
+- `pnpm typecheck` clean. `pnpm build` clean (8.74s, gzip totals
+  unchanged: 12.14 kB index + 58.26 kB react + 39.21 kB motion).
+- Full e2e suite: **14/14 passing** (1 new spec added: navbar →
+  services-hub navigation flow).
+
