@@ -402,3 +402,64 @@ URLs were broken. Tightened to:
 - Full e2e suite: **14/14 passing** (1 new spec added: navbar →
   services-hub navigation flow).
 
+
+## 2026-05-02 — Production routing verification for `/services/<slug>/`
+
+Verified the deployed origin (`https://nosytlabs.com`) on 2026-05-02 to
+confirm whether Replit's static hosting layer serves
+`dist/public/services/<slug>/index.html` for canonical trailing-slash
+URLs (the dev/preview Vite plugin only fixes local servers).
+
+### Results — production currently 404s on every `/services/` URL
+
+```
+GET https://nosytlabs.com/services/              → HTTP/2 404
+GET https://nosytlabs.com/services/web-apps/     → HTTP/2 404
+GET https://nosytlabs.com/services/ai-agents/    → HTTP/2 404
+GET https://nosytlabs.com/services/mcp-servers/  → HTTP/2 404
+GET https://nosytlabs.com/services/custom-tools/ → HTTP/2 404
+GET https://nosytlabs.com/services/web-apps/index.html → HTTP/2 404
+GET https://nosytlabs.com/                        → HTTP/2 200
+```
+
+The currently-deployed build has `last-modified: Thu, 23 Apr 2026
+01:22:51 GMT` — it predates the static service-page work, so the
+`services/*/index.html` files simply do not exist in the deployed
+artifact yet. **A redeploy is required before this verification can be
+considered conclusive.**
+
+### Good news (partial signal)
+
+The hosting layer is **not** doing a blanket SPA fallback to
+`index.html` for unknown directory URLs — it returns a real 404
+instead. That means once the build containing
+`dist/public/services/<slug>/index.html` is published, the static files
+should be served directly for `/services/<slug>/index.html`. The
+remaining open question is whether the host rewrites the bare
+trailing-slash form (`/services/web-apps/`) to the directory's
+`index.html`, which is the behaviour the dev/preview plugin emulates
+locally.
+
+### Action items / follow-ups
+
+1. **Redeploy the site** so the new `services/*/index.html` files are
+   live, then re-run:
+   ```bash
+   for p in /services/ /services/web-apps/ /services/ai-agents/ \
+            /services/mcp-servers/ /services/custom-tools/; do
+     curl -sI "https://nosytlabs.com$p" | head -1
+   done
+   ```
+   Expect `HTTP/2 200` on all five, and each body must contain its
+   page-specific `<title>`/`<h1>` (NOT the homepage tagline "Notable
+   opportunities shape your tomorrow.").
+2. Optionally point the existing Playwright spec at production:
+   `PLAYWRIGHT_BASE_URL=https://nosytlabs.com pnpm --filter nosytlabs \
+   exec playwright test tests/e2e/services-nav.spec.ts`.
+3. **If, after redeploy, the trailing-slash URLs still 404 (or worse,
+   serve the SPA shell)**, add a static-rewrite layer at the host:
+   either a `public/_redirects`-style file or rewrites in
+   `artifacts/nosytlabs/artifact.toml` mapping
+   `/services/:slug/` → `/services/:slug/index.html`. Track this as a
+   follow-up task — it is **not** required if the post-redeploy curl
+   check returns 200 with the correct page bodies.
