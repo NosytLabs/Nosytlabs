@@ -6,13 +6,19 @@
 > truth for past changes. This file documents what is live and the
 > rules a reviewer should enforce.
 
-## Current state (verified 2026-05-03)
+## Current state (verified 2026-05-03 — site-wide audit pass)
 
-- **Build**: ~812ms with rolldown (Vite 8). Total ~120 KB gzipped:
-  app 13.46 KB · react vendor 55.26 KB · framer-motion 39.66 KB · icons 4.17 KB · CSS 8.93 KB · runtime 0.47 KB.
-- **Tests**: 15/15 e2e passing in ~35s (6 services-nav + 9 site).
+- **Build**: ~1.2s with rolldown (Vite 8). Total ~120 KB gzipped:
+  app 13.46 KB · react vendor 55.26 KB · framer-motion 39.66 KB · icons 4.17 KB · CSS 9.01 KB · runtime 0.47 KB.
+- **Tests**: 15/15 e2e passing in ~38s (6 services-nav + 9 site).
 - **Console**: silent in dev and production.
 - **Type check**: clean.
+- **Brand kit**: LinkedIn banner mark added (was missing; all other banners consistent). Business-card back corrected off-brand gold `#b8924a` → `#d8b87a` (dot and footer text). Exports regenerated for both: PNG + WebP.
+- **Logo/favicon**: `Logo.tsx` and `public/favicon.svg` confirmed in lockstep. Dot at (49,47) r=3.4 within 64×64 viewBox — no clipping or glow bleed. Apple touch icon and PWA icons (192/512) match the mark in `social/avatar-1024.svg`.
+- **Pages audited**: home (desktop 1440 + mobile 390), services hub, web-apps, ai-agents, mcp-servers, custom-tools, privacy — all render clean with no overflow, cut-off text, or broken images.
+- **Links verified**: all internal nav anchors (`/#about`, `/services/`, etc.) correct; all 5 service pages resolve; external links (GitHub, X, email, formsubmit.co) consistent in `src/lib/links.ts`; sitemap.xml has 7 URLs.
+- **Production logs**: no Vercel deployment found in current environment — production is managed via Vercel CI; no runtime errors surfaced.
+- **Image assets**: `opengraph.jpg` confirmed at 1280×720 matching `<head>` meta tags. Cosmos hero/mirror WebPs in `public/img/` at 76 KB / 36 KB respectively.
 
 ## What ships
 
