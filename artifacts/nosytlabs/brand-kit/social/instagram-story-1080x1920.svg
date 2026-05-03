@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-label="Nosytlabs Instagram story template">
+  <title>Instagram / TikTok vertical story template — 1080x1920</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="85%">
+      <stop offset="0%" stop-color="#15151a"/>
+      <stop offset="55%" stop-color="#0a0a0b"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="55%" r="55%">
+      <stop offset="0%" stop-color="#d8b87a" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .ws { font-family: 'Instrument Serif','Times New Roman',serif; font-style: italic; font-weight: 400; }
+      .mono { font-family: ui-monospace, 'Geist Mono', monospace; letter-spacing: 0.3em; }
+    </style>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <rect width="1080" height="1920" fill="url(#glow)"/>
+  <g fill="#f5f1e8">
+    <circle cx="180" cy="280" r="1.0" opacity="0.5"/>
+    <circle cx="420" cy="180" r="0.7" opacity="0.4"/>
+    <circle cx="680" cy="340" r="0.8" opacity="0.45"/>
+    <circle cx="900" cy="240" r="0.9" opacity="0.5"/>
+    <circle cx="280" cy="1620" r="0.6" opacity="0.4"/>
+    <circle cx="580" cy="1720" r="0.8" opacity="0.5"/>
+    <circle cx="860" cy="1640" r="0.7" opacity="0.45"/>
+  </g>
+  <text x="540" y="380" class="mono" font-size="22" fill="#f5f1e8" fill-opacity="0.6" text-anchor="middle">NOSYTLABS · EST. 2025</text>
+  <text x="540" y="820" class="ws" font-size="124" fill="#f5f1e8" text-anchor="middle">Notable</text>
+  <text x="540" y="950" class="ws" font-size="124" fill="#f5f1e8" text-anchor="middle">opportunities</text>
+  <text x="540" y="1080" class="ws" font-size="124" fill="#d8b87a" text-anchor="middle">shape<tspan fill="#f5f1e8"> your</tspan></text>
+  <text x="540" y="1210" class="ws" font-size="124" fill="#f5f1e8" text-anchor="middle">tomorrow.</text>
+  <text x="540" y="1740" class="mono" font-size="20" fill="#d8b87a" fill-opacity="0.85" text-anchor="middle">NOSYTLABS.COM</text>
+</svg>

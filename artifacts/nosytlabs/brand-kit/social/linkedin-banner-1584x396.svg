@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" role="img" aria-label="Nosytlabs LinkedIn banner">
+  <title>LinkedIn banner — 1584x396</title>
+  <defs>
+    <radialGradient id="bg" cx="65%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#15151a"/>
+      <stop offset="55%" stop-color="#0a0a0b"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="80%" cy="50%" r="42%">
+      <stop offset="0%" stop-color="#d8b87a" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .ws { font-family: 'Instrument Serif','Times New Roman',serif; font-style: italic; font-weight: 400; }
+      .mono { font-family: ui-monospace, 'Geist Mono', monospace; letter-spacing: 0.28em; }
+    </style>
+  </defs>
+  <rect width="1584" height="396" fill="url(#bg)"/>
+  <rect width="1584" height="396" fill="url(#glow)"/>
+  <g fill="#f5f1e8">
+    <circle cx="160" cy="80" r="0.8" opacity="0.5"/>
+    <circle cx="340" cy="200" r="0.9" opacity="0.4"/>
+    <circle cx="520" cy="60" r="0.6" opacity="0.5"/>
+    <circle cx="780" cy="320" r="0.9" opacity="0.5"/>
+    <circle cx="1020" cy="140" r="0.7" opacity="0.4"/>
+    <circle cx="1240" cy="280" r="1.0" opacity="0.5"/>
+    <circle cx="1420" cy="100" r="0.8" opacity="0.4"/>
+  </g>
+  <g transform="translate(360,128)">
+    <text x="0" y="0" class="mono" font-size="14" fill="#f5f1e8" fill-opacity="0.6">NOSYTLABS · INDEPENDENT US STUDIO · EST. 2025</text>
+    <text x="0" y="78" class="ws" font-size="68" fill="#f5f1e8">AI agents, MCP servers,</text>
+    <text x="0" y="148" class="ws" font-size="68" fill="#f5f1e8">small fast web apps.</text>
+    <text x="0" y="200" class="mono" font-size="12" fill="#d8b87a" fill-opacity="0.85">FIXED SCOPE · 2–6 WEEKS · CODE YOU OWN · NOSYTLABS.COM</text>
+  </g>
+</svg>

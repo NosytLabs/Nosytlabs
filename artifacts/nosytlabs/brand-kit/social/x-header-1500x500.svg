@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" role="img" aria-label="Nosytlabs X header banner">
+  <title>X / Twitter header banner — 1500x500</title>
+  <defs>
+    <radialGradient id="bg" cx="62%" cy="38%" r="80%">
+      <stop offset="0%" stop-color="#15151a"/>
+      <stop offset="55%" stop-color="#0a0a0b"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="78%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#d8b87a" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ng" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbf6e8"/>
+      <stop offset="100%" stop-color="#d8d2c2"/>
+    </linearGradient>
+    <style>
+      .ws { font-family: 'Instrument Serif','Times New Roman',serif; font-style: italic; font-weight: 400; }
+      .mono { font-family: ui-monospace, 'Geist Mono', monospace; letter-spacing: 0.28em; }
+    </style>
+  </defs>
+  <rect width="1500" height="500" fill="url(#bg)"/>
+  <rect width="1500" height="500" fill="url(#glow)"/>
+  <!-- subtle star field -->
+  <g fill="#f5f1e8">
+    <circle cx="120" cy="80" r="0.8" opacity="0.6"/>
+    <circle cx="280" cy="180" r="1.0" opacity="0.4"/>
+    <circle cx="420" cy="60" r="0.6" opacity="0.5"/>
+    <circle cx="640" cy="420" r="0.9" opacity="0.5"/>
+    <circle cx="900" cy="140" r="0.7" opacity="0.4"/>
+    <circle cx="1080" cy="380" r="1.1" opacity="0.5"/>
+    <circle cx="1280" cy="100" r="0.8" opacity="0.4"/>
+    <circle cx="1380" cy="320" r="0.6" opacity="0.6"/>
+    <circle cx="200" cy="380" r="0.7" opacity="0.45"/>
+    <circle cx="540" cy="240" r="0.5" opacity="0.5"/>
+    <circle cx="780" cy="60" r="0.6" opacity="0.5"/>
+    <circle cx="1180" cy="240" r="0.5" opacity="0.4"/>
+  </g>
+  <!-- copy block -->
+  <g transform="translate(120,180)">
+    <text x="0" y="0" class="mono" font-size="16" fill="#f5f1e8" fill-opacity="0.6">NOSYTLABS · INDEPENDENT STUDIO · EST. 2025</text>
+    <text x="0" y="100" class="ws" font-size="92" fill="#f5f1e8">Notable opportunities</text>
+    <text x="0" y="190" class="ws" font-size="92" fill="#d8b87a" font-style="italic">shape<tspan fill="#f5f1e8" font-style="italic"> your tomorrow.</tspan></text>
+    <text x="0" y="240" class="mono" font-size="13" fill="#f5f1e8" fill-opacity="0.55">AI AGENTS · MCP SERVERS · WEB APPS · NOSYTLABS.COM</text>
+  </g>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120" role="img" aria-label="Nosytlabs">
+  <title>Nosytlabs wordmark — single color cream (for use on dark backgrounds)</title>
+  <style>
+    .wm { font-family: 'Instrument Serif', 'Times New Roman', serif; font-style: italic; font-weight: 400; }
+  </style>
+  <text x="0" y="92" class="wm" font-size="108" fill="#f5f1e8" letter-spacing="-1.5">Nosytlabs.</text>
+</svg>

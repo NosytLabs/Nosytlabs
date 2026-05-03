@@ -1,0 +1,133 @@
+uploads = []
+
+[[generated]]
+id = "iKXt1IRxoKeP9pdBU1Lwd"
+uri = "file://artifacts/nosytlabs/brand-kit/photos/cosmos-banner.png"
+type = "image"
+title = "cosmos brand banner"
+
+[[generated]]
+id = "vB5DPGd3uhQEoixpM9jn5"
+uri = "file://artifacts/nosytlabs/brand-kit/photos/cosmic-tile.png"
+type = "image"
+title = "cosmic square tile"
+
+[[generated]]
+id = "DI7gh9v_SZZdkuRnNa2WF"
+uri = "file://artifacts/nosytlabs/brand-kit/photos/figure-cosmos.png"
+type = "image"
+title = "figure cosmos brand"
+
+[[generated]]
+id = "bHS2nsHG2thDxCjB0UL2E"
+uri = "file://artifacts/nosytlabs/brand-kit/photos/cosmos-vertical.png"
+type = "image"
+title = "cosmos vertical story"
+
+[[outputs]]
+id = "dmRrlAKvNs-WqLs-VrfQ_"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/avatar-1024.png"
+type = "image"
+title = "Social profile avatar (1024 — also exported at 512/192/32)"
+
+[[outputs]]
+id = "Sig6GPnDPEHGA0HTG_Hbv"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/x-header.png"
+type = "image"
+title = "X / Twitter header (1500x500)"
+
+[[outputs]]
+id = "Ki5WKSjxhjoLHn-5h8FvJ"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/linkedin-banner.png"
+type = "image"
+title = "LinkedIn banner (1584x396)"
+
+[[outputs]]
+id = "hhndmLI9fb_4X58rhLqi7"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/og-image.png"
+type = "image"
+title = "Open Graph / link preview (1200x630)"
+
+[[outputs]]
+id = "EAM_y_yOSxobeg5prVPpt"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/instagram-post.png"
+type = "image"
+title = "Instagram square post (1080x1080)"
+
+[[outputs]]
+id = "u3wk5bRu1hp9cNkWQBzTt"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/instagram-story.png"
+type = "image"
+title = "Instagram / TikTok story (1080x1920)"
+
+[[outputs]]
+id = "gikdjKZaUeoDugqpA5QrQ"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/github-social.png"
+type = "image"
+title = "GitHub repo social preview (1280x640)"
+
+[[outputs]]
+id = "txT4pLYd34DHqhUmWNmie"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/repo-readme-header.png"
+type = "image"
+title = "Repo README header banner (1280x320)"
+
+[[outputs]]
+id = "F-X4IniVs_0N6T22VmUMw"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/email-signature.png"
+type = "image"
+title = "Email signature lockup (600x120)"
+
+[[outputs]]
+id = "hDCkE0BtgsA8Lcsb6UCSf"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/lockup-horizontal.png"
+type = "image"
+title = "Horizontal lockup (mark + wordmark)"
+
+[[outputs]]
+id = "kdD-2QadC6jWOtWOohUQZ"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/lockup-stacked.png"
+type = "image"
+title = "Stacked lockup with caption"
+
+[[outputs]]
+id = "rgF6rlBVFtFWsoQIMcLZ6"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/wordmark.png"
+type = "image"
+title = "Wordmark only"
+
+[[outputs]]
+id = "SOWaRzmOrj0pJO1cILwxv"
+uri = "file://artifacts/nosytlabs/brand-kit/exports/watermark-on-black.png"
+type = "image"
+title = "Corner watermark (60% opacity, for photos/screenshots)"
+
+[[outputs]]
+id = "rfznDUhRV8MY6QSEU2OYh"
+uri = "file://artifacts/nosytlabs/brand-kit/photos/cosmos-banner.png"
+type = "image"
+title = "Brand photo — cosmos banner (16:9)"
+
+[[outputs]]
+id = "X95evaRoCSovPjFw2mTKI"
+uri = "file://artifacts/nosytlabs/brand-kit/photos/cosmic-tile.png"
+type = "image"
+title = "Brand photo — cosmic tile (square)"
+
+[[outputs]]
+id = "EVNMIkHMcyLx9UkxNtKA9"
+uri = "file://artifacts/nosytlabs/brand-kit/photos/figure-cosmos.png"
+type = "image"
+title = "Brand photo — figure at the edge of cosmos (16:9)"
+
+[[outputs]]
+id = "7--UWh_rhqcOmWHomns68"
+uri = "file://artifacts/nosytlabs/brand-kit/photos/cosmos-vertical.png"
+type = "image"
+title = "Brand photo — vertical cosmos (story format)"
+
+[[outputs]]
+id = "YtuxSCPVma7QdhFfWgouH"
+uri = "file://artifacts/nosytlabs/brand-kit/README.md"
+type = "text"
+title = "Brand kit usage guide (specs, safe zones, voice, re-export commands)"
