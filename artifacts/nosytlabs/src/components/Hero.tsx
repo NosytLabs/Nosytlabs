@@ -273,7 +273,7 @@ export default function Hero() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="bg-[#f5f1e8] rounded-full px-5 py-2.5 text-[#0a0a0b] text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-[0.97] transition flex items-center gap-1.5 disabled:opacity-60 motion-reduce:active:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
+              className="bg-[#f5f1e8] rounded-full px-5 py-2.5 text-[#0a0a0b] text-sm font-medium hover:bg-[#f5f1e8]/90 active:scale-[0.97] transition inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 disabled:opacity-60 motion-reduce:active:scale-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b]"
             >
               {status === "sending" ? "Sending…" : status === "sent" ? "On the list ✓" : "Get notes"}
               {status === "idle" && <ArrowRight size={14} strokeWidth={2.4} aria-hidden="true" />}
