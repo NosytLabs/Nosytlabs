@@ -47,3 +47,6 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Stale agent attachment uploads — not used by any artifact.
+attached_assets/

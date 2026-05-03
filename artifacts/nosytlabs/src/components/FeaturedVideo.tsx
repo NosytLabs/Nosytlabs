@@ -67,7 +67,7 @@ export default function FeaturedVideo() {
                   Browse the code →
                 </a>
                 <a
-                  href="#projects"
+                  href="/#projects"
                   className="liquid-glass rounded-full px-6 py-3 text-[#f5f1e8] text-sm font-medium hover:bg-white/[0.05] transition"
                 >
                   See featured projects →
