@@ -59,12 +59,13 @@ export default function Footer() {
             <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.28em] uppercase mb-4">
               The studio
             </div>
+            {/* Root-prefixed anchors so they work from any sub-page. */}
             <ul className="space-y-2.5 text-[#f5f1e8]/85 text-sm">
-              <li><a href="#about" className="hover:text-[#d8b87a] transition-colors">About</a></li>
-              <li><a href="#opportunities" className="hover:text-[#d8b87a] transition-colors">Work with us</a></li>
-              <li><a href="#projects" className="hover:text-[#d8b87a] transition-colors">Projects</a></li>
-              <li><a href="#manifesto" className="hover:text-[#d8b87a] transition-colors">Manifesto</a></li>
-              <li><a href="#contact" className="hover:text-[#d8b87a] transition-colors">Contact</a></li>
+              <li><a href="/#about" className="hover:text-[#d8b87a] transition-colors">About</a></li>
+              <li><a href="/#opportunities" className="hover:text-[#d8b87a] transition-colors">Work with us</a></li>
+              <li><a href="/#projects" className="hover:text-[#d8b87a] transition-colors">Projects</a></li>
+              <li><a href="/#manifesto" className="hover:text-[#d8b87a] transition-colors">Manifesto</a></li>
+              <li><a href="/#contact" className="hover:text-[#d8b87a] transition-colors">Contact</a></li>
             </ul>
           </div>
 

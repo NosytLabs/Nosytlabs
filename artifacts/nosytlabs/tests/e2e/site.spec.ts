@@ -103,12 +103,15 @@ test.describe("NosytLabs site — core e2e scenarios", () => {
     await expect(page.locator("#main")).toBeAttached();
   });
 
-  // 3. "Available" pill in navbar links to #contact
+  // 3. "Available" pill in navbar links to the contact section.
+  // Anchor is root-prefixed (`/#contact`) so it works from sub-pages like
+  // `/services/web-apps/` — bare `#contact` would resolve relative to the
+  // current path and silently fail to scroll on those pages.
   test('"Available" pill links to the contact section', async ({ page }) => {
     await page.goto(BASE);
-    const pill = page.locator('a[href="#contact"]').filter({ hasText: "Available" }).first();
+    const pill = page.locator('a[href="/#contact"]').filter({ hasText: "Available" }).first();
     await expect(pill).toBeVisible();
-    await expect(pill).toHaveAttribute("href", "#contact");
+    await expect(pill).toHaveAttribute("href", "/#contact");
   });
 
   // 4. Contact form validates required fields and accepts a "Hire the studio" inquiry

@@ -5,13 +5,18 @@ import { LINKS } from "@/lib/links";
 
 export const AVAILABLE = true;
 
+// Anchors are root-prefixed (e.g. `/#about`, not `#about`) so the nav still
+// works from sub-pages like `/services/web-apps/`. A bare `#about` from a
+// services page would resolve to `/services/web-apps/#about` and silently
+// fail to scroll. The leading `/` bounces visitors home and then to the
+// section.
 const NAV = [
-  { label: "Studio", href: "#about" },
+  { label: "Studio", href: "/#about" },
   { label: "Services", href: "/services/" },
-  { label: "Work", href: "#opportunities" },
-  { label: "Projects", href: "#projects" },
-  { label: "Manifesto", href: "#manifesto" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", href: "/#opportunities" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Manifesto", href: "/#manifesto" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -81,7 +86,7 @@ export default function Navbar() {
           scrolled ? "px-4 py-2 sm:px-5 sm:py-2.5" : "px-5 py-3 sm:px-6 sm:py-3.5"
         }`}
       >
-        <a href="#" aria-label="Nosytlabs — home" className="flex items-center gap-2.5 text-[#f5f1e8]">
+        <a href="/" aria-label="Nosytlabs — home" className="flex items-center gap-2.5 text-[#f5f1e8]">
           <Logo className="w-7 h-7 rounded-md" />
           <span className="font-semibold text-[15px] tracking-tight hidden sm:inline">Nosytlabs</span>
         </a>
@@ -101,7 +106,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           {AVAILABLE && (
             <a
-              href="#contact"
+              href="/#contact"
               aria-label="Available for work — contact"
               className="hidden sm:inline-flex items-center gap-1.5 liquid-glass rounded-full px-3 py-1.5 text-[#f5f1e8]/85 hover:text-[#f5f1e8] text-xs font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#d8b87a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b] motion-reduce:transition-none"
             >
@@ -154,7 +159,7 @@ export default function Navbar() {
           </button>
           {AVAILABLE && (
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="flex items-center gap-2 text-[#f5f1e8]/75 text-sm font-medium motion-reduce:transition-none"
             >
