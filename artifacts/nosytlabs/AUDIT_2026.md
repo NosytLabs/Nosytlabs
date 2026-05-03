@@ -6,10 +6,11 @@
 > truth for past changes. This file documents what is live and the
 > rules a reviewer should enforce.
 
-## Current state (verified 2026-05-02)
+## Current state (verified 2026-05-03)
 
-- **Build**: 13.16 KB app gzip, 58.26 KB react vendor, 39.21 KB framer-motion. 8s clean.
-- **Tests**: 15/15 e2e passing (6 services-nav + 9 site).
+- **Build**: ~812ms with rolldown (Vite 8). Total ~120 KB gzipped:
+  app 13.46 KB · react vendor 55.26 KB · framer-motion 39.66 KB · icons 4.17 KB · CSS 8.93 KB · runtime 0.47 KB.
+- **Tests**: 15/15 e2e passing in ~35s (6 services-nav + 9 site).
 - **Console**: silent in dev and production.
 - **Type check**: clean.
 
@@ -18,6 +19,7 @@
 - Single-page React app at `/` with sections: Hero, About, Opportunities, Manifesto, Projects, FeaturedVideo, Philosophy, Contact.
 - Five static HTML service pages under `/services/`: hub + web-apps, ai-agents, mcp-servers, custom-tools. Generated at build by the `staticServicePages` plugin in `vite.config.ts`, served by Vercel via the explicit rewrites in `vercel.json`.
 - Static deploy target: Vercel (`vercel.json`) with `dist/public/` as output, trailing-slash routing, immutable cache on `/assets` + `/img`, security headers (HSTS, Permissions-Policy FLoC opt-out, no-sniff, Referrer-Policy).
+- Toolchain: Vite 8 (rolldown bundler, oxc transformer), React 19.1, Tailwind v4, framer-motion 12, lucide-react 1.x. Brand icons (GitHub, X) live in `src/components/icons/Brand.tsx` since lucide 1.x removed trademarked logos.
 
 ## SEO surface (do not regress)
 
