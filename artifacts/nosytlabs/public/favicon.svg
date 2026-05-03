@@ -10,14 +10,13 @@
       <stop offset="100%" stop-color="#d8d2c2"/>
     </linearGradient>
     <radialGradient id="nl-dot-glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#f0c878" stop-opacity="0.55"/>
+      <stop offset="0%" stop-color="#f0c878" stop-opacity="0.6"/>
       <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="64" height="64" rx="14" fill="url(#nl-tile)"/>
   <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.25" fill="none" stroke="#f5f1e8" stroke-opacity="0.22"/>
-  <rect x="2.5" y="2.5" width="59" height="59" rx="11.5" fill="none" stroke="#f5f1e8" stroke-opacity="0.05"/>
-  <text x="17" y="49" font-family="'Instrument Serif', 'Times New Roman', Georgia, serif" font-size="46" font-style="italic" font-weight="400" fill="url(#nl-n)">n</text>
-  <circle cx="49" cy="47" r="8" fill="url(#nl-dot-glow)"/>
-  <circle cx="49" cy="47" r="3.4" fill="#d8b87a"/>
+  <text x="19" y="49" font-family="'Instrument Serif', 'Times New Roman', Georgia, serif" font-size="40" font-style="italic" font-weight="400" fill="url(#nl-n)">n</text>
+  <circle cx="42" cy="47" r="6" fill="url(#nl-dot-glow)"/>
+  <circle cx="42" cy="47" r="2.8" fill="#d8b87a"/>
 </svg>

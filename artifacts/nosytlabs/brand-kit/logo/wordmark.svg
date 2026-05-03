@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 140" role="img" aria-label="Nosytlabs">
-  <title>Nosytlabs wordmark</title>
-  <style>
-    .wm { font-family: 'Instrument Serif','Times New Roman',Georgia,serif; font-style: italic; font-weight: 400; }
-  </style>
-  <text x="20" y="100" class="wm" font-size="108" fill="#f5f1e8" letter-spacing="-1.5">Nosytlabs<tspan fill="#d8b87a">.</tspan></text>
+  <title>Nosytlabs wordmark — italic Instrument Serif with gold period</title>
+  <style>.wm{font-family:'Instrument Serif','Times New Roman',Georgia,serif;font-style:italic;font-weight:400}</style>
+  <text x="20" y="100" class="wm" font-size="108" fill="#f5f1e8" letter-spacing="-1.5">Nosytlabs</text>
+  <circle cx="568" cy="92" r="11" fill="#d8b87a"/>
 </svg>

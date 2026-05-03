@@ -11,20 +11,19 @@
       <stop offset="100%" stop-color="#d8d2c2"/>
     </linearGradient>
     <radialGradient id="dotglow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#f0c878" stop-opacity="0.55"/>
+      <stop offset="0%" stop-color="#f0c878" stop-opacity="0.6"/>
       <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
     </radialGradient>
-    <style>
-      .n { font-family: 'Instrument Serif','Times New Roman',Georgia,serif; font-style: italic; font-weight: 400; }
-    </style>
+    <style>.n{font-family:'Instrument Serif','Times New Roman',Georgia,serif;font-style:italic;font-weight:400}</style>
   </defs>
   <g transform="translate(176,0)">
     <rect width="128" height="128" rx="28" fill="url(#tile)"/>
     <rect x="1.5" y="1.5" width="125" height="125" rx="26.5" fill="none" stroke="#f5f1e8" stroke-opacity="0.22"/>
-    <text x="34" y="100" class="n" font-size="100" fill="url(#ng)">n</text>
-    <circle cx="98" cy="96" r="14" fill="url(#dotglow)"/>
-    <circle cx="98" cy="96" r="6" fill="#d8b87a"/>
+    <text x="38" y="98" class="n" font-size="88" fill="url(#ng)">n</text>
+    <circle cx="86" cy="92" r="13" fill="url(#dotglow)"/>
+    <circle cx="86" cy="92" r="6" fill="#d8b87a"/>
   </g>
-  <text x="240" y="248" class="n" font-size="76" fill="#f5f1e8" text-anchor="middle" letter-spacing="-1">Nosytlabs<tspan fill="#d8b87a">.</tspan></text>
+  <text x="224" y="248" class="n" font-size="76" fill="#f5f1e8" text-anchor="middle" letter-spacing="-1">Nosytlabs</text>
+  <circle cx="408" cy="240" r="8" fill="#d8b87a"/>
   <text x="240" y="312" font-family="ui-monospace,'Geist Mono',monospace" font-size="14" fill="#f5f1e8" fill-opacity="0.55" text-anchor="middle" letter-spacing="6">INDEPENDENT STUDIO</text>
 </svg>
