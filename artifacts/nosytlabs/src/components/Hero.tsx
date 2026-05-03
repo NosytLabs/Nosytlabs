@@ -211,7 +211,7 @@ export default function Hero() {
         <h1 className="text-serif text-[#f5f1e8] tracking-[-0.025em] leading-[0.94] text-[3.25rem] sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem] max-w-[1200px] animate-fade-rise-d1">
           Notable opportunities{" "}
           <span className="text-italic-serif text-[#d8b87a]">shape</span>{" "}
-          your <span className="text-italic-serif shimmer-text">tomorrow</span>.
+          your tomorrow.
         </h1>
 
         <p className="mt-8 max-w-xl text-[#f5f1e8]/85 text-base sm:text-lg leading-relaxed animate-fade-rise-d2">

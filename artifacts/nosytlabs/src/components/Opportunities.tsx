@@ -34,16 +34,14 @@ export default function Opportunities() {
       <div className="max-w-6xl mx-auto relative">
         <Reveal>
           <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-6">
-            04 — What we take on
+            What we take on
           </div>
         </Reveal>
 
         <div className="grid md:grid-cols-[1fr_1fr] gap-10 md:gap-20 items-start">
           <Reveal delay={0.1}>
             <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight leading-[1.05]">
-              Currently{" "}
-              <span className="text-italic-serif text-[#d8b87a]">available</span>{" "}
-              for work.
+              Currently available for work.
             </h2>
             <p className="mt-7 text-[#f5f1e8]/80 text-base md:text-lg leading-relaxed max-w-md">
               Independent US studio, deliberately selective. We take on

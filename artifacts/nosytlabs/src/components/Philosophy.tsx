@@ -24,13 +24,10 @@ export default function Philosophy() {
       <div className="max-w-6xl mx-auto">
         <Reveal y={30}>
           <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-6">
-            03 — How we work
+            How we work
           </div>
           <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight mb-16 max-w-4xl leading-[1.05]">
-            How the studio{" "}
-            <span className="text-italic-serif text-[#d8b87a]">
-              actually works.
-            </span>
+            How the studio actually works.
           </h2>
         </Reveal>
 

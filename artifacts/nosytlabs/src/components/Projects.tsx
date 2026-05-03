@@ -126,7 +126,7 @@ export default function Projects() {
           <div className="flex items-end justify-between flex-wrap gap-4 mb-14 md:mb-16">
             <div>
               <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-4">
-                05 — Selected work
+                Selected work
               </div>
               <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight">
                 What we{" "}

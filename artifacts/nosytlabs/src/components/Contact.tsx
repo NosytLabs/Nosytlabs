@@ -111,7 +111,7 @@ export default function Contact() {
           <Reveal x={-20}>
             <div>
               <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-6">
-                07 — Get in touch
+                Get in touch
               </div>
               <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] tracking-tight leading-[1.05]">
                 Have a project?{" "}

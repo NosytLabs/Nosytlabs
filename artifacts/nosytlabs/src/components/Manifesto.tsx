@@ -18,7 +18,7 @@ export default function Manifesto() {
       <div className="max-w-4xl mx-auto text-center relative">
         <Reveal>
           <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-10">
-            06 — Manifesto
+            Manifesto
           </div>
         </Reveal>
         <div className="space-y-7 md:space-y-9">

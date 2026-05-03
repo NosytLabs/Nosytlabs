@@ -32,7 +32,7 @@ export default function About() {
       <div className="relative max-w-6xl mx-auto">
         <Reveal>
           <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-6">
-            01 — The studio
+            The studio
           </div>
         </Reveal>
 

@@ -7,7 +7,7 @@ export default function FeaturedVideo() {
       <div className="max-w-6xl mx-auto">
         <Reveal y={40}>
           <div className="text-mono text-[#f5f1e8]/65 text-[11px] tracking-[0.3em] uppercase mb-12">
-            02 — Working in the open
+            Working in the open
           </div>
 
           <div className="grid md:grid-cols-[1.2fr_1fr] gap-10 md:gap-14 items-stretch">
@@ -29,11 +29,7 @@ export default function FeaturedVideo() {
                   Public by design
                 </div>
                 <p className="text-serif text-2xl sm:text-3xl md:text-4xl text-[#f5f1e8] leading-[1.15] tracking-tight max-w-md">
-                  Code, commits, and{" "}
-                  <span className="text-italic-serif text-[#d8b87a]">
-                    decisions
-                  </span>
-                  , all in the open.
+                  Code, commits, and decisions, all in the open.
                 </p>
               </div>
             </div>
