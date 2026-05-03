@@ -25,7 +25,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative bg-[#0a0a0b] pt-32 md:pt-40 pb-24 md:pb-32 px-6 overflow-hidden"
+      className="relative bg-[#0a0a0b] py-24 md:py-32 px-6 overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,_rgba(245,241,232,0.04)_0%,_transparent_60%)]" />
 
@@ -38,15 +38,13 @@ export default function About() {
 
         <Reveal delay={0.1}>
           <h2 className="text-serif text-4xl md:text-6xl lg:text-7xl text-[#f5f1e8] leading-[1.05] tracking-tight max-w-5xl">
-            An{" "}
-            <span className="text-italic-serif text-[#d8b87a]">independent studio</span>{" "}
-            building the small, sharp pieces of the{" "}
+            An independent studio building the small, sharp pieces of the{" "}
             <span className="text-italic-serif text-[#d8b87a]">AI-native web</span>.
           </h2>
         </Reveal>
 
         <Reveal delay={0.2}>
-          <div className="mt-12 grid md:grid-cols-[2fr_1fr] gap-10 md:gap-16 items-end">
+          <div className="mt-12 grid md:grid-cols-[2fr_1fr] gap-10 md:gap-16 items-start">
             <p className="max-w-2xl text-[#f5f1e8]/85 text-base md:text-lg leading-relaxed">
               Nosytlabs is a US-based studio engineering AI agents, Model
               Context Protocol servers, and focused web apps for founders

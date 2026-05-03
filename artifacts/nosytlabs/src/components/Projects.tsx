@@ -161,14 +161,14 @@ export default function Projects() {
                 transition={{ type: "spring", stiffness: 220, damping: 22 }}
                 className="group grid grid-cols-12 items-center gap-4 md:gap-6 py-7 md:py-9 border-b border-[#f5f1e8]/10 hover:bg-[#f5f1e8]/[0.015] transition-colors px-1 md:px-3 scroll-mt-24"
               >
-                <div className="col-span-12 md:col-span-1 text-mono text-[#f5f1e8]/40 text-xs tracking-wider">
+                <div className="col-span-12 md:col-span-1 text-mono text-[#f5f1e8]/55 text-xs tracking-wider">
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <div className="col-span-12 md:col-span-3">
                   <h3 className="text-serif text-2xl md:text-[1.85rem] text-[#f5f1e8] tracking-tight leading-tight group-hover:text-[#d8b87a] transition-colors">
                     {p.title}
                   </h3>
-                  <div className="text-mono text-[#f5f1e8]/40 text-[11px] mt-1.5">
+                  <div className="text-mono text-[#f5f1e8]/55 text-[11px] mt-1.5">
                     NosytLabs/{p.slug}
                   </div>
                 </div>
@@ -178,13 +178,13 @@ export default function Projects() {
                   </p>
                 </div>
                 <div className="col-span-12 md:col-span-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-mono text-[11px]">
-                  <span className="text-[#f5f1e8]/55">{p.tag}</span>
-                  <span className="text-[#f5f1e8]/30">·</span>
-                  <span className="text-[#f5f1e8]/55">{p.lang}</span>
+                  <span className="text-[#f5f1e8]/70">{p.tag}</span>
+                  <span className="text-[#f5f1e8]/45">·</span>
+                  <span className="text-[#f5f1e8]/70">{p.lang}</span>
                   {p.stars > 0 && (
                     <>
-                      <span className="text-[#f5f1e8]/30">·</span>
-                      <span className="text-[#f5f1e8]/55 inline-flex items-center gap-1" aria-label={`${p.stars} stars`}>
+                      <span className="text-[#f5f1e8]/45">·</span>
+                      <span className="text-[#f5f1e8]/70 inline-flex items-center gap-1" aria-label={`${p.stars} stars`}>
                         <Star size={10} fill="currentColor" aria-hidden="true" />
                         {p.stars}
                       </span>
@@ -192,8 +192,8 @@ export default function Projects() {
                   )}
                   {p.forks > 0 && (
                     <>
-                      <span className="text-[#f5f1e8]/30">·</span>
-                      <span className="text-[#f5f1e8]/55 inline-flex items-center gap-1" aria-label={`${p.forks} forks`}>
+                      <span className="text-[#f5f1e8]/45">·</span>
+                      <span className="text-[#f5f1e8]/70 inline-flex items-center gap-1" aria-label={`${p.forks} forks`}>
                         <GitFork size={10} aria-hidden="true" />
                         {p.forks}
                       </span>
@@ -203,7 +203,7 @@ export default function Projects() {
                     const rel = relativeTime(p.pushedAt);
                     return rel ? (
                       <span
-                        className="text-[#f5f1e8]/40 basis-full md:basis-auto md:before:content-['·_'] md:before:mr-1 md:before:text-[#f5f1e8]/30"
+                        className="text-[#f5f1e8]/55 basis-full md:basis-auto md:before:content-['·_'] md:before:mr-1 md:before:text-[#f5f1e8]/45"
                         title={p.pushedAt ?? undefined}
                       >
                         Updated {rel}

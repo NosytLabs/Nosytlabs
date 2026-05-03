@@ -309,10 +309,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 pb-10 px-6 animate-fade-rise-d4">
-        <div className="mx-auto max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span className="text-mono text-[#f5f1e8]/55 text-[10px] tracking-[0.22em] uppercase">
-            Independent · Open source · Est. 2025
-          </span>
+        <div className="mx-auto max-w-4xl flex justify-center">
           <a
             href="#about"
             className="text-[#f5f1e8]/70 hover:text-[#f5f1e8] transition-colors text-sm focus:outline-none focus-visible:underline focus-visible:underline-offset-4 focus-visible:decoration-[#d8b87a]"
