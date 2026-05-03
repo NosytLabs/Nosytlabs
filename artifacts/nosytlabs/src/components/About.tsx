@@ -17,7 +17,7 @@ const PILLARS = [
     n: "03",
     label: "In Development",
     title: "The work-in-progress shelf.",
-    body: "Browser games like Tidefall, experimental prompt libraries, and the projects still earning their README. Everything lives on GitHub next to the production work.",
+    body: "Open specs like Employee.md, experimental prompt libraries, and the projects still earning their README. Everything lives on GitHub next to the production work.",
   },
 ];
 

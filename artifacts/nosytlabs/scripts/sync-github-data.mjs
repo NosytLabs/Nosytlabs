@@ -49,9 +49,9 @@ const REPO_ENTRIES = [
     description: "Clean SKILL.md for the Presearch Search API — privacy-first, decentralized search for AI agents.",
   },
   {
-    slug: "NosytLabs/tidefall-phaser",
-    name: "Tidefall",
-    description: "An in-development browser game built with Phaser.",
+    slug: "NosytLabs/employee-md",
+    name: "Employee.md",
+    description: "Open specification for hiring AI employees in an internet-native economy — roles, capabilities, evaluations, and contracts.",
   },
 ];
 const REPOS = REPO_ENTRIES.map((r) => r.slug);

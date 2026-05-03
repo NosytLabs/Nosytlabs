@@ -92,14 +92,14 @@ const PROJECTS: Project[] = [
     ...snapshot("NosytLabs/presearch-search-skill", { stars: 2, forks: 0, lang: "Python" }),
   },
   {
-    tag: "Game · WIP",
-    title: "Tidefall",
+    tag: "Open Spec · Live",
+    title: "Employee.md",
     description:
-      "An in-development browser game built with Phaser. A small experiment in moving fast with a small game engine.",
-    href: "https://github.com/NosytLabs/tidefall-phaser",
-    slug: "tidefall-phaser",
-    repoSlug: "NosytLabs/tidefall-phaser",
-    ...snapshot("NosytLabs/tidefall-phaser", { stars: 0, forks: 0, lang: "JavaScript" }),
+      "An open specification for hiring AI employees in an internet-native economy — roles, capabilities, evaluations, and contracts. Live site published from the repo.",
+    href: "https://nosytlabs.github.io/employee-md/",
+    slug: "employee-md",
+    repoSlug: "NosytLabs/employee-md",
+    ...snapshot("NosytLabs/employee-md", { stars: 0, forks: 0, lang: "Python" }),
   },
 ];
 
