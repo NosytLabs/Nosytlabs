@@ -53,7 +53,7 @@ export default function Opportunities() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="#contact?topic=hire"
+                href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
                   const el = document.getElementById("contact");
