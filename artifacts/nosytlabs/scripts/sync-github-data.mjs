@@ -36,12 +36,12 @@ const REPO_ENTRIES = [
   {
     slug: "NosytLabs/openclaw-droid",
     name: "OpenClaw Droid",
-    description: "Optimized OpenClaw AI Gateway for Android via Termux — agentic workflows on a phone.",
+    description: "Optimized OpenClaw AI Gateway for Android via Termux. Agentic workflows on a phone.",
   },
   {
     slug: "NosytLabs/openclaw-free-mcp-servers",
     name: "OpenClaw Free MCP Servers",
-    description: "Free Image Generation and Text-to-Speech MCP servers for OpenClaw — no API keys required.",
+    description: "Free Image Generation and Text-to-Speech MCP servers for OpenClaw. No API keys required.",
   },
   {
     slug: "NosytLabs/presearch-search-skill",
@@ -51,7 +51,7 @@ const REPO_ENTRIES = [
   {
     slug: "NosytLabs/employee-md",
     name: "Employee.md",
-    description: "Open specification for hiring AI employees in an internet-native economy — roles, capabilities, evaluations, and contracts.",
+    description: "Open specification for hiring AI employees in an internet-native economy: roles, capabilities, evaluations, and contracts.",
   },
 ];
 const REPOS = REPO_ENTRIES.map((r) => r.slug);

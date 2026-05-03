@@ -122,7 +122,7 @@ export default function Contact() {
               </h2>
               <p className="mt-7 text-[#f5f1e8]/80 text-base md:text-lg leading-relaxed max-w-md">
                 Bring a real problem. Sites, agents, MCP servers, custom
-                tooling — if it fits what the studio does, a real person
+                tooling. If it fits what the studio does, a real person
                 replies with an honest take.
               </p>
               <ul

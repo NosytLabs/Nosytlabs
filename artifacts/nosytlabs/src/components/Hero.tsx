@@ -217,7 +217,7 @@ export default function Hero() {
 
         <p className="mt-8 max-w-xl text-[#f5f1e8]/85 text-base sm:text-lg leading-relaxed animate-fade-rise-d2">
           An independent US studio building practical AI agents, MCP
-          servers, and small, fast web apps — for founders, teams, and
+          servers, and small, fast web apps for founders, teams, and
           fellow builders. Fixed scope, honest timelines, code you own.{" "}
           <a
             href="/services/"

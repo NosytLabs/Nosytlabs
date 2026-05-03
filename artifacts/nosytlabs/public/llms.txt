@@ -16,9 +16,9 @@ Most of the work lives at https://github.com/NosytLabs. Email replies are person
 ## Featured projects
 
 - **OpenClaw Droid** — optimized OpenClaw AI Gateway for Android via Termux. Agentic workflows on a phone. Repo: https://github.com/NosytLabs/openclaw-droid
-- **OpenClaw Free MCP Servers** — free Image Generation and Text-to-Speech MCP servers, no API keys required. Repo: https://github.com/NosytLabs/openclaw-free-mcp-servers
+- **OpenClaw Free MCP Servers** — free Image Generation and Text-to-Speech MCP servers. No API keys required. Repo: https://github.com/NosytLabs/openclaw-free-mcp-servers
 - **Presearch Search Skill** — clean SKILL.md for the Presearch Search API; privacy-first, decentralized search for AI agents. Repo: https://github.com/NosytLabs/presearch-search-skill
-- **Employee.md** — open specification for hiring AI employees in an internet-native economy. Live site + spec on GitHub Pages: https://nosytlabs.github.io/employee-md/ · Repo: https://github.com/NosytLabs/employee-md
+- **Employee.md** — open specification for hiring AI employees in an internet-native economy: roles, capabilities, evaluations, and contracts. Live site on GitHub Pages: https://nosytlabs.github.io/employee-md/ · Repo: https://github.com/NosytLabs/employee-md
 
 All projects are listed on the homepage. Stars and primary languages mirror the live GitHub state.
 

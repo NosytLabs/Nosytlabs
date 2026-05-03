@@ -66,7 +66,7 @@ const PROJECTS: Project[] = [
     tag: "AI Gateway",
     title: "OpenClaw Droid",
     description:
-      "An optimized OpenClaw AI Gateway designed to run inside Termux on Android — agentic workflows on a phone in your pocket.",
+      "An optimized OpenClaw AI Gateway designed to run inside Termux on Android. Agentic workflows on a phone in your pocket.",
     href: "https://github.com/NosytLabs/openclaw-droid",
     slug: "openclaw-droid",
     repoSlug: "NosytLabs/openclaw-droid",
@@ -76,7 +76,7 @@ const PROJECTS: Project[] = [
     tag: "MCP Servers",
     title: "Free MCP Servers",
     description:
-      "Free Image Generation and Text-to-Speech MCP servers for OpenClaw — no API keys required. Plug in, run locally, ship.",
+      "Free Image Generation and Text-to-Speech MCP servers for OpenClaw. No API keys required. Plug in, run locally, ship.",
     href: "https://github.com/NosytLabs/openclaw-free-mcp-servers",
     slug: "openclaw-free-mcp-servers",
     repoSlug: "NosytLabs/openclaw-free-mcp-servers",
@@ -86,7 +86,7 @@ const PROJECTS: Project[] = [
     tag: "Agent Skill",
     title: "Presearch Search Skill",
     description:
-      "A clean SKILL.md for the Presearch Search API — privacy-first, decentralized search built specifically for AI agents.",
+      "A clean SKILL.md for the Presearch Search API. Privacy-first, decentralized search built specifically for AI agents.",
     href: "https://github.com/NosytLabs/presearch-search-skill",
     slug: "presearch-search-skill",
     repoSlug: "NosytLabs/presearch-search-skill",
@@ -96,7 +96,7 @@ const PROJECTS: Project[] = [
     tag: "Open Spec · Live",
     title: "Employee.md",
     description:
-      "An open specification for hiring AI employees in an internet-native economy — roles, capabilities, evaluations, and contracts. Live site published from the repo.",
+      "An open specification for hiring AI employees in an internet-native economy: roles, capabilities, evaluations, and contracts. Live site published from the repo.",
     href: "https://nosytlabs.github.io/employee-md/",
     slug: "employee-md",
     repoSlug: "NosytLabs/employee-md",
