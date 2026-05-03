@@ -171,7 +171,7 @@ export default function Hero() {
         // visitor never sees the static frame mid-buffer.
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[1400ms] ease-out motion-reduce:transition-none"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_0%] sm:object-center transition-opacity duration-[1400ms] ease-out motion-reduce:transition-none"
           style={{ opacity: videoReady ? 1 : 0 }}
           src={videoSrc ?? undefined}
           poster="/img/cosmos-hero.webp"
@@ -190,16 +190,16 @@ export default function Hero() {
           src="/img/cosmos-hero.webp"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-[50%_0%] sm:object-center"
           decoding="async"
           fetchPriority="high"
         />
       )}
 
       {/* Layered overlays — vignette + bottom fade so type stays legible */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(10,10,11,0.10)_0%,_rgba(10,10,11,0.55)_55%,_rgba(10,10,11,0.92)_100%)]" />
-      <div className="absolute inset-0 pointer-events-none bg-[#0a0a0b]/30" />
-      <div className="absolute inset-x-0 bottom-0 h-72 pointer-events-none bg-gradient-to-b from-transparent via-[#0a0a0b]/85 to-[#0a0a0b]" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(10,10,11,0.35)_0%,_rgba(10,10,11,0.70)_55%,_rgba(10,10,11,0.95)_100%)] sm:bg-[radial-gradient(ellipse_at_center,_rgba(10,10,11,0.10)_0%,_rgba(10,10,11,0.55)_55%,_rgba(10,10,11,0.92)_100%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[#0a0a0b]/45 sm:bg-[#0a0a0b]/30" />
+      <div className="absolute inset-x-0 bottom-0 h-[65%] pointer-events-none bg-gradient-to-b from-transparent via-[#0a0a0b]/90 to-[#0a0a0b] sm:h-72 sm:bg-gradient-to-b sm:from-transparent sm:via-[#0a0a0b]/85 sm:to-[#0a0a0b]" />
       <div className="absolute inset-x-0 top-0 h-32 pointer-events-none bg-gradient-to-b from-[#0a0a0b]/85 to-transparent" />
 
       <Navbar />
