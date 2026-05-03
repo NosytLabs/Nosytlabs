@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Nosytlabs color system">
+  <title>Color system reference card — 1200x800</title>
+  <defs>
+    <radialGradient id="bg" cx="65%" cy="40%" r="85%">
+      <stop offset="0%" stop-color="#15151a"/>
+      <stop offset="55%" stop-color="#0a0a0b"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="ng" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbf6e8"/>
+      <stop offset="100%" stop-color="#d8d2c2"/>
+    </linearGradient>
+    <radialGradient id="dotglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0c878" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .ws{font-family:'Instrument Serif','Times New Roman',Georgia,serif;font-style:italic;font-weight:400}
+      .mono{font-family:ui-monospace,'Geist Mono',monospace;letter-spacing:0.22em}
+      .label{font-family:ui-monospace,'Geist Mono',monospace;letter-spacing:0.18em}
+    </style>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+
+  <!-- Mark in top-left -->
+  <g transform="translate(64,64)">
+    <text x="0" y="40" class="ws" font-size="48" fill="url(#ng)">n</text>
+    <circle cx="44" cy="34" r="9" fill="url(#dotglow)"/>
+    <circle cx="44" cy="34" r="4" fill="#d8b87a"/>
+    <text x="64" y="38" class="mono" font-size="13" fill="#f5f1e8" fill-opacity="0.7">NOSYTLABS &#160;&#183;&#160; COLOR SYSTEM</text>
+  </g>
+
+  <!-- Title -->
+  <text x="64" y="200" class="ws" font-size="80" fill="#f5f1e8">The palette</text>
+  <text x="64" y="240" class="label" font-size="13" fill="#f5f1e8" fill-opacity="0.55">THREE COLORS. NO COMPROMISES.</text>
+
+  <!-- Three swatches -->
+  <g transform="translate(64,300)">
+    <rect width="340" height="380" rx="20" fill="#0a0a0b" stroke="#f5f1e8" stroke-opacity="0.2"/>
+    <text x="24" y="240" class="ws" font-size="120" fill="#f5f1e8">Aa</text>
+    <text x="24" y="290" class="label" font-size="11" fill="#f5f1e8" fill-opacity="0.55">PRIMARY &#183; BACKGROUND</text>
+    <text x="24" y="320" class="mono" font-size="18" fill="#f5f1e8">#0A0A0B</text>
+    <text x="24" y="346" class="mono" font-size="12" fill="#f5f1e8" fill-opacity="0.6">RGB 10 10 11</text>
+    <text x="24" y="364" class="mono" font-size="12" fill="#f5f1e8" fill-opacity="0.6">CMYK 9 9 0 96</text>
+  </g>
+
+  <g transform="translate(430,300)">
+    <rect width="340" height="380" rx="20" fill="#f5f1e8"/>
+    <text x="24" y="240" class="ws" font-size="120" fill="#0a0a0b">Aa</text>
+    <text x="24" y="290" class="label" font-size="11" fill="#0a0a0b" fill-opacity="0.6">PRIMARY &#183; FOREGROUND</text>
+    <text x="24" y="320" class="mono" font-size="18" fill="#0a0a0b">#F5F1E8</text>
+    <text x="24" y="346" class="mono" font-size="12" fill="#0a0a0b" fill-opacity="0.6">RGB 245 241 232</text>
+    <text x="24" y="364" class="mono" font-size="12" fill="#0a0a0b" fill-opacity="0.6">CMYK 0 2 5 4</text>
+  </g>
+
+  <g transform="translate(796,300)">
+    <rect width="340" height="380" rx="20" fill="#d8b87a"/>
+    <text x="24" y="240" class="ws" font-size="120" fill="#0a0a0b">Aa</text>
+    <text x="24" y="290" class="label" font-size="11" fill="#0a0a0b" fill-opacity="0.7">ACCENT &#183; THE PERIOD</text>
+    <text x="24" y="320" class="mono" font-size="18" fill="#0a0a0b">#D8B87A</text>
+    <text x="24" y="346" class="mono" font-size="12" fill="#0a0a0b" fill-opacity="0.7">RGB 216 184 122</text>
+    <text x="24" y="364" class="mono" font-size="12" fill="#0a0a0b" fill-opacity="0.7">CMYK 0 15 43 15</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="64" y="752" class="mono" font-size="11" fill="#f5f1e8" fill-opacity="0.45">USAGE &#183; BLACK FOR EVERYTHING. CREAM FOR TYPE. GOLD FOR THE PERIOD AND ONE EMPHASIS WORD PER SECTION.</text>
+  <text x="1136" y="752" class="mono" font-size="11" fill="#f5f1e8" fill-opacity="0.45" text-anchor="end">NOSYTLABS.COM</text>
+</svg>

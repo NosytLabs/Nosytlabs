@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Nosytlabs desktop wallpaper">
+  <title>Desktop wallpaper / virtual background — 1920x1080</title>
+  <defs>
+    <radialGradient id="bg" cx="65%" cy="40%" r="85%">
+      <stop offset="0%" stop-color="#15151a"/>
+      <stop offset="55%" stop-color="#0a0a0b"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="78%" cy="55%" r="42%">
+      <stop offset="0%" stop-color="#d8b87a" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ng" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbf6e8"/>
+      <stop offset="100%" stop-color="#d8d2c2"/>
+    </linearGradient>
+    <radialGradient id="dotglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0c878" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .ws{font-family:'Instrument Serif','Times New Roman',Georgia,serif;font-style:italic;font-weight:400}
+      .mono{font-family:ui-monospace,'Geist Mono',monospace;letter-spacing:0.3em}
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+  <g fill="#f5f1e8">
+    <circle cx="180" cy="160" r="1.0" opacity="0.55"/>
+    <circle cx="420" cy="280" r="0.8" opacity="0.4"/>
+    <circle cx="640" cy="120" r="0.7" opacity="0.5"/>
+    <circle cx="880" cy="380" r="0.9" opacity="0.5"/>
+    <circle cx="1180" cy="200" r="0.7" opacity="0.4"/>
+    <circle cx="1420" cy="460" r="0.8" opacity="0.45"/>
+    <circle cx="1660" cy="220" r="0.6" opacity="0.5"/>
+    <circle cx="240" cy="780" r="0.7" opacity="0.45"/>
+    <circle cx="540" cy="900" r="0.5" opacity="0.5"/>
+    <circle cx="820" cy="820" r="0.6" opacity="0.4"/>
+    <circle cx="1140" cy="940" r="0.8" opacity="0.5"/>
+    <circle cx="1480" cy="800" r="0.7" opacity="0.45"/>
+    <circle cx="1740" cy="900" r="0.5" opacity="0.4"/>
+  </g>
+
+  <!-- Centered mark -->
+  <g transform="translate(960,460)">
+    <g transform="translate(-110,-140)">
+      <rect width="220" height="220" rx="48" fill="#0e0e12" stroke="#f5f1e8" stroke-opacity="0.22" stroke-width="1.5"/>
+      <text x="58" y="172" class="ws" font-size="172" fill="url(#ng)">n</text>
+      <circle cx="170" cy="164" r="22" fill="url(#dotglow)"/>
+      <circle cx="170" cy="164" r="10" fill="#d8b87a"/>
+    </g>
+  </g>
+
+  <text x="960" y="640" class="ws" font-size="76" fill="#f5f1e8" text-anchor="middle">Nosytlabs<tspan fill="#d8b87a">.</tspan></text>
+  <text x="960" y="700" class="mono" font-size="14" fill="#f5f1e8" fill-opacity="0.6" text-anchor="middle">AI AGENTS &#160;&#183;&#160; MCP SERVERS &#160;&#183;&#160; WEB APPS</text>
+  <text x="960" y="1020" class="mono" font-size="12" fill="#d8b87a" fill-opacity="0.7" text-anchor="middle">NOSYTLABS.COM</text>
+</svg>

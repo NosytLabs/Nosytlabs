@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 600" role="img" aria-label="Nosytlabs business card back">
+  <title>Business card back — 3.5x2 inch at 300dpi (1050x600 with bleed)</title>
+  <defs>
+    <style>
+      .ws{font-family:'Instrument Serif','Times New Roman',Georgia,serif;font-style:italic;font-weight:400}
+      .mono{font-family:ui-monospace,'Geist Mono',monospace;letter-spacing:0.22em}
+      .body{font-family:'Geist',-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+    </style>
+  </defs>
+  <rect width="1050" height="600" fill="#f5f1e8"/>
+  <rect x="38" y="38" width="974" height="524" fill="none" stroke="#0a0a0b" stroke-opacity="0.06" stroke-dasharray="3,4"/>
+
+  <!-- Top: simple mark -->
+  <g transform="translate(80,100)">
+    <text x="0" y="60" class="ws" font-size="68" fill="#0a0a0b">n</text>
+    <circle cx="62" cy="50" r="6" fill="#b8924a"/>
+  </g>
+
+  <text x="80" y="232" class="ws" font-size="48" fill="#0a0a0b" letter-spacing="-0.5">Nosytlabs.</text>
+  <text x="80" y="262" class="mono" font-size="11" fill="#0a0a0b" fill-opacity="0.6">INDEPENDENT US STUDIO &#160;&#183;&#160; EST. 2025</text>
+
+  <!-- Contact block -->
+  <g transform="translate(80,360)">
+    <text x="0" y="0" class="mono" font-size="10" fill="#0a0a0b" fill-opacity="0.55">CONTACT</text>
+    <text x="0" y="32" class="body" font-size="18" fill="#0a0a0b">hi@nosytlabs.com</text>
+  </g>
+  <g transform="translate(380,360)">
+    <text x="0" y="0" class="mono" font-size="10" fill="#0a0a0b" fill-opacity="0.55">WEB</text>
+    <text x="0" y="32" class="body" font-size="18" fill="#0a0a0b">nosytlabs.com</text>
+  </g>
+  <g transform="translate(680,360)">
+    <text x="0" y="0" class="mono" font-size="10" fill="#0a0a0b" fill-opacity="0.55">CODE</text>
+    <text x="0" y="32" class="body" font-size="18" fill="#0a0a0b">github.com/nosytlabs</text>
+  </g>
+
+  <!-- Gold accent line -->
+  <line x1="80" y1="500" x2="970" y2="500" stroke="#d8b87a" stroke-width="1"/>
+  <text x="80" y="540" class="mono" font-size="11" fill="#0a0a0b" fill-opacity="0.5">AI AGENTS &#160;&#183;&#160; MCP SERVERS &#160;&#183;&#160; WEB APPS</text>
+  <text x="970" y="540" class="mono" font-size="11" fill="#b8924a" text-anchor="end">SHIP IN THE OPEN.</text>
+</svg>

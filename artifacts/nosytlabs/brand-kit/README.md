@@ -42,6 +42,9 @@ brand-kit/
 | `logo/wordmark-mono-black.svg` | Single-color black — for invoices, light-background print, partner pages |
 | `logo/lockup-horizontal.svg` | Mark + wordmark side-by-side — email signatures, footers, slide masters |
 | `logo/lockup-stacked.svg` | Mark stacked above wordmark + "INDEPENDENT STUDIO" caption — about pages, posters |
+| `logo/lockup-horizontal-mono-cream.svg` | Mono cream lockup — single-color version for dark backgrounds, print, partner pages |
+| `logo/lockup-horizontal-mono-black.svg` | Mono black lockup — single-color version for invoices, light-bg print |
+| `logo/mark-only.svg` | Pure mark (n + period), no tile, transparent — for inline use in headers, footers, email |
 | `../public/favicon.svg` | The mark itself (canonical source) — already in production |
 
 **Quality rules** (from BRAND.md §4):
@@ -67,6 +70,14 @@ in `exports/`. Re-export with ImageMagick from any SVG:
 | GitHub repo social preview | 1280×640 | `social/github-social-1280x640.svg` | `exports/github-social.png` |
 | Repo README header banner | 1280×320 | `social/repo-readme-header-1280x320.svg` | `exports/repo-readme-header.png` |
 | Email signature (light bg) | 600×120 | `social/email-signature.svg` | `exports/email-signature.png` |
+| App icon (light variant) | 1024×1024 | `social/app-icon-light-1024.svg` | `exports/app-icon-light-1024.png` |
+| Color palette reference | 1200×800 | `social/color-palette-1200x800.svg` | `exports/color-palette.png` |
+| Type specimen reference | 1200×900 | `social/type-specimen-1200x900.svg` | `exports/type-specimen.png` |
+| Business card front (3.5×2") | 1050×600 @ 300dpi | `social/business-card-front-1050x600.svg` | `exports/business-card-front.png` |
+| Business card back (3.5×2") | 1050×600 @ 300dpi | `social/business-card-back-1050x600.svg` | `exports/business-card-back.png` |
+| Desktop wallpaper / Zoom bg | 1920×1080 | `social/desktop-wallpaper-1920x1080.svg` | `exports/desktop-wallpaper.png` |
+
+**WebP exports**: every PNG in `exports/` and `photos/` ships with a matching `.webp` at q=88. Photos compress 90%+ (1.4 MB → 128 KB). Use WebP for web upload, PNG for platforms that require it.
 
 **The favicon = the social avatar.** `public/favicon.svg`, `public/icon-192.png`,
 `public/icon-512.png`, and `public/apple-touch-icon.png` all rasterize from the
@@ -87,7 +98,7 @@ magick -background none -density 600 brand-kit/social/avatar-1024.svg -resize 18
 ## Watermark
 
 `watermark/watermark-corner.svg` — small mark + "nosytlabs." wordmark at
-60% opacity, rendered for use as a corner overlay on photos, screenshots,
+92% opacity, rendered for use as a corner overlay on photos, screenshots,
 or shared images. Recommended placement: bottom-right, 32px inset.
 
 ## Brand photography

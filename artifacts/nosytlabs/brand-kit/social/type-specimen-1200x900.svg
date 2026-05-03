@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Nosytlabs type system">
+  <title>Type specimen reference card — 1200x900</title>
+  <defs>
+    <radialGradient id="bg" cx="65%" cy="40%" r="85%">
+      <stop offset="0%" stop-color="#15151a"/>
+      <stop offset="55%" stop-color="#0a0a0b"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="ng" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbf6e8"/>
+      <stop offset="100%" stop-color="#d8d2c2"/>
+    </linearGradient>
+    <radialGradient id="dotglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0c878" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .serif{font-family:'Instrument Serif','Times New Roman',Georgia,serif;font-weight:400}
+      .italic{font-family:'Instrument Serif','Times New Roman',Georgia,serif;font-style:italic;font-weight:400}
+      .sans{font-family:'Geist',-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+      .mono{font-family:ui-monospace,'Geist Mono',monospace;letter-spacing:0.22em}
+      .label{font-family:ui-monospace,'Geist Mono',monospace;letter-spacing:0.18em}
+    </style>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+
+  <g transform="translate(64,64)">
+    <text x="0" y="40" class="italic" font-size="48" fill="url(#ng)">n</text>
+    <circle cx="44" cy="34" r="9" fill="url(#dotglow)"/>
+    <circle cx="44" cy="34" r="4" fill="#d8b87a"/>
+    <text x="64" y="38" class="mono" font-size="13" fill="#f5f1e8" fill-opacity="0.7">NOSYTLABS &#160;&#183;&#160; TYPE SYSTEM</text>
+  </g>
+
+  <text x="64" y="200" class="italic" font-size="80" fill="#f5f1e8">The voice</text>
+  <text x="64" y="240" class="label" font-size="13" fill="#f5f1e8" fill-opacity="0.55">A SERIF TO HEADLINE. A SANS TO EXPLAIN. A MONO TO LABEL.</text>
+
+  <g transform="translate(64,320)">
+    <text x="0" y="0" class="label" font-size="11" fill="#d8b87a" fill-opacity="0.85">01 &#160;&#183;&#160; INSTRUMENT SERIF &#160;&#183;&#160; ITALIC &#160;&#183;&#160; HEADLINES</text>
+    <text x="0" y="80" class="italic" font-size="84" fill="#f5f1e8">Notable opportunities</text>
+    <text x="0" y="160" xml:space="preserve" class="italic" font-size="84" fill="#f5f1e8"><tspan fill="#d8b87a">shape</tspan> your tomorrow.</text>
+  </g>
+
+  <g transform="translate(64,560)">
+    <text x="0" y="0" class="label" font-size="11" fill="#d8b87a" fill-opacity="0.85">02 &#160;&#183;&#160; GEIST &#160;&#183;&#160; SANS &#160;&#183;&#160; BODY</text>
+    <text x="0" y="44" class="sans" font-size="20" fill="#f5f1e8" fill-opacity="0.85">Nosytlabs is a US-based studio engineering AI agents, MCP servers,</text>
+    <text x="0" y="74" class="sans" font-size="20" fill="#f5f1e8" fill-opacity="0.85">and focused web apps for founders who want code they own.</text>
+  </g>
+
+  <g transform="translate(64,710)">
+    <text x="0" y="0" class="label" font-size="11" fill="#d8b87a" fill-opacity="0.85">03 &#160;&#183;&#160; GEIST MONO &#160;&#183;&#160; LABELS &#160;&#183;&#160; METADATA</text>
+    <text x="0" y="44" class="mono" font-size="13" fill="#f5f1e8" fill-opacity="0.7">EST. 2025 &#160;&#183;&#160; INDEPENDENT US STUDIO &#160;&#183;&#160; AVAILABLE</text>
+    <text x="0" y="72" class="mono" font-size="13" fill="#f5f1e8" fill-opacity="0.7">AI AGENTS &#160;&#183;&#160; MCP SERVERS &#160;&#183;&#160; WEB APPS</text>
+  </g>
+
+  <text x="64" y="852" class="mono" font-size="11" fill="#f5f1e8" fill-opacity="0.45">FALLBACKS &#183; TIMES NEW ROMAN &#183; SYSTEM-UI &#183; UI-MONOSPACE</text>
+  <text x="1136" y="852" class="mono" font-size="11" fill="#f5f1e8" fill-opacity="0.45" text-anchor="end">NOSYTLABS.COM</text>
+</svg>

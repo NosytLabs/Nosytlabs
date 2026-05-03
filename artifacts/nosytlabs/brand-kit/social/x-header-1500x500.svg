@@ -14,14 +14,17 @@
       <stop offset="0%" stop-color="#fbf6e8"/>
       <stop offset="100%" stop-color="#d8d2c2"/>
     </linearGradient>
+    <radialGradient id="dotglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0c878" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
     <style>
-      .ws { font-family: 'Instrument Serif','Times New Roman',serif; font-style: italic; font-weight: 400; }
-      .mono { font-family: ui-monospace, 'Geist Mono', monospace; letter-spacing: 0.28em; }
+      .ws { font-family: 'Instrument Serif','Times New Roman',Georgia,serif; font-style: italic; font-weight: 400; }
+      .mono { font-family: ui-monospace,'Geist Mono',monospace; letter-spacing: 0.28em; }
     </style>
   </defs>
   <rect width="1500" height="500" fill="url(#bg)"/>
   <rect width="1500" height="500" fill="url(#glow)"/>
-  <!-- subtle star field -->
   <g fill="#f5f1e8">
     <circle cx="120" cy="80" r="0.8" opacity="0.6"/>
     <circle cx="280" cy="180" r="1.0" opacity="0.4"/>
@@ -36,11 +39,19 @@
     <circle cx="780" cy="60" r="0.6" opacity="0.5"/>
     <circle cx="1180" cy="240" r="0.5" opacity="0.4"/>
   </g>
-  <!-- copy block -->
+
+  <!-- Mark in top-right corner -->
+  <g transform="translate(1336,52)">
+    <rect width="112" height="112" rx="24" fill="#0e0e12" stroke="#f5f1e8" stroke-opacity="0.22"/>
+    <text x="30" y="88" class="ws" font-size="88" fill="url(#ng)">n</text>
+    <circle cx="86" cy="84" r="13" fill="url(#dotglow)"/>
+    <circle cx="86" cy="84" r="6" fill="#d8b87a"/>
+  </g>
+
   <g transform="translate(120,180)">
-    <text x="0" y="0" class="mono" font-size="16" fill="#f5f1e8" fill-opacity="0.6">NOSYTLABS · INDEPENDENT STUDIO · EST. 2025</text>
+    <text x="0" y="0" class="mono" font-size="16" fill="#f5f1e8" fill-opacity="0.6">NOSYTLABS &#160;&#183;&#160; INDEPENDENT STUDIO &#160;&#183;&#160; EST. 2025</text>
     <text x="0" y="100" class="ws" font-size="92" fill="#f5f1e8">Notable opportunities</text>
-    <text x="0" y="190" class="ws" font-size="92" fill="#d8b87a" font-style="italic">shape<tspan fill="#f5f1e8" font-style="italic"> your tomorrow.</tspan></text>
-    <text x="0" y="240" class="mono" font-size="13" fill="#f5f1e8" fill-opacity="0.55">AI AGENTS · MCP SERVERS · WEB APPS · NOSYTLABS.COM</text>
+    <text x="0" y="190" xml:space="preserve" class="ws" font-size="92" fill="#f5f1e8"><tspan fill="#d8b87a">shape</tspan> your tomorrow.</text>
+    <text x="0" y="240" class="mono" font-size="13" fill="#f5f1e8" fill-opacity="0.55">AI AGENTS &#160;&#183;&#160; MCP SERVERS &#160;&#183;&#160; WEB APPS &#160;&#183;&#160; NOSYTLABS.COM</text>
   </g>
 </svg>

@@ -15,12 +15,12 @@
       <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
     </radialGradient>
     <style>
-      .n { font-family: 'Instrument Serif','Times New Roman',serif; font-style: italic; font-weight: 400; }
+      .n { font-family: 'Instrument Serif','Times New Roman',Georgia,serif; font-style: italic; font-weight: 400; }
     </style>
   </defs>
   <rect width="1024" height="1024" rx="224" fill="url(#tile)"/>
   <rect x="12" y="12" width="1000" height="1000" rx="212" fill="none" stroke="#f5f1e8" stroke-opacity="0.22" stroke-width="6"/>
-  <text x="512" y="780" class="n" font-size="800" fill="url(#ng)" text-anchor="middle">n</text>
-  <circle cx="744" cy="736" r="112" fill="url(#dotglow)"/>
-  <circle cx="744" cy="736" r="48" fill="#d8b87a"/>
+  <text x="436" y="740" class="n" font-size="720" fill="url(#ng)">n</text>
+  <circle cx="780" cy="708" r="118" fill="url(#dotglow)"/>
+  <circle cx="780" cy="708" r="52" fill="#d8b87a"/>
 </svg>

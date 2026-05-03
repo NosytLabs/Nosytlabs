@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 600" role="img" aria-label="Nosytlabs business card front">
+  <title>Business card front — 3.5x2 inch at 300dpi (1050x600 with bleed)</title>
+  <defs>
+    <radialGradient id="bg" cx="62%" cy="38%" r="85%">
+      <stop offset="0%" stop-color="#15151a"/>
+      <stop offset="55%" stop-color="#0a0a0b"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="78%" cy="55%" r="40%">
+      <stop offset="0%" stop-color="#d8b87a" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ng" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbf6e8"/>
+      <stop offset="100%" stop-color="#d8d2c2"/>
+    </linearGradient>
+    <radialGradient id="dotglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0c878" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .ws{font-family:'Instrument Serif','Times New Roman',Georgia,serif;font-style:italic;font-weight:400}
+      .mono{font-family:ui-monospace,'Geist Mono',monospace;letter-spacing:0.28em}
+    </style>
+  </defs>
+  <rect width="1050" height="600" fill="url(#bg)"/>
+  <rect width="1050" height="600" fill="url(#glow)"/>
+  <g fill="#f5f1e8">
+    <circle cx="120" cy="100" r="0.9" opacity="0.5"/>
+    <circle cx="280" cy="180" r="1.0" opacity="0.4"/>
+    <circle cx="900" cy="140" r="0.7" opacity="0.4"/>
+    <circle cx="780" cy="500" r="0.9" opacity="0.5"/>
+  </g>
+  <!-- Trim guides (5px from edge) -->
+  <rect x="38" y="38" width="974" height="524" fill="none" stroke="#f5f1e8" stroke-opacity="0.06" stroke-dasharray="3,4"/>
+
+  <!-- Mark + wordmark centered -->
+  <g transform="translate(525,200)">
+    <g transform="translate(-180,-80)">
+      <rect width="160" height="160" rx="34" fill="#0e0e12" stroke="#f5f1e8" stroke-opacity="0.22"/>
+      <text x="40" y="124" class="ws" font-size="124" fill="url(#ng)">n</text>
+      <circle cx="124" cy="118" r="16" fill="url(#dotglow)"/>
+      <circle cx="124" cy="118" r="7" fill="#d8b87a"/>
+    </g>
+    <text x="0" y="40" class="ws" font-size="92" fill="#f5f1e8" letter-spacing="-1">Nosytlabs<tspan fill="#d8b87a">.</tspan></text>
+  </g>
+
+  <text x="525" y="340" class="mono" font-size="13" fill="#f5f1e8" fill-opacity="0.7" text-anchor="middle">INDEPENDENT US STUDIO &#160;&#183;&#160; EST. 2025</text>
+  <text x="525" y="402" class="ws" font-size="36" fill="#f5f1e8" text-anchor="middle">Notable opportunities <tspan fill="#d8b87a">shape</tspan> your tomorrow.</text>
+  <text x="525" y="540" class="mono" font-size="11" fill="#d8b87a" fill-opacity="0.85" text-anchor="middle">AI AGENTS &#160;&#183;&#160; MCP SERVERS &#160;&#183;&#160; WEB APPS</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Nosytlabs light app icon">
+  <title>App icon — light cream variant (1024x1024) for App Store and light-mode contexts</title>
+  <defs>
+    <radialGradient id="tile" cx="35%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#fbf7ec"/>
+      <stop offset="55%" stop-color="#f5f1e8"/>
+      <stop offset="100%" stop-color="#e8e2d2"/>
+    </radialGradient>
+    <linearGradient id="ng" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a22"/>
+      <stop offset="100%" stop-color="#0a0a0b"/>
+    </linearGradient>
+    <radialGradient id="dotglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d8b87a" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#d8b87a" stop-opacity="0"/>
+    </radialGradient>
+    <style>.n{font-family:'Instrument Serif','Times New Roman',Georgia,serif;font-style:italic;font-weight:400}</style>
+  </defs>
+  <rect width="1024" height="1024" rx="224" fill="url(#tile)"/>
+  <rect x="12" y="12" width="1000" height="1000" rx="212" fill="none" stroke="#0a0a0b" stroke-opacity="0.18" stroke-width="6"/>
+  <text x="436" y="740" class="n" font-size="720" fill="url(#ng)">n</text>
+  <circle cx="780" cy="708" r="118" fill="url(#dotglow)"/>
+  <circle cx="780" cy="708" r="52" fill="#b8924a"/>
+</svg>

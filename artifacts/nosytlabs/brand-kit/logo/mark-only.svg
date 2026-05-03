@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Nosytlabs mark">
+  <title>Nosytlabs mark — italic n with gold period, no tile (for inline / overlay use)</title>
+  <defs>
+    <linearGradient id="ng" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbf6e8"/>
+      <stop offset="100%" stop-color="#d8d2c2"/>
+    </linearGradient>
+    <style>.n{font-family:'Instrument Serif','Times New Roman',Georgia,serif;font-style:italic;font-weight:400}</style>
+  </defs>
+  <text x="40" y="156" class="n" font-size="156" fill="url(#ng)">n</text>
+  <circle cx="244" cy="146" r="14" fill="#d8b87a"/>
+</svg>
