@@ -20,12 +20,12 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@vitejs/plugin-react": "catalog:",
+    "@vitejs/plugin-react": "^6.0.1",
     "framer-motion": "catalog:",
-    "lucide-react": "catalog:",
+    "lucide-react": "^1.14.0",
     "react": "catalog:",
     "react-dom": "catalog:",
     "tailwindcss": "catalog:",
-    "vite": "catalog:"
+    "vite": "^8.0.10"
   }
 }

@@ -1,4 +1,4 @@
-import { Github, Twitter } from "lucide-react";
+import { Github, XLogo } from "./icons/Brand";
 import Logo from "./Logo";
 import Reveal from "./Reveal";
 import { LINKS } from "@/lib/links";
@@ -74,7 +74,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-wrap gap-2.5">
               <FootIcon href={LINKS.github} label="GitHub"><Github size={16} /></FootIcon>
-              <FootIcon href={LINKS.x} label="X"><Twitter size={16} /></FootIcon>
+              <FootIcon href={LINKS.x} label="X"><XLogo size={16} /></FootIcon>
             </div>
             <a href={LINKS.email} className="mt-4 inline-block text-mono text-[#f5f1e8]/65 hover:text-[#d8b87a] text-xs">
               {LINKS.emailRaw}

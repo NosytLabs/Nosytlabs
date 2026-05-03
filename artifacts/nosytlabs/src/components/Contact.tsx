@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Github, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
+import { Github } from "./icons/Brand";
 import Reveal from "./Reveal";
 import { LINKS } from "@/lib/links";
 import { track } from "@/lib/analytics";

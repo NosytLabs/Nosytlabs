@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Github, Twitter } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Github, XLogo } from "./icons/Brand";
 import Navbar from "./Navbar";
 import { LINKS } from "@/lib/links";
 import { track } from "@/lib/analytics";
@@ -304,7 +305,7 @@ export default function Hero() {
 
         <div className="mt-10 flex items-center gap-2.5 animate-fade-rise-d4">
           <Pill href={LINKS.github} label="GitHub"><Github size={16} /></Pill>
-          <Pill href={LINKS.x} label="X"><Twitter size={16} /></Pill>
+          <Pill href={LINKS.x} label="X"><XLogo size={16} /></Pill>
         </div>
       </div>
 

@@ -142,7 +142,9 @@ export default defineConfig({
   },
   // Strip /*! ... */ legal-comment banners from the production JS so
   // squirrelscan's perf/unminified-js heuristic doesn't trip on them.
-  esbuild: {
+  // Vite 8 uses oxc as the default transformer; esbuild.legalComments is
+  // a no-op in that pipeline.
+  oxc: {
     legalComments: "none",
   },
   server: {

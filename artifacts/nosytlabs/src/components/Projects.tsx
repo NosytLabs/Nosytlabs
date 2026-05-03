@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, GitFork, Github, Star } from "lucide-react";
+import { ArrowUpRight, GitFork, Star } from "lucide-react";
+import { Github } from "./icons/Brand";
 import Reveal from "./Reveal";
 import githubData from "@/lib/github-data.json" with { type: "json" };
 
