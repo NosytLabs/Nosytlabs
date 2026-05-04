@@ -23,17 +23,19 @@ test.describe("Services nav + footer + sitemap", () => {
     await expect(footer.locator('a[href="/services/custom-tools/"]')).toBeVisible();
   });
 
-  test("sitemap.xml lists 7 URLs including all service pages", async ({ request }) => {
+  test("sitemap.xml lists 8 URLs including all service pages", async ({ request }) => {
     const res = await request.get(`${BASE}/sitemap.xml`);
     expect(res.status()).toBe(200);
     const body = await res.text();
     const urls = body.match(/<url>/g) ?? [];
-    expect(urls.length).toBe(7);
-    expect(body).toContain("https://nosytlabs.com/services/");
-    expect(body).toContain("https://nosytlabs.com/services/web-apps/");
-    expect(body).toContain("https://nosytlabs.com/services/ai-agents/");
-    expect(body).toContain("https://nosytlabs.com/services/mcp-servers/");
-    expect(body).toContain("https://nosytlabs.com/services/custom-tools/");
+    // 8 entries: home, /services/, 4 service detail pages, /privacy.html, /llms.txt
+    expect(urls.length).toBe(8);
+    expect(body).toContain("https://nosytlabs.com/services");
+    expect(body).toContain("https://nosytlabs.com/services/web-apps");
+    expect(body).toContain("https://nosytlabs.com/services/ai-agents");
+    expect(body).toContain("https://nosytlabs.com/services/mcp-servers");
+    expect(body).toContain("https://nosytlabs.com/services/custom-tools");
+    expect(body).toContain("https://nosytlabs.com/llms.txt");
   });
 
   // Regression: canonical trailing-slash URLs must not fall through to SPA.

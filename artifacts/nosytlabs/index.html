@@ -6,10 +6,10 @@
     <meta name="theme-color" content="#0a0a0b" />
     <meta name="color-scheme" content="dark" />
 
-    <title>Nosytlabs — Hire an independent US studio for AI agents, MCP servers &amp; web apps</title>
-    <meta name="description" content="Hire Nosytlabs — a US-based independent studio building AI agents, MCP (Model Context Protocol) servers, and small, fast web apps for founders and teams. Fixed scope, 2–6 week turnaround, code transferred to your GitHub org. Available for new work." />
-    <meta name="keywords" content="hire AI agent developer, MCP server development, freelance web app studio, hire React TypeScript developer, independent web studio for hire, custom AI agent development, Model Context Protocol consulting, Nosytlabs, NosytLabs, OpenClaw, OpenClaw Droid, Termux, freelance developer for startups" />
-    <meta name="author" content="Nosytlabs" />
+    <title>Nosytlabs — AI agents, MCP servers &amp; developer tools</title>
+    <meta name="description" content="Nosyt LLC — a one-person independent studio building open-source AI agents, MCP (Model Context Protocol) servers, and small tools for developers." />
+    <meta name="keywords" content="Nosyt, Nosytlabs, NosytLabs, Nosyt LLC, AI agents, MCP servers, Model Context Protocol, OpenClaw, OpenClaw Droid, Termux, prompt engineering, indie studio, open source, developer tools, Presearch search skill, Tidefall" />
+    <meta name="author" content="Nosyt LLC" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
@@ -31,17 +31,18 @@
         - fonts.googleapis.com + fonts.gstatic.com for Instrument Serif / Geist
         - the CloudFront origin that hosts the hero MP4
         - formsubmit.co for the AJAX form submissions
+        - open.spotify.com for the artist embed iframe
       `frame-ancestors` is intentionally omitted — meta CSP can't enforce it
       per spec, that directive must come from a real HTTP header.
     -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; media-src 'self' https://d8j0ntlcm91z4.cloudfront.net blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://www.google.com https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; media-src 'self' https: blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://www.google.com https://formsubmit.co; frame-src https://open.spotify.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co" />
 
     <!-- Canonical + Open Graph + Twitter -->
     <link rel="canonical" href="https://nosytlabs.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nosytlabs" />
-    <meta property="og:title" content="Hire Nosytlabs — independent US studio for AI agents, MCP servers &amp; web apps" />
-    <meta property="og:description" content="A US-based independent studio building AI agents, MCP servers, and small, fast web apps for founders and teams. Fixed scope, 2–6 weeks, code you own. Available for new work." />
+    <meta property="og:title" content="Nosytlabs — Independent studio for AI agents &amp; developer tools" />
+    <meta property="og:description" content="Open-source AI agents, MCP servers, and small developer tools from a one-person studio. On GitHub since 2025." />
     <meta property="og:url" content="https://nosytlabs.com/" />
     <meta property="og:image" content="https://nosytlabs.com/opengraph.jpg" />
     <meta property="og:image:width" content="1280" />
@@ -52,8 +53,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@NosytLabs" />
     <meta name="twitter:creator" content="@NosytLabs" />
-    <meta name="twitter:title" content="Hire Nosytlabs — independent US studio for AI agents, MCP servers &amp; web apps" />
-    <meta name="twitter:description" content="Building AI agents, MCP servers, and small, fast web apps for founders and teams. Available for new work in 2026." />
+    <meta name="twitter:title" content="Nosytlabs — Independent studio for AI agents &amp; developer tools" />
+    <meta name="twitter:description" content="Open-source AI agents, MCP servers, and small developer tools from a one-person studio." />
     <meta name="twitter:image" content="https://nosytlabs.com/opengraph.jpg" />
     <meta name="twitter:image:alt" content="Nosytlabs — Notable opportunities shape your tomorrow." />
 
@@ -81,10 +82,9 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" /></noscript>
 
     <!--
-      Hide the SEO skeleton from JS-enabled browsers immediately so real
-      visitors never see a flash of the static fallback before React mounts.
-      Non-JS crawlers (Bing, DuckDuckBot, AI training crawlers) don't run
-      this script, so for them the skeleton stays visible and indexable.
+      FOUC guard: synchronously add `js` class to <html> before first paint so
+      the CSS rule below hides the static SEO skeleton for JS visitors. Crawlers
+      without JS keep seeing the skeleton and index its real H1 + content.
     -->
     <script>document.documentElement.classList.add('js');</script>
     <style>
@@ -116,176 +116,18 @@
     </style>
 
     <!-- Structured data: Organization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://nosytlabs.com/#org",
-      "name": "Nosytlabs",
-      "alternateName": ["Nosyt", "NosytLabs"],
-      "url": "https://nosytlabs.com",
-      "logo": "https://nosytlabs.com/favicon.svg",
-      "image": "https://nosytlabs.com/opengraph.jpg",
-      "foundingDate": "2025",
-      "description": "Independent US studio building AI agents, MCP (Model Context Protocol) servers, and small, fast web apps for founders and teams. Available for hire — fixed scope, 2–6 week turnaround, code transferred to client repo on completion.",
-      "email": "hi@nosytlabs.com",
-      "slogan": "Notable opportunities shape your tomorrow.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "US"
-      },
-      "knowsAbout": [
-        "Artificial Intelligence",
-        "AI Agents",
-        "Model Context Protocol",
-        "Developer Tools",
-        "Open Source Software",
-        "Prompt Engineering",
-        "Termux"
-      ],
-      "sameAs": [
-        "https://github.com/NosytLabs",
-        "https://x.com/NosytLabs"
-      ],
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "contactType": "general",
-        "email": "hi@nosytlabs.com",
-        "availableLanguage": ["English"]
-      }]
-    }
-    </script>
 
     <!-- Structured data: Person (founder identity behind the studio) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": "https://nosytlabs.com/#founder",
-      "name": "Nosyt",
-      "url": "https://nosytlabs.com",
-      "jobTitle": "Founder & Studio Operator",
-      "worksFor": { "@id": "https://nosytlabs.com/#org" },
-      "knowsAbout": [
-        "AI Agents",
-        "Model Context Protocol",
-        "Prompt Engineering",
-        "Open Source Software",
-        "Developer Tooling"
-      ],
-      "sameAs": [
-        "https://github.com/NosytLabs",
-        "https://x.com/NosytLabs"
-      ]
-    }
-    </script>
 
     <!-- Structured data: WebSite -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://nosytlabs.com/#website",
-      "url": "https://nosytlabs.com/",
-      "name": "Nosytlabs",
-      "description": "Independent US studio building AI agents, MCP servers, and small, fast web apps for founders and teams.",
-      "publisher": { "@id": "https://nosytlabs.com/#org" },
-      "inLanguage": "en-US"
-    }
-    </script>
 
-    <!-- Note: homepage FAQPage JSON-LD intentionally omitted because Google's
-         rich-results spec requires the same Q&As to appear as visible page
-         content on the same URL. The four /services/* pages each carry
-         page-scoped FAQPage schema wrapping their own visible Q&A blocks. -->
-
-    <!-- Structured data: ProfessionalService — the hire-me side of the studio.
-         Mirrors the four offerings live at /services/* so each appears as a
-         distinct Service node in the OfferCatalog and links to its own page. -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "@id": "https://nosytlabs.com/#professional-service",
-      "name": "Nosytlabs Studio Services",
-      "url": "https://nosytlabs.com/services/",
-      "image": "https://nosytlabs.com/opengraph.jpg",
-      "provider": { "@id": "https://nosytlabs.com/#org" },
-      "areaServed": { "@type": "Country", "name": "United States" },
-      "availableLanguage": ["English"],
-      "priceRange": "$$",
-      "description": "Independent studio offering web app development, AI agent engineering, MCP server development, and custom developer tooling. Fixed-scope quotes, code transferred to client repo on completion.",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Studio services",
-        "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web app & site development", "url": "https://nosytlabs.com/services/web-apps/", "serviceType": "Web application development" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI agent development", "url": "https://nosytlabs.com/services/ai-agents/", "serviceType": "AI agent engineering" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MCP server development", "url": "https://nosytlabs.com/services/mcp-servers/", "serviceType": "Model Context Protocol server engineering" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom developer tooling", "url": "https://nosytlabs.com/services/custom-tools/", "serviceType": "Custom CLI and developer utility engineering" } }
-        ]
-      }
-    }
-    </script>
+    <!-- Note: FAQPage JSON-LD is included below in the @graph block. Each Q&A
+         is also surfaced in visible page content (FAQ component) so it stays
+         eligible for Google rich results. Studio facts for LLM/AI-search
+         context additionally live in /llms.txt. -->
 
     <!-- Structured data: SoftwareSourceCode per featured project. Each entry
-         mirrors a verified live repo at github.com/NosytLabs (404s removed).
-         The block between the BEGIN/END markers below is regenerated by
-         `scripts/sync-github-data.mjs` so dateModified / programmingLanguage
-         stay accurate without manual edits. Keep markers verbatim. -->
-    <!-- BEGIN:github-projects-schema -->
-    <script type="application/ld+json">
-    {
-          "@context": "https://schema.org",
-          "@graph": [
-                {
-                      "@type": "SoftwareSourceCode",
-                      "name": "OpenClaw Droid",
-                      "description": "Optimized OpenClaw AI Gateway for Android via Termux. Agentic workflows on a phone.",
-                      "codeRepository": "https://github.com/NosytLabs/openclaw-droid",
-                      "programmingLanguage": "Shell",
-                      "author": {
-                            "@id": "https://nosytlabs.com/#org"
-                      },
-                      "dateModified": "2026-03-09T14:25:57Z"
-                },
-                {
-                      "@type": "SoftwareSourceCode",
-                      "name": "OpenClaw Free MCP Servers",
-                      "description": "Free Image Generation and Text-to-Speech MCP servers for OpenClaw. No API keys required.",
-                      "codeRepository": "https://github.com/NosytLabs/openclaw-free-mcp-servers",
-                      "programmingLanguage": "Python",
-                      "author": {
-                            "@id": "https://nosytlabs.com/#org"
-                      },
-                      "dateModified": "2026-05-03T00:40:20Z"
-                },
-                {
-                      "@type": "SoftwareSourceCode",
-                      "name": "Presearch Search Skill",
-                      "description": "Clean SKILL.md for the Presearch Search API — privacy-first, decentralized search for AI agents.",
-                      "codeRepository": "https://github.com/NosytLabs/presearch-search-skill",
-                      "programmingLanguage": "Python",
-                      "author": {
-                            "@id": "https://nosytlabs.com/#org"
-                      },
-                      "dateModified": "2026-02-20T09:46:10Z"
-                },
-                {
-                      "@type": "SoftwareSourceCode",
-                      "name": "Employee.md",
-                      "description": "Open specification for hiring AI employees in an internet-native economy: roles, capabilities, evaluations, and contracts.",
-                      "codeRepository": "https://github.com/NosytLabs/employee-md",
-                      "programmingLanguage": "Python",
-                      "author": {
-                            "@id": "https://nosytlabs.com/#org"
-                      },
-                      "dateModified": "2026-05-03T02:39:39Z"
-                }
-          ]
-    }
-    </script>
-    <!-- END:github-projects-schema -->
+         mirrors a verified live repo at github.com/NosytLabs (404s removed). -->
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4FS0H823MX"></script>
@@ -295,7 +137,85 @@
       gtag('js', new Date());
       gtag('config', 'G-4FS0H823MX', { anonymize_ip: true });
     </script>
-  </head>
+  
+  <!-- Structured Data: Organization + WebSite + Person + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nosytlabs.com/#organization",
+        "name": "NosytLabs",
+        "legalName": "NOSYT LLC",
+        "url": "https://nosytlabs.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://nosytlabs.com/icon-512.png",
+          "width": 512,
+          "height": 512
+        },
+        "description": "Independent US-based studio building open-source AI agents, MCP servers, and developer tools.",
+        "foundingLocation": {
+          "@type": "Place",
+          "addressRegion": "NM",
+          "addressCountry": "US",
+          "name": "New Mexico, USA"
+        },
+        "areaServed": "Worldwide",
+        "knowsAbout": ["AI agents", "MCP servers", "Model Context Protocol", "browser automation", "web development", "open source"],
+        "sameAs": [
+          "https://github.com/NosytLabs",
+          "https://www.linkedin.com/company/nosytlabs"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nosytlabs.com/#website",
+        "url": "https://nosytlabs.com",
+        "name": "NosytLabs",
+        "description": "Independent US studio building AI agents, MCP servers, and developer tools.",
+        "publisher": { "@id": "https://nosytlabs.com/#organization" },
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": { "@type": "EntryPoint", "urlTemplate": "https://github.com/NosytLabs?q={search_term_string}" },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does NosytLabs build?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NosytLabs builds open-source AI agents, MCP (Model Context Protocol) servers, and small fast web tools for developers. Projects include openclaw-free-mcp-servers for free image generation and TTS, employee.md for AI employment specifications, and OpenClaw Droid for mobile AI."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is MCP (Model Context Protocol)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "MCP (Model Context Protocol) is an open standard for connecting AI agents to external tools and data sources. NosytLabs builds free MCP servers that work without API keys."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is NosytLabs based?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NosytLabs (NOSYT LLC) is based in New Mexico, USA. We work remotely with clients worldwide."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
   <body>
     <!--
       The React app mounts into #root and replaces the entire static skeleton
@@ -316,31 +236,20 @@
           <a href="/" aria-label="Nosytlabs — home">Nosytlabs</a>
           <nav aria-label="Site sections">
             <a href="#about">Studio</a>
-            <a href="/services/">Services</a>
             <a href="#projects">Projects</a>
             <a href="#manifesto">Manifesto</a>
+            <a href="#sound">Music</a>
             <a href="#contact">Contact</a>
           </nav>
         </header>
         <section>
           <p class="eyebrow">Nosytlabs · Independent Studio · Est. 2025</p>
           <h1>Notable opportunities shape your tomorrow.</h1>
-          <p>Nosytlabs is a US-based independent studio building AI agents, MCP (Model Context Protocol) servers, and small, fast web apps for founders, teams, and fellow builders. Fixed scope, honest timelines, code transferred to your GitHub org on completion. Built in the open at <a href="https://github.com/NosytLabs">github.com/NosytLabs</a> since 2025.</p>
+          <p>Nosyt LLC is a one-person independent studio (founded 2025) building open-source AI agents, MCP (Model Context Protocol) servers, and small tools for developers. Most projects live in the open at <a href="https://github.com/NosytLabs">github.com/NosytLabs</a>.</p>
         </section>
         <section id="about">
           <h2>The studio</h2>
-          <p>An independent US studio engineering small, sharp, open systems that age better than sprawling platforms — AI agents, MCP servers, and focused web apps for founders and teams who want code they own. Built in the open since 2025, shipped to be used.</p>
-        </section>
-        <section id="services">
-          <h2>Services</h2>
-          <p>The studio is currently available for hire. Four focused offerings:</p>
-          <ul>
-            <li><a href="/services/web-apps/">Web app &amp; site development</a> — React, TypeScript, deployed cleanly. Two- to six-week turnaround.</li>
-            <li><a href="/services/ai-agents/">AI agent engineering</a> — custom agents for real workflows, not ChatGPT wrappers.</li>
-            <li><a href="/services/mcp-servers/">MCP server development</a> — Model Context Protocol servers, open source by default.</li>
-            <li><a href="/services/custom-tools/">Custom developer tooling</a> — CLI tools, automation scripts, scope-first quotes.</li>
-          </ul>
-          <p><a href="/services/">See all services →</a></p>
+          <p>Nosytlabs was registered as Nosyt LLC in early 2025. One person, one desk, no investors. The output spans AI agents, MCP servers, a browser game in progress, and the occasional experiment. Music gets released under the same name when a track is ready.</p>
         </section>
         <section id="projects">
           <h2>Selected projects</h2>
@@ -348,7 +257,7 @@
             <li><strong>OpenClaw Droid</strong> — optimized OpenClaw AI Gateway for Android via Termux. <a href="https://github.com/NosytLabs/openclaw-droid">github.com/NosytLabs/openclaw-droid</a></li>
             <li><strong>Free MCP Servers</strong> — image generation and text-to-speech MCP servers, no API keys required. <a href="https://github.com/NosytLabs/openclaw-free-mcp-servers">github.com/NosytLabs/openclaw-free-mcp-servers</a></li>
             <li><strong>Presearch Search Skill</strong> — privacy-first, decentralized search for AI agents. <a href="https://github.com/NosytLabs/presearch-search-skill">github.com/NosytLabs/presearch-search-skill</a></li>
-            <li><strong>Employee.md</strong> — open specification for hiring AI employees in an internet-native economy. <a href="https://nosytlabs.github.io/employee-md/">nosytlabs.github.io/employee-md</a></li>
+            <li><strong>Tidefall</strong> — in-development browser game built with Phaser. <a href="https://github.com/NosytLabs/tidefall-phaser">github.com/NosytLabs/tidefall-phaser</a></li>
           </ul>
         </section>
         <section id="contact">
@@ -356,7 +265,7 @@
           <p>Working on something in agents, MCP, or developer tooling? Open an issue on a repo, or email <a href="mailto:hi@nosytlabs.com">hi@nosytlabs.com</a> — a real person replies.</p>
         </section>
         <footer>
-          <p>© 2026 Nosytlabs · <a href="/privacy.html">Privacy</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/llms.txt">llms.txt</a> · <a href="https://github.com/NosytLabs">GitHub</a></p>
+          <p>© 2025 Nosyt LLC · <a href="/privacy.html">Privacy</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/llms.txt">llms.txt</a> · <a href="https://github.com/NosytLabs">GitHub</a></p>
         </footer>
       </main>
     </div>

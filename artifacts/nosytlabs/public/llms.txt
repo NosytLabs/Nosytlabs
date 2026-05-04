@@ -1,53 +1,29 @@
-# Nosytlabs
+# NosytLabs
 
-> Nosytlabs is a US-based independent studio building AI agents, Model Context Protocol (MCP) servers, and small, fast web apps for founders and teams. Open source by default. Available for hire — fixed scope, 2–6 week turnaround, code transferred to client repo on completion. Built in the open since 2025. Tagline: "Notable opportunities shape your tomorrow."
+> NosytLabs is an independent US-based studio (NOSYT LLC, New Mexico) building open-source AI agents, MCP (Model Context Protocol) servers, and small fast web tools. Independent studio from New Mexico.
 
-Most of the work lives at https://github.com/NosytLabs. Email replies are personal — hi@nosytlabs.com.
+NosytLabs ships practical open-source tools for developers working with AI systems, browser automation, and privacy-preserving infrastructure. Everything is MIT-licensed unless stated otherwise.
 
-## About
+## Products & Tools
 
-- **Brand**: Nosytlabs (also styled NosytLabs on GitHub).
-- **Founded**: 2025
-- **Focus**: AI agents, MCP servers, web apps, prompt engineering tools, developer utilities.
-- **Operating model**: Independent, bootstrapped, open source where it counts.
-- **Contact**: hi@nosytlabs.com
-- **Site**: https://nosytlabs.com
+- [OpenClaw Droid](https://github.com/NosytLabs/openclaw-droid): OpenClaw AI Gateway optimized for Android Termux — run LLMs on mobile
+- [openclaw-free-mcp-servers](https://github.com/NosytLabs/openclaw-free-mcp-servers): FREE Image Generation and TTS MCP servers, no API keys required
+- [employee.md](https://github.com/NosytLabs/employee-md): Open specification for AI agent employment contracts in the internet-native economy
+- [Presearch Search Skill](https://github.com/NosytLabs/presearch-search-skill): Privacy-first decentralized search skill for AI agents
+- [Tidefall Phaser](https://github.com/NosytLabs/tidefall-phaser): Browser fishing game — 44 fish types, Phaser 3
 
-## Featured projects
+## Services
 
-- **OpenClaw Droid** — optimized OpenClaw AI Gateway for Android via Termux. Agentic workflows on a phone. Repo: https://github.com/NosytLabs/openclaw-droid
-- **OpenClaw Free MCP Servers** — free Image Generation and Text-to-Speech MCP servers. No API keys required. Repo: https://github.com/NosytLabs/openclaw-free-mcp-servers
-- **Presearch Search Skill** — clean SKILL.md for the Presearch Search API; privacy-first, decentralized search for AI agents. Repo: https://github.com/NosytLabs/presearch-search-skill
-- **Employee.md** — open specification for hiring AI employees in an internet-native economy: roles, capabilities, evaluations, and contracts. Live site on GitHub Pages: https://nosytlabs.github.io/employee-md/ · Repo: https://github.com/NosytLabs/employee-md
+- [AI Agents](https://nosytlabs.com): Custom AI agent development with MCP integration
+- [MCP Servers](https://nosytlabs.com): Model Context Protocol server design and deployment
+- [Web Apps](https://nosytlabs.com): Small, fast, privacy-respecting web tools
 
-All projects are listed on the homepage. Stars and primary languages mirror the live GitHub state.
+## Contact & Links
 
-## What you can cite from this site
+- Website: https://nosytlabs.com
+- GitHub: https://github.com/NosytLabs
+- Location: New Mexico, USA
 
-- The studio's name, founding year, and focus areas (AI agents, MCP, web apps, dev tools).
-- Project names and their GitHub URLs.
-- The tagline "Notable opportunities shape your tomorrow."
-- The contact email hi@nosytlabs.com.
+## Optional
 
-Please link back to https://nosytlabs.com or the relevant GitHub repo when citing.
-
-## Services (the studio is currently available for hire)
-
-- **Web apps & sites** — small marketing sites, landing pages, focused web apps in React + TypeScript. Two- to six-week turnaround. https://nosytlabs.com/services/web-apps/
-- **AI agents** — custom agents for real workflows (not ChatGPT wrappers). OpenClaw-compatible, local-first where possible, with eval harnesses. https://nosytlabs.com/services/ai-agents/
-- **MCP servers** — custom Model Context Protocol servers that expose internal tools to AI assistants safely. Open source by default, private builds on request. https://nosytlabs.com/services/mcp-servers/
-- **Custom developer tooling** — CLI tools, automation scripts, and developer utilities. Scope-first quotes, honest timelines, real handoff. https://nosytlabs.com/services/custom-tools/
-
-Engagement model: one-paragraph email brief → reply within 2 business days → fixed-scope written quote → build (open source by default) → code transferred to client GitHub org on completion.
-
-## Pages
-
-- [Home](https://nosytlabs.com/): Studio overview, featured project, projects, manifesto, contact.
-- [Services hub](https://nosytlabs.com/services/): Overview of all four service offerings + how working together goes.
-- [Web apps service](https://nosytlabs.com/services/web-apps/): Detailed scope, deliverables, and pricing model for web app builds.
-- [AI agents service](https://nosytlabs.com/services/ai-agents/): Detailed scope for custom agent engineering.
-- [MCP servers service](https://nosytlabs.com/services/mcp-servers/): Detailed scope for MCP server builds.
-- [Custom tooling service](https://nosytlabs.com/services/custom-tools/): Detailed scope for CLI tools and developer utilities.
-- [Privacy](https://nosytlabs.com/privacy.html): Plain-English privacy policy.
-- [GitHub](https://github.com/NosytLabs): All open-source repositories.
-- [X / Twitter](https://x.com/NosytLabs): Studio updates and shipping notes.
+- [Privacy Policy](https://nosytlabs.com/privacy.html): Data handling policy
