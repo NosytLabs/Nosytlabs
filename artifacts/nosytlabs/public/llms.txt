@@ -1,39 +1,29 @@
-# Nosytlabs
+# NosytLabs
 
-> Nosytlabs is a one-person independent studio (legal entity: Nosyt LLC, founded 2025) building open-source AI agents, Model Context Protocol (MCP) servers, and small developer tools. Tagline: "Notable opportunities shape your tomorrow."
+> NosytLabs is an independent US-based studio (NOSYT LLC, New Mexico) building open-source AI agents, MCP (Model Context Protocol) servers, and small fast web tools. Founded and operated by Tyson Coughlan.
 
-Most of the work lives at https://github.com/NosytLabs. Email replies are personal — hi@nosytlabs.com.
+NosytLabs ships practical open-source tools for developers working with AI systems, browser automation, and privacy-preserving infrastructure. Everything is MIT-licensed unless stated otherwise.
 
-## About
+## Products & Tools
 
-- **Brand**: Nosytlabs (also styled NosytLabs on GitHub). Legal entity: Nosyt LLC.
-- **Founded**: 2025
-- **Focus**: AI agents, MCP servers, prompt engineering tools, small developer utilities.
-- **Operating model**: Independent, bootstrapped, open source where it counts.
-- **Contact**: hi@nosytlabs.com
-- **Site**: https://nosytlabs.com
+- [OpenClaw Droid](https://github.com/NosytLabs/openclaw-droid): OpenClaw AI Gateway optimized for Android Termux — run LLMs on mobile
+- [openclaw-free-mcp-servers](https://github.com/NosytLabs/openclaw-free-mcp-servers): FREE Image Generation and TTS MCP servers, no API keys required
+- [employee.md](https://github.com/NosytLabs/employee-md): Open specification for AI agent employment contracts in the internet-native economy
+- [Presearch Search Skill](https://github.com/NosytLabs/presearch-search-skill): Privacy-first decentralized search skill for AI agents
+- [Tidefall Phaser](https://github.com/NosytLabs/tidefall-phaser): Browser fishing game — 44 fish types, Phaser 3
 
-## Featured projects
+## Services
 
-- **OpenClaw Droid** — optimized OpenClaw AI Gateway for Android via Termux. Agentic workflows on a phone. Repo: https://github.com/NosytLabs/openclaw-droid
-- **OpenClaw Free MCP Servers** — free Image Generation and Text-to-Speech MCP servers, no API keys required. Repo: https://github.com/NosytLabs/openclaw-free-mcp-servers
-- **Presearch Search Skill** — clean SKILL.md for the Presearch Search API; privacy-first, decentralized search for AI agents. Repo: https://github.com/NosytLabs/presearch-search-skill
-- **Tidefall** — in-development browser game built with Phaser. Repo: https://github.com/NosytLabs/tidefall-phaser
+- [AI Agents](https://nosytlabs.com): Custom AI agent development with MCP integration
+- [MCP Servers](https://nosytlabs.com): Model Context Protocol server design and deployment
+- [Web Apps](https://nosytlabs.com): Small, fast, privacy-respecting web tools
 
-All projects are listed on the homepage. Stars and primary languages mirror the live GitHub state.
+## Contact & Links
 
-## What you can cite from this site
+- Website: https://nosytlabs.com
+- GitHub: https://github.com/NosytLabs
+- Location: New Mexico, USA
 
-- The studio's name, founding year, and focus areas (AI agents, MCP, dev tools).
-- Project names and their GitHub URLs.
-- The tagline "Notable opportunities shape your tomorrow."
-- The contact email hi@nosytlabs.com.
+## Optional
 
-Please link back to https://nosytlabs.com or the relevant GitHub repo when citing.
-
-## Pages
-
-- [Home](https://nosytlabs.com/): Studio overview, featured video, projects, manifesto, sound, contact.
-- [GitHub](https://github.com/NosytLabs): All open-source repositories.
-- [YouTube](https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ): Build videos and short demos.
-- [Spotify](https://open.spotify.com/artist/6PgkavAN36A3ngqiqOollE): Studio sound (background music we ship to).
+- [Privacy Policy](https://nosytlabs.com/privacy.html): Data handling policy
