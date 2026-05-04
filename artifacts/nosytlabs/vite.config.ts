@@ -2,47 +2,23 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 const rawPort = process.env.PORT;
-
-if (!rawPort) {
-  throw new Error(
-    "PORT environment variable is required but was not provided.",
-  );
-}
-
-const port = Number(rawPort);
-
-if (Number.isNaN(port) || port <= 0) {
-  throw new Error(`Invalid PORT value: "${rawPort}"`);
-}
-
-const basePath = process.env.BASE_PATH;
-
-if (!basePath) {
-  throw new Error(
-    "BASE_PATH environment variable is required but was not provided.",
-  );
-}
+const port = rawPort ? Number(rawPort) : 5173;
+const basePath = process.env.BASE_PATH ?? "/";
 
 export default defineConfig({
   base: basePath,
   plugins: [
     react(),
     tailwindcss(),
-    runtimeErrorOverlay(),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
+    ...(process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined
       ? [
+          await import("@replit/vite-plugin-runtime-error-modal").then((m) => m.default()),
           await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer({
-              root: path.resolve(import.meta.dirname, ".."),
-            }),
+            m.cartographer({ root: path.resolve(import.meta.dirname, "..") })
           ),
-          await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
-          ),
+          await import("@replit/vite-plugin-dev-banner").then((m) => m.devBanner()),
         ]
       : []),
   ],
@@ -59,35 +35,25 @@ export default defineConfig({
     emptyOutDir: true,
     cssCodeSplit: true,
     target: "es2020",
-    // Split bundles so no single chunk exceeds the 250 KB SEO/perf threshold
-    // (squirrelscan rule perf/js-file-size). The libraries below all change
-    // at very different cadences from app code, so splitting also gives
-    // returning visitors a much higher cache hit rate.
     rollupOptions: {
       output: {
         manualChunks: (id) => {
           if (!id.includes("node_modules")) return undefined;
           if (id.includes("framer-motion")) return "vendor-motion";
           if (id.includes("react-icons") || id.includes("lucide-react")) return "vendor-icons";
-          if (id.includes("react-dom") || id.match(/[\\/]react[\\/]/)) return "vendor-react";
+          if (id.includes("react-dom") || id.match(/[\/]react[\/]/)) return "vendor-react";
           return undefined;
         },
       },
     },
   },
-  // Strip /*! ... */ legal-comment banners from the production JS so
-  // squirrelscan's perf/unminified-js heuristic doesn't trip on them.
-  esbuild: {
-    legalComments: "none",
-  },
+  esbuild: { legalComments: "none" },
   server: {
     port,
-    strictPort: true,
+    strictPort: false,
     host: "0.0.0.0",
     allowedHosts: true,
-    fs: {
-      strict: true,
-    },
+    fs: { strict: true },
   },
   preview: {
     port,
