@@ -50,3 +50,10 @@ Thumbs.db
 
 # Stale agent attachment uploads — not used by any artifact.
 attached_assets/
+
+# Local visual-audit screenshots written outside of test-results.
+/screenshots/
+
+# Playwright e2e output (per-test trace dirs are noisy; final report is fine).
+artifacts/*/test-results/
+artifacts/*/playwright-report/
