@@ -1,6 +1,6 @@
 # NosytLabs
 
-> NosytLabs is an independent US-based studio (NOSYT LLC, New Mexico) building open-source AI agents, MCP (Model Context Protocol) servers, and small fast web tools. Founded and operated by Tyson Coughlan.
+> NosytLabs is an independent US-based studio (NOSYT LLC, New Mexico) building open-source AI agents, MCP (Model Context Protocol) servers, and small fast web tools. Independent studio from New Mexico.
 
 NosytLabs ships practical open-source tools for developers working with AI systems, browser automation, and privacy-preserving infrastructure. Everything is MIT-licensed unless stated otherwise.
 
