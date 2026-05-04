@@ -36,6 +36,14 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.nosytlabs.com" }],
+      "destination": "https://nosytlabs.com/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!assets|sitemap\\.xml|robots\\.txt|llms\\.txt|manifest\\.json|favicon|.*\\..*).*)",
