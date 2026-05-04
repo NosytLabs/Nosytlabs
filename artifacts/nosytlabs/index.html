@@ -105,87 +105,10 @@
     </style>
 
     <!-- Structured data: Organization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://nosytlabs.com/#org",
-      "name": "Nosyt LLC",
-      "alternateName": ["Nosyt", "Nosytlabs", "NosytLabs"],
-      "url": "https://nosytlabs.com",
-      "logo": "https://nosytlabs.com/favicon.svg",
-      "image": "https://nosytlabs.com/opengraph.jpg",
-      "foundingDate": "2025",
-      "description": "An independent studio building open-source AI agents, MCP (Model Context Protocol) servers, and developer tools.",
-      "email": "hi@nosytlabs.com",
-      "slogan": "Notable opportunities shape your tomorrow.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "US"
-      },
-      "knowsAbout": [
-        "Artificial Intelligence",
-        "AI Agents",
-        "Model Context Protocol",
-        "Developer Tools",
-        "Open Source Software",
-        "Prompt Engineering",
-        "Termux"
-      ],
-      "sameAs": [
-        "https://github.com/NosytLabs",
-        "https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ",
-        "https://x.com/NosytLabs",
-        "https://open.spotify.com/artist/6PgkavAN36A3ngqiqOollE"
-      ],
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "contactType": "general",
-        "email": "hi@nosytlabs.com",
-        "availableLanguage": ["English"]
-      }]
-    }
-    </script>
 
     <!-- Structured data: Person (founder identity behind the studio) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": "https://nosytlabs.com/#founder",
-      "name": "Nosyt",
-      "url": "https://nosytlabs.com",
-      "jobTitle": "Founder & Studio Operator",
-      "worksFor": { "@id": "https://nosytlabs.com/#org" },
-      "knowsAbout": [
-        "AI Agents",
-        "Model Context Protocol",
-        "Prompt Engineering",
-        "Open Source Software",
-        "Developer Tooling"
-      ],
-      "sameAs": [
-        "https://github.com/NosytLabs",
-        "https://x.com/NosytLabs",
-        "https://www.youtube.com/channel/UC_tgfMnIcskFOjY3bX9T2QQ",
-        "https://open.spotify.com/artist/6PgkavAN36A3ngqiqOollE"
-      ]
-    }
-    </script>
 
     <!-- Structured data: WebSite -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://nosytlabs.com/#website",
-      "url": "https://nosytlabs.com/",
-      "name": "Nosytlabs",
-      "description": "Independent studio building open-source AI agents, MCP servers, and developer tools.",
-      "publisher": { "@id": "https://nosytlabs.com/#org" },
-      "inLanguage": "en-US"
-    }
-    </script>
 
     <!-- Note: FAQPage JSON-LD intentionally omitted because Google's rich-results
          spec requires the same Q&As to appear as visible page content. Studio
@@ -193,45 +116,6 @@
 
     <!-- Structured data: SoftwareSourceCode per featured project. Each entry
          mirrors a verified live repo at github.com/NosytLabs (404s removed). -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "SoftwareSourceCode",
-          "name": "OpenClaw Droid",
-          "description": "Optimized OpenClaw AI Gateway for Android via Termux — agentic workflows on a phone.",
-          "codeRepository": "https://github.com/NosytLabs/openclaw-droid",
-          "programmingLanguage": "Shell",
-          "author": { "@id": "https://nosytlabs.com/#org" }
-        },
-        {
-          "@type": "SoftwareSourceCode",
-          "name": "OpenClaw Free MCP Servers",
-          "description": "Free Image Generation and Text-to-Speech MCP servers for OpenClaw — no API keys required.",
-          "codeRepository": "https://github.com/NosytLabs/openclaw-free-mcp-servers",
-          "programmingLanguage": "Python",
-          "author": { "@id": "https://nosytlabs.com/#org" }
-        },
-        {
-          "@type": "SoftwareSourceCode",
-          "name": "Presearch Search Skill",
-          "description": "Clean SKILL.md for the Presearch Search API — privacy-first, decentralized search for AI agents.",
-          "codeRepository": "https://github.com/NosytLabs/presearch-search-skill",
-          "programmingLanguage": "Python",
-          "author": { "@id": "https://nosytlabs.com/#org" }
-        },
-        {
-          "@type": "SoftwareSourceCode",
-          "name": "Tidefall",
-          "description": "An in-development browser game built with Phaser.",
-          "codeRepository": "https://github.com/NosytLabs/tidefall-phaser",
-          "programmingLanguage": "JavaScript",
-          "author": { "@id": "https://nosytlabs.com/#org" }
-        }
-      ]
-    }
-    </script>
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4FS0H823MX"></script>
@@ -241,7 +125,94 @@
       gtag('js', new Date());
       gtag('config', 'G-4FS0H823MX', { anonymize_ip: true });
     </script>
-  </head>
+  
+  <!-- Structured Data: Organization + WebSite + Person + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nosytlabs.com/#organization",
+        "name": "NosytLabs",
+        "legalName": "NOSYT LLC",
+        "url": "https://nosytlabs.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://nosytlabs.com/icon-512.png",
+          "width": 512,
+          "height": 512
+        },
+        "description": "Independent US-based studio building open-source AI agents, MCP servers, and developer tools.",
+        "foundingLocation": {
+          "@type": "Place",
+          "addressRegion": "NM",
+          "addressCountry": "US",
+          "name": "New Mexico, USA"
+        },
+        "areaServed": "Worldwide",
+        "knowsAbout": ["AI agents", "MCP servers", "Model Context Protocol", "browser automation", "web development", "open source"],
+        "sameAs": [
+          "https://github.com/NosytLabs",
+          "https://www.linkedin.com/in/tyson-coughlan"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nosytlabs.com/#website",
+        "url": "https://nosytlabs.com",
+        "name": "NosytLabs",
+        "description": "Independent US studio building AI agents, MCP servers, and developer tools.",
+        "publisher": { "@id": "https://nosytlabs.com/#organization" },
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": { "@type": "EntryPoint", "urlTemplate": "https://github.com/NosytLabs?q={search_term_string}" },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://nosytlabs.com/#founder",
+        "name": "Tyson Coughlan",
+        "jobTitle": "Founder & Developer",
+        "worksFor": { "@id": "https://nosytlabs.com/#organization" },
+        "url": "https://nosytlabs.com",
+        "sameAs": ["https://github.com/NosytLabs"]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does NosytLabs build?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NosytLabs builds open-source AI agents, MCP (Model Context Protocol) servers, and small fast web tools for developers. Projects include openclaw-free-mcp-servers for free image generation and TTS, employee.md for AI employment specifications, and OpenClaw Droid for mobile AI."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is MCP (Model Context Protocol)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "MCP (Model Context Protocol) is an open standard for connecting AI agents to external tools and data sources. NosytLabs builds free MCP servers that work without API keys."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is NosytLabs based?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NosytLabs (NOSYT LLC) is based in New Mexico, USA. We work remotely with clients worldwide."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
   <body>
     <!--
       The React app mounts into #root and replaces the entire static skeleton
