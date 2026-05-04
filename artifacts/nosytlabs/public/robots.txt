@@ -45,3 +45,6 @@ User-agent: Meta-ExternalAgent
 Allow: /
 
 Sitemap: https://nosytlabs.com/sitemap.xml
+
+# LLMs / AI agents — machine-readable site index
+LLMs: https://nosytlabs.com/llms.txt
