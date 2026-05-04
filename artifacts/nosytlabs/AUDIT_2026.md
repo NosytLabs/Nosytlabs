@@ -6,50 +6,34 @@
 > truth for past changes. This file documents what is live and the
 > rules a reviewer should enforce.
 
-## Current state (verified 2026-05-04 — full sweep)
+## Current state (verified 2026-05-04 — full sweep, post-deploy)
 
+- **Deploy**: Replit Static (`artifact.toml: serve = "static"`, `publicDir = artifacts/nosytlabs/dist/public`, SPA rewrite `/* → /index.html`). Live at https://nosytlabs.com (HTTP/2, HSTS `max-age=63072000; includeSubDomains`, alt-svc h3). DNS via Spaceship.
 - **Build**: 1.7s with rolldown (Vite 8). Gzipped: app 13.52 KB · react vendor 55.26 KB · framer-motion 39.66 KB · icons 4.17 KB · CSS 9.16 KB · runtime 0.47 KB. Total ~122 KB gzip.
 - **Tests**: 15/15 e2e passing in ~37s (6 services-nav + 9 site).
 - **Console**: silent in dev (only HMR connect/disconnect lines) and production.
-- **Type check**: clean.
-- **Security**: Dependabot alert #2 (esbuild ≤0.24.2, GHSA-67mh-4wv8-2f99, medium) resolved 2026-05-04 by adding `@esbuild-kit/core-utils: npm:tsx@^4.21.0` to `pnpm-workspace.yaml#overrides` — the existing `esm-loader` override missed the transitive `core-utils > esbuild@0.18.20` chain via `@workspace/db > drizzle-kit`. After `pnpm install` the lockfile only retains esbuild@0.25.12 and 0.27.3 (both > 0.25.0 patched).
+- **Type check**: clean across all 4 packages.
+- **Security**: Dependabot alert #2 (esbuild ≤0.24.2, GHSA-67mh-4wv8-2f99, medium) resolved 2026-05-04 by adding `@esbuild-kit/core-utils: npm:tsx@^4.21.0` to `package.json#pnpm.overrides` — the existing `esm-loader` override missed the transitive `core-utils > esbuild@0.18.20` chain via `@workspace/db > drizzle-kit`. After `pnpm install` the lockfile only retains esbuild@0.25.12 and 0.27.3 (both > 0.25.0 patched).
 - **Brand kit**: LinkedIn banner mark added; business-card back corrected to brand gold `#d8b87a`. PNG + WebP exports regenerated.
 - **Logo/favicon**: `Logo.tsx` and `public/favicon.svg` in lockstep. Dot at (49,47) r=3.4 within 64×64 viewBox. PWA + Apple touch icons match `social/avatar-1024.svg`.
-- **Pages audited**: home (1280, 1440, 390), services hub, web-apps, ai-agents, mcp-servers, custom-tools, privacy — all render clean, no overflow, cut-off text, or broken images.
-- **Links verified**: all internal anchors correct; all 5 service pages live (200); external links centralized in `src/lib/links.ts`; sitemap.xml has 8 URLs.
-- **Image assets**: `opengraph.jpg` at 1280×720 matches `<head>` meta. Cosmos hero/mirror WebPs at 76 KB / 36 KB.
-
-## ⚠️ Deploy chain disconnect (PRODUCTION blocker)
-
-**The live site at nosytlabs.com is NOT being updated by `git push origin main`.** Verified 2026-05-04:
-
-- DNS: `nosytlabs.com` and `www.nosytlabs.com` both resolve to `34.111.179.208` — a Google Cloud HTTP(S) Load Balancer IP, **not** Vercel.
-- Response headers: `via: 1.1 google`, no `x-vercel-id`, no Vercel `server` header. Etag `"1777781342581083"` is a Google Cloud Storage object generation number (= microsecond Unix timestamp = 2026-05-03 04:09:02 UTC).
-- Live HTML/sitemap drift: live `<title>` is the older "Hire an independent US studio…" copy; live `sitemap.xml` has 7 URLs with trailing slashes; local has 8 URLs (added `/llms.txt`) without trailing slashes. Live bundle hash `index-BzUx6l1s.js` ≠ local `index-DIdMAD_E.js`.
-- `vercel.json` is committed and well-formed but the repo has no Vercel project linked, no Vercel CLI in deps, no GitHub Action triggering deploys, and no `gsutil` / GCS upload script. Pushes hit GitHub but never reach the GCS bucket fronting the load balancer.
-
-**Until the user fixes the deploy hookup, every cleanup commit (including this one) lives only on GitHub.** Two paths forward:
-
-1. **Reconnect Vercel** — create a Vercel project pointed at the `NosytLabs/Nosytlabs` repo, set project root to `artifacts/nosytlabs`, then change DNS (`A` for apex, `CNAME` for www) to point at Vercel (`cname.vercel-dns.com`).
-2. **Add a GCS sync step** — install `@google-cloud/storage`, write a `scripts/deploy-gcs.mjs` that uploads `artifacts/nosytlabs/dist/public/**` to the bucket behind `34.111.179.208`, and either run it manually post-build or add a GitHub Action with `GCP_SA_KEY`. Requires GCP service-account key — needs user to provide.
-
-The user owns the GCP project and the DNS records, so this cannot be auto-resolved from inside the repl.
+- **Pages audited live (2026-05-04 22:00 UTC)**: home, services hub, web-apps, ai-agents, mcp-servers, custom-tools, privacy — all 200, no overflow, no broken images.
+- **Image assets**: `opengraph.jpg` 200, served at `https://nosytlabs.com/opengraph.jpg` (1280×720, 87 KB). Cosmos hero/mirror WebPs at 76 KB / 36 KB.
 
 ## What ships
 
 - Single-page React app at `/` with sections: Hero, About, Opportunities, Manifesto, Projects, FeaturedVideo, Philosophy, Contact.
-- Five static HTML service pages under `/services/`: hub + web-apps, ai-agents, mcp-servers, custom-tools. Generated at build by the `staticServicePages` plugin in `vite.config.ts`, served by Vercel via the explicit rewrites in `vercel.json`.
-- Static deploy target: Vercel (`vercel.json`) with `dist/public/` as output, trailing-slash routing, immutable cache on `/assets` + `/img`, security headers (HSTS, Permissions-Policy FLoC opt-out, no-sniff, Referrer-Policy).
+- Five static HTML service pages under `/services/`: hub + web-apps, ai-agents, mcp-servers, custom-tools. Generated at build by the `staticServicePages` plugin in `vite.config.ts`. Replit Static serves them directly because the artifact's SPA rewrite (`/* → /index.html`) only fires when no real file matches the request — `dist/public/services/<slug>/index.html` always wins.
 - Toolchain: Vite 8 (rolldown bundler, oxc transformer), React 19.1, Tailwind v4, framer-motion 12, lucide-react 1.x. Brand icons (GitHub, X) live in `src/components/icons/Brand.tsx` since lucide 1.x removed trademarked logos.
 
 ## SEO surface (do not regress)
 
-- **Sitemap**: 7 URLs in `public/sitemap.xml` — home + 5 service pages + privacy.
+- **Sitemap**: 8 URLs in `public/sitemap.xml` — home + services hub + 4 service pages + privacy.html + llms.txt. Each entry ships with `lastmod`. Home entry has an `image:image` block pointing at `/opengraph.jpg`.
 - **robots.txt**: explicit Allow for 15+ AI/answer-engine crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Bytespider, CCBot, Applebot-Extended, Meta-ExternalAgent, etc).
 - **llms.txt**: full studio brief, project list, services with deep-links, page index.
 - **Schema graph (index.html)**: Organization + Person + WebSite + ProfessionalService (with OfferCatalog of all 4 services + Country areaServed) + 4× SoftwareSourceCode (regenerated by `scripts/sync-github-data.mjs`, kept in BEGIN/END markers).
 - **Per service page**: Service + BreadcrumbList + ItemList JSON-LD; canonical, OG, Twitter, sibling cross-links to all 3 other services + hub.
 - **Geo signals**: `geo.region=US`, `geo.placename=United States`, `areaServed: Country US`, `availableLanguage: English`.
+- **Analytics**: GA4 `G-4FS0H823MX` with `anonymize_ip:true`. CSP allows googletagmanager + google-analytics + analytics.google.com + stats.g.doubleclick.net. `src/lib/analytics.ts` wraps `gtag` with try/catch; tracked events: `subscribe_attempt/success`, `contact_attempt/success`, `social_click`.
 
 ## Brand surface (see BRAND.md for the full kit)
 
@@ -63,7 +47,7 @@ The user owns the GCP project and the DNS records, so this cannot be auto-resolv
 - `index.html` — meta + JSON-LD graph. Reviewers should diff this on every PR.
 - `public/sitemap.xml`, `public/robots.txt`, `public/llms.txt` — crawler surface.
 - `public/services/{index,web-apps,ai-agents,mcp-servers,custom-tools}/index.html` — static service pages (NOT React-rendered; the SPA must not match `/services/*` paths).
-- `vercel.json` — deploy/routing config; keep the negative-lookahead rewrite intact.
+- `.replit-artifact/artifact.toml` — Replit Static deploy config; the `[[services.production.rewrites]]` entry must keep `/* → /index.html` so client-routed paths land on the SPA.
 - `vite.config.ts` — env-required by design (PORT + BASE_PATH must be set).
 - `tests/e2e/services-nav.spec.ts` — guards services routing + nav + sitemap.
 - `tests/e2e/site.spec.ts` — guards core UX, hero behaviour, mobile nav, contact form.
@@ -123,4 +107,5 @@ Decision logs for these phases were removed on 2026-05-02 to keep this file usab
 - **2026-05-02** — Content/SEO truth pass (verified all surfaced GitHub repos live, removed 404s).
 - **2026-05-02** — Visionary overhaul (Hero/About/Opportunities copy refresh, BRAND.md voice rules codified).
 - **2026-05-02** — Services routing fix + production verification of `/services/<slug>/`.
-- **2026-05-02** — Vercel deploy config, dependency prune (8 unused deps removed), dead-code prune.
+- **2026-05-02** — Vercel deploy config (later removed 2026-05-04 in favour of Replit Static).
+- **2026-05-04** — Security sweep: esbuild ≤0.24.2 transitive override; deploy chain reconnected via Replit Static; `vercel.json` deleted; sitemap entry count reconciled (8 URLs); `.gitignore` added to ignore `dist/`, `test-results/`, `playwright-report/`.
