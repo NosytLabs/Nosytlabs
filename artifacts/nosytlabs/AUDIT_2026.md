@@ -63,35 +63,42 @@ pnpm --filter @workspace/nosytlabs run test:e2e
 
 All three must pass. If you touched `index.html`, validate the JSON-LD with Google's Rich Results Test before committing.
 
-### GitHub project data sync (scheduled)
+### GitHub project data sync (manual)
 
-`scripts/sync-github-data.mjs` is run by the `.github/workflows/sync-github-data.yml`
-GitHub Action on a daily schedule (`cron: "10 12 * * *"`, ~12:10 UTC) and via
-`workflow_dispatch` for on-demand refreshes. The action:
+Run on demand to refresh the SoftwareSourceCode JSON-LD block in
+`artifacts/nosytlabs/index.html` (and the snapshot at
+`artifacts/nosytlabs/src/lib/github-data.json`) with current stars,
+language, and `pushed_at` from the live repos:
 
-1. Installs the workspace with frozen pnpm lockfile.
-2. Runs `pnpm --filter @workspace/nosytlabs run sync:github` with the workflow's
-   `GITHUB_TOKEN` (5k req/h) so we never hit the unauthenticated rate cap.
-3. Stages `artifacts/nosytlabs/src/lib/github-data.json` and
-   `artifacts/nosytlabs/index.html`; commits as `github-actions[bot]` only if
-   anything actually changed; pushes back to the default branch with the
-   `[skip ci]` tag so it does not retrigger CI.
+```sh
+pnpm --filter @workspace/nosytlabs run sync:github
+```
+
+Optionally export `GITHUB_TOKEN=<your PAT>` first to lift the
+unauthenticated rate cap (60 req/h → 5000 req/h). With only 4 repos
+configured the unauthenticated cap is fine for one-off runs.
 
 The script short-circuits when the live repo metadata
 (stars / forks / language / pushed_at / archived for the configured repos) is
-identical to the existing snapshot — in that case neither file is rewritten,
-so the daily run produces zero diff and zero commit. A new `fetchedAt` (and
-the matching `<!-- last-synced: <ISO timestamp> -->` comment injected
-immediately after the `BEGIN:github-projects-schema` marker in `index.html`)
-is only stamped when at least one repo's metadata actually moved. Note this
-means the `last-synced` comment records **the last time committed data
-actually changed**, not the last cron tick — to verify the scheduler itself
-ran, check the workflow run history under Actions. The comment always matches
-`github-data.json#fetchedAt`. If a single repo fetch fails transiently, the
-script reuses that repo's last-known-good entry from the existing snapshot
-rather than shipping degraded JSON-LD ("programmingLanguage": "Unknown",
-missing dateModified). Manual sync is still supported via
-`pnpm --filter @workspace/nosytlabs run sync:github`.
+identical to the existing snapshot — in that case neither file is
+rewritten, so re-running produces zero diff. A new `fetchedAt` (and the
+matching `<!-- last-synced: <ISO timestamp> -->` comment injected
+immediately after the `BEGIN:github-projects-schema` marker in
+`index.html`) is only stamped when at least one repo's metadata actually
+moved. The `last-synced` comment therefore records **the last time
+committed data actually changed**, not the last run. The comment always
+matches `github-data.json#fetchedAt`. If a single repo fetch fails
+transiently, the script reuses that repo's last-known-good entry from
+the existing snapshot rather than shipping degraded JSON-LD
+("programmingLanguage": "Unknown", missing dateModified).
+
+> The earlier scheduled GitHub Actions workflow
+> (`.github/workflows/sync-github-data.yml`) was removed on 2026-05-04
+> because Replit's GitHub OAuth integration only requests `repo` scope,
+> not `workflow` scope, so the workflow file could not be pushed from
+> the project. To restore the daily cron, either re-add the workflow
+> file directly via the GitHub web UI, or re-authorize the Replit
+> GitHub connection with the `workflow` scope.
 
 ## Past audit phases
 
