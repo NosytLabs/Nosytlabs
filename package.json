@@ -15,7 +15,10 @@
   },
   "pnpm": {
     "overrides": {
-      "postcss@<8.5.10": ">=8.5.10"
+      "postcss@<8.5.10": ">=8.5.10",
+      "@esbuild-kit/esm-loader": "npm:tsx@^4.21.0",
+      "@esbuild-kit/core-utils": "npm:tsx@^4.21.0",
+      "esbuild@<0.25.0": ">=0.25.0"
     }
   }
 }

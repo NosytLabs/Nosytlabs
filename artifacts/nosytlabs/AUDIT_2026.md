@@ -6,19 +6,34 @@
 > truth for past changes. This file documents what is live and the
 > rules a reviewer should enforce.
 
-## Current state (verified 2026-05-03 — site-wide audit pass)
+## Current state (verified 2026-05-04 — full sweep)
 
-- **Build**: ~1.2s with rolldown (Vite 8). Total ~120 KB gzipped:
-  app 13.46 KB · react vendor 55.26 KB · framer-motion 39.66 KB · icons 4.17 KB · CSS 9.01 KB · runtime 0.47 KB.
-- **Tests**: 15/15 e2e passing in ~38s (6 services-nav + 9 site).
-- **Console**: silent in dev and production.
+- **Build**: 1.7s with rolldown (Vite 8). Gzipped: app 13.52 KB · react vendor 55.26 KB · framer-motion 39.66 KB · icons 4.17 KB · CSS 9.16 KB · runtime 0.47 KB. Total ~122 KB gzip.
+- **Tests**: 15/15 e2e passing in ~37s (6 services-nav + 9 site).
+- **Console**: silent in dev (only HMR connect/disconnect lines) and production.
 - **Type check**: clean.
-- **Brand kit**: LinkedIn banner mark added (was missing; all other banners consistent). Business-card back corrected off-brand gold `#b8924a` → `#d8b87a` (dot and footer text). Exports regenerated for both: PNG + WebP.
-- **Logo/favicon**: `Logo.tsx` and `public/favicon.svg` confirmed in lockstep. Dot at (49,47) r=3.4 within 64×64 viewBox — no clipping or glow bleed. Apple touch icon and PWA icons (192/512) match the mark in `social/avatar-1024.svg`.
-- **Pages audited**: home (desktop 1440 + mobile 390), services hub, web-apps, ai-agents, mcp-servers, custom-tools, privacy — all render clean with no overflow, cut-off text, or broken images.
-- **Links verified**: all internal nav anchors (`/#about`, `/services/`, etc.) correct; all 5 service pages resolve; external links (GitHub, X, email, formsubmit.co) consistent in `src/lib/links.ts`; sitemap.xml has 7 URLs.
-- **Production logs**: no Vercel deployment found in current environment — production is managed via Vercel CI; no runtime errors surfaced.
-- **Image assets**: `opengraph.jpg` confirmed at 1280×720 matching `<head>` meta tags. Cosmos hero/mirror WebPs in `public/img/` at 76 KB / 36 KB respectively.
+- **Security**: Dependabot alert #2 (esbuild ≤0.24.2, GHSA-67mh-4wv8-2f99, medium) resolved 2026-05-04 by adding `@esbuild-kit/core-utils: npm:tsx@^4.21.0` to `pnpm-workspace.yaml#overrides` — the existing `esm-loader` override missed the transitive `core-utils > esbuild@0.18.20` chain via `@workspace/db > drizzle-kit`. After `pnpm install` the lockfile only retains esbuild@0.25.12 and 0.27.3 (both > 0.25.0 patched).
+- **Brand kit**: LinkedIn banner mark added; business-card back corrected to brand gold `#d8b87a`. PNG + WebP exports regenerated.
+- **Logo/favicon**: `Logo.tsx` and `public/favicon.svg` in lockstep. Dot at (49,47) r=3.4 within 64×64 viewBox. PWA + Apple touch icons match `social/avatar-1024.svg`.
+- **Pages audited**: home (1280, 1440, 390), services hub, web-apps, ai-agents, mcp-servers, custom-tools, privacy — all render clean, no overflow, cut-off text, or broken images.
+- **Links verified**: all internal anchors correct; all 5 service pages live (200); external links centralized in `src/lib/links.ts`; sitemap.xml has 8 URLs.
+- **Image assets**: `opengraph.jpg` at 1280×720 matches `<head>` meta. Cosmos hero/mirror WebPs at 76 KB / 36 KB.
+
+## ⚠️ Deploy chain disconnect (PRODUCTION blocker)
+
+**The live site at nosytlabs.com is NOT being updated by `git push origin main`.** Verified 2026-05-04:
+
+- DNS: `nosytlabs.com` and `www.nosytlabs.com` both resolve to `34.111.179.208` — a Google Cloud HTTP(S) Load Balancer IP, **not** Vercel.
+- Response headers: `via: 1.1 google`, no `x-vercel-id`, no Vercel `server` header. Etag `"1777781342581083"` is a Google Cloud Storage object generation number (= microsecond Unix timestamp = 2026-05-03 04:09:02 UTC).
+- Live HTML/sitemap drift: live `<title>` is the older "Hire an independent US studio…" copy; live `sitemap.xml` has 7 URLs with trailing slashes; local has 8 URLs (added `/llms.txt`) without trailing slashes. Live bundle hash `index-BzUx6l1s.js` ≠ local `index-DIdMAD_E.js`.
+- `vercel.json` is committed and well-formed but the repo has no Vercel project linked, no Vercel CLI in deps, no GitHub Action triggering deploys, and no `gsutil` / GCS upload script. Pushes hit GitHub but never reach the GCS bucket fronting the load balancer.
+
+**Until the user fixes the deploy hookup, every cleanup commit (including this one) lives only on GitHub.** Two paths forward:
+
+1. **Reconnect Vercel** — create a Vercel project pointed at the `NosytLabs/Nosytlabs` repo, set project root to `artifacts/nosytlabs`, then change DNS (`A` for apex, `CNAME` for www) to point at Vercel (`cname.vercel-dns.com`).
+2. **Add a GCS sync step** — install `@google-cloud/storage`, write a `scripts/deploy-gcs.mjs` that uploads `artifacts/nosytlabs/dist/public/**` to the bucket behind `34.111.179.208`, and either run it manually post-build or add a GitHub Action with `GCP_SA_KEY`. Requires GCP service-account key — needs user to provide.
+
+The user owns the GCP project and the DNS records, so this cannot be auto-resolved from inside the repl.
 
 ## What ships
 
