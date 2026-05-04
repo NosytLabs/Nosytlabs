@@ -63,6 +63,36 @@ pnpm --filter @workspace/nosytlabs run test:e2e
 
 All three must pass. If you touched `index.html`, validate the JSON-LD with Google's Rich Results Test before committing.
 
+### GitHub project data sync (scheduled)
+
+`scripts/sync-github-data.mjs` is run by the `.github/workflows/sync-github-data.yml`
+GitHub Action on a daily schedule (`cron: "10 12 * * *"`, ~12:10 UTC) and via
+`workflow_dispatch` for on-demand refreshes. The action:
+
+1. Installs the workspace with frozen pnpm lockfile.
+2. Runs `pnpm --filter @workspace/nosytlabs run sync:github` with the workflow's
+   `GITHUB_TOKEN` (5k req/h) so we never hit the unauthenticated rate cap.
+3. Stages `artifacts/nosytlabs/src/lib/github-data.json` and
+   `artifacts/nosytlabs/index.html`; commits as `github-actions[bot]` only if
+   anything actually changed; pushes back to the default branch with the
+   `[skip ci]` tag so it does not retrigger CI.
+
+The script short-circuits when the live repo metadata
+(stars / forks / language / pushed_at / archived for the configured repos) is
+identical to the existing snapshot — in that case neither file is rewritten,
+so the daily run produces zero diff and zero commit. A new `fetchedAt` (and
+the matching `<!-- last-synced: <ISO timestamp> -->` comment injected
+immediately after the `BEGIN:github-projects-schema` marker in `index.html`)
+is only stamped when at least one repo's metadata actually moved. Note this
+means the `last-synced` comment records **the last time committed data
+actually changed**, not the last cron tick — to verify the scheduler itself
+ran, check the workflow run history under Actions. The comment always matches
+`github-data.json#fetchedAt`. If a single repo fetch fails transiently, the
+script reuses that repo's last-known-good entry from the existing snapshot
+rather than shipping degraded JSON-LD ("programmingLanguage": "Unknown",
+missing dateModified). Manual sync is still supported via
+`pnpm --filter @workspace/nosytlabs run sync:github`.
+
 ## Past audit phases
 
 Decision logs for these phases were removed on 2026-05-02 to keep this file usable. See `git log` for full context.

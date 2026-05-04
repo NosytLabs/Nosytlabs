@@ -85,11 +85,34 @@ function loadExisting() {
 }
 
 /**
+ * Deep-equal comparison for the per-repo metadata maps. Used to decide
+ * whether a sync produced any substantive change and therefore whether we
+ * should rewrite the on-disk files (and ultimately produce a git commit
+ * from the scheduled GitHub Action). Compares only the fields that we
+ * actually persist — slug + the live fields populated by `fetchRepo` —
+ * which is exactly what `JSON.stringify` over each entry expresses.
+ * Returns false on key-set mismatch or any field difference.
+ */
+function repoMapsEqual(a, b) {
+  if (!a || !b) return false;
+  const ka = Object.keys(a).sort();
+  const kb = Object.keys(b).sort();
+  if (ka.length !== kb.length || ka.some((k, i) => k !== kb[i])) return false;
+  for (const k of ka) {
+    if (JSON.stringify(a[k]) !== JSON.stringify(b[k])) return false;
+  }
+  return true;
+}
+
+/**
  * Regenerate the SoftwareSourceCode JSON-LD block in index.html between the
  * BEGIN:github-projects-schema / END:github-projects-schema markers, using
- * live `dateModified` and `programmingLanguage` per repo.
+ * live `dateModified` and `programmingLanguage` per repo. Also injects a
+ * `<!-- last-synced: <ISO timestamp> -->` comment immediately after the BEGIN
+ * marker so reviewers can tell at a glance when the schema was last refreshed
+ * (this is the same timestamp written into github-data.json#fetchedAt).
  */
-function rewriteIndexHtmlSchema(repoMap) {
+function rewriteIndexHtmlSchema(repoMap, fetchedAt) {
   let html;
   try {
     html = readFileSync(INDEX_HTML, "utf8");
@@ -120,10 +143,11 @@ function rewriteIndexHtmlSchema(repoMap) {
   });
   const blob = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 6);
   const indented = blob.replace(/\n/g, "\n    ");
-  const replacement = `${begin}\n    <script type="application/ld+json">\n    ${indented}\n    </script>\n    ${end}`;
+  const stamp = `<!-- last-synced: ${fetchedAt} -->`;
+  const replacement = `${begin}\n    ${stamp}\n    <script type="application/ld+json">\n    ${indented}\n    </script>\n    ${end}`;
   const next = html.slice(0, i) + replacement + html.slice(j + end.length);
   writeFileSync(INDEX_HTML, next);
-  console.log(`[sync-github-data] refreshed JSON-LD in ${INDEX_HTML}`);
+  console.log(`[sync-github-data] refreshed JSON-LD in ${INDEX_HTML} (last-synced ${fetchedAt})`);
 }
 
 async function main() {
@@ -134,12 +158,48 @@ async function main() {
     const errors = settled.filter((r) => r.error);
     if (ok.length === 0) throw new Error("all GitHub fetches failed");
     const repoMap = Object.fromEntries(ok.map((r) => [r.slug, r]));
-    const data = { fetchedAt: new Date().toISOString(), repos: repoMap };
+
+    // Per-repo fetch can fail transiently (rate limit, repo briefly 404
+    // during a rename, network blip). Because this runs unattended on a
+    // schedule and auto-commits, dropping a previously-good entry would
+    // ship degraded JSON-LD ("programmingLanguage": "Unknown", missing
+    // dateModified) until the next successful run. Instead, when we already
+    // have a snapshot entry for a failed slug, fall back to it so the
+    // commit only ever moves data forward.
+    const reused = [];
+    for (const e of errors) {
+      const prev = existing?.repos?.[e.slug];
+      if (prev) {
+        repoMap[e.slug] = prev;
+        reused.push(e.slug);
+        console.warn(`[sync-github-data] reuse last-known-good for ${e.slug}: ${e.error}`);
+      } else {
+        console.warn(`[sync-github-data] skip ${e.slug} (no prior snapshot): ${e.error}`);
+      }
+    }
+
+    // Skip writing both files when nothing substantive changed (same set of
+    // repos, identical stars/forks/language/pushedAt/archived). Without this
+    // guard the daily scheduled run would always produce a diff because of
+    // the fresh fetchedAt stamp, creating commit noise in the default branch.
+    // We compare on the canonical JSON of the repo map only — fetchedAt is
+    // explicitly excluded so timestamp-only deltas do not count as a change.
+    // Reused last-known-good entries are byte-identical to existing.repos by
+    // construction, so they correctly count as "no change" here too.
+    if (existing && repoMapsEqual(existing.repos, repoMap)) {
+      const detail = reused.length ? ` (${reused.length} reused: ${reused.join(", ")})` : "";
+      console.log(
+        `[sync-github-data] no changes for ${ok.length}/${REPOS.length} repos vs snapshot from ${existing.fetchedAt}${detail}; skipping write`,
+      );
+      return;
+    }
+
+    const fetchedAt = new Date().toISOString();
+    const data = { fetchedAt, repos: repoMap };
     mkdirSync(dirname(OUT), { recursive: true });
     writeFileSync(OUT, JSON.stringify(data, null, 2) + "\n");
     console.log(`[sync-github-data] wrote ${ok.length}/${REPOS.length} repos -> ${OUT}`);
-    for (const e of errors) console.warn(`[sync-github-data] skip ${e.slug}: ${e.error}`);
-    rewriteIndexHtmlSchema(repoMap);
+    rewriteIndexHtmlSchema(repoMap, fetchedAt);
   } catch (err) {
     if (existing) {
       console.warn(`[sync-github-data] fetch failed (${err.message}); keeping existing snapshot from ${existing.fetchedAt}`);
