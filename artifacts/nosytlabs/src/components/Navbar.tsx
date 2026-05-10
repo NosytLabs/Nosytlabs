@@ -91,7 +91,7 @@ export default function Navbar() {
           <span className="font-semibold text-[15px] tracking-tight hidden sm:inline">Nosytlabs</span>
         </a>
 
-        <div className="hidden md:flex items-center gap-7 ml-6">
+        <div className="hidden lg:flex items-center gap-7 ml-6">
           {NAV.map((l) => (
             <a
               key={l.href}
@@ -133,7 +133,7 @@ export default function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-nav-dialog"
             aria-haspopup="dialog"
-            className="md:hidden liquid-glass-strong rounded-full p-2.5 text-[#f5f1e8]"
+            className="lg:hidden liquid-glass-strong rounded-full p-2.5 text-[#f5f1e8]"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -147,7 +147,7 @@ export default function Navbar() {
           role="dialog"
           aria-modal="true"
           aria-label="Site navigation"
-          className="md:hidden fixed inset-0 z-40 bg-[#0a0a0b]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-7 animate-fade-rise"
+          className="lg:hidden fixed inset-0 z-40 bg-[#0a0a0b]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-7 animate-fade-rise"
         >
           <button
             type="button"
