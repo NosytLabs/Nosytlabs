@@ -24,6 +24,12 @@ uri = "file://artifacts/nosytlabs/brand-kit/photos/cosmos-vertical.png"
 type = "image"
 title = "cosmos vertical story"
 
+[[generated]]
+id = "Vz2EJxNSaAlDERbIIixfl"
+uri = "file://artifacts/nosytlabs/public/img/cosmos-hero.png"
+type = "image"
+title = "cosmos hero high res"
+
 [[outputs]]
 id = "dmRrlAKvNs-WqLs-VrfQ_"
 uri = "file://artifacts/nosytlabs/brand-kit/exports/avatar-1024.png"
