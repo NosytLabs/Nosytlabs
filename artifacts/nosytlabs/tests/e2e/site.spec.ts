@@ -20,11 +20,12 @@ test.describe("NosytLabs site — core e2e scenarios", () => {
     expect(hasPoster).toBe(true);
   });
 
-  // 1b. Mobile users must NOT pull the 13 MB hero MP4 on first load.
-  // Hero.tsx gates the <video> on viewport ≥ 1024px, prefers-reduced-motion,
-  // Save-Data, and effectiveType. This test pins that contract: on a mobile
-  // viewport, no request to the CloudFront MP4 should ever fire.
-  test("mobile viewport never requests the hero MP4", async ({ browser }) => {
+  // 1b. The hero is now a single static webp (cosmos-hero.webp) at every
+  // viewport — no MP4 anywhere. The previous wide-screen MP4 had the planet
+  // jammed against the right edge with mostly empty black on the left, which
+  // read as broken. This test pins the contract: no viewport, mobile or
+  // desktop, ever requests an .mp4 or hits the old CloudFront origin.
+  test("no viewport requests a hero MP4 (static cosmos image only)", async ({ browser }) => {
     const context = await browser.newContext({
       viewport: { width: 390, height: 844 },
       userAgent:

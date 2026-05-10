@@ -29,7 +29,6 @@
           style attrs, React inline style props)
         - googletagmanager + google-analytics for GA4
         - fonts.googleapis.com + fonts.gstatic.com for Instrument Serif / Geist
-        - the CloudFront origin that hosts the hero MP4
         - formsubmit.co for the AJAX form submissions
         - open.spotify.com for the artist embed iframe
       `frame-ancestors` is intentionally omitted — meta CSP can't enforce it
@@ -67,12 +66,11 @@
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-    <!-- Preconnect to critical origins (font + video CDN) -->
+    <!-- Preconnect to critical origins (fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin />
 
-    <!-- Preload the hero poster (also doubles as LCP candidate before video plays) -->
+    <!-- Preload the cosmos hero image — LCP candidate at every viewport -->
     <link rel="preload" as="image" href="/img/cosmos-hero.webp" fetchpriority="high" />
 
     <!-- Fonts loaded as <link> (not @import) so they don't block render-chain CSS.

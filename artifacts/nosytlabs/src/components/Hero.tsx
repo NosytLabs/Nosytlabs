@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Github, XLogo } from "./icons/Brand";
 import Navbar from "./Navbar";
 import { LINKS } from "@/lib/links";
 import { track } from "@/lib/analytics";
-
-const HERO_VIDEO =
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260330_145725_08886141-ed95-4a8e-8d6d-b75eaadce638.mp4";
 
 type SubStatus = "idle" | "sending" | "sent" | "error";
 
@@ -25,35 +22,7 @@ function friendlyFormError(_raw: string | null | undefined): string {
   return "Couldn't reach the subscribe service. Please email us instead — a real person replies.";
 }
 
-// Decide if this device/network can afford the ~13 MB hero MP4.
-// Defaults to "no" during SSR so the poster is shown first. Returns false
-// for: small phones (<=640px), Save-Data users, 2G/slow-2G connections,
-// and prefers-reduced-motion. Lighthouse mobile reports effectiveType
-// "4g" even on Slow-4G throttling, so we use the viewport as the real
-// mobile signal — that drops the MP4 entirely on phones, which is what
-// the audit flagged.
-function shouldLoadHeroVideo(): boolean {
-  if (typeof window === "undefined") return false;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
-  if (window.matchMedia("(prefers-reduced-data: reduce)").matches) return false;
-  if (window.matchMedia("(max-width: 1023px)").matches) return false;
-  type NetInfo = { saveData?: boolean; effectiveType?: string };
-  const conn = (navigator as Navigator & { connection?: NetInfo }).connection;
-  if (conn?.saveData) return false;
-  // Only serve the ~13 MB MP4 on 4g connections; unknown (desktop without
-  // Network Information API) falls through and loads the video.
-  if (conn?.effectiveType && conn.effectiveType !== "4g") return false;
-  return true;
-}
-
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoReady, setVideoReady] = useState(false);
-  const [loadVideo, setLoadVideo] = useState(false);
-  // Held back until IntersectionObserver confirms the hero is on-screen.
-  // Setting `src` is what triggers the actual MP4 fetch, so deferring this
-  // assignment keeps initial-paint resources (HTML/CSS/JS/poster) un-contended.
-  const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<SubStatus>("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -61,45 +30,6 @@ export default function Hero() {
   // populate this and get silently dropped. formsubmit also drops any
   // submission with `_honey` set on its end (defense in depth).
   const [hp, setHp] = useState("");
-
-  // Decide whether to even mount the <video> element. Doing this in an effect
-  // (instead of at render-time inline) keeps SSR/initial-paint deterministic
-  // and means the static poster always shows first — the video upgrade is a
-  // strict enhancement.
-  useEffect(() => {
-    setLoadVideo(shouldLoadHeroVideo());
-  }, []);
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    const onPlaying = () => setVideoReady(true);
-    const tryPlay = () => v.play().catch(() => {});
-    v.addEventListener("playing", onPlaying);
-    v.addEventListener("loadeddata", tryPlay);
-    v.addEventListener("canplay", tryPlay);
-    // Lazy-load: only assign src once the hero is actually in view (always
-    // true on first paint for this section, but the IO gate ensures the
-    // browser prioritises the LCP elements before the MP4 begins streaming).
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          if (!videoSrc) setVideoSrc(HERO_VIDEO);
-          tryPlay();
-        } else {
-          v.pause();
-        }
-      },
-      { threshold: 0.05 },
-    );
-    io.observe(v);
-    return () => {
-      v.removeEventListener("playing", onPlaying);
-      v.removeEventListener("loadeddata", tryPlay);
-      v.removeEventListener("canplay", tryPlay);
-      io.disconnect();
-    };
-  }, [loadVideo, videoSrc]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -165,42 +95,26 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden flex flex-col bg-[#0a0a0b]">
-      {loadVideo ? (
-        // Capable device — pure black until the cinematic video is actually
-        // playing, then the video fades in. No poster underneath, so the
-        // visitor never sees the static frame mid-buffer.
-        <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover object-[50%_0%] sm:object-center transition-opacity duration-[1400ms] ease-out motion-reduce:transition-none"
-          style={{ opacity: videoReady ? 1 : 0 }}
-          src={videoSrc ?? undefined}
-          poster="/img/cosmos-hero.webp"
-          muted
-          autoPlay
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          tabIndex={-1}
-        />
-      ) : (
-        // Fallback for reduced-motion / Save-Data / 2G — show the poster as
-        // a static image instead of fetching the ~13 MB MP4.
-        <img
-          src="/img/cosmos-hero.webp"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-[50%_0%] sm:object-center"
-          decoding="async"
-          fetchPriority="high"
-        />
-      )}
+      {/* Cosmos hero — same gorgeous static image at every viewport. The
+          previous wide-screen MP4 had the planet jammed against the right
+          edge with mostly empty black on the left, which read as broken.
+          The 76 KB webp poster keeps the LCP fast and renders identically
+          on every device. */}
+      <img
+        src="/img/cosmos-hero.webp"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        decoding="async"
+        fetchPriority="high"
+      />
 
-      {/* Layered overlays — vignette + bottom fade so type stays legible */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(10,10,11,0.35)_0%,_rgba(10,10,11,0.70)_55%,_rgba(10,10,11,0.95)_100%)] sm:bg-[radial-gradient(ellipse_at_center,_rgba(10,10,11,0.10)_0%,_rgba(10,10,11,0.55)_55%,_rgba(10,10,11,0.92)_100%)]" />
-      <div className="absolute inset-0 pointer-events-none bg-[#0a0a0b]/45 sm:bg-[#0a0a0b]/30" />
-      <div className="absolute inset-x-0 bottom-0 h-[65%] pointer-events-none bg-gradient-to-b from-transparent via-[#0a0a0b]/90 to-[#0a0a0b] sm:h-72 sm:bg-gradient-to-b sm:from-transparent sm:via-[#0a0a0b]/85 sm:to-[#0a0a0b]" />
-      <div className="absolute inset-x-0 top-0 h-32 pointer-events-none bg-gradient-to-b from-[#0a0a0b]/85 to-transparent" />
+      {/* Layered overlays — lighter vignette so the cosmos image actually
+          shows through, plus a bottom fade so type stays legible. */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(10,10,11,0.20)_0%,_rgba(10,10,11,0.55)_60%,_rgba(10,10,11,0.92)_100%)] sm:bg-[radial-gradient(ellipse_at_center,_rgba(10,10,11,0.05)_0%,_rgba(10,10,11,0.40)_60%,_rgba(10,10,11,0.88)_100%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[#0a0a0b]/25 sm:bg-[#0a0a0b]/15" />
+      <div className="absolute inset-x-0 bottom-0 h-[55%] pointer-events-none bg-gradient-to-b from-transparent via-[#0a0a0b]/85 to-[#0a0a0b] sm:h-64 sm:bg-gradient-to-b sm:from-transparent sm:via-[#0a0a0b]/80 sm:to-[#0a0a0b]" />
+      <div className="absolute inset-x-0 top-0 h-28 pointer-events-none bg-gradient-to-b from-[#0a0a0b]/75 to-transparent" />
 
       <Navbar />
 

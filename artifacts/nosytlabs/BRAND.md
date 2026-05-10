@@ -113,9 +113,10 @@ Section H2s sit between `4xl` and `7xl`. Body copy stays at 16–18px.
 
 ## 8. Imagery
 
-- Hero serves a cinematic MP4 (~13 MB from CloudFront) on capable
-  desktop devices and the WebP poster `/img/cosmos-hero.webp` for
-  everyone else (mobile <=640px, reduced-motion, Save-Data, 2G).
+- Hero serves the same static `/img/cosmos-hero.webp` (76 KB) at every
+  viewport — person silhouette centered against a cosmic ocean. The
+  earlier wide-screen MP4 cropped to a planet on the right edge with
+  empty black on the left, which read as broken; dropped entirely.
 - Decorative imagery uses the cosmos/desk WebPs in `/img/`.
 - No stock photography. No AI faces. No founder photo (yet).
 - Open Graph image: `/opengraph.jpg` (1280×720, hand-designed, set in
